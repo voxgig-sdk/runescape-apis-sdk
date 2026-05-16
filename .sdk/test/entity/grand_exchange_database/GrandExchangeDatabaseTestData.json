@@ -1,0 +1,80 @@
+{
+  "existing": {
+    "grand_exchange_database": {
+      "GRAND_EXCHANGE_DATABASE00": {
+        "average": {},
+        "current": {},
+        "daily": {},
+        "description": "s99",
+        "icon": "s9a",
+        "icon_large": "s9b",
+        "id": "GRAND_EXCHANGE_DATABASE00",
+        "item": {},
+        "last_config_update_runeday": "s9e",
+        "letter": "s9f",
+        "member": "sa0",
+        "name": "sa1",
+        "today": {},
+        "type": "sa3",
+        "type_icon": "sa4",
+        "item_id": "ITEM01"
+      },
+      "GRAND_EXCHANGE_DATABASE01": {
+        "average": {},
+        "current": {},
+        "daily": {},
+        "description": "s12f",
+        "icon": "s130",
+        "icon_large": "s131",
+        "id": "GRAND_EXCHANGE_DATABASE01",
+        "item": {},
+        "last_config_update_runeday": "s134",
+        "letter": "s135",
+        "member": "s136",
+        "name": "s137",
+        "today": {},
+        "type": "s139",
+        "type_icon": "s13a",
+        "item_id": "ITEM01"
+      },
+      "GRAND_EXCHANGE_DATABASE02": {
+        "average": {},
+        "current": {},
+        "daily": {},
+        "description": "s1c5",
+        "icon": "s1c6",
+        "icon_large": "s1c7",
+        "id": "GRAND_EXCHANGE_DATABASE02",
+        "item": {},
+        "last_config_update_runeday": "s1ca",
+        "letter": "s1cb",
+        "member": "s1cc",
+        "name": "s1cd",
+        "today": {},
+        "type": "s1cf",
+        "type_icon": "s1d0",
+        "item_id": "ITEM01"
+      }
+    }
+  },
+  "new": {
+    "grand_exchange_database": {
+      "grand_exchange_database_ref01": {
+        "average": {},
+        "current": {},
+        "daily": {},
+        "description": "s25b",
+        "icon": "s25c",
+        "icon_large": "s25d",
+        "item": {},
+        "last_config_update_runeday": "s260",
+        "letter": "s261",
+        "member": "s262",
+        "name": "s263",
+        "today": {},
+        "type": "s265",
+        "type_icon": "s266"
+      }
+    }
+  }
+}

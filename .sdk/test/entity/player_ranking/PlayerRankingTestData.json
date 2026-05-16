@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "player_ranking": {
+      "PLAYER_RANKING00": {
+        "name": "s1e",
+        "rank": "s1f",
+        "score": "s20"
+      },
+      "PLAYER_RANKING01": {
+        "name": "s3c",
+        "rank": "s3d",
+        "score": "s3e"
+      },
+      "PLAYER_RANKING02": {
+        "name": "s5a",
+        "rank": "s5b",
+        "score": "s5c"
+      }
+    }
+  },
+  "new": {
+    "player_ranking": {
+      "player_ranking_ref01": {
+        "name": "s78",
+        "rank": "s79",
+        "score": "s7a"
+      }
+    }
+  }
+}

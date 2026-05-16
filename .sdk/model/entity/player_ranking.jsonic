@@ -1,0 +1,80 @@
+# Entity: player_ranking
+
+main: kit: entity: player_ranking: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "rank"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "score"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "player_ranking"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "category"
+                orig: "category"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "size"
+                orig: "size"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "table"
+                orig: "table"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/m=hiscore/ranking.json"
+          parts: [
+            "m=hiscore"
+            "ranking.json"
+          ]
+          select: {
+            exist: [
+              "category"
+              "size"
+              "table"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

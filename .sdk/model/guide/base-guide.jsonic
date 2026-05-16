@@ -1,0 +1,44 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 3
+  metrics: count: path: 9
+  metrics: count: method: 9
+
+  entity: grand_exchange_database: {
+    path: "/m=itemdb_rs/api/catalogue/category.json": {
+      op: list: method: *GET
+    }
+    path: "/m=itemdb_rs/api/catalogue/detail.json": {
+      op: load: method: *GET
+    }
+    path: "/m=itemdb_rs/api/catalogue/items.json": {
+      op: list: method: *GET
+    }
+    path: "/m=itemdb_rs/api/graph/{itemId}.json": {
+      op: load: method: *GET
+    }
+    path: "/m=itemdb_rs/api/info.json": {
+      op: load: method: *GET
+    }
+    path: "/m=itemdb_rs/obj_big.gif": {
+      op: load: method: *GET
+    }
+    path: "/m=itemdb_rs/obj_sprite.gif": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: old_school_grand_exchange: {
+    path: "/m=itemdb_oldschool/api/catalogue/items.json": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: player_ranking: {
+    path: "/m=hiscore/ranking.json": {
+      op: list: method: *GET
+    }
+  }
+
+}

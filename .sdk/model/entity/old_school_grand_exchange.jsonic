@@ -1,0 +1,122 @@
+# Entity: old_school_grand_exchange
+
+main: kit: entity: old_school_grand_exchange: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "current"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "description"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "icon"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "icon_large"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "member"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "today"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "type"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "type_icon"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "old_school_grand_exchange"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                kind: "query"
+                name: "alpha"
+                orig: "alpha"
+                reqd: true
+                type: "`$STRING`"
+              }
+              {
+                kind: "query"
+                name: "category"
+                orig: "category"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+              {
+                kind: "query"
+                name: "page"
+                orig: "page"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/m=itemdb_oldschool/api/catalogue/items.json"
+          parts: [
+            "m=itemdb_oldschool"
+            "api"
+            "catalogue"
+            "items.json"
+          ]
+          select: {
+            exist: [
+              "alpha"
+              "category"
+              "page"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

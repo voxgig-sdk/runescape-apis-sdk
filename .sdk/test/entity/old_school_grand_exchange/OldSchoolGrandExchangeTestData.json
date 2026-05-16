@@ -1,0 +1,57 @@
+{
+  "existing": {
+    "old_school_grand_exchange": {
+      "OLD_SCHOOL_GRAND_EXCHANGE00": {
+        "current": {},
+        "description": "s65",
+        "icon": "s66",
+        "icon_large": "s67",
+        "id": "OLD_SCHOOL_GRAND_EXCHANGE00",
+        "member": "s69",
+        "name": "s6a",
+        "today": {},
+        "type": "s6c",
+        "type_icon": "s6d"
+      },
+      "OLD_SCHOOL_GRAND_EXCHANGE01": {
+        "current": {},
+        "description": "sc9",
+        "icon": "sca",
+        "icon_large": "scb",
+        "id": "OLD_SCHOOL_GRAND_EXCHANGE01",
+        "member": "scd",
+        "name": "sce",
+        "today": {},
+        "type": "sd0",
+        "type_icon": "sd1"
+      },
+      "OLD_SCHOOL_GRAND_EXCHANGE02": {
+        "current": {},
+        "description": "s12d",
+        "icon": "s12e",
+        "icon_large": "s12f",
+        "id": "OLD_SCHOOL_GRAND_EXCHANGE02",
+        "member": "s131",
+        "name": "s132",
+        "today": {},
+        "type": "s134",
+        "type_icon": "s135"
+      }
+    }
+  },
+  "new": {
+    "old_school_grand_exchange": {
+      "old_school_grand_exchange_ref01": {
+        "current": {},
+        "description": "s191",
+        "icon": "s192",
+        "icon_large": "s193",
+        "member": "s195",
+        "name": "s196",
+        "today": {},
+        "type": "s198",
+        "type_icon": "s199"
+      }
+    }
+  }
+}

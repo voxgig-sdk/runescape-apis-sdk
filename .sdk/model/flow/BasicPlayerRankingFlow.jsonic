@@ -1,0 +1,22 @@
+# BasicPlayerRankingFlow
+
+main: kit: flow: BasicPlayerRankingFlow:
+{
+  entity: "player_ranking",
+  kind: "basic",
+  name: "BasicPlayerRankingFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "player_ranking_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPlayerRankingFlow"
+}

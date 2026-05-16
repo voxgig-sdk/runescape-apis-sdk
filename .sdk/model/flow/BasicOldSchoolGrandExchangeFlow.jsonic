@@ -1,0 +1,22 @@
+# BasicOldSchoolGrandExchangeFlow
+
+main: kit: flow: BasicOldSchoolGrandExchangeFlow:
+{
+  entity: "old_school_grand_exchange",
+  kind: "basic",
+  name: "BasicOldSchoolGrandExchangeFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "old_school_grand_exchange_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicOldSchoolGrandExchangeFlow"
+}

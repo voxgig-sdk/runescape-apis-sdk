@@ -1,0 +1,637 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "RuneScape APIs",
+    "description": "Access comprehensive data from RuneScape with various APIs, including the Bestiary API, Grand Exchange Database API, and Hiscores APIs. These APIs allow developers, fansite operators, and bots to retrieve detailed information about the game, including player statistics, item data, NPCs, and more. Note that most RuneScape APIs require backend calls due to CORS restrictions but can be accessed via Chrome extensions.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "RuneScape Wiki",
+      "url": "https://runescape.wiki/w/Application_programming_interface"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://secure.runescape.com",
+      "description": "RuneScape Official API Server"
+    }
+  ],
+  "paths": {
+    "/m=itemdb_rs/api/info.json": {
+      "get": {
+        "summary": "Get Grand Exchange Database Configuration",
+        "description": "Returns the runedate of when the Grand Exchange Database was last updated.",
+        "operationId": "getGEInfo",
+        "tags": [
+          "Grand Exchange Database"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with database update information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "lastConfigUpdateRuneday": {
+                      "type": "integer",
+                      "description": "The runedate when the database was last updated"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/m=itemdb_rs/api/catalogue/category.json": {
+      "get": {
+        "summary": "Get Category Information",
+        "description": "Returns the number of items determined by the first letter for a given category.",
+        "operationId": "getCategoryInfo",
+        "tags": [
+          "Grand Exchange Database"
+        ],
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "required": true,
+            "description": "The category identification number (0-43)",
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 43
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with category information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "types": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "alpha": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "letter": {
+                            "type": "string",
+                            "description": "The first letter of an item"
+                          },
+                          "items": {
+                            "type": "integer",
+                            "description": "The number of items starting with this letter"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/m=itemdb_rs/api/catalogue/items.json": {
+      "get": {
+        "summary": "Get Items by Category",
+        "description": "Returns the first 12 items in the category determined by the first letter.",
+        "operationId": "getItemsByCategory",
+        "tags": [
+          "Grand Exchange Database"
+        ],
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "required": true,
+            "description": "The category identification number (0-43)",
+            "schema": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 43
+            }
+          },
+          {
+            "name": "alpha",
+            "in": "query",
+            "required": true,
+            "description": "The starting letter for the items (lowercase). Use %23 for numbers.",
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-z]$|^%23$"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": true,
+            "description": "The page number beginning at 1",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with items list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "type": "integer",
+                      "description": "The total number of items in the category"
+                    },
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Item"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/m=itemdb_rs/api/catalogue/detail.json": {
+      "get": {
+        "summary": "Get Item Details",
+        "description": "Returns current price and price trends information on tradeable items in the Grand Exchange.",
+        "operationId": "getItemDetail",
+        "tags": [
+          "Grand Exchange Database"
+        ],
+        "parameters": [
+          {
+            "name": "item",
+            "in": "query",
+            "required": true,
+            "description": "The ItemID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with item details",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "item": {
+                      "$ref": "#/components/schemas/ItemDetail"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/m=itemdb_rs/api/graph/{itemId}.json": {
+      "get": {
+        "summary": "Get Item Price Graph",
+        "description": "Shows the prices each day of a given item for the previous 180 days.",
+        "operationId": "getItemGraph",
+        "tags": [
+          "Grand Exchange Database"
+        ],
+        "parameters": [
+          {
+            "name": "itemId",
+            "in": "path",
+            "required": true,
+            "description": "The ItemID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with price history",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "daily": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "integer"
+                      },
+                      "description": "Daily prices with timestamp as key"
+                    },
+                    "average": {
+                      "type": "object",
+                      "additionalProperties": {
+                        "type": "integer"
+                      },
+                      "description": "30-day moving average with timestamp as key"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/m=itemdb_rs/obj_big.gif": {
+      "get": {
+        "summary": "Get Item Large Image",
+        "description": "Returns the large/detailed image for an item.",
+        "operationId": "getItemLargeImage",
+        "tags": [
+          "Grand Exchange Database"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "description": "The ItemID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with item image",
+            "content": {
+              "image/gif": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/m=itemdb_rs/obj_sprite.gif": {
+      "get": {
+        "summary": "Get Item Sprite Image",
+        "description": "Returns the sprite/inventory icon image for an item.",
+        "operationId": "getItemSpriteImage",
+        "tags": [
+          "Grand Exchange Database"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "description": "The ItemID",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with item sprite",
+            "content": {
+              "image/gif": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/m=hiscore/ranking.json": {
+      "get": {
+        "summary": "Get Player Rankings",
+        "description": "Returns up to the top 50 players in a given skill or activity.",
+        "operationId": "getPlayerRankings",
+        "tags": [
+          "Hiscores"
+        ],
+        "parameters": [
+          {
+            "name": "table",
+            "in": "query",
+            "required": true,
+            "description": "The skill, overall level, or activity table number",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "category",
+            "in": "query",
+            "required": true,
+            "description": "Category type (0 for skills, 1 for activities)",
+            "schema": {
+              "type": "integer",
+              "enum": [
+                0,
+                1
+              ]
+            }
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "required": true,
+            "description": "Number of players to return (max 50)",
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with player rankings",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PlayerRanking"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/m=itemdb_oldschool/api/catalogue/items.json": {
+      "get": {
+        "summary": "Get Old School RuneScape Items by Category",
+        "description": "Returns items from the Old School RuneScape Grand Exchange.",
+        "operationId": "getOSRSItemsByCategory",
+        "tags": [
+          "Old School Grand Exchange"
+        ],
+        "parameters": [
+          {
+            "name": "category",
+            "in": "query",
+            "required": true,
+            "description": "The category identification number (only 1 category available for OSRS)",
+            "schema": {
+              "type": "integer",
+              "enum": [
+                1
+              ]
+            }
+          },
+          {
+            "name": "alpha",
+            "in": "query",
+            "required": true,
+            "description": "The starting letter for the items (lowercase)",
+            "schema": {
+              "type": "string",
+              "pattern": "^[a-z]$"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": true,
+            "description": "The page number beginning at 1",
+            "schema": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with OSRS items list",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "total": {
+                      "type": "integer"
+                    },
+                    "items": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Item"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Item": {
+        "type": "object",
+        "properties": {
+          "icon": {
+            "type": "string",
+            "description": "The item sprite image URL"
+          },
+          "icon_large": {
+            "type": "string",
+            "description": "The item detail image URL"
+          },
+          "id": {
+            "type": "integer",
+            "description": "The ItemID"
+          },
+          "type": {
+            "type": "string",
+            "description": "The item category"
+          },
+          "typeIcon": {
+            "type": "string",
+            "description": "The item category icon URL"
+          },
+          "name": {
+            "type": "string",
+            "description": "The item name"
+          },
+          "description": {
+            "type": "string",
+            "description": "The item examine text"
+          },
+          "current": {
+            "$ref": "#/components/schemas/PriceTrend"
+          },
+          "today": {
+            "$ref": "#/components/schemas/PriceTrend"
+          },
+          "members": {
+            "type": "string",
+            "description": "Whether the item is members-only",
+            "enum": [
+              "true",
+              "false"
+            ]
+          }
+        }
+      },
+      "ItemDetail": {
+        "type": "object",
+        "properties": {
+          "icon": {
+            "type": "string",
+            "description": "The item sprite image URL"
+          },
+          "icon_large": {
+            "type": "string",
+            "description": "The item detail image URL"
+          },
+          "id": {
+            "type": "integer",
+            "description": "The ItemID"
+          },
+          "type": {
+            "type": "string",
+            "description": "The item category"
+          },
+          "typeIcon": {
+            "type": "string",
+            "description": "The item category icon URL"
+          },
+          "name": {
+            "type": "string",
+            "description": "The item name"
+          },
+          "description": {
+            "type": "string",
+            "description": "The item examine text"
+          },
+          "current": {
+            "$ref": "#/components/schemas/PriceTrend"
+          },
+          "today": {
+            "$ref": "#/components/schemas/PriceTrend"
+          },
+          "members": {
+            "type": "string",
+            "description": "Whether the item is members-only",
+            "enum": [
+              "true",
+              "false"
+            ]
+          },
+          "day30": {
+            "$ref": "#/components/schemas/PriceChange"
+          },
+          "day90": {
+            "$ref": "#/components/schemas/PriceChange"
+          },
+          "day180": {
+            "$ref": "#/components/schemas/PriceChange"
+          }
+        }
+      },
+      "PriceTrend": {
+        "type": "object",
+        "properties": {
+          "trend": {
+            "type": "string",
+            "description": "The price trend direction",
+            "enum": [
+              "positive",
+              "negative",
+              "neutral"
+            ]
+          },
+          "price": {
+            "description": "The item trade price (can be integer or string)",
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "string"
+              }
+            ]
+          }
+        }
+      },
+      "PriceChange": {
+        "type": "object",
+        "properties": {
+          "trend": {
+            "type": "string",
+            "description": "The price trend direction",
+            "enum": [
+              "positive",
+              "negative",
+              "neutral"
+            ]
+          },
+          "change": {
+            "type": "string",
+            "description": "The percentage change in price"
+          }
+        }
+      },
+      "PlayerRanking": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The player's username"
+          },
+          "score": {
+            "type": "string",
+            "description": "The player's score or experience"
+          },
+          "rank": {
+            "type": "string",
+            "description": "The player's rank"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Grand Exchange Database",
+      "description": "Access item data, prices, and trends from the Grand Exchange"
+    },
+    {
+      "name": "Old School Grand Exchange",
+      "description": "Access item data from Old School RuneScape Grand Exchange"
+    },
+    {
+      "name": "Hiscores",
+      "description": "Access player rankings and statistics"
+    }
+  ]
+}

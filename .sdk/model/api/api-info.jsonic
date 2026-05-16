@@ -1,0 +1,24 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        name: "RuneScape Wiki"
+        url: "https://runescape.wiki/w/Application_programming_interface"
+      }
+      description: "Access comprehensive data from RuneScape with various APIs, including the Bestiary API, Grand Exchange Database API, and Hiscores APIs. These APIs allow developers, fansite operators, and bots to retrieve detailed information about the game, including player statistics, item data, NPCs, and more. Note that most RuneScape APIs require backend calls due to CORS restrictions but can be accessed via Chrome extensions."
+      servers: [
+        {
+          description: "RuneScape Official API Server"
+          url: "https://secure.runescape.com"
+        }
+      ]
+      title: "RuneScape APIs"
+      version: "1.0.0"
+    }
+  }
+}
+
+}
