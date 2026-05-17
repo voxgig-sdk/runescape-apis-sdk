@@ -3,9 +3,9 @@ package utility
 import (
 	"strings"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/runescape-apis-sdk/go/utility/struct"
 
-	"github.com/voxgig-sdk/runescape-apis-sdk/core"
+	"github.com/voxgig-sdk/runescape-apis-sdk/go/core"
 )
 
 func makeSpecUtil(ctx *core.Context) (*core.Spec, error) {

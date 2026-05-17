@@ -4,7 +4,7 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/voxgig-sdk/runescape-apis-sdk/core"
+	"github.com/voxgig-sdk/runescape-apis-sdk/go/core"
 )
 
 type LogFeature struct {

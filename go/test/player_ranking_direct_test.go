@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/runescape-apis-sdk"
-	"github.com/voxgig-sdk/runescape-apis-sdk/core"
+	sdk "github.com/voxgig-sdk/runescape-apis-sdk/go"
+	"github.com/voxgig-sdk/runescape-apis-sdk/go/core"
 )
 
 func TestPlayerRankingDirect(t *testing.T) {

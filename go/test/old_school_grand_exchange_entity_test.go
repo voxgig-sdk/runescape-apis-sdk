@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/runescape-apis-sdk"
-	"github.com/voxgig-sdk/runescape-apis-sdk/core"
+	sdk "github.com/voxgig-sdk/runescape-apis-sdk/go"
+	"github.com/voxgig-sdk/runescape-apis-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/runescape-apis-sdk/go/utility/struct"
 )
 
 func TestOldSchoolGrandExchangeEntity(t *testing.T) {

@@ -1,6 +1,6 @@
 package utility
 
-import "github.com/voxgig-sdk/runescape-apis-sdk/core"
+import "github.com/voxgig-sdk/runescape-apis-sdk/go/core"
 
 func doneUtil(ctx *core.Context) (any, error) {
 	if ctx.Ctrl.Explain != nil {

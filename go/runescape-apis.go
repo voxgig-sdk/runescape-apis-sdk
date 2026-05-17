@@ -1,10 +1,10 @@
 package voxgigrunescapeapissdk
 
 import (
-	"github.com/voxgig-sdk/runescape-apis-sdk/core"
-	"github.com/voxgig-sdk/runescape-apis-sdk/entity"
-	"github.com/voxgig-sdk/runescape-apis-sdk/feature"
-	_ "github.com/voxgig-sdk/runescape-apis-sdk/utility"
+	"github.com/voxgig-sdk/runescape-apis-sdk/go/core"
+	"github.com/voxgig-sdk/runescape-apis-sdk/go/entity"
+	"github.com/voxgig-sdk/runescape-apis-sdk/go/feature"
+	_ "github.com/voxgig-sdk/runescape-apis-sdk/go/utility"
 )
 
 // Type aliases preserve external API.
