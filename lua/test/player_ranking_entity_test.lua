@@ -92,7 +92,6 @@ function player_ranking_basic_setup(extra)
     ["RUNESCAPEAPIS_TEST_PLAYER_RANKING_ENTID"] = idmap,
     ["RUNESCAPEAPIS_TEST_LIVE"] = "FALSE",
     ["RUNESCAPEAPIS_TEST_EXPLAIN"] = "FALSE",
-    ["RUNESCAPEAPIS_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -104,7 +103,6 @@ function player_ranking_basic_setup(extra)
   if env["RUNESCAPEAPIS_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["RUNESCAPEAPIS_APIKEY"],
       },
       extra or {},
     })

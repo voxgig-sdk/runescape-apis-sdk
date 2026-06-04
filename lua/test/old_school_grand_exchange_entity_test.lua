@@ -92,7 +92,6 @@ function old_school_grand_exchange_basic_setup(extra)
     ["RUNESCAPEAPIS_TEST_OLD_SCHOOL_GRAND_EXCHANGE_ENTID"] = idmap,
     ["RUNESCAPEAPIS_TEST_LIVE"] = "FALSE",
     ["RUNESCAPEAPIS_TEST_EXPLAIN"] = "FALSE",
-    ["RUNESCAPEAPIS_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -104,7 +103,6 @@ function old_school_grand_exchange_basic_setup(extra)
   if env["RUNESCAPEAPIS_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["RUNESCAPEAPIS_APIKEY"],
       },
       extra or {},
     })
