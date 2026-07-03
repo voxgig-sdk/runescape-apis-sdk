@@ -10,7 +10,7 @@ The PHP SDK for the RunescapeApis API — an entity-oriented client using PHP co
 
 ## Install
 ```bash
-composer require voxgig/runescape-apis-sdk
+composer require voxgig-sdk/runescape-apis
 ```
 
 

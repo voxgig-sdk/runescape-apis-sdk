@@ -10,13 +10,13 @@ The Ruby SDK for the RunescapeApis API — an entity-oriented client using idiom
 
 ## Install
 ```bash
-gem install runescape-apis-sdk
+gem install voxgig-sdk-runescape-apis
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "runescape-apis-sdk"
+gem "voxgig-sdk-runescape-apis"
 ```
 
 Then run:

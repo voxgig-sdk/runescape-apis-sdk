@@ -10,7 +10,7 @@ The Python SDK for the RunescapeApis API — an entity-oriented client following
 
 ## Install
 ```bash
-pip install runescape-apis-sdk
+pip install voxgig-sdk-runescape-apis
 ```
 
 Or install from source:

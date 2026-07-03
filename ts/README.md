@@ -10,7 +10,7 @@ The TypeScript SDK for the RunescapeApis API — a type-safe, entity-oriented cl
 
 ## Install
 ```bash
-npm install runescape-apis
+npm install @voxgig-sdk/runescape-apis
 ```
 ## Tutorial: your first API call
 
