@@ -93,12 +93,14 @@ func old_school_grand_exchangeDirectSetup(mockres any) *old_school_grand_exchang
 	env := envOverride(map[string]any{
 		"RUNESCAPEAPIS_TEST_OLD_SCHOOL_GRAND_EXCHANGE_ENTID": map[string]any{},
 		"RUNESCAPEAPIS_TEST_LIVE":    "FALSE",
+		"RUNESCAPEAPIS_APIKEY":       "NONE",
 	})
 
 	live := env["RUNESCAPEAPIS_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["RUNESCAPEAPIS_APIKEY"],
 		}
 		client := sdk.NewRunescapeApisSDK(mergedOpts)
 

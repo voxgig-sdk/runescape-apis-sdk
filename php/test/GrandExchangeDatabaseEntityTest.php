@@ -96,6 +96,7 @@ function grand_exchange_database_basic_setup($extra)
         "RUNESCAPEAPIS_TEST_GRAND_EXCHANGE_DATABASE_ENTID" => $idmap,
         "RUNESCAPEAPIS_TEST_LIVE" => "FALSE",
         "RUNESCAPEAPIS_TEST_EXPLAIN" => "FALSE",
+        "RUNESCAPEAPIS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -107,6 +108,7 @@ function grand_exchange_database_basic_setup($extra)
     if ($env["RUNESCAPEAPIS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
+                "apikey" => $env["RUNESCAPEAPIS_APIKEY"],
             ],
             $extra ?? [],
         ]);

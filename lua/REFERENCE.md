@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -122,7 +122,7 @@ local grand_exchange_database = client:GrandExchangeDatabase(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:GrandExchangeDatabase(nil):list(nil, nil)
+local results, err = client:GrandExchangeDatabase():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -130,7 +130,7 @@ local results, err = client:GrandExchangeDatabase(nil):list(nil, nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:GrandExchangeDatabase(nil):load({ id = "grand_exchange_database_id" }, nil)
+local result, err = client:GrandExchangeDatabase():load({ id = "grand_exchange_database_id" })
 ```
 
 ### Common Methods
@@ -191,7 +191,7 @@ local old_school_grand_exchange = client:OldSchoolGrandExchange(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:OldSchoolGrandExchange(nil):list(nil, nil)
+local results, err = client:OldSchoolGrandExchange():list()
 ```
 
 ### Common Methods
@@ -245,7 +245,7 @@ local player_ranking = client:PlayerRanking(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:PlayerRanking(nil):list(nil, nil)
+local results, err = client:PlayerRanking():list()
 ```
 
 ### Common Methods

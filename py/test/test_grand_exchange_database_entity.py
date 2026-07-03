@@ -102,6 +102,7 @@ def _grand_exchange_database_basic_setup(extra):
         "RUNESCAPEAPIS_TEST_GRAND_EXCHANGE_DATABASE_ENTID": idmap,
         "RUNESCAPEAPIS_TEST_LIVE": "FALSE",
         "RUNESCAPEAPIS_TEST_EXPLAIN": "FALSE",
+        "RUNESCAPEAPIS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -112,6 +113,7 @@ def _grand_exchange_database_basic_setup(extra):
     if env.get("RUNESCAPEAPIS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
+                "apikey": env.get("RUNESCAPEAPIS_APIKEY"),
             },
             extra or {},
         ])

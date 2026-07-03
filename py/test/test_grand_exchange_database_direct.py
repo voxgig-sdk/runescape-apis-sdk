@@ -99,12 +99,14 @@ def _grand_exchange_database_direct_setup(mockres):
     env = runner.env_override({
         "RUNESCAPEAPIS_TEST_GRAND_EXCHANGE_DATABASE_ENTID": {},
         "RUNESCAPEAPIS_TEST_LIVE": "FALSE",
+        "RUNESCAPEAPIS_APIKEY": "NONE",
     })
 
     live = env.get("RUNESCAPEAPIS_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
+            "apikey": env.get("RUNESCAPEAPIS_APIKEY"),
         }
         client = RunescapeApisSDK(merged_opts)
         return {

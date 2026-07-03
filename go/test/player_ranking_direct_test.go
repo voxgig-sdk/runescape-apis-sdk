@@ -93,12 +93,14 @@ func player_rankingDirectSetup(mockres any) *player_rankingDirectSetupResult {
 	env := envOverride(map[string]any{
 		"RUNESCAPEAPIS_TEST_PLAYER_RANKING_ENTID": map[string]any{},
 		"RUNESCAPEAPIS_TEST_LIVE":    "FALSE",
+		"RUNESCAPEAPIS_APIKEY":       "NONE",
 	})
 
 	live := env["RUNESCAPEAPIS_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["RUNESCAPEAPIS_APIKEY"],
 		}
 		client := sdk.NewRunescapeApisSDK(mergedOpts)
 

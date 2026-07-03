@@ -63,12 +63,14 @@ function old_school_grand_exchange_direct_setup(mockres)
   local env = runner.env_override({
     ["RUNESCAPEAPIS_TEST_OLD_SCHOOL_GRAND_EXCHANGE_ENTID"] = {},
     ["RUNESCAPEAPIS_TEST_LIVE"] = "FALSE",
+    ["RUNESCAPEAPIS_APIKEY"] = "NONE",
   })
 
   local live = env["RUNESCAPEAPIS_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["RUNESCAPEAPIS_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

@@ -17,29 +17,7 @@ main: {
       ]
       title: "RuneScape APIs"
       version: "1.0.0"
-      tagline: "Query RuneScape's Bestiary, Grand Exchange item database, and player Hiscores"
-      homepage: "https://www.runescape.com/"
-      docs_url: "https://runescape.wiki/w/Application_programming_interface"
-      license_short: "Unofficial public endpoints provided by Jagex; usage subject to RuneScape's terms of service."
-      license_md: `- Endpoints are operated by [Jagex](https://www.jagex.com/) under their game terms of service.
-- No published machine-readable licence; treat the data as Jagex's intellectual property.
-- Attribution to RuneScape / Jagex is expected when redistributing data.
-- Most endpoints do not return CORS headers, so calls must be made from a backend.`
-      about_md: `[RuneScape](https://www.runescape.com/) is a long-running MMORPG operated by [Jagex](https://www.jagex.com/). The game exposes a small set of public, unauthenticated HTTP endpoints under \`secure.runescape.com\` that the community uses to read live game data for both RuneScape 3 and Old School RuneScape (OSRS).
-
-What you get from the API:
-
-- **Grand Exchange catalogue and prices** — item metadata, current price, 30/90/180-day trend, and a 180-day price graph, via paths under \`m=itemdb_rs/api/\` (and \`m=itemdb_oldschool/api/\` for OSRS).
-- **Bestiary** — monster and NPC lookups returning JSON.
-- **Hiscores / player rankings** — per-skill leaderboards (\`ranking.json\`) and per-player stat dumps (\`index_lite.ws\`), with separate hosts for the main game, Ironman, Hardcore Ironman, and Old School variants.
-
-Operational notes: endpoints are public and require no API key, but they do not send CORS headers, so calls should originate from a server rather than a browser. There is no published rate limit; the [RuneScape Wiki API reference](https://runescape.wiki/w/Application_programming_interface) is the de facto documentation.`
-      entity_desc: {
-        grand_exchange_database: "RuneScape 3 Grand Exchange item catalogue, current prices, and price history, served under `https://secure.runescape.com/m=itemdb_rs/api/` (e.g. `catalogue/detail.json`, `graph/{itemId}.json`)."
-        old_school_grand_exchange: "Old School RuneScape equivalent of the Grand Exchange database, served under `https://secure.runescape.com/m=itemdb_oldschool/api/`."
-        player_ranking: "Player and skill Hiscores leaderboards, available as JSON via `m=hiscore/ranking.json` and as CSV per-player via `index_lite.ws?player=...`, with parallel hosts for OSRS and Ironman variants."
-      }
-      auth: false
     }
   }
 }
+

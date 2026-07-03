@@ -79,12 +79,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'RUNESCAPEAPIS_TEST_PLAYER_RANKING_ENTID': {},
     'RUNESCAPEAPIS_TEST_LIVE': 'FALSE',
+    'RUNESCAPEAPIS_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.RUNESCAPEAPIS_TEST_LIVE
 
   if (live) {
     const client = new RunescapeApisSDK({
+      apikey: env.RUNESCAPEAPIS_APIKEY,
     })
 
     let idmap: any = env['RUNESCAPEAPIS_TEST_PLAYER_RANKING_ENTID']

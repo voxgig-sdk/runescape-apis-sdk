@@ -62,12 +62,14 @@ def player_ranking_direct_setup(mockres)
   env = Runner.env_override({
     "RUNESCAPEAPIS_TEST_PLAYER_RANKING_ENTID" => {},
     "RUNESCAPEAPIS_TEST_LIVE" => "FALSE",
+    "RUNESCAPEAPIS_APIKEY" => "NONE",
   })
 
   live = env["RUNESCAPEAPIS_TEST_LIVE"] == "TRUE"
 
   if live
     merged_opts = {
+      "apikey" => env["RUNESCAPEAPIS_APIKEY"],
     }
     client = RunescapeApisSDK.new(merged_opts)
     return {

@@ -164,12 +164,14 @@ func grand_exchange_databaseDirectSetup(mockres any) *grand_exchange_databaseDir
 	env := envOverride(map[string]any{
 		"RUNESCAPEAPIS_TEST_GRAND_EXCHANGE_DATABASE_ENTID": map[string]any{},
 		"RUNESCAPEAPIS_TEST_LIVE":    "FALSE",
+		"RUNESCAPEAPIS_APIKEY":       "NONE",
 	})
 
 	live := env["RUNESCAPEAPIS_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["RUNESCAPEAPIS_APIKEY"],
 		}
 		client := sdk.NewRunescapeApisSDK(mergedOpts)
 
