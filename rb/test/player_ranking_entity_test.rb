@@ -43,8 +43,7 @@ class PlayerRankingEntityTest < Minitest::Test
     player_ranking_ref01_ent = client.PlayerRanking(nil)
     player_ranking_ref01_match = {}
 
-    player_ranking_ref01_list_result, err = player_ranking_ref01_ent.list(player_ranking_ref01_match, nil)
-    assert_nil err
+    player_ranking_ref01_list_result = player_ranking_ref01_ent.list(player_ranking_ref01_match, nil)
     assert player_ranking_ref01_list_result.is_a?(Array)
 
   end
@@ -83,7 +82,6 @@ def player_ranking_basic_setup(extra)
     "RUNESCAPEAPIS_TEST_PLAYER_RANKING_ENTID" => idmap,
     "RUNESCAPEAPIS_TEST_LIVE" => "FALSE",
     "RUNESCAPEAPIS_TEST_EXPLAIN" => "FALSE",
-    "RUNESCAPEAPIS_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -95,7 +93,6 @@ def player_ranking_basic_setup(extra)
   if env["RUNESCAPEAPIS_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["RUNESCAPEAPIS_APIKEY"],
       },
       extra || {},
     ])

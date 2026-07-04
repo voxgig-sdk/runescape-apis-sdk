@@ -9,12 +9,9 @@ The Lua SDK for the RunescapeApis API — an entity-oriented client using Lua co
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-runescape-apis
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/runescape-apis-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -31,15 +28,13 @@ loading a specific record.
 ```lua
 local sdk = require("runescape-apis_sdk")
 
-local client = sdk.new({
-  apikey = os.getenv("RUNESCAPE-APIS_APIKEY"),
-})
+local client = sdk.new()
 ```
 
 ### 2. List grandexchangedatabases
 
 ```lua
-local result, err = client:GrandExchangeDatabase():list()
+local result, err = client:grandexchangedatabase():list()
 if err then error(err) end
 
 if type(result) == "table" then
@@ -53,7 +48,7 @@ end
 ### 3. Load a grandexchangedatabase
 
 ```lua
-local result, err = client:GrandExchangeDatabase():load({ id = "example_id" })
+local result, err = client:grandexchangedatabase():load({ id = "example_id" })
 if err then error(err) end
 print(result)
 ```
@@ -101,7 +96,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:RunescapeApis():load({ id = "test01" })
+local result, err = client:grandexchangedatabase():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -134,8 +129,7 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-RUNESCAPE-APIS_TEST_LIVE=TRUE
-RUNESCAPE-APIS_APIKEY=<your-key>
+RUNESCAPE_APIS_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -158,7 +152,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -282,7 +275,7 @@ API path: `/m=hiscore/ranking.json`
 
 ### GrandExchangeDatabase
 
-Create an instance: `const grand_exchange_database = client.GrandExchangeDatabase()`
+Create an instance: `const grand_exchange_database = client.grand_exchange_database`
 
 #### Operations
 
@@ -314,19 +307,19 @@ Create an instance: `const grand_exchange_database = client.GrandExchangeDatabas
 #### Example: Load
 
 ```ts
-const grand_exchange_database = await client.GrandExchangeDatabase().load({ id: 'grand_exchange_database_id' })
+const grand_exchange_database = await client.grand_exchange_database.load({ id: 'grand_exchange_database_id' })
 ```
 
 #### Example: List
 
 ```ts
-const grand_exchange_databases = await client.GrandExchangeDatabase().list()
+const grand_exchange_databases = await client.grand_exchange_database.list()
 ```
 
 
 ### OldSchoolGrandExchange
 
-Create an instance: `const old_school_grand_exchange = client.OldSchoolGrandExchange()`
+Create an instance: `const old_school_grand_exchange = client.old_school_grand_exchange`
 
 #### Operations
 
@@ -352,13 +345,13 @@ Create an instance: `const old_school_grand_exchange = client.OldSchoolGrandExch
 #### Example: List
 
 ```ts
-const old_school_grand_exchanges = await client.OldSchoolGrandExchange().list()
+const old_school_grand_exchanges = await client.old_school_grand_exchange.list()
 ```
 
 
 ### PlayerRanking
 
-Create an instance: `const player_ranking = client.PlayerRanking()`
+Create an instance: `const player_ranking = client.player_ranking`
 
 #### Operations
 
@@ -377,7 +370,7 @@ Create an instance: `const player_ranking = client.PlayerRanking()`
 #### Example: List
 
 ```ts
-const player_rankings = await client.PlayerRanking().list()
+const player_rankings = await client.player_ranking.list()
 ```
 
 
@@ -452,11 +445,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local grandexchangedatabase = client:grandexchangedatabase()
+grandexchangedatabase:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- grandexchangedatabase:data_get() now returns the loaded grandexchangedatabase data
+-- grandexchangedatabase:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

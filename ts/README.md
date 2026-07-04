@@ -9,9 +9,12 @@ The TypeScript SDK for the RunescapeApis API — a type-safe, entity-oriented cl
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/runescape-apis
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/runescape-apis-sdk/releases](https://github.com/voxgig-sdk/runescape-apis-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { RunescapeApisSDK } from 'runescape-apis'
+import { RunescapeApisSDK } from '@voxgig-sdk/runescape-apis'
 
-const client = new RunescapeApisSDK({
-  apikey: process.env.RUNESCAPE-APIS_APIKEY,
-})
+const client = new RunescapeApisSDK()
 ```
 
 ### 2. List grandexchangedatabases
 
 ```ts
-const result = await client.GrandExchangeDatabase().list()
+const result = await client.grandexchangedatabase.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -42,7 +43,7 @@ if (result.ok) {
 ### 3. Load a grandexchangedatabase
 
 ```ts
-const result = await client.GrandExchangeDatabase().load({ id: 'example_id' })
+const result = await client.grandexchangedatabase.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -91,7 +92,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = RunescapeApisSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.grandexchangedatabase.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -99,7 +100,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new RunescapeApisSDK({ apikey: '...' })
+const client = new RunescapeApisSDK()
 const testClient = client.tester()
 ```
 
@@ -108,7 +109,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.grandexchangedatabase
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -135,7 +136,6 @@ const logger = {
 }
 
 const client = new RunescapeApisSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -145,8 +145,7 @@ const client = new RunescapeApisSDK({
 Create a `.env.local` file at the project root:
 
 ```
-RUNESCAPE-APIS_TEST_LIVE=TRUE
-RUNESCAPE-APIS_APIKEY=<your-key>
+RUNESCAPE_APIS_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -164,7 +163,6 @@ cd ts && npm test
 
 ```ts
 new RunescapeApisSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -175,7 +173,6 @@ new RunescapeApisSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -325,7 +322,7 @@ API path: `/m=hiscore/ranking.json`
 
 ### GrandExchangeDatabase
 
-Create an instance: `const grand_exchange_database = client.GrandExchangeDatabase()`
+Create an instance: `const grand_exchange_database = client.grand_exchange_database`
 
 #### Operations
 
@@ -357,19 +354,19 @@ Create an instance: `const grand_exchange_database = client.GrandExchangeDatabas
 #### Example: Load
 
 ```ts
-const grand_exchange_database = await client.GrandExchangeDatabase().load({ id: 'grand_exchange_database_id' })
+const grand_exchange_database = await client.grand_exchange_database.load({ id: 'grand_exchange_database_id' })
 ```
 
 #### Example: List
 
 ```ts
-const grand_exchange_databases = await client.GrandExchangeDatabase().list()
+const grand_exchange_databases = await client.grand_exchange_database.list()
 ```
 
 
 ### OldSchoolGrandExchange
 
-Create an instance: `const old_school_grand_exchange = client.OldSchoolGrandExchange()`
+Create an instance: `const old_school_grand_exchange = client.old_school_grand_exchange`
 
 #### Operations
 
@@ -395,13 +392,13 @@ Create an instance: `const old_school_grand_exchange = client.OldSchoolGrandExch
 #### Example: List
 
 ```ts
-const old_school_grand_exchanges = await client.OldSchoolGrandExchange().list()
+const old_school_grand_exchanges = await client.old_school_grand_exchange.list()
 ```
 
 
 ### PlayerRanking
 
-Create an instance: `const player_ranking = client.PlayerRanking()`
+Create an instance: `const player_ranking = client.player_ranking`
 
 #### Operations
 
@@ -420,7 +417,7 @@ Create an instance: `const player_ranking = client.PlayerRanking()`
 #### Example: List
 
 ```ts
-const player_rankings = await client.PlayerRanking().list()
+const player_rankings = await client.player_ranking.list()
 ```
 
 
@@ -481,7 +478,7 @@ runescape-apis/
 Import the SDK from the package root:
 
 ```ts
-import { RunescapeApisSDK } from 'runescape-apis'
+import { RunescapeApisSDK } from '@voxgig-sdk/runescape-apis'
 ```
 
 ### Entity state
@@ -491,11 +488,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const grandexchangedatabase = client.grandexchangedatabase
+await grandexchangedatabase.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// grandexchangedatabase.data() now returns the loaded grandexchangedatabase data
+// grandexchangedatabase.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

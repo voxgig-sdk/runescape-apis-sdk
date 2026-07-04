@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  OldSchoolGrandExchange,
+  OldSchoolGrandExchangeListMatch,
+} from '../RunescapeApisTypes'
 
 // TODO: needs Entity superclass
-class OldSchoolGrandExchangeEntity extends RunescapeApisEntityBase {
+class OldSchoolGrandExchangeEntity extends RunescapeApisEntityBase<OldSchoolGrandExchange> {
 
   constructor(client: RunescapeApisSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class OldSchoolGrandExchangeEntity extends RunescapeApisEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: OldSchoolGrandExchangeListMatch, ctrl?: Control): Promise<OldSchoolGrandExchange[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class OldSchoolGrandExchangeEntity extends RunescapeApisEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<OldSchoolGrandExchange[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

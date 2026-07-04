@@ -244,18 +244,57 @@ end
 
 
 
+-- Idiomatic facade: client:grand_exchange_database():list() / client:grand_exchange_database():load({ id = ... })
+function RunescapeApisSDK:grand_exchange_database(data)
+  local EntityMod = require("entity.grand_exchange_database_entity")
+  if data == nil then
+    if self._grand_exchange_database == nil then
+      self._grand_exchange_database = EntityMod.new(self, nil)
+    end
+    return self._grand_exchange_database
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:grand_exchange_database() instead.
 function RunescapeApisSDK:GrandExchangeDatabase(data)
   local EntityMod = require("entity.grand_exchange_database_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:old_school_grand_exchange():list() / client:old_school_grand_exchange():load({ id = ... })
+function RunescapeApisSDK:old_school_grand_exchange(data)
+  local EntityMod = require("entity.old_school_grand_exchange_entity")
+  if data == nil then
+    if self._old_school_grand_exchange == nil then
+      self._old_school_grand_exchange = EntityMod.new(self, nil)
+    end
+    return self._old_school_grand_exchange
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:old_school_grand_exchange() instead.
 function RunescapeApisSDK:OldSchoolGrandExchange(data)
   local EntityMod = require("entity.old_school_grand_exchange_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:player_ranking():list() / client:player_ranking():load({ id = ... })
+function RunescapeApisSDK:player_ranking(data)
+  local EntityMod = require("entity.player_ranking_entity")
+  if data == nil then
+    if self._player_ranking == nil then
+      self._player_ranking = EntityMod.new(self, nil)
+    end
+    return self._player_ranking
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:player_ranking() instead.
 function RunescapeApisSDK:PlayerRanking(data)
   local EntityMod = require("entity.player_ranking_entity")
   return EntityMod.new(self, data)

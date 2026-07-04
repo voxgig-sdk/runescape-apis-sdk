@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       contact: {
         name: "RuneScape Wiki"
         url: "https://runescape.wiki/w/Application_programming_interface"

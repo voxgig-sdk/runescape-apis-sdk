@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  GrandExchangeDatabase,
+  GrandExchangeDatabaseLoadMatch,
+  GrandExchangeDatabaseListMatch,
+} from '../RunescapeApisTypes'
 
 // TODO: needs Entity superclass
-class GrandExchangeDatabaseEntity extends RunescapeApisEntityBase {
+class GrandExchangeDatabaseEntity extends RunescapeApisEntityBase<GrandExchangeDatabase> {
 
   constructor(client: RunescapeApisSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class GrandExchangeDatabaseEntity extends RunescapeApisEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: GrandExchangeDatabaseLoadMatch, ctrl?: Control): Promise<GrandExchangeDatabase> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class GrandExchangeDatabaseEntity extends RunescapeApisEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<GrandExchangeDatabase> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: GrandExchangeDatabaseListMatch, ctrl?: Control): Promise<GrandExchangeDatabase[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class GrandExchangeDatabaseEntity extends RunescapeApisEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<GrandExchangeDatabase[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

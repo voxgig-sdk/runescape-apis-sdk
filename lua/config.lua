@@ -14,9 +14,6 @@ local function make_config()
     },
     options = {
       base = "https://secure.runescape.com",
-      auth = {
-        prefix = "Bearer",
-      },
       headers = {
         ["content-type"] = "application/json",
       },
@@ -338,6 +335,7 @@ local function make_config()
                       ["orig"] = "item_id",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
+                      ["index$"] = 0,
                     },
                   },
                 },

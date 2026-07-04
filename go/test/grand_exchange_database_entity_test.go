@@ -135,7 +135,6 @@ func grand_exchange_databaseBasicSetup(extra map[string]any) *entityTestSetup {
 		"RUNESCAPEAPIS_TEST_GRAND_EXCHANGE_DATABASE_ENTID": idmap,
 		"RUNESCAPEAPIS_TEST_LIVE":      "FALSE",
 		"RUNESCAPEAPIS_TEST_EXPLAIN":   "FALSE",
-		"RUNESCAPEAPIS_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["RUNESCAPEAPIS_TEST_GRAND_EXCHANGE_DATABASE_ENTID"])
@@ -146,7 +145,6 @@ func grand_exchange_databaseBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["RUNESCAPEAPIS_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["RUNESCAPEAPIS_APIKEY"],
 			},
 			extra,
 		})

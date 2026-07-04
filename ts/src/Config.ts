@@ -38,10 +38,6 @@ class Config {
   options = {
     base: 'https://secure.runescape.com',
 
-    auth: {
-      prefix: 'Bearer',
-    },
-
     headers: {
       "content-type": "application/json"
     },
@@ -372,7 +368,8 @@ class Config {
                     "name": "item_id",
                     "orig": "item_id",
                     "reqd": true,
-                    "type": "`$INTEGER`"
+                    "type": "`$INTEGER`",
+                    "index$": 0
                   }
                 ]
               },

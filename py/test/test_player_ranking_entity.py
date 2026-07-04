@@ -50,8 +50,7 @@ class TestPlayerRankingEntity:
         player_ranking_ref01_ent = client.PlayerRanking(None)
         player_ranking_ref01_match = {}
 
-        player_ranking_ref01_list_result, err = player_ranking_ref01_ent.list(player_ranking_ref01_match, None)
-        assert err is None
+        player_ranking_ref01_list_result = player_ranking_ref01_ent.list(player_ranking_ref01_match, None)
         assert isinstance(player_ranking_ref01_list_result, list)
 
 
@@ -92,7 +91,6 @@ def _player_ranking_basic_setup(extra):
         "RUNESCAPEAPIS_TEST_PLAYER_RANKING_ENTID": idmap,
         "RUNESCAPEAPIS_TEST_LIVE": "FALSE",
         "RUNESCAPEAPIS_TEST_EXPLAIN": "FALSE",
-        "RUNESCAPEAPIS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +101,6 @@ def _player_ranking_basic_setup(extra):
     if env.get("RUNESCAPEAPIS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("RUNESCAPEAPIS_APIKEY"),
             },
             extra or {},
         ])

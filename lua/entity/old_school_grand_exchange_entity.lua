@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch OldSchoolGrandExchangeListMatch
+---@param ctrl? table
+---@return OldSchoolGrandExchange[]
+---@return string? err
 function OldSchoolGrandExchangeEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -50,16 +50,14 @@ class TestGrandExchangeDatabaseEntity:
         grand_exchange_database_ref01_ent = client.GrandExchangeDatabase(None)
         grand_exchange_database_ref01_match = {}
 
-        grand_exchange_database_ref01_list_result, err = grand_exchange_database_ref01_ent.list(grand_exchange_database_ref01_match, None)
-        assert err is None
+        grand_exchange_database_ref01_list_result = grand_exchange_database_ref01_ent.list(grand_exchange_database_ref01_match, None)
         assert isinstance(grand_exchange_database_ref01_list_result, list)
 
         # LOAD
         grand_exchange_database_ref01_match_dt0 = {
             "id": grand_exchange_database_ref01_data["id"],
         }
-        grand_exchange_database_ref01_data_dt0_loaded, err = grand_exchange_database_ref01_ent.load(grand_exchange_database_ref01_match_dt0, None)
-        assert err is None
+        grand_exchange_database_ref01_data_dt0_loaded = grand_exchange_database_ref01_ent.load(grand_exchange_database_ref01_match_dt0, None)
         grand_exchange_database_ref01_data_dt0_load_result = helpers.to_map(grand_exchange_database_ref01_data_dt0_loaded)
         assert grand_exchange_database_ref01_data_dt0_load_result is not None
         assert grand_exchange_database_ref01_data_dt0_load_result["id"] == grand_exchange_database_ref01_data["id"]
@@ -102,7 +100,6 @@ def _grand_exchange_database_basic_setup(extra):
         "RUNESCAPEAPIS_TEST_GRAND_EXCHANGE_DATABASE_ENTID": idmap,
         "RUNESCAPEAPIS_TEST_LIVE": "FALSE",
         "RUNESCAPEAPIS_TEST_EXPLAIN": "FALSE",
-        "RUNESCAPEAPIS_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _grand_exchange_database_basic_setup(extra):
     if env.get("RUNESCAPEAPIS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("RUNESCAPEAPIS_APIKEY"),
             },
             extra or {},
         ])

@@ -13,6 +13,9 @@ require_relative 'config'
 require_relative 'feature/base_feature'
 require_relative 'features'
 
+# Load typed models (Struct value objects).
+require_relative 'RunescapeApis_types'
+
 
 class RunescapeApisSDK
   attr_accessor :mode, :features, :options
@@ -131,7 +134,7 @@ class RunescapeApisSDK
     end
 
     _, err = utility.prepare_auth.call(ctx)
-    return nil, err if err
+    raise err if err
 
     utility.make_fetch_def.call(ctx)
   end
@@ -139,8 +142,14 @@ class RunescapeApisSDK
   def direct(fetchargs = {})
     utility = @_utility
 
-    fetchdef, err = prepare(fetchargs)
-    return { "ok" => false, "err" => err }, nil if err
+    # direct() is the raw-HTTP escape hatch: it always returns a result hash
+    # ({ "ok" => ..., ... }) and never raises. prepare() raises on error, so
+    # trap that and surface it in the hash.
+    begin
+      fetchdef = prepare(fetchargs)
+    rescue RunescapeApisError => err
+      return { "ok" => false, "err" => err }
+    end
 
     fetchargs ||= {}
     ctrl = RunescapeApisHelpers.to_map(VoxgigStruct.getprop(fetchargs, "ctrl")) || {}
@@ -153,13 +162,13 @@ class RunescapeApisSDK
     url = fetchdef["url"] || ""
     fetched, fetch_err = utility.fetcher.call(ctx, url, fetchdef)
 
-    return { "ok" => false, "err" => fetch_err }, nil if fetch_err
+    return { "ok" => false, "err" => fetch_err } if fetch_err
 
     if fetched.nil?
       return {
         "ok" => false,
         "err" => ctx.make_error("direct_no_response", "response: undefined"),
-      }, nil
+      }
     end
 
     if fetched.is_a?(Hash)
@@ -189,28 +198,49 @@ class RunescapeApisSDK
         "status" => status,
         "headers" => headers,
         "data" => json_data,
-      }, nil
+      }
     end
 
     return {
       "ok" => false,
       "err" => ctx.make_error("direct_invalid", "invalid response type"),
-    }, nil
+    }
   end
 
 
+  # Idiomatic facade: client.grand_exchange_database.list / client.grand_exchange_database.load({ "id" => ... })
+  def grand_exchange_database
+    require_relative 'entity/grand_exchange_database_entity'
+    @grand_exchange_database ||= GrandExchangeDatabaseEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.grand_exchange_database instead.
   def GrandExchangeDatabase(data = nil)
     require_relative 'entity/grand_exchange_database_entity'
     GrandExchangeDatabaseEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.old_school_grand_exchange.list / client.old_school_grand_exchange.load({ "id" => ... })
+  def old_school_grand_exchange
+    require_relative 'entity/old_school_grand_exchange_entity'
+    @old_school_grand_exchange ||= OldSchoolGrandExchangeEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.old_school_grand_exchange instead.
   def OldSchoolGrandExchange(data = nil)
     require_relative 'entity/old_school_grand_exchange_entity'
     OldSchoolGrandExchangeEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.player_ranking.list / client.player_ranking.load({ "id" => ... })
+  def player_ranking
+    require_relative 'entity/player_ranking_entity'
+    @player_ranking ||= PlayerRankingEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.player_ranking instead.
   def PlayerRanking(data = nil)
     require_relative 'entity/player_ranking_entity'
     PlayerRankingEntity.new(self, data)

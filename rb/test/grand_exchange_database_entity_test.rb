@@ -43,16 +43,14 @@ class GrandExchangeDatabaseEntityTest < Minitest::Test
     grand_exchange_database_ref01_ent = client.GrandExchangeDatabase(nil)
     grand_exchange_database_ref01_match = {}
 
-    grand_exchange_database_ref01_list_result, err = grand_exchange_database_ref01_ent.list(grand_exchange_database_ref01_match, nil)
-    assert_nil err
+    grand_exchange_database_ref01_list_result = grand_exchange_database_ref01_ent.list(grand_exchange_database_ref01_match, nil)
     assert grand_exchange_database_ref01_list_result.is_a?(Array)
 
     # LOAD
     grand_exchange_database_ref01_match_dt0 = {
       "id" => grand_exchange_database_ref01_data["id"],
     }
-    grand_exchange_database_ref01_data_dt0_loaded, err = grand_exchange_database_ref01_ent.load(grand_exchange_database_ref01_match_dt0, nil)
-    assert_nil err
+    grand_exchange_database_ref01_data_dt0_loaded = grand_exchange_database_ref01_ent.load(grand_exchange_database_ref01_match_dt0, nil)
     grand_exchange_database_ref01_data_dt0_load_result = Helpers.to_map(grand_exchange_database_ref01_data_dt0_loaded)
     assert !grand_exchange_database_ref01_data_dt0_load_result.nil?
     assert_equal grand_exchange_database_ref01_data_dt0_load_result["id"], grand_exchange_database_ref01_data["id"]
@@ -93,7 +91,6 @@ def grand_exchange_database_basic_setup(extra)
     "RUNESCAPEAPIS_TEST_GRAND_EXCHANGE_DATABASE_ENTID" => idmap,
     "RUNESCAPEAPIS_TEST_LIVE" => "FALSE",
     "RUNESCAPEAPIS_TEST_EXPLAIN" => "FALSE",
-    "RUNESCAPEAPIS_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def grand_exchange_database_basic_setup(extra)
   if env["RUNESCAPEAPIS_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["RUNESCAPEAPIS_APIKEY"],
       },
       extra || {},
     ])

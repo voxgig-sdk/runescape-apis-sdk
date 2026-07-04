@@ -20,9 +20,6 @@ class RunescapeApisConfig
             ],
             "options" => [
                 "base" => "https://secure.runescape.com",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],
@@ -344,6 +341,7 @@ class RunescapeApisConfig
                         'orig' => 'item_id',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
+                        'index$' => 0,
                       ],
                     ],
                   ],

@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch PlayerRankingListMatch
+---@param ctrl? table
+---@return PlayerRanking[]
+---@return string? err
 function PlayerRankingEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

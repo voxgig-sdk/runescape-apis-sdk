@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -92,7 +91,7 @@ same parameters as `direct()`.
 ## GrandExchangeDatabaseEntity
 
 ```lua
-local grand_exchange_database = client:GrandExchangeDatabase(nil)
+local grand_exchange_database = client:grand_exchange_database(nil)
 ```
 
 ### Fields
@@ -122,7 +121,7 @@ local grand_exchange_database = client:GrandExchangeDatabase(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:GrandExchangeDatabase():list()
+local results, err = client:grand_exchange_database():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -130,7 +129,7 @@ local results, err = client:GrandExchangeDatabase():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:GrandExchangeDatabase():load({ id = "grand_exchange_database_id" })
+local result, err = client:grand_exchange_database():load({ id = "grand_exchange_database_id" })
 ```
 
 ### Common Methods
@@ -166,7 +165,7 @@ Return the entity name.
 ## OldSchoolGrandExchangeEntity
 
 ```lua
-local old_school_grand_exchange = client:OldSchoolGrandExchange(nil)
+local old_school_grand_exchange = client:old_school_grand_exchange(nil)
 ```
 
 ### Fields
@@ -191,7 +190,7 @@ local old_school_grand_exchange = client:OldSchoolGrandExchange(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:OldSchoolGrandExchange():list()
+local results, err = client:old_school_grand_exchange():list()
 ```
 
 ### Common Methods
@@ -227,7 +226,7 @@ Return the entity name.
 ## PlayerRankingEntity
 
 ```lua
-local player_ranking = client:PlayerRanking(nil)
+local player_ranking = client:player_ranking(nil)
 ```
 
 ### Fields
@@ -245,7 +244,7 @@ local player_ranking = client:PlayerRanking(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:PlayerRanking():list()
+local results, err = client:player_ranking():list()
 ```
 
 ### Common Methods

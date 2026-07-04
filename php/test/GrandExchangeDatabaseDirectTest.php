@@ -24,7 +24,7 @@ class GrandExchangeDatabaseDirectTest extends TestCase
         $client = $setup["client"];
 
 
-        [$result, $err] = $client->direct([
+        $result = $client->direct([
             "path" => "m=itemdb_rs/api/catalogue/items.json",
             "method" => "GET",
             "params" => [],
@@ -33,8 +33,8 @@ class GrandExchangeDatabaseDirectTest extends TestCase
             // Live mode is lenient: synthetic IDs frequently 4xx and the
             // list-response shape varies wildly across public APIs. Skip
             // rather than fail when the call doesn't return a usable list.
-            if ($err !== null) {
-                $this->markTestSkipped("list call failed (likely synthetic IDs against live API): " . (string)$err);
+            if (!empty($result["err"])) {
+                $this->markTestSkipped("list call failed (likely synthetic IDs against live API): " . (string)$result["err"]);
                 return;
             }
             if (empty($result["ok"])) {
@@ -47,7 +47,7 @@ class GrandExchangeDatabaseDirectTest extends TestCase
                 return;
             }
         } else {
-            $this->assertNull($err);
+            $this->assertArrayNotHasKey("err", $result);
             $this->assertTrue($result["ok"]);
             $this->assertEquals(200, Helpers::to_int($result["status"]));
             $this->assertIsArray($result["data"]);
@@ -67,7 +67,7 @@ class GrandExchangeDatabaseDirectTest extends TestCase
         $client = $setup["client"];
 
 
-        [$result, $err] = $client->direct([
+        $result = $client->direct([
             "path" => "m=itemdb_rs/obj_big.gif",
             "method" => "GET",
             "params" => [],
@@ -76,8 +76,8 @@ class GrandExchangeDatabaseDirectTest extends TestCase
             // Live mode is lenient: synthetic IDs frequently 4xx. Skip
             // rather than fail when the load endpoint isn't reachable
             // with the IDs we can construct from setup.idmap.
-            if ($err !== null) {
-                $this->markTestSkipped("load call failed (likely synthetic IDs against live API): " . (string)$err);
+            if (!empty($result["err"])) {
+                $this->markTestSkipped("load call failed (likely synthetic IDs against live API): " . (string)$result["err"]);
                 return;
             }
             if (empty($result["ok"])) {
@@ -90,7 +90,7 @@ class GrandExchangeDatabaseDirectTest extends TestCase
                 return;
             }
         } else {
-            $this->assertNull($err);
+            $this->assertArrayNotHasKey("err", $result);
             $this->assertTrue($result["ok"]);
             $this->assertEquals(200, Helpers::to_int($result["status"]));
             $this->assertNotNull($result["data"]);
@@ -113,14 +113,12 @@ function grand_exchange_database_direct_setup($mockres)
     $env = Runner::env_override([
         "RUNESCAPEAPIS_TEST_GRAND_EXCHANGE_DATABASE_ENTID" => [],
         "RUNESCAPEAPIS_TEST_LIVE" => "FALSE",
-        "RUNESCAPEAPIS_APIKEY" => "NONE",
     ]);
 
     $live = $env["RUNESCAPEAPIS_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["RUNESCAPEAPIS_APIKEY"],
         ];
         $client = new RunescapeApisSDK($merged_opts);
         return [

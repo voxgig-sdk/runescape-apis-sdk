@@ -245,16 +245,25 @@ func (sdk *RunescapeApisSDK) Direct(fetchargs map[string]any) (map[string]any, e
 }
 
 
+// GrandExchangeDatabase returns a GrandExchangeDatabase entity bound to this client.
+// Idiomatic usage: client.GrandExchangeDatabase(nil).List(nil, nil) or
+// client.GrandExchangeDatabase(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *RunescapeApisSDK) GrandExchangeDatabase(data map[string]any) RunescapeApisEntity {
 	return NewGrandExchangeDatabaseEntityFunc(sdk, data)
 }
 
 
+// OldSchoolGrandExchange returns a OldSchoolGrandExchange entity bound to this client.
+// Idiomatic usage: client.OldSchoolGrandExchange(nil).List(nil, nil) or
+// client.OldSchoolGrandExchange(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *RunescapeApisSDK) OldSchoolGrandExchange(data map[string]any) RunescapeApisEntity {
 	return NewOldSchoolGrandExchangeEntityFunc(sdk, data)
 }
 
 
+// PlayerRanking returns a PlayerRanking entity bound to this client.
+// Idiomatic usage: client.PlayerRanking(nil).List(nil, nil) or
+// client.PlayerRanking(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *RunescapeApisSDK) PlayerRanking(data map[string]any) RunescapeApisEntity {
 	return NewPlayerRankingEntityFunc(sdk, data)
 }

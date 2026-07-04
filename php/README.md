@@ -9,9 +9,10 @@ The PHP SDK for the RunescapeApis API — an entity-oriented client using PHP co
 
 
 ## Install
-```bash
-composer require voxgig-sdk/runescape-apis
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/runescape-apis-sdk/releases](https://github.com/voxgig-sdk/runescape-apis-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -25,31 +26,34 @@ loading a specific record.
 <?php
 require_once 'runescapeapis_sdk.php';
 
-$client = new RunescapeApisSDK([
-    "apikey" => getenv("RUNESCAPE-APIS_APIKEY"),
-]);
+$client = new RunescapeApisSDK();
 ```
 
 ### 2. List grandexchangedatabases
 
 ```php
-[$result, $err] = $client->GrandExchangeDatabase()->list();
-if ($err) { throw new \Exception($err); }
-
-if (is_array($result)) {
-    foreach ($result as $item) {
-        $d = $item->data_get();
-        echo $d["id"] . " " . $d["name"] . "\n";
+try {
+    $result = $client->grandexchangedatabase()->list();
+    if (is_array($result)) {
+        foreach ($result as $item) {
+            $d = $item->data_get();
+            echo $d["id"] . " " . $d["name"] . "\n";
+        }
     }
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
 }
 ```
 
 ### 3. Load a grandexchangedatabase
 
 ```php
-[$result, $err] = $client->GrandExchangeDatabase()->load(["id" => "example_id"]);
-if ($err) { throw new \Exception($err); }
-print_r($result);
+try {
+    $result = $client->grandexchangedatabase()->load(["id" => "example_id"]);
+    print_r($result);
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
+}
 ```
 
 
@@ -60,28 +64,31 @@ print_r($result);
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -95,7 +102,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = RunescapeApisSDK::test();
 
-[$result, $err] = $client->RunescapeApis()->load(["id" => "test01"]);
+$result = $client->grandexchangedatabase()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -129,8 +136,7 @@ $client = new RunescapeApisSDK([
 Create a `.env.local` file at the project root:
 
 ```
-RUNESCAPE-APIS_TEST_LIVE=TRUE
-RUNESCAPE-APIS_APIKEY=<your-key>
+RUNESCAPE_APIS_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -153,7 +159,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -201,8 +206,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -277,7 +286,7 @@ API path: `/m=hiscore/ranking.json`
 
 ### GrandExchangeDatabase
 
-Create an instance: `const grand_exchange_database = client.GrandExchangeDatabase()`
+Create an instance: `const grand_exchange_database = client.grand_exchange_database`
 
 #### Operations
 
@@ -309,19 +318,19 @@ Create an instance: `const grand_exchange_database = client.GrandExchangeDatabas
 #### Example: Load
 
 ```ts
-const grand_exchange_database = await client.GrandExchangeDatabase().load({ id: 'grand_exchange_database_id' })
+const grand_exchange_database = await client.grand_exchange_database.load({ id: 'grand_exchange_database_id' })
 ```
 
 #### Example: List
 
 ```ts
-const grand_exchange_databases = await client.GrandExchangeDatabase().list()
+const grand_exchange_databases = await client.grand_exchange_database.list()
 ```
 
 
 ### OldSchoolGrandExchange
 
-Create an instance: `const old_school_grand_exchange = client.OldSchoolGrandExchange()`
+Create an instance: `const old_school_grand_exchange = client.old_school_grand_exchange`
 
 #### Operations
 
@@ -347,13 +356,13 @@ Create an instance: `const old_school_grand_exchange = client.OldSchoolGrandExch
 #### Example: List
 
 ```ts
-const old_school_grand_exchanges = await client.OldSchoolGrandExchange().list()
+const old_school_grand_exchanges = await client.old_school_grand_exchange.list()
 ```
 
 
 ### PlayerRanking
 
-Create an instance: `const player_ranking = client.PlayerRanking()`
+Create an instance: `const player_ranking = client.player_ranking`
 
 #### Operations
 
@@ -372,7 +381,7 @@ Create an instance: `const player_ranking = client.PlayerRanking()`
 #### Example: List
 
 ```ts
-const player_rankings = await client.PlayerRanking().list()
+const player_rankings = await client.player_ranking.list()
 ```
 
 
@@ -447,11 +456,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$grandexchangedatabase = $client->grandexchangedatabase();
+$grandexchangedatabase->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $grandexchangedatabase->dataGet() now returns the loaded grandexchangedatabase data
+// $grandexchangedatabase->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

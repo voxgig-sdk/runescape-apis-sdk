@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -134,7 +133,7 @@ Alias for `RunescapeApisSDK.test()`.
 ## GrandExchangeDatabaseEntity
 
 ```ts
-const grand_exchange_database = client.GrandExchangeDatabase()
+const grand_exchange_database = client.grand_exchange_database
 ```
 
 ### Fields
@@ -164,7 +163,7 @@ const grand_exchange_database = client.GrandExchangeDatabase()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.GrandExchangeDatabase().list()
+const results = await client.grand_exchange_database.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -172,7 +171,7 @@ const results = await client.GrandExchangeDatabase().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GrandExchangeDatabase().load({ id: 'grand_exchange_database_id' })
+const result = await client.grand_exchange_database.load({ id: 'grand_exchange_database_id' })
 ```
 
 ### Common Methods
@@ -206,7 +205,7 @@ Return a copy of the entity options.
 ## OldSchoolGrandExchangeEntity
 
 ```ts
-const old_school_grand_exchange = client.OldSchoolGrandExchange()
+const old_school_grand_exchange = client.old_school_grand_exchange
 ```
 
 ### Fields
@@ -231,7 +230,7 @@ const old_school_grand_exchange = client.OldSchoolGrandExchange()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.OldSchoolGrandExchange().list()
+const results = await client.old_school_grand_exchange.list()
 ```
 
 ### Common Methods
@@ -265,7 +264,7 @@ Return a copy of the entity options.
 ## PlayerRankingEntity
 
 ```ts
-const player_ranking = client.PlayerRanking()
+const player_ranking = client.player_ranking
 ```
 
 ### Fields
@@ -283,7 +282,7 @@ const player_ranking = client.PlayerRanking()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.PlayerRanking().list()
+const results = await client.player_ranking.list()
 ```
 
 ### Common Methods

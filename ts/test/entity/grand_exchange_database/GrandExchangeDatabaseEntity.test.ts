@@ -120,7 +120,6 @@ function basicSetup(extra?: any) {
     'RUNESCAPE_APIS_TEST_GRAND_EXCHANGE_DATABASE_ENTID': idmap,
     'RUNESCAPE_APIS_TEST_LIVE': 'FALSE',
     'RUNESCAPE_APIS_TEST_EXPLAIN': 'FALSE',
-    'RUNESCAPE_APIS_APIKEY': 'NONE',
   })
 
   idmap = env['RUNESCAPE_APIS_TEST_GRAND_EXCHANGE_DATABASE_ENTID']
@@ -130,7 +129,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new RunescapeApisSDK(merge([
       {
-        apikey: env.RUNESCAPE_APIS_APIKEY,
       },
       extra
     ]))

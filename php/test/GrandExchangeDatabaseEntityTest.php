@@ -50,16 +50,14 @@ class GrandExchangeDatabaseEntityTest extends TestCase
         $grand_exchange_database_ref01_ent = $client->GrandExchangeDatabase(null);
         $grand_exchange_database_ref01_match = [];
 
-        [$grand_exchange_database_ref01_list_result, $err] = $grand_exchange_database_ref01_ent->list($grand_exchange_database_ref01_match, null);
-        $this->assertNull($err);
+        $grand_exchange_database_ref01_list_result = $grand_exchange_database_ref01_ent->list($grand_exchange_database_ref01_match, null);
         $this->assertIsArray($grand_exchange_database_ref01_list_result);
 
         // LOAD
         $grand_exchange_database_ref01_match_dt0 = [
             "id" => $grand_exchange_database_ref01_data["id"],
         ];
-        [$grand_exchange_database_ref01_data_dt0_loaded, $err] = $grand_exchange_database_ref01_ent->load($grand_exchange_database_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $grand_exchange_database_ref01_data_dt0_loaded = $grand_exchange_database_ref01_ent->load($grand_exchange_database_ref01_match_dt0, null);
         $grand_exchange_database_ref01_data_dt0_load_result = Helpers::to_map($grand_exchange_database_ref01_data_dt0_loaded);
         $this->assertNotNull($grand_exchange_database_ref01_data_dt0_load_result);
         $this->assertEquals($grand_exchange_database_ref01_data_dt0_load_result["id"], $grand_exchange_database_ref01_data["id"]);
@@ -96,7 +94,6 @@ function grand_exchange_database_basic_setup($extra)
         "RUNESCAPEAPIS_TEST_GRAND_EXCHANGE_DATABASE_ENTID" => $idmap,
         "RUNESCAPEAPIS_TEST_LIVE" => "FALSE",
         "RUNESCAPEAPIS_TEST_EXPLAIN" => "FALSE",
-        "RUNESCAPEAPIS_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function grand_exchange_database_basic_setup($extra)
     if ($env["RUNESCAPEAPIS_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["RUNESCAPEAPIS_APIKEY"],
             ],
             $extra ?? [],
         ]);

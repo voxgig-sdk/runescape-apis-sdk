@@ -9,11 +9,9 @@ The Python SDK for the RunescapeApis API — an entity-oriented client following
 
 
 ## Install
-```bash
-pip install voxgig-sdk-runescape-apis
-```
-
-Or install from source:
+This package is not yet published to PyPI. Install it from the GitHub
+release tag (`py/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/runescape-apis-sdk/releases)) or
+from a source checkout:
 
 ```bash
 pip install -e .
@@ -28,34 +26,31 @@ loading a specific record.
 ### 1. Create a client
 
 ```python
-import os
 from runescapeapis_sdk import RunescapeApisSDK
 
-client = RunescapeApisSDK({
-    "apikey": os.environ.get("RUNESCAPE-APIS_APIKEY"),
-})
+client = RunescapeApisSDK()
 ```
 
 ### 2. List grandexchangedatabases
 
 ```python
-result, err = client.GrandExchangeDatabase().list()
-if err:
-    raise Exception(err)
-
-if isinstance(result, list):
+try:
+    result = client.grandexchangedatabase.list()
     for item in result:
         d = item.data_get()
         print(d["id"], d["name"])
+except Exception as err:
+    print(f"list failed: {err}")
 ```
 
 ### 3. Load a grandexchangedatabase
 
 ```python
-result, err = client.GrandExchangeDatabase().load({"id": "example_id"})
-if err:
-    raise Exception(err)
-print(result)
+try:
+    result = client.grandexchangedatabase.load({"id": "example_id"})
+    print(result)
+except Exception as err:
+    print(f"load failed: {err}")
 ```
 
 
@@ -66,29 +61,28 @@ print(result)
 For endpoints not covered by entity methods:
 
 ```python
-result, err = client.direct({
+result = client.direct({
     "path": "/api/resource/{id}",
     "method": "GET",
     "params": {"id": "example"},
 })
-if err:
-    raise Exception(err)
 
 if result["ok"]:
     print(result["status"])  # 200
     print(result["data"])    # response body
+else:
+    print(result["err"])     # error value
 ```
 
 ### Prepare a request without sending it
 
 ```python
-fetchdef, err = client.prepare({
+# prepare() returns the fetch definition and raises on error.
+fetchdef = client.prepare({
     "path": "/api/resource/{id}",
     "method": "DELETE",
     "params": {"id": "example"},
 })
-if err:
-    raise Exception(err)
 
 print(fetchdef["url"])
 print(fetchdef["method"])
@@ -102,7 +96,7 @@ Create a mock client for unit testing — no server required:
 ```python
 client = RunescapeApisSDK.test()
 
-result, err = client.RunescapeApis().load({"id": "test01"})
+result = client.grandexchangedatabase.load({"id": "test01"})
 # result contains mock response data
 ```
 
@@ -132,8 +126,7 @@ client = RunescapeApisSDK({
 Create a `.env.local` file at the project root:
 
 ```
-RUNESCAPE-APIS_TEST_LIVE=TRUE
-RUNESCAPE-APIS_APIKEY=<your-key>
+RUNESCAPE_APIS_TEST_LIVE=TRUE
 ```
 
 Then run:
@@ -157,7 +150,6 @@ Creates a new SDK client.
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `str` | API key for authentication. |
 | `base` | `str` | Base URL of the API server. |
 | `prefix` | `str` | URL path prefix prepended to all requests. |
 | `suffix` | `str` | URL path suffix appended to all requests. |
@@ -179,8 +171,8 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | --- | --- | --- |
 | `options_map` | `() -> dict` | Deep copy of current SDK options. |
 | `get_utility` | `() -> Utility` | Copy of the SDK utility object. |
-| `prepare` | `(fetchargs) -> (dict, err)` | Build an HTTP request definition without sending. |
-| `direct` | `(fetchargs) -> (dict, err)` | Build and send an HTTP request. |
+| `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
+| `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
 | `GrandExchangeDatabase` | `(data) -> GrandExchangeDatabaseEntity` | Create a GrandExchangeDatabase entity instance. |
 | `OldSchoolGrandExchange` | `(data) -> OldSchoolGrandExchangeEntity` | Create a OldSchoolGrandExchange entity instance. |
 | `PlayerRanking` | `(data) -> PlayerRankingEntity` | Create a PlayerRanking entity instance. |
@@ -191,11 +183,11 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> (any, err)` | Load a single entity by match criteria. |
-| `list` | `(reqmatch, ctrl) -> (any, err)` | List entities matching the criteria. |
-| `create` | `(reqdata, ctrl) -> (any, err)` | Create a new entity. |
-| `update` | `(reqdata, ctrl) -> (any, err)` | Update an existing entity. |
-| `remove` | `(reqmatch, ctrl) -> (any, err)` | Remove an entity. |
+| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
+| `list` | `(reqmatch, ctrl) -> list` | List entities matching the criteria. Raises on error. |
+| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
+| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
+| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
 | `data_get` | `() -> dict` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> dict` | Get entity match criteria. |
@@ -205,8 +197,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`dict` with these keys:
+Entity operations return the bare result data (a `dict` for single-entity
+ops, a `list` for `list`) and raise on error. Wrap calls in
+`try`/`except` to handle failures.
+
+The `direct()` escape hatch never raises — it returns a result `dict`
+you branch on via `result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -281,7 +277,7 @@ API path: `/m=hiscore/ranking.json`
 
 ### GrandExchangeDatabase
 
-Create an instance: `const grand_exchange_database = client.GrandExchangeDatabase()`
+Create an instance: `const grand_exchange_database = client.grand_exchange_database`
 
 #### Operations
 
@@ -313,19 +309,19 @@ Create an instance: `const grand_exchange_database = client.GrandExchangeDatabas
 #### Example: Load
 
 ```ts
-const grand_exchange_database = await client.GrandExchangeDatabase().load({ id: 'grand_exchange_database_id' })
+const grand_exchange_database = await client.grand_exchange_database.load({ id: 'grand_exchange_database_id' })
 ```
 
 #### Example: List
 
 ```ts
-const grand_exchange_databases = await client.GrandExchangeDatabase().list()
+const grand_exchange_databases = await client.grand_exchange_database.list()
 ```
 
 
 ### OldSchoolGrandExchange
 
-Create an instance: `const old_school_grand_exchange = client.OldSchoolGrandExchange()`
+Create an instance: `const old_school_grand_exchange = client.old_school_grand_exchange`
 
 #### Operations
 
@@ -351,13 +347,13 @@ Create an instance: `const old_school_grand_exchange = client.OldSchoolGrandExch
 #### Example: List
 
 ```ts
-const old_school_grand_exchanges = await client.OldSchoolGrandExchange().list()
+const old_school_grand_exchanges = await client.old_school_grand_exchange.list()
 ```
 
 
 ### PlayerRanking
 
-Create an instance: `const player_ranking = client.PlayerRanking()`
+Create an instance: `const player_ranking = client.player_ranking`
 
 #### Operations
 
@@ -376,7 +372,7 @@ Create an instance: `const player_ranking = client.PlayerRanking()`
 #### Example: List
 
 ```ts
-const player_rankings = await client.PlayerRanking().list()
+const player_rankings = await client.player_ranking.list()
 ```
 
 
@@ -450,11 +446,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-moon = client.Moon()
-moon.load({"planet_id": "earth", "id": "luna"})
+grandexchangedatabase = client.grandexchangedatabase
+grandexchangedatabase.load({"id": "example_id"})
 
-# moon.data_get() now returns the loaded moon data
-# moon.match_get() returns the last match criteria
+# grandexchangedatabase.data_get() now returns the loaded grandexchangedatabase data
+# grandexchangedatabase.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

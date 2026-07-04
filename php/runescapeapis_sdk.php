@@ -103,7 +103,7 @@ class RunescapeApisSDK
         return $this->_rootctx;
     }
 
-    public function prepare(array $fetchargs = []): array
+    public function prepare(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
         $fetchargs = $fetchargs ?? [];
@@ -149,19 +149,27 @@ class RunescapeApisSDK
 
         [$_, $err] = ($utility->prepare_auth)($ctx);
         if ($err) {
-            return [null, $err];
+            return ($utility->make_error)($ctx, $err);
         }
 
-        return ($utility->make_fetch_def)($ctx);
+        [$fetchdef, $fd_err] = ($utility->make_fetch_def)($ctx);
+        if ($fd_err) {
+            return ($utility->make_error)($ctx, $fd_err);
+        }
+        return $fetchdef;
     }
 
-    public function direct(array $fetchargs = []): array
+    public function direct(array $fetchargs = []): mixed
     {
         $utility = $this->_utility;
 
-        [$fetchdef, $err] = $this->prepare($fetchargs);
-        if ($err) {
-            return [["ok" => false, "err" => $err], null];
+        // direct() is the raw-HTTP escape hatch: it never throws, it returns
+        // an {ok, err, ...} dict. prepare() now raises on error, so catch it
+        // and surface the failure through the dict instead.
+        try {
+            $fetchdef = $this->prepare($fetchargs);
+        } catch (\Throwable $err) {
+            return ["ok" => false, "err" => $err];
         }
 
         $fetchargs = $fetchargs ?? [];
@@ -176,14 +184,14 @@ class RunescapeApisSDK
         [$fetched, $fetch_err] = ($utility->fetcher)($ctx, $url, $fetchdef);
 
         if ($fetch_err) {
-            return [["ok" => false, "err" => $fetch_err], null];
+            return ["ok" => false, "err" => $fetch_err];
         }
 
         if ($fetched === null) {
-            return [[
+            return [
                 "ok" => false,
                 "err" => $ctx->make_error("direct_no_response", "response: undefined"),
-            ], null];
+            ];
         }
 
         if (is_array($fetched)) {
@@ -208,38 +216,71 @@ class RunescapeApisSDK
                 }
             }
 
-            return [[
+            return [
                 "ok" => $status >= 200 && $status < 300,
                 "status" => $status,
                 "headers" => Struct::getprop($fetched, "headers"),
                 "data" => $json_data,
-            ], null];
+            ];
         }
 
-        return [[
+        return [
             "ok" => false,
             "err" => $ctx->make_error("direct_invalid", "invalid response type"),
-        ], null];
+        ];
     }
 
 
-    public function GrandExchangeDatabase($data = null)
+    private $_grand_exchange_database = null;
+
+    // Idiomatic facade: $client->grand_exchange_database()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias GrandExchangeDatabase() (PHP method
+    // names are case-insensitive).
+    public function grand_exchange_database($data = null)
     {
         require_once __DIR__ . '/entity/grand_exchange_database_entity.php';
+        if ($data === null) {
+            if ($this->_grand_exchange_database === null) {
+                $this->_grand_exchange_database = new GrandExchangeDatabaseEntity($this, null);
+            }
+            return $this->_grand_exchange_database;
+        }
         return new GrandExchangeDatabaseEntity($this, $data);
     }
 
 
-    public function OldSchoolGrandExchange($data = null)
+    private $_old_school_grand_exchange = null;
+
+    // Idiomatic facade: $client->old_school_grand_exchange()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias OldSchoolGrandExchange() (PHP method
+    // names are case-insensitive).
+    public function old_school_grand_exchange($data = null)
     {
         require_once __DIR__ . '/entity/old_school_grand_exchange_entity.php';
+        if ($data === null) {
+            if ($this->_old_school_grand_exchange === null) {
+                $this->_old_school_grand_exchange = new OldSchoolGrandExchangeEntity($this, null);
+            }
+            return $this->_old_school_grand_exchange;
+        }
         return new OldSchoolGrandExchangeEntity($this, $data);
     }
 
 
-    public function PlayerRanking($data = null)
+    private $_player_ranking = null;
+
+    // Idiomatic facade: $client->player_ranking()->list() / ->load(["id" => ...]).
+    // Also serves the deprecated PascalCase alias PlayerRanking() (PHP method
+    // names are case-insensitive).
+    public function player_ranking($data = null)
     {
         require_once __DIR__ . '/entity/player_ranking_entity.php';
+        if ($data === null) {
+            if ($this->_player_ranking === null) {
+                $this->_player_ranking = new PlayerRankingEntity($this, null);
+            }
+            return $this->_player_ranking;
+        }
         return new PlayerRankingEntity($this, $data);
     }
 
