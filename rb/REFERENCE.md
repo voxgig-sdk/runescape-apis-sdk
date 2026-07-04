@@ -94,7 +94,7 @@ same parameters as `direct()`. Raises on error.
 ## GrandExchangeDatabaseEntity
 
 ```ruby
-grand_exchange_database = client.grand_exchange_database
+grand_exchange_database = client.GrandExchangeDatabase
 ```
 
 ### Fields
@@ -124,7 +124,7 @@ grand_exchange_database = client.grand_exchange_database
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.grand_exchange_database.list(nil)
+results = client.GrandExchangeDatabase.list(nil)
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -132,7 +132,7 @@ results = client.grand_exchange_database.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.grand_exchange_database.load({ "id" => "grand_exchange_database_id" })
+result = client.GrandExchangeDatabase.load({ "id" => "grand_exchange_database_id" })
 ```
 
 ### Common Methods
@@ -168,7 +168,7 @@ Return the entity name.
 ## OldSchoolGrandExchangeEntity
 
 ```ruby
-old_school_grand_exchange = client.old_school_grand_exchange
+old_school_grand_exchange = client.OldSchoolGrandExchange
 ```
 
 ### Fields
@@ -193,7 +193,7 @@ old_school_grand_exchange = client.old_school_grand_exchange
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.old_school_grand_exchange.list(nil)
+results = client.OldSchoolGrandExchange.list(nil)
 ```
 
 ### Common Methods
@@ -229,7 +229,7 @@ Return the entity name.
 ## PlayerRankingEntity
 
 ```ruby
-player_ranking = client.player_ranking
+player_ranking = client.PlayerRanking
 ```
 
 ### Fields
@@ -247,7 +247,7 @@ player_ranking = client.player_ranking
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.player_ranking.list(nil)
+results = client.PlayerRanking.list(nil)
 ```
 
 ### Common Methods

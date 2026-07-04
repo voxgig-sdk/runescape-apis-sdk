@@ -206,42 +206,21 @@ class RunescapeApisSDK {
 
 
 
-  _grand_exchange_database?: GrandExchangeDatabaseEntity
-
-  // Idiomatic facade: `client.grand_exchange_database.list()` / `client.grand_exchange_database.load({ id })`.
-  get grand_exchange_database(): GrandExchangeDatabaseEntity {
-    return (this._grand_exchange_database ??= new GrandExchangeDatabaseEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.grand_exchange_database` instead. */
+  // Entity access: `client.GrandExchangeDatabase().list()` / `client.GrandExchangeDatabase().load({ id })`.
   GrandExchangeDatabase(data?: any) {
     const self = this
     return new GrandExchangeDatabaseEntity(self,data)
   }
 
 
-  _old_school_grand_exchange?: OldSchoolGrandExchangeEntity
-
-  // Idiomatic facade: `client.old_school_grand_exchange.list()` / `client.old_school_grand_exchange.load({ id })`.
-  get old_school_grand_exchange(): OldSchoolGrandExchangeEntity {
-    return (this._old_school_grand_exchange ??= new OldSchoolGrandExchangeEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.old_school_grand_exchange` instead. */
+  // Entity access: `client.OldSchoolGrandExchange().list()` / `client.OldSchoolGrandExchange().load({ id })`.
   OldSchoolGrandExchange(data?: any) {
     const self = this
     return new OldSchoolGrandExchangeEntity(self,data)
   }
 
 
-  _player_ranking?: PlayerRankingEntity
-
-  // Idiomatic facade: `client.player_ranking.list()` / `client.player_ranking.load({ id })`.
-  get player_ranking(): PlayerRankingEntity {
-    return (this._player_ranking ??= new PlayerRankingEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.player_ranking` instead. */
+  // Entity access: `client.PlayerRanking().list()` / `client.PlayerRanking().load({ id })`.
   PlayerRanking(data?: any) {
     const self = this
     return new PlayerRankingEntity(self,data)

@@ -133,7 +133,7 @@ Alias for `RunescapeApisSDK.test()`.
 ## GrandExchangeDatabaseEntity
 
 ```ts
-const grand_exchange_database = client.grand_exchange_database
+const grand_exchange_database = client.GrandExchangeDatabase()
 ```
 
 ### Fields
@@ -163,7 +163,7 @@ const grand_exchange_database = client.grand_exchange_database
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.grand_exchange_database.list()
+const results = await client.GrandExchangeDatabase().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -171,7 +171,7 @@ const results = await client.grand_exchange_database.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.grand_exchange_database.load({ id: 'grand_exchange_database_id' })
+const result = await client.GrandExchangeDatabase().load({ id: 'grand_exchange_database_id' })
 ```
 
 ### Common Methods
@@ -205,7 +205,7 @@ Return a copy of the entity options.
 ## OldSchoolGrandExchangeEntity
 
 ```ts
-const old_school_grand_exchange = client.old_school_grand_exchange
+const old_school_grand_exchange = client.OldSchoolGrandExchange()
 ```
 
 ### Fields
@@ -230,7 +230,7 @@ const old_school_grand_exchange = client.old_school_grand_exchange
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.old_school_grand_exchange.list()
+const results = await client.OldSchoolGrandExchange().list()
 ```
 
 ### Common Methods
@@ -264,7 +264,7 @@ Return a copy of the entity options.
 ## PlayerRankingEntity
 
 ```ts
-const player_ranking = client.player_ranking
+const player_ranking = client.PlayerRanking()
 ```
 
 ### Fields
@@ -282,7 +282,7 @@ const player_ranking = client.player_ranking
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.player_ranking.list()
+const results = await client.PlayerRanking().list()
 ```
 
 ### Common Methods

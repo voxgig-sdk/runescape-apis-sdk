@@ -88,7 +88,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## GrandExchangeDatabaseEntity
 
 ```python
-grand_exchange_database = client.grand_exchange_database
+grand_exchange_database = client.GrandExchangeDatabase()
 ```
 
 ### Fields
@@ -118,7 +118,9 @@ grand_exchange_database = client.grand_exchange_database
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.grand_exchange_database.list({})
+results = client.GrandExchangeDatabase().list({})
+for grand_exchange_database in results:
+    print(grand_exchange_database)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -126,7 +128,7 @@ results = client.grand_exchange_database.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.grand_exchange_database.load({"id": "grand_exchange_database_id"})
+result = client.GrandExchangeDatabase().load({"id": "grand_exchange_database_id"})
 ```
 
 ### Common Methods
@@ -161,7 +163,7 @@ Return the entity name.
 ## OldSchoolGrandExchangeEntity
 
 ```python
-old_school_grand_exchange = client.old_school_grand_exchange
+old_school_grand_exchange = client.OldSchoolGrandExchange()
 ```
 
 ### Fields
@@ -186,7 +188,9 @@ old_school_grand_exchange = client.old_school_grand_exchange
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.old_school_grand_exchange.list({})
+results = client.OldSchoolGrandExchange().list({})
+for old_school_grand_exchange in results:
+    print(old_school_grand_exchange)
 ```
 
 ### Common Methods
@@ -221,7 +225,7 @@ Return the entity name.
 ## PlayerRankingEntity
 
 ```python
-player_ranking = client.player_ranking
+player_ranking = client.PlayerRanking()
 ```
 
 ### Fields
@@ -239,7 +243,9 @@ player_ranking = client.player_ranking
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.player_ranking.list({})
+results = client.PlayerRanking().list({})
+for player_ranking in results:
+    print(player_ranking)
 ```
 
 ### Common Methods

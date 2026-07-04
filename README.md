@@ -26,9 +26,11 @@ import { RunescapeApisSDK } from '@voxgig-sdk/runescape-apis'
 
 const client = new RunescapeApisSDK()
 
-// List all grandexchangedatabases
-const grandexchangedatabases = await client.grandexchangedatabase.list()
-console.log(grandexchangedatabases.data)
+// List all grandexchangedatabases (returns GrandExchangeDatabase[])
+const grandexchangedatabases = await client.GrandExchangeDatabase().list()
+for (const grandexchangedatabase of grandexchangedatabases) {
+  console.log(grandexchangedatabase)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -85,12 +87,13 @@ from runescapeapis_sdk import RunescapeApisSDK
 
 client = RunescapeApisSDK()
 
-# List all grandexchangedatabases
-grandexchangedatabases = client.grandexchangedatabase.list()
-print(grandexchangedatabases)
+# List all grandexchangedatabases (returns a list, raises on error)
+grandexchangedatabases = client.GrandExchangeDatabase().list({})
+for grandexchangedatabase in grandexchangedatabases:
+    print(grandexchangedatabase)
 
-# Load a specific grandexchangedatabase
-grandexchangedatabase = client.grandexchangedatabase.load({"id": "example_id"})
+# Load a specific grandexchangedatabase (returns the record, raises on error)
+grandexchangedatabase = client.GrandExchangeDatabase().load({"id": "example_id"})
 print(grandexchangedatabase)
 ```
 
@@ -102,12 +105,12 @@ require_once 'runescapeapis_sdk.php';
 
 $client = new RunescapeApisSDK();
 
-// List all grandexchangedatabases (throws on error)
-$grandexchangedatabases = $client->grandexchangedatabase()->list();
+// List all grandexchangedatabases (returns an array; throws on error)
+$grandexchangedatabases = $client->GrandExchangeDatabase()->list();
 print_r($grandexchangedatabases);
 
-// Load a specific grandexchangedatabase
-$grandexchangedatabase = $client->grandexchangedatabase()->load(["id" => "example_id"]);
+// Load a specific grandexchangedatabase (returns the bare record; throws on error)
+$grandexchangedatabase = $client->GrandExchangeDatabase()->load(["id" => "example_id"]);
 print_r($grandexchangedatabase);
 ```
 
@@ -130,12 +133,12 @@ require_relative "RunescapeApis_sdk"
 
 client = RunescapeApisSDK.new
 
-# List all grandexchangedatabases
-grandexchangedatabases = client.grandexchangedatabase.list
+# List all grandexchangedatabases (returns an Array; raises on error)
+grandexchangedatabases = client.GrandExchangeDatabase.list
 puts grandexchangedatabases
 
-# Load a specific grandexchangedatabase
-grandexchangedatabase = client.grandexchangedatabase.load({ "id" => "example_id" })
+# Load a specific grandexchangedatabase (returns the bare record; raises on error)
+grandexchangedatabase = client.GrandExchangeDatabase.load({ "id" => "example_id" })
 puts grandexchangedatabase
 ```
 
@@ -147,11 +150,11 @@ local sdk = require("runescape-apis_sdk")
 local client = sdk.new()
 
 -- List all grandexchangedatabases
-local grandexchangedatabases, err = client:grandexchangedatabase():list()
+local grandexchangedatabases, err = client:GrandExchangeDatabase():list()
 print(grandexchangedatabases)
 
 -- Load a specific grandexchangedatabase
-local grandexchangedatabase, err = client:grandexchangedatabase():load({ id = "example_id" })
+local grandexchangedatabase, err = client:GrandExchangeDatabase():load({ id = "example_id" })
 print(grandexchangedatabase)
 ```
 
@@ -164,22 +167,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = RunescapeApisSDK.test()
-const result = await client.grandexchangedatabase.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const grandexchangedatabase = await client.GrandExchangeDatabase().load({ id: 1 })
+// grandexchangedatabase is a bare GrandExchangeDatabase populated with mock data
+console.log(grandexchangedatabase)
 ```
 
 ### Python
 
 ```python
 client = RunescapeApisSDK.test()
-result = client.grandexchangedatabase.load({"id": "test01"})
+grandexchangedatabase = client.GrandExchangeDatabase().load({"id": "test01"})
+print(grandexchangedatabase)
 ```
 
 ### PHP
 
 ```php
-$client = RunescapeApisSDK::test();
-$result = $client->grandexchangedatabase()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = RunescapeApisSDK::test([
+    "entity" => ["grandexchangedatabase" => ["test01" => ["id" => "test01"]]],
+]);
+$grandexchangedatabase = $client->GrandExchangeDatabase()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -194,15 +202,18 @@ result, err := client.GrandExchangeDatabase(nil).Load(
 ### Ruby
 
 ```ruby
-client = RunescapeApisSDK.test
-result = client.grandexchangedatabase.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = RunescapeApisSDK.test({
+  "entity" => { "grandexchangedatabase" => { "test01" => { "id" => "test01" } } },
+})
+grandexchangedatabase = client.GrandExchangeDatabase.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:grandexchangedatabase():load({ id = "test01" })
+local result, err = client:GrandExchangeDatabase():load({ id = "test01" })
 ```
 
 ## How it works
@@ -250,6 +261,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

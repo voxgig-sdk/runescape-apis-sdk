@@ -28,16 +28,14 @@ require_relative "RunescapeApis_sdk"
 client = RunescapeApisSDK.new
 ```
 
-### 2. List grandexchangedatabases
+### 2. List grandexchangedatabase records
 
 ```ruby
 begin
-  result = client.grandexchangedatabase.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of GrandExchangeDatabase records — iterate directly.
+  grandexchangedatabases = client.GrandExchangeDatabase.list
+  grandexchangedatabases.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,8 +46,9 @@ end
 
 ```ruby
 begin
-  result = client.grandexchangedatabase.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare GrandExchangeDatabase record (raises on error).
+  grandexchangedatabase = client.GrandExchangeDatabase.load({ "id" => "example_id" })
+  puts grandexchangedatabase
 rescue => err
   warn "load failed: #{err}"
 end
@@ -96,13 +95,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = RunescapeApisSDK.test
+client = RunescapeApisSDK.test({
+  "entity" => { "grandexchangedatabase" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.grandexchangedatabase.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+grandexchangedatabase = client.GrandExchangeDatabase.load({ "id" => "test01" })
+puts grandexchangedatabase
 ```
 
 ### Use a custom fetch function
@@ -179,7 +182,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
 | `GrandExchangeDatabase` | `(data) -> GrandExchangeDatabaseEntity` | Create a GrandExchangeDatabase entity instance. |
-| `OldSchoolGrandExchange` | `(data) -> OldSchoolGrandExchangeEntity` | Create a OldSchoolGrandExchange entity instance. |
+| `OldSchoolGrandExchange` | `(data) -> OldSchoolGrandExchangeEntity` | Create an OldSchoolGrandExchange entity instance. |
 | `PlayerRanking` | `(data) -> PlayerRankingEntity` | Create a PlayerRanking entity instance. |
 
 ### Entity interface
@@ -281,7 +284,7 @@ API path: `/m=hiscore/ranking.json`
 
 ### GrandExchangeDatabase
 
-Create an instance: `const grand_exchange_database = client.grand_exchange_database`
+Create an instance: `grand_exchange_database = client.GrandExchangeDatabase`
 
 #### Operations
 
@@ -312,20 +315,22 @@ Create an instance: `const grand_exchange_database = client.grand_exchange_datab
 
 #### Example: Load
 
-```ts
-const grand_exchange_database = await client.grand_exchange_database.load({ id: 'grand_exchange_database_id' })
+```ruby
+# load returns the bare GrandExchangeDatabase record (raises on error).
+grand_exchange_database = client.GrandExchangeDatabase.load({ "id" => "grand_exchange_database_id" })
 ```
 
 #### Example: List
 
-```ts
-const grand_exchange_databases = await client.grand_exchange_database.list()
+```ruby
+# list returns an Array of GrandExchangeDatabase records (raises on error).
+grand_exchange_databases = client.GrandExchangeDatabase.list
 ```
 
 
 ### OldSchoolGrandExchange
 
-Create an instance: `const old_school_grand_exchange = client.old_school_grand_exchange`
+Create an instance: `old_school_grand_exchange = client.OldSchoolGrandExchange`
 
 #### Operations
 
@@ -350,14 +355,15 @@ Create an instance: `const old_school_grand_exchange = client.old_school_grand_e
 
 #### Example: List
 
-```ts
-const old_school_grand_exchanges = await client.old_school_grand_exchange.list()
+```ruby
+# list returns an Array of OldSchoolGrandExchange records (raises on error).
+old_school_grand_exchanges = client.OldSchoolGrandExchange.list
 ```
 
 
 ### PlayerRanking
 
-Create an instance: `const player_ranking = client.player_ranking`
+Create an instance: `player_ranking = client.PlayerRanking`
 
 #### Operations
 
@@ -375,8 +381,9 @@ Create an instance: `const player_ranking = client.player_ranking`
 
 #### Example: List
 
-```ts
-const player_rankings = await client.player_ranking.list()
+```ruby
+# list returns an Array of PlayerRanking records (raises on error).
+player_rankings = client.PlayerRanking.list
 ```
 
 
@@ -451,7 +458,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-grandexchangedatabase = client.grandexchangedatabase
+grandexchangedatabase = client.GrandExchangeDatabase
 grandexchangedatabase.load({ "id" => "example_id" })
 
 # grandexchangedatabase.data_get now returns the loaded grandexchangedatabase data

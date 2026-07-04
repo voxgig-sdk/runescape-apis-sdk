@@ -233,10 +233,10 @@ class RunescapeApisSDK
 
     private $_grand_exchange_database = null;
 
-    // Idiomatic facade: $client->grand_exchange_database()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias GrandExchangeDatabase() (PHP method
-    // names are case-insensitive).
-    public function grand_exchange_database($data = null)
+    // Canonical facade: $client->GrandExchangeDatabase()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->grand_exchange_database()
+    // resolves here too.
+    public function GrandExchangeDatabase($data = null)
     {
         require_once __DIR__ . '/entity/grand_exchange_database_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class RunescapeApisSDK
 
     private $_old_school_grand_exchange = null;
 
-    // Idiomatic facade: $client->old_school_grand_exchange()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias OldSchoolGrandExchange() (PHP method
-    // names are case-insensitive).
-    public function old_school_grand_exchange($data = null)
+    // Canonical facade: $client->OldSchoolGrandExchange()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->old_school_grand_exchange()
+    // resolves here too.
+    public function OldSchoolGrandExchange($data = null)
     {
         require_once __DIR__ . '/entity/old_school_grand_exchange_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class RunescapeApisSDK
 
     private $_player_ranking = null;
 
-    // Idiomatic facade: $client->player_ranking()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias PlayerRanking() (PHP method
-    // names are case-insensitive).
-    public function player_ranking($data = null)
+    // Canonical facade: $client->PlayerRanking()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->player_ranking()
+    // resolves here too.
+    public function PlayerRanking($data = null)
     {
         require_once __DIR__ . '/entity/player_ranking_entity.php';
         if ($data === null) {

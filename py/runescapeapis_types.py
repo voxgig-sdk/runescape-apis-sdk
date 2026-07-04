@@ -4,94 +4,91 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class GrandExchangeDatabase:
-    average: Optional[dict] = None
-    current: Optional[dict] = None
-    daily: Optional[dict] = None
-    description: Optional[str] = None
-    icon: Optional[str] = None
-    icon_large: Optional[str] = None
-    id: Optional[int] = None
-    item: Optional[dict] = None
-    last_config_update_runeday: Optional[int] = None
-    letter: Optional[str] = None
-    member: Optional[str] = None
-    name: Optional[str] = None
-    today: Optional[dict] = None
-    type: Optional[str] = None
-    type_icon: Optional[str] = None
+class GrandExchangeDatabase(TypedDict, total=False):
+    average: dict
+    current: dict
+    daily: dict
+    description: str
+    icon: str
+    icon_large: str
+    id: int
+    item: dict
+    last_config_update_runeday: int
+    letter: str
+    member: str
+    name: str
+    today: dict
+    type: str
+    type_icon: str
 
 
-@dataclass
-class GrandExchangeDatabaseLoadMatch:
+class GrandExchangeDatabaseLoadMatch(TypedDict):
     item_id: int
 
 
-@dataclass
-class GrandExchangeDatabaseListMatch:
-    average: Optional[dict] = None
-    current: Optional[dict] = None
-    daily: Optional[dict] = None
-    description: Optional[str] = None
-    icon: Optional[str] = None
-    icon_large: Optional[str] = None
-    id: Optional[int] = None
-    item: Optional[dict] = None
-    last_config_update_runeday: Optional[int] = None
-    letter: Optional[str] = None
-    member: Optional[str] = None
-    name: Optional[str] = None
-    today: Optional[dict] = None
-    type: Optional[str] = None
-    type_icon: Optional[str] = None
+class GrandExchangeDatabaseListMatch(TypedDict, total=False):
+    average: dict
+    current: dict
+    daily: dict
+    description: str
+    icon: str
+    icon_large: str
+    id: int
+    item: dict
+    last_config_update_runeday: int
+    letter: str
+    member: str
+    name: str
+    today: dict
+    type: str
+    type_icon: str
 
 
-@dataclass
-class OldSchoolGrandExchange:
-    current: Optional[dict] = None
-    description: Optional[str] = None
-    icon: Optional[str] = None
-    icon_large: Optional[str] = None
-    id: Optional[int] = None
-    member: Optional[str] = None
-    name: Optional[str] = None
-    today: Optional[dict] = None
-    type: Optional[str] = None
-    type_icon: Optional[str] = None
+class OldSchoolGrandExchange(TypedDict, total=False):
+    current: dict
+    description: str
+    icon: str
+    icon_large: str
+    id: int
+    member: str
+    name: str
+    today: dict
+    type: str
+    type_icon: str
 
 
-@dataclass
-class OldSchoolGrandExchangeListMatch:
-    current: Optional[dict] = None
-    description: Optional[str] = None
-    icon: Optional[str] = None
-    icon_large: Optional[str] = None
-    id: Optional[int] = None
-    member: Optional[str] = None
-    name: Optional[str] = None
-    today: Optional[dict] = None
-    type: Optional[str] = None
-    type_icon: Optional[str] = None
+class OldSchoolGrandExchangeListMatch(TypedDict, total=False):
+    current: dict
+    description: str
+    icon: str
+    icon_large: str
+    id: int
+    member: str
+    name: str
+    today: dict
+    type: str
+    type_icon: str
 
 
-@dataclass
-class PlayerRanking:
-    name: Optional[str] = None
-    rank: Optional[str] = None
-    score: Optional[str] = None
+class PlayerRanking(TypedDict, total=False):
+    name: str
+    rank: str
+    score: str
 
 
-@dataclass
-class PlayerRankingListMatch:
-    name: Optional[str] = None
-    rank: Optional[str] = None
-    score: Optional[str] = None
-
+class PlayerRankingListMatch(TypedDict, total=False):
+    name: str
+    rank: str
+    score: str

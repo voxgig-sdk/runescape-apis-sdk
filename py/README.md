@@ -31,24 +31,28 @@ from runescapeapis_sdk import RunescapeApisSDK
 client = RunescapeApisSDK()
 ```
 
-### 2. List grandexchangedatabases
+### 2. List grandexchangedatabase records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.grandexchangedatabase.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    grandexchangedatabases = client.GrandExchangeDatabase().list({})
+    for grandexchangedatabase in grandexchangedatabases:
+        print(grandexchangedatabase)
 except Exception as err:
     print(f"list failed: {err}")
 ```
 
 ### 3. Load a grandexchangedatabase
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.grandexchangedatabase.load({"id": "example_id"})
-    print(result)
+    grandexchangedatabase = client.GrandExchangeDatabase().load({"id": "example_id"})
+    print(grandexchangedatabase)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -96,8 +100,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = RunescapeApisSDK.test()
 
-result = client.grandexchangedatabase.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+grandexchangedatabase = client.GrandExchangeDatabase().load({"id": "test01"})
+# grandexchangedatabase contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -174,7 +179,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
 | `GrandExchangeDatabase` | `(data) -> GrandExchangeDatabaseEntity` | Create a GrandExchangeDatabase entity instance. |
-| `OldSchoolGrandExchange` | `(data) -> OldSchoolGrandExchangeEntity` | Create a OldSchoolGrandExchange entity instance. |
+| `OldSchoolGrandExchange` | `(data) -> OldSchoolGrandExchangeEntity` | Create an OldSchoolGrandExchange entity instance. |
 | `PlayerRanking` | `(data) -> PlayerRankingEntity` | Create a PlayerRanking entity instance. |
 
 ### Entity interface
@@ -277,7 +282,7 @@ API path: `/m=hiscore/ranking.json`
 
 ### GrandExchangeDatabase
 
-Create an instance: `const grand_exchange_database = client.grand_exchange_database`
+Create an instance: `grand_exchange_database = client.GrandExchangeDatabase()`
 
 #### Operations
 
@@ -308,20 +313,20 @@ Create an instance: `const grand_exchange_database = client.grand_exchange_datab
 
 #### Example: Load
 
-```ts
-const grand_exchange_database = await client.grand_exchange_database.load({ id: 'grand_exchange_database_id' })
+```python
+grand_exchange_database = client.GrandExchangeDatabase().load({"id": "grand_exchange_database_id"})
 ```
 
 #### Example: List
 
-```ts
-const grand_exchange_databases = await client.grand_exchange_database.list()
+```python
+grand_exchange_databases = client.GrandExchangeDatabase().list({})
 ```
 
 
 ### OldSchoolGrandExchange
 
-Create an instance: `const old_school_grand_exchange = client.old_school_grand_exchange`
+Create an instance: `old_school_grand_exchange = client.OldSchoolGrandExchange()`
 
 #### Operations
 
@@ -346,14 +351,14 @@ Create an instance: `const old_school_grand_exchange = client.old_school_grand_e
 
 #### Example: List
 
-```ts
-const old_school_grand_exchanges = await client.old_school_grand_exchange.list()
+```python
+old_school_grand_exchanges = client.OldSchoolGrandExchange().list({})
 ```
 
 
 ### PlayerRanking
 
-Create an instance: `const player_ranking = client.player_ranking`
+Create an instance: `player_ranking = client.PlayerRanking()`
 
 #### Operations
 
@@ -371,8 +376,8 @@ Create an instance: `const player_ranking = client.player_ranking`
 
 #### Example: List
 
-```ts
-const player_rankings = await client.player_ranking.list()
+```python
+player_rankings = client.PlayerRanking().list({})
 ```
 
 
@@ -446,7 +451,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-grandexchangedatabase = client.grandexchangedatabase
+grandexchangedatabase = client.GrandExchangeDatabase()
 grandexchangedatabase.load({"id": "example_id"})
 
 # grandexchangedatabase.data_get() now returns the loaded grandexchangedatabase data

@@ -31,26 +31,26 @@ local sdk = require("runescape-apis_sdk")
 local client = sdk.new()
 ```
 
-### 2. List grandexchangedatabases
+### 2. List grandexchangedatabase records
+
+Entity operations return `(value, err)`. For `list`, `value` is the
+array of records itself — iterate it directly (there is no wrapper).
 
 ```lua
-local result, err = client:grandexchangedatabase():list()
+local grandexchangedatabases, err = client:GrandExchangeDatabase():list()
 if err then error(err) end
 
-if type(result) == "table" then
-  for _, item in ipairs(result) do
-    local d = item:data_get()
-    print(d["id"], d["name"])
-  end
+for _, item in ipairs(grandexchangedatabases) do
+  print(item["id"], item["name"])
 end
 ```
 
 ### 3. Load a grandexchangedatabase
 
 ```lua
-local result, err = client:grandexchangedatabase():load({ id = "example_id" })
+local grandexchangedatabase, err = client:GrandExchangeDatabase():load({ id = "example_id" })
 if err then error(err) end
-print(result)
+print(grandexchangedatabase)
 ```
 
 
@@ -96,8 +96,8 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:grandexchangedatabase():load({ id = "test01" })
--- result contains mock response data
+local result, err = client:GrandExchangeDatabase():load({ id = "test01" })
+-- result is the loaded data; err is set on failure
 ```
 
 ### Use a custom fetch function
@@ -176,7 +176,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `prepare` | `(fetchargs) -> table, err` | Build an HTTP request definition without sending. |
 | `direct` | `(fetchargs) -> table, err` | Build and send an HTTP request. |
 | `GrandExchangeDatabase` | `(data) -> GrandExchangeDatabaseEntity` | Create a GrandExchangeDatabase entity instance. |
-| `OldSchoolGrandExchange` | `(data) -> OldSchoolGrandExchangeEntity` | Create a OldSchoolGrandExchange entity instance. |
+| `OldSchoolGrandExchange` | `(data) -> OldSchoolGrandExchangeEntity` | Create an OldSchoolGrandExchange entity instance. |
 | `PlayerRanking` | `(data) -> PlayerRankingEntity` | Create a PlayerRanking entity instance. |
 
 ### Entity interface
@@ -199,17 +199,22 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `(any, err)`. The first value is a
-`table` with these keys:
+Entity operations return `(value, err)`. The `value` is the operation's
+data **directly** — there is no wrapper:
 
-| Key | Type | Description |
-| --- | --- | --- |
-| `ok` | `boolean` | `true` if the HTTP status is 2xx. |
-| `status` | `number` | HTTP status code. |
-| `headers` | `table` | Response headers. |
-| `data` | `any` | Parsed JSON response body. |
+| Operation | `value` |
+| --- | --- |
+| `load` / `create` / `update` / `remove` | the entity record (a `table`) |
+| `list` | an array (`table`) of entity records |
 
-On error, `ok` is `false` and `err` contains the error value.
+Check `err` first (it is non-`nil` on failure), then use `value`:
+
+    local grand_exchange_database, err = client:GrandExchangeDatabase():load({ id = "example_id" })
+    if err then error(err) end
+    -- grand_exchange_database is the loaded record
+
+Only `direct()` returns a response envelope — a `table` with `ok`,
+`status`, `headers`, and `data` keys.
 
 ### Entities
 
@@ -275,7 +280,7 @@ API path: `/m=hiscore/ranking.json`
 
 ### GrandExchangeDatabase
 
-Create an instance: `const grand_exchange_database = client.grand_exchange_database`
+Create an instance: `local grand_exchange_database = client:GrandExchangeDatabase(nil)`
 
 #### Operations
 
@@ -306,20 +311,20 @@ Create an instance: `const grand_exchange_database = client.grand_exchange_datab
 
 #### Example: Load
 
-```ts
-const grand_exchange_database = await client.grand_exchange_database.load({ id: 'grand_exchange_database_id' })
+```lua
+local grand_exchange_database, err = client:GrandExchangeDatabase():load({ id = "grand_exchange_database_id" })
 ```
 
 #### Example: List
 
-```ts
-const grand_exchange_databases = await client.grand_exchange_database.list()
+```lua
+local grand_exchange_databases, err = client:GrandExchangeDatabase():list()
 ```
 
 
 ### OldSchoolGrandExchange
 
-Create an instance: `const old_school_grand_exchange = client.old_school_grand_exchange`
+Create an instance: `local old_school_grand_exchange = client:OldSchoolGrandExchange(nil)`
 
 #### Operations
 
@@ -344,14 +349,14 @@ Create an instance: `const old_school_grand_exchange = client.old_school_grand_e
 
 #### Example: List
 
-```ts
-const old_school_grand_exchanges = await client.old_school_grand_exchange.list()
+```lua
+local old_school_grand_exchanges, err = client:OldSchoolGrandExchange():list()
 ```
 
 
 ### PlayerRanking
 
-Create an instance: `const player_ranking = client.player_ranking`
+Create an instance: `local player_ranking = client:PlayerRanking(nil)`
 
 #### Operations
 
@@ -369,8 +374,8 @@ Create an instance: `const player_ranking = client.player_ranking`
 
 #### Example: List
 
-```ts
-const player_rankings = await client.player_ranking.list()
+```lua
+local player_rankings, err = client:PlayerRanking():list()
 ```
 
 
@@ -445,7 +450,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local grandexchangedatabase = client:grandexchangedatabase()
+local grandexchangedatabase = client:GrandExchangeDatabase()
 grandexchangedatabase:load({ id = "example_id" })
 
 -- grandexchangedatabase:data_get() now returns the loaded grandexchangedatabase data

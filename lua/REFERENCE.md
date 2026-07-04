@@ -91,7 +91,7 @@ same parameters as `direct()`.
 ## GrandExchangeDatabaseEntity
 
 ```lua
-local grand_exchange_database = client:grand_exchange_database(nil)
+local grand_exchange_database = client:GrandExchangeDatabase(nil)
 ```
 
 ### Fields
@@ -121,7 +121,7 @@ local grand_exchange_database = client:grand_exchange_database(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:grand_exchange_database():list()
+local results, err = client:GrandExchangeDatabase():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -129,7 +129,7 @@ local results, err = client:grand_exchange_database():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:grand_exchange_database():load({ id = "grand_exchange_database_id" })
+local result, err = client:GrandExchangeDatabase():load({ id = "grand_exchange_database_id" })
 ```
 
 ### Common Methods
@@ -165,7 +165,7 @@ Return the entity name.
 ## OldSchoolGrandExchangeEntity
 
 ```lua
-local old_school_grand_exchange = client:old_school_grand_exchange(nil)
+local old_school_grand_exchange = client:OldSchoolGrandExchange(nil)
 ```
 
 ### Fields
@@ -190,7 +190,7 @@ local old_school_grand_exchange = client:old_school_grand_exchange(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:old_school_grand_exchange():list()
+local results, err = client:OldSchoolGrandExchange():list()
 ```
 
 ### Common Methods
@@ -226,7 +226,7 @@ Return the entity name.
 ## PlayerRankingEntity
 
 ```lua
-local player_ranking = client:player_ranking(nil)
+local player_ranking = client:PlayerRanking(nil)
 ```
 
 ### Fields
@@ -244,7 +244,7 @@ local player_ranking = client:player_ranking(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:player_ranking():list()
+local results, err = client:PlayerRanking():list()
 ```
 
 ### Common Methods

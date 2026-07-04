@@ -208,39 +208,21 @@ class RunescapeApisSDK
   end
 
 
-  # Idiomatic facade: client.grand_exchange_database.list / client.grand_exchange_database.load({ "id" => ... })
-  def grand_exchange_database
-    require_relative 'entity/grand_exchange_database_entity'
-    @grand_exchange_database ||= GrandExchangeDatabaseEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.grand_exchange_database instead.
+  # Canonical facade: client.GrandExchangeDatabase.list / client.GrandExchangeDatabase.load({ "id" => ... })
   def GrandExchangeDatabase(data = nil)
     require_relative 'entity/grand_exchange_database_entity'
     GrandExchangeDatabaseEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.old_school_grand_exchange.list / client.old_school_grand_exchange.load({ "id" => ... })
-  def old_school_grand_exchange
-    require_relative 'entity/old_school_grand_exchange_entity'
-    @old_school_grand_exchange ||= OldSchoolGrandExchangeEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.old_school_grand_exchange instead.
+  # Canonical facade: client.OldSchoolGrandExchange.list / client.OldSchoolGrandExchange.load({ "id" => ... })
   def OldSchoolGrandExchange(data = nil)
     require_relative 'entity/old_school_grand_exchange_entity'
     OldSchoolGrandExchangeEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.player_ranking.list / client.player_ranking.load({ "id" => ... })
-  def player_ranking
-    require_relative 'entity/player_ranking_entity'
-    @player_ranking ||= PlayerRankingEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.player_ranking instead.
+  # Canonical facade: client.PlayerRanking.list / client.PlayerRanking.load({ "id" => ... })
   def PlayerRanking(data = nil)
     require_relative 'entity/player_ranking_entity'
     PlayerRankingEntity.new(self, data)

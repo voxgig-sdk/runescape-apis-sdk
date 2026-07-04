@@ -93,7 +93,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## GrandExchangeDatabaseEntity
 
 ```php
-$grand_exchange_database = $client->grand_exchange_database();
+$grand_exchange_database = $client->GrandExchangeDatabase();
 ```
 
 ### Fields
@@ -123,7 +123,7 @@ $grand_exchange_database = $client->grand_exchange_database();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->grand_exchange_database()->list([]);
+$results = $client->GrandExchangeDatabase()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -131,7 +131,7 @@ $results = $client->grand_exchange_database()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->grand_exchange_database()->load(["id" => "grand_exchange_database_id"]);
+$result = $client->GrandExchangeDatabase()->load(["id" => "grand_exchange_database_id"]);
 ```
 
 ### Common Methods
@@ -167,7 +167,7 @@ Return the entity name.
 ## OldSchoolGrandExchangeEntity
 
 ```php
-$old_school_grand_exchange = $client->old_school_grand_exchange();
+$old_school_grand_exchange = $client->OldSchoolGrandExchange();
 ```
 
 ### Fields
@@ -192,7 +192,7 @@ $old_school_grand_exchange = $client->old_school_grand_exchange();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->old_school_grand_exchange()->list([]);
+$results = $client->OldSchoolGrandExchange()->list([]);
 ```
 
 ### Common Methods
@@ -228,7 +228,7 @@ Return the entity name.
 ## PlayerRankingEntity
 
 ```php
-$player_ranking = $client->player_ranking();
+$player_ranking = $client->PlayerRanking();
 ```
 
 ### Fields
@@ -246,7 +246,7 @@ $player_ranking = $client->player_ranking();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->player_ranking()->list([]);
+$results = $client->PlayerRanking()->list([]);
 ```
 
 ### Common Methods

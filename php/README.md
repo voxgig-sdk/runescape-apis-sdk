@@ -29,18 +29,16 @@ require_once 'runescapeapis_sdk.php';
 $client = new RunescapeApisSDK();
 ```
 
-### 2. List grandexchangedatabases
+### 2. List grandexchangedatabase records
 
 ```php
 try {
-    $result = $client->grandexchangedatabase()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of GrandExchangeDatabase records — iterate directly.
+    $grandexchangedatabases = $client->GrandExchangeDatabase()->list();
+    foreach ($grandexchangedatabases as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -49,9 +47,10 @@ try {
 
 ```php
 try {
-    $result = $client->grandexchangedatabase()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare GrandExchangeDatabase record (throws on error).
+    $grandexchangedatabase = $client->GrandExchangeDatabase()->load(["id" => "example_id"]);
+    print_r($grandexchangedatabase);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -97,13 +96,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = RunescapeApisSDK::test();
+$client = RunescapeApisSDK::test([
+    "entity" => ["grandexchangedatabase" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->grandexchangedatabase()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$grandexchangedatabase = $client->GrandExchangeDatabase()->load(["id" => "test01"]);
+print_r($grandexchangedatabase);
 ```
 
 ### Use a custom fetch function
@@ -183,7 +186,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
 | `GrandExchangeDatabase` | `($data): GrandExchangeDatabaseEntity` | Create a GrandExchangeDatabase entity instance. |
-| `OldSchoolGrandExchange` | `($data): OldSchoolGrandExchangeEntity` | Create a OldSchoolGrandExchange entity instance. |
+| `OldSchoolGrandExchange` | `($data): OldSchoolGrandExchangeEntity` | Create an OldSchoolGrandExchange entity instance. |
 | `PlayerRanking` | `($data): PlayerRankingEntity` | Create a PlayerRanking entity instance. |
 
 ### Entity interface
@@ -286,7 +289,7 @@ API path: `/m=hiscore/ranking.json`
 
 ### GrandExchangeDatabase
 
-Create an instance: `const grand_exchange_database = client.grand_exchange_database`
+Create an instance: `$grand_exchange_database = $client->GrandExchangeDatabase();`
 
 #### Operations
 
@@ -317,20 +320,22 @@ Create an instance: `const grand_exchange_database = client.grand_exchange_datab
 
 #### Example: Load
 
-```ts
-const grand_exchange_database = await client.grand_exchange_database.load({ id: 'grand_exchange_database_id' })
+```php
+// load() returns the bare GrandExchangeDatabase record (throws on error).
+$grand_exchange_database = $client->GrandExchangeDatabase()->load(["id" => "grand_exchange_database_id"]);
 ```
 
 #### Example: List
 
-```ts
-const grand_exchange_databases = await client.grand_exchange_database.list()
+```php
+// list() returns an array of GrandExchangeDatabase records (throws on error).
+$grand_exchange_databases = $client->GrandExchangeDatabase()->list();
 ```
 
 
 ### OldSchoolGrandExchange
 
-Create an instance: `const old_school_grand_exchange = client.old_school_grand_exchange`
+Create an instance: `$old_school_grand_exchange = $client->OldSchoolGrandExchange();`
 
 #### Operations
 
@@ -355,14 +360,15 @@ Create an instance: `const old_school_grand_exchange = client.old_school_grand_e
 
 #### Example: List
 
-```ts
-const old_school_grand_exchanges = await client.old_school_grand_exchange.list()
+```php
+// list() returns an array of OldSchoolGrandExchange records (throws on error).
+$old_school_grand_exchanges = $client->OldSchoolGrandExchange()->list();
 ```
 
 
 ### PlayerRanking
 
-Create an instance: `const player_ranking = client.player_ranking`
+Create an instance: `$player_ranking = $client->PlayerRanking();`
 
 #### Operations
 
@@ -380,8 +386,9 @@ Create an instance: `const player_ranking = client.player_ranking`
 
 #### Example: List
 
-```ts
-const player_rankings = await client.player_ranking.list()
+```php
+// list() returns an array of PlayerRanking records (throws on error).
+$player_rankings = $client->PlayerRanking()->list();
 ```
 
 
@@ -456,7 +463,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$grandexchangedatabase = $client->grandexchangedatabase();
+$grandexchangedatabase = $client->GrandExchangeDatabase();
 $grandexchangedatabase->load(["id" => "example_id"]);
 
 // $grandexchangedatabase->dataGet() now returns the loaded grandexchangedatabase data

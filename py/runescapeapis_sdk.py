@@ -220,57 +220,27 @@ class RunescapeApisSDK:
         }
 
 
-    @property
-    def grand_exchange_database(self):
-        """Idiomatic facade: client.grand_exchange_database.list() / client.grand_exchange_database.load({"id": ...})."""
-        from entity.grand_exchange_database_entity import GrandExchangeDatabaseEntity
-        cached = getattr(self, "_grand_exchange_database", None)
-        if cached is None:
-            cached = GrandExchangeDatabaseEntity(self, None)
-            self._grand_exchange_database = cached
-        return cached
-
-    def GrandExchangeDatabase(self, data=None):
-        # Deprecated: use client.grand_exchange_database instead.
+    def GrandExchangeDatabase(self, data=None) -> "GrandExchangeDatabaseEntity":
+        """Entity factory: client.GrandExchangeDatabase().list({}) / client.GrandExchangeDatabase().load({"id": ...})."""
         from entity.grand_exchange_database_entity import GrandExchangeDatabaseEntity
         return GrandExchangeDatabaseEntity(self, data)
 
 
-    @property
-    def old_school_grand_exchange(self):
-        """Idiomatic facade: client.old_school_grand_exchange.list() / client.old_school_grand_exchange.load({"id": ...})."""
-        from entity.old_school_grand_exchange_entity import OldSchoolGrandExchangeEntity
-        cached = getattr(self, "_old_school_grand_exchange", None)
-        if cached is None:
-            cached = OldSchoolGrandExchangeEntity(self, None)
-            self._old_school_grand_exchange = cached
-        return cached
-
-    def OldSchoolGrandExchange(self, data=None):
-        # Deprecated: use client.old_school_grand_exchange instead.
+    def OldSchoolGrandExchange(self, data=None) -> "OldSchoolGrandExchangeEntity":
+        """Entity factory: client.OldSchoolGrandExchange().list({}) / client.OldSchoolGrandExchange().load({"id": ...})."""
         from entity.old_school_grand_exchange_entity import OldSchoolGrandExchangeEntity
         return OldSchoolGrandExchangeEntity(self, data)
 
 
-    @property
-    def player_ranking(self):
-        """Idiomatic facade: client.player_ranking.list() / client.player_ranking.load({"id": ...})."""
-        from entity.player_ranking_entity import PlayerRankingEntity
-        cached = getattr(self, "_player_ranking", None)
-        if cached is None:
-            cached = PlayerRankingEntity(self, None)
-            self._player_ranking = cached
-        return cached
-
-    def PlayerRanking(self, data=None):
-        # Deprecated: use client.player_ranking instead.
+    def PlayerRanking(self, data=None) -> "PlayerRankingEntity":
+        """Entity factory: client.PlayerRanking().list({}) / client.PlayerRanking().load({"id": ...})."""
         from entity.player_ranking_entity import PlayerRankingEntity
         return PlayerRankingEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "RunescapeApisSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -290,3 +260,11 @@ class RunescapeApisSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.grand_exchange_database_entity import GrandExchangeDatabaseEntity
+    from entity.old_school_grand_exchange_entity import OldSchoolGrandExchangeEntity
+    from entity.player_ranking_entity import PlayerRankingEntity
