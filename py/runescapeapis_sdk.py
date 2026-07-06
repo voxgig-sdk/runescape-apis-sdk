@@ -221,19 +221,19 @@ class RunescapeApisSDK:
 
 
     def GrandExchangeDatabase(self, data=None) -> "GrandExchangeDatabaseEntity":
-        """Entity factory: client.GrandExchangeDatabase().list({}) / client.GrandExchangeDatabase().load({"id": ...})."""
+        """Entity factory: client.GrandExchangeDatabase().list() / client.GrandExchangeDatabase().load({"id": ...})."""
         from entity.grand_exchange_database_entity import GrandExchangeDatabaseEntity
         return GrandExchangeDatabaseEntity(self, data)
 
 
     def OldSchoolGrandExchange(self, data=None) -> "OldSchoolGrandExchangeEntity":
-        """Entity factory: client.OldSchoolGrandExchange().list({}) / client.OldSchoolGrandExchange().load({"id": ...})."""
+        """Entity factory: client.OldSchoolGrandExchange().list() / client.OldSchoolGrandExchange().load({"id": ...})."""
         from entity.old_school_grand_exchange_entity import OldSchoolGrandExchangeEntity
         return OldSchoolGrandExchangeEntity(self, data)
 
 
     def PlayerRanking(self, data=None) -> "PlayerRankingEntity":
-        """Entity factory: client.PlayerRanking().list({}) / client.PlayerRanking().load({"id": ...})."""
+        """Entity factory: client.PlayerRanking().list() / client.PlayerRanking().load({"id": ...})."""
         from entity.player_ranking_entity import PlayerRankingEntity
         return PlayerRankingEntity(self, data)
 

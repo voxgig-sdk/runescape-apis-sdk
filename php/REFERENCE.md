@@ -8,7 +8,7 @@ Complete API reference for the RunescapeApis PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/runescape-apis_sdk.php';
+require_once __DIR__ . '/runescapeapis_sdk.php';
 
 $client = new RunescapeApisSDK($options);
 ```
@@ -53,11 +53,11 @@ Create a new `OldSchoolGrandExchangeEntity` instance. Pass `null` for no initial
 
 Create a new `PlayerRankingEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): RunescapeApisUtility`
 
 Return a copy of the SDK utility object.
 
@@ -100,30 +100,30 @@ $grand_exchange_database = $client->GrandExchangeDatabase();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `average` | ``$OBJECT`` | No |  |
-| `current` | ``$OBJECT`` | No |  |
-| `daily` | ``$OBJECT`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `icon_large` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `item` | ``$OBJECT`` | No |  |
-| `last_config_update_runeday` | ``$INTEGER`` | No |  |
-| `letter` | ``$STRING`` | No |  |
-| `member` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `today` | ``$OBJECT`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `type_icon` | ``$STRING`` | No |  |
+| `average` | `array` | No |  |
+| `current` | `array` | No |  |
+| `daily` | `array` | No |  |
+| `description` | `string` | No |  |
+| `icon` | `string` | No |  |
+| `icon_large` | `string` | No |  |
+| `id` | `int` | No |  |
+| `item` | `array` | No |  |
+| `last_config_update_runeday` | `int` | No |  |
+| `letter` | `string` | No |  |
+| `member` | `string` | No |  |
+| `name` | `string` | No |  |
+| `today` | `array` | No |  |
+| `type` | `string` | No |  |
+| `type_icon` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->GrandExchangeDatabase()->list([]);
+$results = $client->GrandExchangeDatabase()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -131,24 +131,24 @@ $results = $client->GrandExchangeDatabase()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->GrandExchangeDatabase()->load(["id" => "grand_exchange_database_id"]);
+$result = $client->GrandExchangeDatabase()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -157,7 +157,7 @@ Set the entity match criteria.
 Create a new `GrandExchangeDatabaseEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -174,42 +174,42 @@ $old_school_grand_exchange = $client->OldSchoolGrandExchange();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `current` | ``$OBJECT`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `icon_large` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `member` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `today` | ``$OBJECT`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `type_icon` | ``$STRING`` | No |  |
+| `current` | `array` | No |  |
+| `description` | `string` | No |  |
+| `icon` | `string` | No |  |
+| `icon_large` | `string` | No |  |
+| `id` | `int` | No |  |
+| `member` | `string` | No |  |
+| `name` | `string` | No |  |
+| `today` | `array` | No |  |
+| `type` | `string` | No |  |
+| `type_icon` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->OldSchoolGrandExchange()->list([]);
+$results = $client->OldSchoolGrandExchange()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -218,7 +218,7 @@ Set the entity match criteria.
 Create a new `OldSchoolGrandExchangeEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -235,35 +235,35 @@ $player_ranking = $client->PlayerRanking();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `name` | ``$STRING`` | No |  |
-| `rank` | ``$STRING`` | No |  |
-| `score` | ``$STRING`` | No |  |
+| `name` | `string` | No |  |
+| `rank` | `string` | No |  |
+| `score` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->PlayerRanking()->list([]);
+$results = $client->PlayerRanking()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -272,7 +272,7 @@ Set the entity match criteria.
 Create a new `PlayerRankingEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

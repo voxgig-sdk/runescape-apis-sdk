@@ -105,21 +105,21 @@ grand_exchange_database := client.GrandExchangeDatabase(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `average` | ``$OBJECT`` | No |  |
-| `current` | ``$OBJECT`` | No |  |
-| `daily` | ``$OBJECT`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `icon_large` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `item` | ``$OBJECT`` | No |  |
-| `last_config_update_runeday` | ``$INTEGER`` | No |  |
-| `letter` | ``$STRING`` | No |  |
-| `member` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `today` | ``$OBJECT`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `type_icon` | ``$STRING`` | No |  |
+| `average` | `map[string]any` | No |  |
+| `current` | `map[string]any` | No |  |
+| `daily` | `map[string]any` | No |  |
+| `description` | `string` | No |  |
+| `icon` | `string` | No |  |
+| `icon_large` | `string` | No |  |
+| `id` | `int` | No |  |
+| `item` | `map[string]any` | No |  |
+| `last_config_update_runeday` | `int` | No |  |
+| `letter` | `string` | No |  |
+| `member` | `string` | No |  |
+| `name` | `string` | No |  |
+| `today` | `map[string]any` | No |  |
+| `type` | `string` | No |  |
+| `type_icon` | `string` | No |  |
 
 ### Operations
 
@@ -136,7 +136,7 @@ results, err := client.GrandExchangeDatabase(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.GrandExchangeDatabase(nil).Load(map[string]any{"id": "grand_exchange_database_id"}, nil)
+result, err := client.GrandExchangeDatabase(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -173,16 +173,16 @@ old_school_grand_exchange := client.OldSchoolGrandExchange(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `current` | ``$OBJECT`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `icon_large` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `member` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `today` | ``$OBJECT`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `type_icon` | ``$STRING`` | No |  |
+| `current` | `map[string]any` | No |  |
+| `description` | `string` | No |  |
+| `icon` | `string` | No |  |
+| `icon_large` | `string` | No |  |
+| `id` | `int` | No |  |
+| `member` | `string` | No |  |
+| `name` | `string` | No |  |
+| `today` | `map[string]any` | No |  |
+| `type` | `string` | No |  |
+| `type_icon` | `string` | No |  |
 
 ### Operations
 
@@ -228,9 +228,9 @@ player_ranking := client.PlayerRanking(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `name` | ``$STRING`` | No |  |
-| `rank` | ``$STRING`` | No |  |
-| `score` | ``$STRING`` | No |  |
+| `name` | `string` | No |  |
+| `rank` | `string` | No |  |
+| `score` | `string` | No |  |
 
 ### Operations
 

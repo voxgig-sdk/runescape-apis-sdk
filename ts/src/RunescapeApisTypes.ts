@@ -27,7 +27,23 @@ export interface GrandExchangeDatabaseLoadMatch {
   item_id: number
 }
 
-export type GrandExchangeDatabaseListMatch = Partial<GrandExchangeDatabase>
+export interface GrandExchangeDatabaseListMatch {
+  average?: Record<string, any>
+  current?: Record<string, any>
+  daily?: Record<string, any>
+  description?: string
+  icon?: string
+  icon_large?: string
+  id?: number
+  item?: Record<string, any>
+  last_config_update_runeday?: number
+  letter?: string
+  member?: string
+  name?: string
+  today?: Record<string, any>
+  type?: string
+  type_icon?: string
+}
 
 export interface OldSchoolGrandExchange {
   current?: Record<string, any>
@@ -42,7 +58,18 @@ export interface OldSchoolGrandExchange {
   type_icon?: string
 }
 
-export type OldSchoolGrandExchangeListMatch = Partial<OldSchoolGrandExchange>
+export interface OldSchoolGrandExchangeListMatch {
+  current?: Record<string, any>
+  description?: string
+  icon?: string
+  icon_large?: string
+  id?: number
+  member?: string
+  name?: string
+  today?: Record<string, any>
+  type?: string
+  type_icon?: string
+}
 
 export interface PlayerRanking {
   name?: string
@@ -50,5 +77,9 @@ export interface PlayerRanking {
   score?: string
 }
 
-export type PlayerRankingListMatch = Partial<PlayerRanking>
+export interface PlayerRankingListMatch {
+  name?: string
+  rank?: string
+  score?: string
+}
 

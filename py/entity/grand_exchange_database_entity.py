@@ -65,8 +65,13 @@ class GrandExchangeDatabaseEntity:
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch: GrandExchangeDatabaseLoadMatch, ctrl=None) -> GrandExchangeDatabase:
+    def load(self, reqmatch=None, ctrl=None) -> GrandExchangeDatabase:
         utility = self._utility
+        # reqmatch is optional: an entity with no id-like key loads with no
+        # match. Treat None as an empty match so client.GrandExchangeDatabase().load()
+        # works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "load",
             "ctrl": ctrl,
@@ -87,8 +92,12 @@ class GrandExchangeDatabaseEntity:
 
 
     
-    def list(self, reqmatch: GrandExchangeDatabaseListMatch, ctrl=None) -> list[GrandExchangeDatabase]:
+    def list(self, reqmatch=None, ctrl=None) -> list[GrandExchangeDatabase]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.GrandExchangeDatabase().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,

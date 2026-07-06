@@ -98,21 +98,21 @@ local grand_exchange_database = client:GrandExchangeDatabase(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `average` | ``$OBJECT`` | No |  |
-| `current` | ``$OBJECT`` | No |  |
-| `daily` | ``$OBJECT`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `icon_large` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `item` | ``$OBJECT`` | No |  |
-| `last_config_update_runeday` | ``$INTEGER`` | No |  |
-| `letter` | ``$STRING`` | No |  |
-| `member` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `today` | ``$OBJECT`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `type_icon` | ``$STRING`` | No |  |
+| `average` | `table` | No |  |
+| `current` | `table` | No |  |
+| `daily` | `table` | No |  |
+| `description` | `string` | No |  |
+| `icon` | `string` | No |  |
+| `icon_large` | `string` | No |  |
+| `id` | `number` | No |  |
+| `item` | `table` | No |  |
+| `last_config_update_runeday` | `number` | No |  |
+| `letter` | `string` | No |  |
+| `member` | `string` | No |  |
+| `name` | `string` | No |  |
+| `today` | `table` | No |  |
+| `type` | `string` | No |  |
+| `type_icon` | `string` | No |  |
 
 ### Operations
 
@@ -129,7 +129,7 @@ local results, err = client:GrandExchangeDatabase():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:GrandExchangeDatabase():load({ id = "grand_exchange_database_id" })
+local result, err = client:GrandExchangeDatabase():load()
 ```
 
 ### Common Methods
@@ -172,16 +172,16 @@ local old_school_grand_exchange = client:OldSchoolGrandExchange(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `current` | ``$OBJECT`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `icon_large` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `member` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `today` | ``$OBJECT`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `type_icon` | ``$STRING`` | No |  |
+| `current` | `table` | No |  |
+| `description` | `string` | No |  |
+| `icon` | `string` | No |  |
+| `icon_large` | `string` | No |  |
+| `id` | `number` | No |  |
+| `member` | `string` | No |  |
+| `name` | `string` | No |  |
+| `today` | `table` | No |  |
+| `type` | `string` | No |  |
+| `type_icon` | `string` | No |  |
 
 ### Operations
 
@@ -233,9 +233,9 @@ local player_ranking = client:PlayerRanking(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `name` | ``$STRING`` | No |  |
-| `rank` | ``$STRING`` | No |  |
-| `score` | ``$STRING`` | No |  |
+| `name` | `string` | No |  |
+| `rank` | `string` | No |  |
+| `score` | `string` | No |  |
 
 ### Operations
 

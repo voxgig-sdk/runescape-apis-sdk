@@ -38,7 +38,7 @@ class GrandExchangeDatabaseLoadMatch
     public int $item_id;
 }
 
-/** Match filter for GrandExchangeDatabase#list (any subset of GrandExchangeDatabase fields). */
+/** Request payload for GrandExchangeDatabase#list. */
 class GrandExchangeDatabaseListMatch
 {
     public ?array $average = null;
@@ -73,7 +73,7 @@ class OldSchoolGrandExchange
     public ?string $type_icon = null;
 }
 
-/** Match filter for OldSchoolGrandExchange#list (any subset of OldSchoolGrandExchange fields). */
+/** Request payload for OldSchoolGrandExchange#list. */
 class OldSchoolGrandExchangeListMatch
 {
     public ?array $current = null;
@@ -96,7 +96,7 @@ class PlayerRanking
     public ?string $score = null;
 }
 
-/** Match filter for PlayerRanking#list (any subset of PlayerRanking fields). */
+/** Request payload for PlayerRanking#list. */
 class PlayerRankingListMatch
 {
     public ?string $name = null;

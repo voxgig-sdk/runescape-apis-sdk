@@ -8,7 +8,7 @@ Complete API reference for the RunescapeApis Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'runescape-apis_sdk'
+require_relative 'RunescapeApis_sdk'
 
 client = RunescapeApisSDK.new(options)
 ```
@@ -101,30 +101,30 @@ grand_exchange_database = client.GrandExchangeDatabase
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `average` | ``$OBJECT`` | No |  |
-| `current` | ``$OBJECT`` | No |  |
-| `daily` | ``$OBJECT`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `icon_large` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `item` | ``$OBJECT`` | No |  |
-| `last_config_update_runeday` | ``$INTEGER`` | No |  |
-| `letter` | ``$STRING`` | No |  |
-| `member` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `today` | ``$OBJECT`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `type_icon` | ``$STRING`` | No |  |
+| `average` | `Hash` | No |  |
+| `current` | `Hash` | No |  |
+| `daily` | `Hash` | No |  |
+| `description` | `String` | No |  |
+| `icon` | `String` | No |  |
+| `icon_large` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `item` | `Hash` | No |  |
+| `last_config_update_runeday` | `Integer` | No |  |
+| `letter` | `String` | No |  |
+| `member` | `String` | No |  |
+| `name` | `String` | No |  |
+| `today` | `Hash` | No |  |
+| `type` | `String` | No |  |
+| `type_icon` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.GrandExchangeDatabase.list(nil)
+results = client.GrandExchangeDatabase.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -132,7 +132,7 @@ results = client.GrandExchangeDatabase.list(nil)
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.GrandExchangeDatabase.load({ "id" => "grand_exchange_database_id" })
+result = client.GrandExchangeDatabase.load()
 ```
 
 ### Common Methods
@@ -175,25 +175,25 @@ old_school_grand_exchange = client.OldSchoolGrandExchange
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `current` | ``$OBJECT`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `icon_large` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `member` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `today` | ``$OBJECT`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `type_icon` | ``$STRING`` | No |  |
+| `current` | `Hash` | No |  |
+| `description` | `String` | No |  |
+| `icon` | `String` | No |  |
+| `icon_large` | `String` | No |  |
+| `id` | `Integer` | No |  |
+| `member` | `String` | No |  |
+| `name` | `String` | No |  |
+| `today` | `Hash` | No |  |
+| `type` | `String` | No |  |
+| `type_icon` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.OldSchoolGrandExchange.list(nil)
+results = client.OldSchoolGrandExchange.list
 ```
 
 ### Common Methods
@@ -236,18 +236,18 @@ player_ranking = client.PlayerRanking
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `name` | ``$STRING`` | No |  |
-| `rank` | ``$STRING`` | No |  |
-| `score` | ``$STRING`` | No |  |
+| `name` | `String` | No |  |
+| `rank` | `String` | No |  |
+| `score` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.PlayerRanking.list(nil)
+results = client.PlayerRanking.list
 ```
 
 ### Common Methods

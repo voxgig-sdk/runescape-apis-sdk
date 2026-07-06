@@ -82,7 +82,7 @@ GrandExchangeDatabaseLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for GrandExchangeDatabase#list (any subset of GrandExchangeDatabase fields).
+# Request payload for GrandExchangeDatabase#list.
 #
 # @!attribute [rw] average
 #   @return [Hash, nil]
@@ -192,7 +192,7 @@ OldSchoolGrandExchange = Struct.new(
   keyword_init: true
 )
 
-# Match filter for OldSchoolGrandExchange#list (any subset of OldSchoolGrandExchange fields).
+# Request payload for OldSchoolGrandExchange#list.
 #
 # @!attribute [rw] current
 #   @return [Hash, nil]
@@ -254,7 +254,7 @@ PlayerRanking = Struct.new(
   keyword_init: true
 )
 
-# Match filter for PlayerRanking#list (any subset of PlayerRanking fields).
+# Request payload for PlayerRanking#list.
 #
 # @!attribute [rw] name
 #   @return [String, nil]

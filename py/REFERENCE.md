@@ -8,7 +8,7 @@ Complete API reference for the RunescapeApis Python SDK.
 ### Constructor
 
 ```python
-from runescape-apis_sdk import RunescapeApisSDK
+from runescapeapis_sdk import RunescapeApisSDK
 
 client = RunescapeApisSDK(options)
 ```
@@ -95,30 +95,30 @@ grand_exchange_database = client.GrandExchangeDatabase()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `average` | ``$OBJECT`` | No |  |
-| `current` | ``$OBJECT`` | No |  |
-| `daily` | ``$OBJECT`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `icon_large` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `item` | ``$OBJECT`` | No |  |
-| `last_config_update_runeday` | ``$INTEGER`` | No |  |
-| `letter` | ``$STRING`` | No |  |
-| `member` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `today` | ``$OBJECT`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `type_icon` | ``$STRING`` | No |  |
+| `average` | `dict` | No |  |
+| `current` | `dict` | No |  |
+| `daily` | `dict` | No |  |
+| `description` | `str` | No |  |
+| `icon` | `str` | No |  |
+| `icon_large` | `str` | No |  |
+| `id` | `int` | No |  |
+| `item` | `dict` | No |  |
+| `last_config_update_runeday` | `int` | No |  |
+| `letter` | `str` | No |  |
+| `member` | `str` | No |  |
+| `name` | `str` | No |  |
+| `today` | `dict` | No |  |
+| `type` | `str` | No |  |
+| `type_icon` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.GrandExchangeDatabase().list({})
+results = client.GrandExchangeDatabase().list()
 for grand_exchange_database in results:
     print(grand_exchange_database)
 ```
@@ -128,7 +128,7 @@ for grand_exchange_database in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.GrandExchangeDatabase().load({"id": "grand_exchange_database_id"})
+result = client.GrandExchangeDatabase().load()
 ```
 
 ### Common Methods
@@ -170,25 +170,25 @@ old_school_grand_exchange = client.OldSchoolGrandExchange()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `current` | ``$OBJECT`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `icon_large` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `member` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `today` | ``$OBJECT`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `type_icon` | ``$STRING`` | No |  |
+| `current` | `dict` | No |  |
+| `description` | `str` | No |  |
+| `icon` | `str` | No |  |
+| `icon_large` | `str` | No |  |
+| `id` | `int` | No |  |
+| `member` | `str` | No |  |
+| `name` | `str` | No |  |
+| `today` | `dict` | No |  |
+| `type` | `str` | No |  |
+| `type_icon` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.OldSchoolGrandExchange().list({})
+results = client.OldSchoolGrandExchange().list()
 for old_school_grand_exchange in results:
     print(old_school_grand_exchange)
 ```
@@ -232,18 +232,18 @@ player_ranking = client.PlayerRanking()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `name` | ``$STRING`` | No |  |
-| `rank` | ``$STRING`` | No |  |
-| `score` | ``$STRING`` | No |  |
+| `name` | `str` | No |  |
+| `rank` | `str` | No |  |
+| `score` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.PlayerRanking().list({})
+results = client.PlayerRanking().list()
 for player_ranking in results:
     print(player_ranking)
 ```

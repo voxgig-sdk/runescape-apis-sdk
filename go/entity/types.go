@@ -32,8 +32,7 @@ type GrandExchangeDatabaseLoadMatch struct {
 	ItemId int `json:"item_id"`
 }
 
-// GrandExchangeDatabaseListMatch mirrors the grand_exchange_database fields as an all-optional match
-// filter (Go analog of Partial<GrandExchangeDatabase>).
+// GrandExchangeDatabaseListMatch is the typed request payload for GrandExchangeDatabase.ListTyped.
 type GrandExchangeDatabaseListMatch struct {
 	Average *map[string]any `json:"average,omitempty"`
 	Current *map[string]any `json:"current,omitempty"`
@@ -66,8 +65,7 @@ type OldSchoolGrandExchange struct {
 	TypeIcon *string `json:"type_icon,omitempty"`
 }
 
-// OldSchoolGrandExchangeListMatch mirrors the old_school_grand_exchange fields as an all-optional match
-// filter (Go analog of Partial<OldSchoolGrandExchange>).
+// OldSchoolGrandExchangeListMatch is the typed request payload for OldSchoolGrandExchange.ListTyped.
 type OldSchoolGrandExchangeListMatch struct {
 	Current *map[string]any `json:"current,omitempty"`
 	Description *string `json:"description,omitempty"`
@@ -88,8 +86,7 @@ type PlayerRanking struct {
 	Score *string `json:"score,omitempty"`
 }
 
-// PlayerRankingListMatch mirrors the player_ranking fields as an all-optional match
-// filter (Go analog of Partial<PlayerRanking>).
+// PlayerRankingListMatch is the typed request payload for PlayerRanking.ListTyped.
 type PlayerRankingListMatch struct {
 	Name *string `json:"name,omitempty"`
 	Rank *string `json:"rank,omitempty"`

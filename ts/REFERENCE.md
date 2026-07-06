@@ -140,21 +140,21 @@ const grand_exchange_database = client.GrandExchangeDatabase()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `average` | ``$OBJECT`` | No |  |
-| `current` | ``$OBJECT`` | No |  |
-| `daily` | ``$OBJECT`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `icon_large` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `item` | ``$OBJECT`` | No |  |
-| `last_config_update_runeday` | ``$INTEGER`` | No |  |
-| `letter` | ``$STRING`` | No |  |
-| `member` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `today` | ``$OBJECT`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `type_icon` | ``$STRING`` | No |  |
+| `average` | `Record<string, any>` | No |  |
+| `current` | `Record<string, any>` | No |  |
+| `daily` | `Record<string, any>` | No |  |
+| `description` | `string` | No |  |
+| `icon` | `string` | No |  |
+| `icon_large` | `string` | No |  |
+| `id` | `number` | No |  |
+| `item` | `Record<string, any>` | No |  |
+| `last_config_update_runeday` | `number` | No |  |
+| `letter` | `string` | No |  |
+| `member` | `string` | No |  |
+| `name` | `string` | No |  |
+| `today` | `Record<string, any>` | No |  |
+| `type` | `string` | No |  |
+| `type_icon` | `string` | No |  |
 
 ### Operations
 
@@ -171,7 +171,7 @@ const results = await client.GrandExchangeDatabase().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GrandExchangeDatabase().load({ id: 'grand_exchange_database_id' })
+const result = await client.GrandExchangeDatabase().load()
 ```
 
 ### Common Methods
@@ -212,16 +212,16 @@ const old_school_grand_exchange = client.OldSchoolGrandExchange()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `current` | ``$OBJECT`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `icon` | ``$STRING`` | No |  |
-| `icon_large` | ``$STRING`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `member` | ``$STRING`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `today` | ``$OBJECT`` | No |  |
-| `type` | ``$STRING`` | No |  |
-| `type_icon` | ``$STRING`` | No |  |
+| `current` | `Record<string, any>` | No |  |
+| `description` | `string` | No |  |
+| `icon` | `string` | No |  |
+| `icon_large` | `string` | No |  |
+| `id` | `number` | No |  |
+| `member` | `string` | No |  |
+| `name` | `string` | No |  |
+| `today` | `Record<string, any>` | No |  |
+| `type` | `string` | No |  |
+| `type_icon` | `string` | No |  |
 
 ### Operations
 
@@ -271,9 +271,9 @@ const player_ranking = client.PlayerRanking()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `name` | ``$STRING`` | No |  |
-| `rank` | ``$STRING`` | No |  |
-| `score` | ``$STRING`` | No |  |
+| `name` | `string` | No |  |
+| `rank` | `string` | No |  |
+| `score` | `string` | No |  |
 
 ### Operations
 
