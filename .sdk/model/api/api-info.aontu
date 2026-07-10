@@ -16,9 +16,9 @@ main: {
           url: "https://secure.runescape.com"
         }
       ]
+      summary: "Access comprehensive data from RuneScape with various APIs, including the Bestiary API, Grand Exchange Database API, and Hiscores APIs."
       title: "RuneScape APIs"
       version: "1.0.0"
+      website: "https://secure.runescape.com"
     }
   }
-}
-

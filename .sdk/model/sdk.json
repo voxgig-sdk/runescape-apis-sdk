@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -789,14 +786,17 @@
           "url": "https://runescape.wiki/w/Application_programming_interface"
         },
         "description": "Access comprehensive data from RuneScape with various APIs, including the Bestiary API, Grand Exchange Database API, and Hiscores APIs. These APIs allow developers, fansite operators, and bots to retrieve detailed information about the game, including player statistics, item data, NPCs, and more. Note that most RuneScape APIs require backend calls due to CORS restrictions but can be accessed via Chrome extensions.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "RuneScape Official API Server",
             "url": "https://secure.runescape.com"
           }
         ],
+        "summary": "Access comprehensive data from RuneScape with various APIs, including the Bestiary API, Grand Exchange Database API, and Hiscores APIs.",
         "title": "RuneScape APIs",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://secure.runescape.com"
       },
       "option": {},
       "target": {
@@ -849,6 +849,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -899,6 +902,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

@@ -35,7 +35,7 @@ class GrandExchangeDatabase
 /** Request payload for GrandExchangeDatabase#load. */
 class GrandExchangeDatabaseLoadMatch
 {
-    public int $item_id;
+    public ?int $item_id = null;
 }
 
 /** Request payload for GrandExchangeDatabase#list. */

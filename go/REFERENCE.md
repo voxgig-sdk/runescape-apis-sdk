@@ -98,7 +98,8 @@ same parameters as `Direct()`.
 ## GrandExchangeDatabaseEntity
 
 ```go
-grand_exchange_database := client.GrandExchangeDatabase(nil)
+grandExchangeDatabase := client.GrandExchangeDatabase(nil)
+fmt.Println(grandExchangeDatabase.GetName()) // "grand_exchange_database"
 ```
 
 ### Fields
@@ -129,6 +130,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.GrandExchangeDatabase(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -137,6 +142,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.GrandExchangeDatabase(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -166,7 +175,8 @@ Return the entity name.
 ## OldSchoolGrandExchangeEntity
 
 ```go
-old_school_grand_exchange := client.OldSchoolGrandExchange(nil)
+oldSchoolGrandExchange := client.OldSchoolGrandExchange(nil)
+fmt.Println(oldSchoolGrandExchange.GetName()) // "old_school_grand_exchange"
 ```
 
 ### Fields
@@ -192,6 +202,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.OldSchoolGrandExchange(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods
@@ -221,7 +235,8 @@ Return the entity name.
 ## PlayerRankingEntity
 
 ```go
-player_ranking := client.PlayerRanking(nil)
+playerRanking := client.PlayerRanking(nil)
+fmt.Println(playerRanking.GetName()) // "player_ranking"
 ```
 
 ### Fields
@@ -240,6 +255,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.PlayerRanking(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 ### Common Methods

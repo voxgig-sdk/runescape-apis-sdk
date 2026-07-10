@@ -50,21 +50,21 @@ import (
 func main() {
     client := sdk.New()
 
-    // List grandexchangedatabase records — the value is the array of records itself.
-    grandexchangedatabases, err := client.GrandExchangeDatabase(nil).List(nil, nil)
+    // List grandExchangeDatabase records — the value is the array of records itself.
+    grandExchangeDatabases, err := client.GrandExchangeDatabase(nil).List(nil, nil)
     if err != nil {
         panic(err)
     }
-    for _, item := range grandexchangedatabases.([]any) {
+    for _, item := range grandExchangeDatabases.([]any) {
         fmt.Println(item)
     }
 
-    // Load a single grandexchangedatabase — the value is the loaded record.
-    grandexchangedatabase, err := client.GrandExchangeDatabase(nil).Load(nil, nil)
+    // Load a single grandExchangeDatabase — the value is the loaded record.
+    grandExchangeDatabase, err := client.GrandExchangeDatabase(nil).Load(nil, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(grandexchangedatabase)
+    fmt.Println(grandExchangeDatabase)
 }
 ```
 
@@ -144,13 +144,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-grandexchangedatabase, err := client.GrandExchangeDatabase(nil).List(
+grandExchangeDatabase, err := client.GrandExchangeDatabase(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(grandexchangedatabase) // the returned mock data
+fmt.Println(grandExchangeDatabase) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -258,9 +258,9 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    grandexchangedatabase, err := client.GrandExchangeDatabase(nil).List(map[string]any{/* fields */}, nil)
+    grandExchangeDatabase, err := client.GrandExchangeDatabase(nil).List(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // grandexchangedatabase is the returned record
+    // grandExchangeDatabase is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -329,7 +329,7 @@ API path: `/m=hiscore/ranking.json`
 
 ### GrandExchangeDatabase
 
-Create an instance: `grand_exchange_database := client.GrandExchangeDatabase(nil)`
+Create an instance: `grandExchangeDatabase := client.GrandExchangeDatabase(nil)`
 
 #### Operations
 
@@ -361,27 +361,27 @@ Create an instance: `grand_exchange_database := client.GrandExchangeDatabase(nil
 #### Example: Load
 
 ```go
-grand_exchange_database, err := client.GrandExchangeDatabase(nil).Load(nil, nil)
+grandExchangeDatabase, err := client.GrandExchangeDatabase(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(grand_exchange_database) // the loaded record
+fmt.Println(grandExchangeDatabase) // the loaded record
 ```
 
 #### Example: List
 
 ```go
-grand_exchange_databases, err := client.GrandExchangeDatabase(nil).List(nil, nil)
+grandExchangeDatabases, err := client.GrandExchangeDatabase(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(grand_exchange_databases) // the array of records
+fmt.Println(grandExchangeDatabases) // the array of records
 ```
 
 
 ### OldSchoolGrandExchange
 
-Create an instance: `old_school_grand_exchange := client.OldSchoolGrandExchange(nil)`
+Create an instance: `oldSchoolGrandExchange := client.OldSchoolGrandExchange(nil)`
 
 #### Operations
 
@@ -407,17 +407,17 @@ Create an instance: `old_school_grand_exchange := client.OldSchoolGrandExchange(
 #### Example: List
 
 ```go
-old_school_grand_exchanges, err := client.OldSchoolGrandExchange(nil).List(nil, nil)
+oldSchoolGrandExchanges, err := client.OldSchoolGrandExchange(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(old_school_grand_exchanges) // the array of records
+fmt.Println(oldSchoolGrandExchanges) // the array of records
 ```
 
 
 ### PlayerRanking
 
-Create an instance: `player_ranking := client.PlayerRanking(nil)`
+Create an instance: `playerRanking := client.PlayerRanking(nil)`
 
 #### Operations
 
@@ -436,11 +436,11 @@ Create an instance: `player_ranking := client.PlayerRanking(nil)`
 #### Example: List
 
 ```go
-player_rankings, err := client.PlayerRanking(nil).List(nil, nil)
+playerRankings, err := client.PlayerRanking(nil).List(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(player_rankings) // the array of records
+fmt.Println(playerRankings) // the array of records
 ```
 
 
