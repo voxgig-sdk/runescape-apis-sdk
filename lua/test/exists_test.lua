@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- RunescapeApis SDK exists test
 
 local sdk = require("runescape-apis_sdk")
 
