@@ -43,8 +43,8 @@ class RunescapeApisTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('RUNESCAPEAPIS_TEST_LIVE');
-        $override = self::getenv('RUNESCAPEAPIS_TEST_OVERRIDE');
+        $live = self::getenv('RUNESCAPE_APIS_TEST_LIVE');
+        $override = self::getenv('RUNESCAPE_APIS_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class RunescapeApisTestRunner
             }
         }
 
-        $explain = self::getenv('RUNESCAPEAPIS_TEST_EXPLAIN');
+        $explain = self::getenv('RUNESCAPE_APIS_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['RUNESCAPEAPIS_TEST_EXPLAIN'] = $explain;
+            $m['RUNESCAPE_APIS_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

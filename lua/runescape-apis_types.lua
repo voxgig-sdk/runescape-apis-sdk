@@ -10,18 +10,21 @@
 ---@field average? table
 ---@field current? table
 ---@field daily? table
+---@field day180? table
+---@field day30? table
+---@field day90? table
 ---@field description? string
 ---@field icon? string
 ---@field icon_large? string
 ---@field id? number
----@field item? table
----@field last_config_update_runeday? number
+---@field items? number
+---@field lastConfigUpdateRuneday? number
 ---@field letter? string
----@field member? string
+---@field members? string
 ---@field name? string
 ---@field today? table
 ---@field type? string
----@field type_icon? string
+---@field typeIcon? string
 
 ---@class GrandExchangeDatabaseLoadMatch
 ---@field item_id? number
@@ -30,18 +33,21 @@
 ---@field average? table
 ---@field current? table
 ---@field daily? table
+---@field day180? table
+---@field day30? table
+---@field day90? table
 ---@field description? string
 ---@field icon? string
 ---@field icon_large? string
 ---@field id? number
----@field item? table
----@field last_config_update_runeday? number
+---@field items? number
+---@field lastConfigUpdateRuneday? number
 ---@field letter? string
----@field member? string
+---@field members? string
 ---@field name? string
 ---@field today? table
 ---@field type? string
----@field type_icon? string
+---@field typeIcon? string
 
 ---@class OldSchoolGrandExchange
 ---@field current? table
@@ -49,11 +55,11 @@
 ---@field icon? string
 ---@field icon_large? string
 ---@field id? number
----@field member? string
+---@field members? string
 ---@field name? string
 ---@field today? table
 ---@field type? string
----@field type_icon? string
+---@field typeIcon? string
 
 ---@class OldSchoolGrandExchangeListMatch
 ---@field current? table
@@ -61,11 +67,11 @@
 ---@field icon? string
 ---@field icon_large? string
 ---@field id? number
----@field member? string
+---@field members? string
 ---@field name? string
 ---@field today? table
 ---@field type? string
----@field type_icon? string
+---@field typeIcon? string
 
 ---@class PlayerRanking
 ---@field name? string

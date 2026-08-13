@@ -75,12 +75,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-grandexchangedatabases, err := client.GrandExchangeDatabase(nil).List(nil, nil)
+oldschoolgrandexchanges, err := client.OldSchoolGrandExchange(nil).List(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = grandexchangedatabases
+_ = oldschoolgrandexchanges
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -144,13 +144,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-grandExchangeDatabase, err := client.GrandExchangeDatabase(nil).List(
+oldSchoolGrandExchange, err := client.OldSchoolGrandExchange(nil).List(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(grandExchangeDatabase) // the returned mock data
+fmt.Println(oldSchoolGrandExchange) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -274,18 +274,21 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | `"average"` |  |
 | `"current"` |  |
 | `"daily"` |  |
+| `"day180"` |  |
+| `"day30"` |  |
+| `"day90"` |  |
 | `"description"` |  |
 | `"icon"` |  |
 | `"icon_large"` |  |
 | `"id"` |  |
-| `"item"` |  |
-| `"last_config_update_runeday"` |  |
+| `"items"` |  |
+| `"lastConfigUpdateRuneday"` |  |
 | `"letter"` |  |
-| `"member"` |  |
+| `"members"` |  |
 | `"name"` |  |
 | `"today"` |  |
 | `"type"` |  |
-| `"type_icon"` |  |
+| `"typeIcon"` |  |
 
 Operations: List, Load.
 
@@ -300,11 +303,11 @@ API path: `/m=itemdb_rs/api/catalogue/items.json`
 | `"icon"` |  |
 | `"icon_large"` |  |
 | `"id"` |  |
-| `"member"` |  |
+| `"members"` |  |
 | `"name"` |  |
 | `"today"` |  |
 | `"type"` |  |
-| `"type_icon"` |  |
+| `"typeIcon"` |  |
 
 Operations: List.
 
@@ -345,18 +348,21 @@ Create an instance: `grandExchangeDatabase := client.GrandExchangeDatabase(nil)`
 | `average` | `map[string]any` |  |
 | `current` | `map[string]any` |  |
 | `daily` | `map[string]any` |  |
+| `day180` | `map[string]any` |  |
+| `day30` | `map[string]any` |  |
+| `day90` | `map[string]any` |  |
 | `description` | `string` |  |
 | `icon` | `string` |  |
 | `icon_large` | `string` |  |
 | `id` | `int` |  |
-| `item` | `map[string]any` |  |
-| `last_config_update_runeday` | `int` |  |
+| `items` | `int` |  |
+| `lastConfigUpdateRuneday` | `int` |  |
 | `letter` | `string` |  |
-| `member` | `string` |  |
+| `members` | `string` |  |
 | `name` | `string` |  |
 | `today` | `map[string]any` |  |
 | `type` | `string` |  |
-| `type_icon` | `string` |  |
+| `typeIcon` | `string` |  |
 
 #### Example: Load
 
@@ -398,11 +404,11 @@ Create an instance: `oldSchoolGrandExchange := client.OldSchoolGrandExchange(nil
 | `icon` | `string` |  |
 | `icon_large` | `string` |  |
 | `id` | `int` |  |
-| `member` | `string` |  |
+| `members` | `string` |  |
 | `name` | `string` |  |
 | `today` | `map[string]any` |  |
 | `type` | `string` |  |
-| `type_icon` | `string` |  |
+| `typeIcon` | `string` |  |
 
 #### Example: List
 
@@ -517,11 +523,11 @@ Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-grandexchangedatabase := client.GrandExchangeDatabase(nil)
-grandexchangedatabase.List(nil, nil)
+oldschoolgrandexchange := client.OldSchoolGrandExchange(nil)
+oldschoolgrandexchange.List(nil, nil)
 
-// grandexchangedatabase.Data() now returns the grandexchangedatabase data from the last list
-// grandexchangedatabase.Match() returns the last match criteria
+// oldschoolgrandexchange.Data() now returns the oldschoolgrandexchange data from the last list
+// oldschoolgrandexchange.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

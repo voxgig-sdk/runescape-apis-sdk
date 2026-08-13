@@ -26,8 +26,8 @@ import {
 describe('GrandExchangeDatabaseEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when RUNESCAPEAPIS_TEST_LIVE=TRUE.
-  afterEach(liveDelay('RUNESCAPEAPIS_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when RUNESCAPE_APIS_TEST_LIVE=TRUE.
+  afterEach(liveDelay('RUNESCAPE_APIS_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = RunescapeApisSDK.test()
@@ -63,13 +63,13 @@ describe('GrandExchangeDatabaseEntity', async () => {
     const grand_exchange_database_ref01_ent = client.GrandExchangeDatabase()
     const grand_exchange_database_ref01_match: any = {}
 
-    const grand_exchange_database_ref01_list = await grand_exchange_database_ref01_ent.list(grand_exchange_database_ref01_match)
+    const grand_exchange_database_ref01_list = (await grand_exchange_database_ref01_ent.list(grand_exchange_database_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const grand_exchange_database_ref01_match_dt0: any = {}
     grand_exchange_database_ref01_match_dt0.id = grand_exchange_database_ref01_data.id
-    const grand_exchange_database_ref01_data_dt0 = await grand_exchange_database_ref01_ent.load(grand_exchange_database_ref01_match_dt0)
+    const grand_exchange_database_ref01_data_dt0 = (await grand_exchange_database_ref01_ent.load(grand_exchange_database_ref01_match_dt0)).data()
     assert(grand_exchange_database_ref01_data_dt0.id === grand_exchange_database_ref01_data.id)
 
 

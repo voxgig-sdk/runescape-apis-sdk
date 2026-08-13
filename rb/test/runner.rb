@@ -23,8 +23,8 @@ module RunescapeApisTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("RUNESCAPEAPIS_TEST_LIVE")
-    override = getenv("RUNESCAPEAPIS_TEST_OVERRIDE")
+    live = getenv("RUNESCAPE_APIS_TEST_LIVE")
+    override = getenv("RUNESCAPE_APIS_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module RunescapeApisTestRunner
       end
     end
 
-    explain = getenv("RUNESCAPEAPIS_TEST_EXPLAIN")
-    m["RUNESCAPEAPIS_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("RUNESCAPE_APIS_TEST_EXPLAIN")
+    m["RUNESCAPE_APIS_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'RunescapeApis',
   }
 
 
@@ -83,87 +83,108 @@ class Config {
         },
         {
           "active": true,
+          "name": "day180",
+          "req": false,
+          "type": "`$OBJECT`",
+          "index$": 3
+        },
+        {
+          "active": true,
+          "name": "day30",
+          "req": false,
+          "type": "`$OBJECT`",
+          "index$": 4
+        },
+        {
+          "active": true,
+          "name": "day90",
+          "req": false,
+          "type": "`$OBJECT`",
+          "index$": 5
+        },
+        {
+          "active": true,
           "name": "description",
           "req": false,
           "type": "`$STRING`",
-          "index$": 3
+          "index$": 6
         },
         {
           "active": true,
           "name": "icon",
           "req": false,
           "type": "`$STRING`",
-          "index$": 4
+          "index$": 7
         },
         {
           "active": true,
           "name": "icon_large",
           "req": false,
           "type": "`$STRING`",
-          "index$": 5
+          "index$": 8
         },
         {
           "active": true,
           "name": "id",
           "req": false,
           "type": "`$INTEGER`",
-          "index$": 6
+          "index$": 9
         },
         {
           "active": true,
-          "name": "item",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 7
-        },
-        {
-          "active": true,
-          "name": "last_config_update_runeday",
+          "name": "items",
           "req": false,
           "type": "`$INTEGER`",
-          "index$": 8
+          "index$": 10
+        },
+        {
+          "active": true,
+          "name": "lastConfigUpdateRuneday",
+          "req": false,
+          "type": "`$INTEGER`",
+          "index$": 11
         },
         {
           "active": true,
           "name": "letter",
           "req": false,
           "type": "`$STRING`",
-          "index$": 9
-        },
-        {
-          "active": true,
-          "name": "member",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 10
-        },
-        {
-          "active": true,
-          "name": "name",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 11
-        },
-        {
-          "active": true,
-          "name": "today",
-          "req": false,
-          "type": "`$OBJECT`",
           "index$": 12
         },
         {
           "active": true,
-          "name": "type",
+          "name": "members",
           "req": false,
           "type": "`$STRING`",
           "index$": 13
         },
         {
           "active": true,
-          "name": "type_icon",
+          "name": "name",
           "req": false,
           "type": "`$STRING`",
           "index$": 14
+        },
+        {
+          "active": true,
+          "name": "today",
+          "req": false,
+          "type": "`$OBJECT`",
+          "index$": 15
+        },
+        {
+          "active": true,
+          "name": "type",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 16
+        },
+        {
+          "active": true,
+          "name": "typeIcon",
+          "req": false,
+          "type": "`$STRING`",
+          "index$": 17
         }
       ],
       "name": "grand_exchange_database",
@@ -202,6 +223,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/m=itemdb_rs/api/catalogue/items.json",
               "parts": [
@@ -219,7 +241,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.items`"
               },
               "index$": 0
             },
@@ -237,6 +259,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/m=itemdb_rs/api/catalogue/category.json",
               "parts": [
@@ -277,6 +300,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/m=itemdb_rs/obj_big.gif",
               "parts": [
@@ -308,6 +332,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/m=itemdb_rs/obj_sprite.gif",
               "parts": [
@@ -339,6 +364,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/m=itemdb_rs/api/catalogue/detail.json",
               "parts": [
@@ -354,7 +380,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.item`"
               },
               "index$": 2
             },
@@ -373,6 +399,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/m=itemdb_rs/api/graph/{itemId}.json",
               "parts": [
@@ -395,6 +422,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/m=itemdb_rs/api/info.json",
               "parts": [
@@ -460,7 +488,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "member",
+          "name": "members",
           "req": false,
           "type": "`$STRING`",
           "index$": 5
@@ -488,7 +516,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "type_icon",
+          "name": "typeIcon",
           "req": false,
           "type": "`$STRING`",
           "index$": 9
@@ -530,6 +558,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/m=itemdb_oldschool/api/catalogue/items.json",
               "parts": [
@@ -547,7 +576,7 @@ class Config {
               },
               "transform": {
                 "req": "`reqdata`",
-                "res": "`body`"
+                "res": "`body.items`"
               },
               "index$": 0
             }
@@ -619,6 +648,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/m=hiscore/ranking.json",
               "parts": [

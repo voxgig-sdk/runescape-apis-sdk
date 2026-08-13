@@ -104,18 +104,21 @@ grand_exchange_database = client.GrandExchangeDatabase
 | `average` | `Hash` | No |  |
 | `current` | `Hash` | No |  |
 | `daily` | `Hash` | No |  |
+| `day180` | `Hash` | No |  |
+| `day30` | `Hash` | No |  |
+| `day90` | `Hash` | No |  |
 | `description` | `String` | No |  |
 | `icon` | `String` | No |  |
 | `icon_large` | `String` | No |  |
 | `id` | `Integer` | No |  |
-| `item` | `Hash` | No |  |
-| `last_config_update_runeday` | `Integer` | No |  |
+| `items` | `Integer` | No |  |
+| `lastConfigUpdateRuneday` | `Integer` | No |  |
 | `letter` | `String` | No |  |
-| `member` | `String` | No |  |
+| `members` | `String` | No |  |
 | `name` | `String` | No |  |
 | `today` | `Hash` | No |  |
 | `type` | `String` | No |  |
-| `type_icon` | `String` | No |  |
+| `typeIcon` | `String` | No |  |
 
 ### Operations
 
@@ -180,11 +183,11 @@ old_school_grand_exchange = client.OldSchoolGrandExchange
 | `icon` | `String` | No |  |
 | `icon_large` | `String` | No |  |
 | `id` | `Integer` | No |  |
-| `member` | `String` | No |  |
+| `members` | `String` | No |  |
 | `name` | `String` | No |  |
 | `today` | `Hash` | No |  |
 | `type` | `String` | No |  |
-| `type_icon` | `String` | No |  |
+| `typeIcon` | `String` | No |  |
 
 ### Operations
 

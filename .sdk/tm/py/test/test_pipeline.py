@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import RunescapeApisSDK
-from core.error import RunescapeApisError
-from core.result import RunescapeApisResult
-from core.response import RunescapeApisResponse
-from core.spec import RunescapeApisSpec
-from feature.base_feature import RunescapeApisBaseFeature
+from projectname_sdk.core.error import RunescapeApisError
+from projectname_sdk.core.result import RunescapeApisResult
+from projectname_sdk.core.response import RunescapeApisResponse
+from projectname_sdk.core.spec import RunescapeApisSpec
+from projectname_sdk.feature.base_feature import RunescapeApisBaseFeature
 
 
 def _client():

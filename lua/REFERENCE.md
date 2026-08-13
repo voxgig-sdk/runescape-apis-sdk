@@ -101,18 +101,21 @@ local grand_exchange_database = client:GrandExchangeDatabase(nil)
 | `average` | `table` | No |  |
 | `current` | `table` | No |  |
 | `daily` | `table` | No |  |
+| `day180` | `table` | No |  |
+| `day30` | `table` | No |  |
+| `day90` | `table` | No |  |
 | `description` | `string` | No |  |
 | `icon` | `string` | No |  |
 | `icon_large` | `string` | No |  |
 | `id` | `number` | No |  |
-| `item` | `table` | No |  |
-| `last_config_update_runeday` | `number` | No |  |
+| `items` | `number` | No |  |
+| `lastConfigUpdateRuneday` | `number` | No |  |
 | `letter` | `string` | No |  |
-| `member` | `string` | No |  |
+| `members` | `string` | No |  |
 | `name` | `string` | No |  |
 | `today` | `table` | No |  |
 | `type` | `string` | No |  |
-| `type_icon` | `string` | No |  |
+| `typeIcon` | `string` | No |  |
 
 ### Operations
 
@@ -177,11 +180,11 @@ local old_school_grand_exchange = client:OldSchoolGrandExchange(nil)
 | `icon` | `string` | No |  |
 | `icon_large` | `string` | No |  |
 | `id` | `number` | No |  |
-| `member` | `string` | No |  |
+| `members` | `string` | No |  |
 | `name` | `string` | No |  |
 | `today` | `table` | No |  |
 | `type` | `string` | No |  |
-| `type_icon` | `string` | No |  |
+| `typeIcon` | `string` | No |  |
 
 ### Operations
 

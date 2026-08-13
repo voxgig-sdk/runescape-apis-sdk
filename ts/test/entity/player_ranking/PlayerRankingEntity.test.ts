@@ -26,8 +26,8 @@ import {
 describe('PlayerRankingEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when RUNESCAPEAPIS_TEST_LIVE=TRUE.
-  afterEach(liveDelay('RUNESCAPEAPIS_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when RUNESCAPE_APIS_TEST_LIVE=TRUE.
+  afterEach(liveDelay('RUNESCAPE_APIS_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = RunescapeApisSDK.test()
@@ -63,7 +63,7 @@ describe('PlayerRankingEntity', async () => {
     const player_ranking_ref01_ent = client.PlayerRanking()
     const player_ranking_ref01_match: any = {}
 
-    const player_ranking_ref01_list = await player_ranking_ref01_ent.list(player_ranking_ref01_match)
+    const player_ranking_ref01_list = (await player_ranking_ref01_ent.list(player_ranking_ref01_match)).map((e: any) => e.data())
 
 
   })

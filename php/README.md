@@ -49,7 +49,7 @@ try {
 
 ```php
 try {
-    // load() returns the bare GrandExchangeDatabase record (throws on error).
+    // load() returns the ENTITY — call data_get() for the GrandExchangeDatabase record (throws on error).
     $grandexchangedatabase = $client->GrandExchangeDatabase()->load();
     print_r($grandexchangedatabase);
 } catch (\Throwable $err) {
@@ -65,7 +65,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $grandexchangedatabases = $client->GrandExchangeDatabase()->list();
+    $oldschoolgrandexchanges = $client->OldSchoolGrandExchange()->list();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -137,9 +137,10 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = RunescapeApisSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$grandexchangedatabase = $client->GrandExchangeDatabase()->list();
-print_r($grandexchangedatabase);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$oldschoolgrandexchange = $client->OldSchoolGrandExchange()->list();
+print_r($oldschoolgrandexchange);
 ```
 
 ### Use a custom fetch function
@@ -239,7 +240,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -264,18 +265,21 @@ On error, `ok` is `false` and `$err` contains the error value.
 | `average` |  |
 | `current` |  |
 | `daily` |  |
+| `day180` |  |
+| `day30` |  |
+| `day90` |  |
 | `description` |  |
 | `icon` |  |
 | `icon_large` |  |
 | `id` |  |
-| `item` |  |
-| `last_config_update_runeday` |  |
+| `items` |  |
+| `lastConfigUpdateRuneday` |  |
 | `letter` |  |
-| `member` |  |
+| `members` |  |
 | `name` |  |
 | `today` |  |
 | `type` |  |
-| `type_icon` |  |
+| `typeIcon` |  |
 
 Operations: List, Load.
 
@@ -290,11 +294,11 @@ API path: `/m=itemdb_rs/api/catalogue/items.json`
 | `icon` |  |
 | `icon_large` |  |
 | `id` |  |
-| `member` |  |
+| `members` |  |
 | `name` |  |
 | `today` |  |
 | `type` |  |
-| `type_icon` |  |
+| `typeIcon` |  |
 
 Operations: List.
 
@@ -335,23 +339,26 @@ Create an instance: `$grand_exchange_database = $client->GrandExchangeDatabase()
 | `average` | `array` |  |
 | `current` | `array` |  |
 | `daily` | `array` |  |
+| `day180` | `array` |  |
+| `day30` | `array` |  |
+| `day90` | `array` |  |
 | `description` | `string` |  |
 | `icon` | `string` |  |
 | `icon_large` | `string` |  |
 | `id` | `int` |  |
-| `item` | `array` |  |
-| `last_config_update_runeday` | `int` |  |
+| `items` | `int` |  |
+| `lastConfigUpdateRuneday` | `int` |  |
 | `letter` | `string` |  |
-| `member` | `string` |  |
+| `members` | `string` |  |
 | `name` | `string` |  |
 | `today` | `array` |  |
 | `type` | `string` |  |
-| `type_icon` | `string` |  |
+| `typeIcon` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare GrandExchangeDatabase record (throws on error).
+// load() returns the ENTITY — call data_get() for the GrandExchangeDatabase record (throws on error).
 $grand_exchange_database = $client->GrandExchangeDatabase()->load();
 ```
 
@@ -382,11 +389,11 @@ Create an instance: `$old_school_grand_exchange = $client->OldSchoolGrandExchang
 | `icon` | `string` |  |
 | `icon_large` | `string` |  |
 | `id` | `int` |  |
-| `member` | `string` |  |
+| `members` | `string` |  |
 | `name` | `string` |  |
 | `today` | `array` |  |
 | `type` | `string` |  |
-| `type_icon` | `string` |  |
+| `typeIcon` | `string` |  |
 
 #### Example: List
 
@@ -498,11 +505,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$grandexchangedatabase = $client->GrandExchangeDatabase();
-$grandexchangedatabase->list();
+$oldschoolgrandexchange = $client->OldSchoolGrandExchange();
+$oldschoolgrandexchange->list();
 
-// $grandexchangedatabase->data_get() now returns the grandexchangedatabase data from the last list
-// $grandexchangedatabase->match_get() returns the last match criteria
+// $oldschoolgrandexchange->data_get() now returns the oldschoolgrandexchange data from the last list
+// $oldschoolgrandexchange->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

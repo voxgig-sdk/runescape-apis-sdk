@@ -7,11 +7,11 @@
         "icon": "s66",
         "icon_large": "s67",
         "id": "OLD_SCHOOL_GRAND_EXCHANGE00",
-        "member": "s69",
+        "members": "s69",
         "name": "s6a",
         "today": {},
         "type": "s6c",
-        "type_icon": "s6d"
+        "typeIcon": "s6d"
       },
       "OLD_SCHOOL_GRAND_EXCHANGE01": {
         "current": {},
@@ -19,11 +19,11 @@
         "icon": "sca",
         "icon_large": "scb",
         "id": "OLD_SCHOOL_GRAND_EXCHANGE01",
-        "member": "scd",
+        "members": "scd",
         "name": "sce",
         "today": {},
         "type": "sd0",
-        "type_icon": "sd1"
+        "typeIcon": "sd1"
       },
       "OLD_SCHOOL_GRAND_EXCHANGE02": {
         "current": {},
@@ -31,11 +31,11 @@
         "icon": "s12e",
         "icon_large": "s12f",
         "id": "OLD_SCHOOL_GRAND_EXCHANGE02",
-        "member": "s131",
+        "members": "s131",
         "name": "s132",
         "today": {},
         "type": "s134",
-        "type_icon": "s135"
+        "typeIcon": "s135"
       }
     }
   },
@@ -46,11 +46,11 @@
         "description": "s191",
         "icon": "s192",
         "icon_large": "s193",
-        "member": "s195",
+        "members": "s195",
         "name": "s196",
         "today": {},
         "type": "s198",
-        "type_icon": "s199"
+        "typeIcon": "s199"
       }
     }
   }

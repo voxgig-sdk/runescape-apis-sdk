@@ -37,7 +37,7 @@ class OldSchoolGrandExchangeEntity extends RunescapeApisEntityBase<OldSchoolGran
 
 
 
-  async list(this: any, reqmatch?: OldSchoolGrandExchangeListMatch, ctrl?: Control): Promise<OldSchoolGrandExchange[]> {
+  async list(this: any, reqmatch?: OldSchoolGrandExchangeListMatch, ctrl?: Control): Promise<OldSchoolGrandExchangeEntity[]> {
 
     const utility = this._utility
 

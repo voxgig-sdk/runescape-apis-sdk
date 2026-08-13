@@ -111,11 +111,11 @@ function grand_exchange_database_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "RUNESCAPEAPIS_TEST_GRAND_EXCHANGE_DATABASE_ENTID" => [],
-        "RUNESCAPEAPIS_TEST_LIVE" => "FALSE",
+        "RUNESCAPE_APIS_TEST_GRAND_EXCHANGE_DATABASE_ENTID" => [],
+        "RUNESCAPE_APIS_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["RUNESCAPEAPIS_TEST_LIVE"] === "TRUE";
+    $live = $env["RUNESCAPE_APIS_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

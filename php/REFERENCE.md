@@ -103,18 +103,21 @@ $grand_exchange_database = $client->GrandExchangeDatabase();
 | `average` | `array` | No |  |
 | `current` | `array` | No |  |
 | `daily` | `array` | No |  |
+| `day180` | `array` | No |  |
+| `day30` | `array` | No |  |
+| `day90` | `array` | No |  |
 | `description` | `string` | No |  |
 | `icon` | `string` | No |  |
 | `icon_large` | `string` | No |  |
 | `id` | `int` | No |  |
-| `item` | `array` | No |  |
-| `last_config_update_runeday` | `int` | No |  |
+| `items` | `int` | No |  |
+| `lastConfigUpdateRuneday` | `int` | No |  |
 | `letter` | `string` | No |  |
-| `member` | `string` | No |  |
+| `members` | `string` | No |  |
 | `name` | `string` | No |  |
 | `today` | `array` | No |  |
 | `type` | `string` | No |  |
-| `type_icon` | `string` | No |  |
+| `typeIcon` | `string` | No |  |
 
 ### Operations
 
@@ -179,11 +182,11 @@ $old_school_grand_exchange = $client->OldSchoolGrandExchange();
 | `icon` | `string` | No |  |
 | `icon_large` | `string` | No |  |
 | `id` | `int` | No |  |
-| `member` | `string` | No |  |
+| `members` | `string` | No |  |
 | `name` | `string` | No |  |
 | `today` | `array` | No |  |
 | `type` | `string` | No |  |
-| `type_icon` | `string` | No |  |
+| `typeIcon` | `string` | No |  |
 
 ### Operations
 

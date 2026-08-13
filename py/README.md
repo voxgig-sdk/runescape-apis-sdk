@@ -52,7 +52,7 @@ except Exception as err:
 
 ### 3. Load a grandexchangedatabase
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -69,8 +69,8 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    grandexchangedatabases = client.GrandExchangeDatabase().list()
-    print(grandexchangedatabases)
+    oldschoolgrandexchanges = client.OldSchoolGrandExchange().list()
+    print(oldschoolgrandexchanges)
 except Exception as err:
     print(f"list failed: {err}")
 ```
@@ -136,9 +136,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = RunescapeApisSDK.test()
 
-# Entity ops return the bare record and raise on error.
-grandexchangedatabase = client.GrandExchangeDatabase().list()
-# grandexchangedatabase contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+oldschoolgrandexchange = client.OldSchoolGrandExchange().list()
+# oldschoolgrandexchange contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -235,7 +236,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -260,18 +261,21 @@ On error, `ok` is `False` and `err` contains the error value.
 | `average` |  |
 | `current` |  |
 | `daily` |  |
+| `day180` |  |
+| `day30` |  |
+| `day90` |  |
 | `description` |  |
 | `icon` |  |
 | `icon_large` |  |
 | `id` |  |
-| `item` |  |
-| `last_config_update_runeday` |  |
+| `items` |  |
+| `lastConfigUpdateRuneday` |  |
 | `letter` |  |
-| `member` |  |
+| `members` |  |
 | `name` |  |
 | `today` |  |
 | `type` |  |
-| `type_icon` |  |
+| `typeIcon` |  |
 
 Operations: List, Load.
 
@@ -286,11 +290,11 @@ API path: `/m=itemdb_rs/api/catalogue/items.json`
 | `icon` |  |
 | `icon_large` |  |
 | `id` |  |
-| `member` |  |
+| `members` |  |
 | `name` |  |
 | `today` |  |
 | `type` |  |
-| `type_icon` |  |
+| `typeIcon` |  |
 
 Operations: List.
 
@@ -331,18 +335,21 @@ Create an instance: `grand_exchange_database = client.GrandExchangeDatabase()`
 | `average` | `dict` |  |
 | `current` | `dict` |  |
 | `daily` | `dict` |  |
+| `day180` | `dict` |  |
+| `day30` | `dict` |  |
+| `day90` | `dict` |  |
 | `description` | `str` |  |
 | `icon` | `str` |  |
 | `icon_large` | `str` |  |
 | `id` | `int` |  |
-| `item` | `dict` |  |
-| `last_config_update_runeday` | `int` |  |
+| `items` | `int` |  |
+| `lastConfigUpdateRuneday` | `int` |  |
 | `letter` | `str` |  |
-| `member` | `str` |  |
+| `members` | `str` |  |
 | `name` | `str` |  |
 | `today` | `dict` |  |
 | `type` | `str` |  |
-| `type_icon` | `str` |  |
+| `typeIcon` | `str` |  |
 
 #### Example: Load
 
@@ -376,11 +383,11 @@ Create an instance: `old_school_grand_exchange = client.OldSchoolGrandExchange()
 | `icon` | `str` |  |
 | `icon_large` | `str` |  |
 | `id` | `int` |  |
-| `member` | `str` |  |
+| `members` | `str` |  |
 | `name` | `str` |  |
 | `today` | `dict` |  |
 | `type` | `str` |  |
-| `type_icon` | `str` |  |
+| `typeIcon` | `str` |  |
 
 #### Example: List
 
@@ -489,11 +496,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-grandexchangedatabase = client.GrandExchangeDatabase()
-grandexchangedatabase.list()
+oldschoolgrandexchange = client.OldSchoolGrandExchange()
+oldschoolgrandexchange.list()
 
-# grandexchangedatabase.data_get() now returns the grandexchangedatabase data from the last list
-# grandexchangedatabase.match_get() returns the last match criteria
+# oldschoolgrandexchange.data_get() now returns the oldschoolgrandexchange data from the last list
+# oldschoolgrandexchange.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

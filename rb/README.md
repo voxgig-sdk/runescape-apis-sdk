@@ -48,7 +48,7 @@ end
 
 ```ruby
 begin
-  # load returns the bare GrandExchangeDatabase record (raises on error).
+  # load returns the ENTITY — call data_get for the GrandExchangeDatabase record (raises on error).
   grandexchangedatabase = client.GrandExchangeDatabase.load()
   puts grandexchangedatabase
 rescue => err
@@ -63,7 +63,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  grandexchangedatabases = client.GrandExchangeDatabase.list()
+  oldschoolgrandexchanges = client.OldSchoolGrandExchange.list()
 rescue => err
   warn "list failed: #{err}"
 end
@@ -131,9 +131,10 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = RunescapeApisSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-grandexchangedatabase = client.GrandExchangeDatabase.list()
-puts grandexchangedatabase
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+oldschoolgrandexchange = client.OldSchoolGrandExchange.list()
+puts oldschoolgrandexchange
 ```
 
 ### Use a custom fetch function
@@ -254,18 +255,21 @@ returns a result `Hash` with these keys:
 | `average` |  |
 | `current` |  |
 | `daily` |  |
+| `day180` |  |
+| `day30` |  |
+| `day90` |  |
 | `description` |  |
 | `icon` |  |
 | `icon_large` |  |
 | `id` |  |
-| `item` |  |
-| `last_config_update_runeday` |  |
+| `items` |  |
+| `lastConfigUpdateRuneday` |  |
 | `letter` |  |
-| `member` |  |
+| `members` |  |
 | `name` |  |
 | `today` |  |
 | `type` |  |
-| `type_icon` |  |
+| `typeIcon` |  |
 
 Operations: List, Load.
 
@@ -280,11 +284,11 @@ API path: `/m=itemdb_rs/api/catalogue/items.json`
 | `icon` |  |
 | `icon_large` |  |
 | `id` |  |
-| `member` |  |
+| `members` |  |
 | `name` |  |
 | `today` |  |
 | `type` |  |
-| `type_icon` |  |
+| `typeIcon` |  |
 
 Operations: List.
 
@@ -325,23 +329,26 @@ Create an instance: `grand_exchange_database = client.GrandExchangeDatabase`
 | `average` | `Hash` |  |
 | `current` | `Hash` |  |
 | `daily` | `Hash` |  |
+| `day180` | `Hash` |  |
+| `day30` | `Hash` |  |
+| `day90` | `Hash` |  |
 | `description` | `String` |  |
 | `icon` | `String` |  |
 | `icon_large` | `String` |  |
 | `id` | `Integer` |  |
-| `item` | `Hash` |  |
-| `last_config_update_runeday` | `Integer` |  |
+| `items` | `Integer` |  |
+| `lastConfigUpdateRuneday` | `Integer` |  |
 | `letter` | `String` |  |
-| `member` | `String` |  |
+| `members` | `String` |  |
 | `name` | `String` |  |
 | `today` | `Hash` |  |
 | `type` | `String` |  |
-| `type_icon` | `String` |  |
+| `typeIcon` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare GrandExchangeDatabase record (raises on error).
+# load returns the ENTITY — call data_get for the GrandExchangeDatabase record (raises on error).
 grand_exchange_database = client.GrandExchangeDatabase.load()
 ```
 
@@ -372,11 +379,11 @@ Create an instance: `old_school_grand_exchange = client.OldSchoolGrandExchange`
 | `icon` | `String` |  |
 | `icon_large` | `String` |  |
 | `id` | `Integer` |  |
-| `member` | `String` |  |
+| `members` | `String` |  |
 | `name` | `String` |  |
 | `today` | `Hash` |  |
 | `type` | `String` |  |
-| `type_icon` | `String` |  |
+| `typeIcon` | `String` |  |
 
 #### Example: List
 
@@ -488,11 +495,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-grandexchangedatabase = client.GrandExchangeDatabase
-grandexchangedatabase.list()
+oldschoolgrandexchange = client.OldSchoolGrandExchange
+oldschoolgrandexchange.list()
 
-# grandexchangedatabase.data_get now returns the grandexchangedatabase data from the last list
-# grandexchangedatabase.match_get returns the last match criteria
+# oldschoolgrandexchange.data_get now returns the oldschoolgrandexchange data from the last list
+# oldschoolgrandexchange.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

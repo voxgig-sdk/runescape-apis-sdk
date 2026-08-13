@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ RunescapeApisUtility.registrar = ->(u) {
   u.prepare_params = RunescapeApisUtilities::PrepareParams
   u.prepare_path = RunescapeApisUtilities::PreparePath
   u.prepare_query = RunescapeApisUtilities::PrepareQuery
+  u.graphql_body = RunescapeApisUtilities::GraphqlBody
+  u.graphql_errors = RunescapeApisUtilities::GraphqlErrors
   u.result_basic = RunescapeApisUtilities::ResultBasic
   u.result_body = RunescapeApisUtilities::ResultBody
   u.result_headers = RunescapeApisUtilities::ResultHeaders

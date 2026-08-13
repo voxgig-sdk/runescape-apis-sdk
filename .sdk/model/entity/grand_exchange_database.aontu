@@ -21,6 +21,21 @@ main: kit: entity: grand_exchange_database: {
       type: "`$OBJECT`"
     }
     {
+      name: "day180"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "day30"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "day90"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
       name: "description"
       req: false
       type: "`$STRING`"
@@ -41,12 +56,12 @@ main: kit: entity: grand_exchange_database: {
       type: "`$INTEGER`"
     }
     {
-      name: "item"
+      name: "items"
       req: false
-      type: "`$OBJECT`"
+      type: "`$INTEGER`"
     }
     {
-      name: "last_config_update_runeday"
+      name: "lastConfigUpdateRuneday"
       req: false
       type: "`$INTEGER`"
     }
@@ -56,7 +71,7 @@ main: kit: entity: grand_exchange_database: {
       type: "`$STRING`"
     }
     {
-      name: "member"
+      name: "members"
       req: false
       type: "`$STRING`"
     }
@@ -76,7 +91,7 @@ main: kit: entity: grand_exchange_database: {
       type: "`$STRING`"
     }
     {
-      name: "type_icon"
+      name: "typeIcon"
       req: false
       type: "`$STRING`"
     }
@@ -135,7 +150,7 @@ main: kit: entity: grand_exchange_database: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.items`"
           }
         }
         {
@@ -256,7 +271,7 @@ main: kit: entity: grand_exchange_database: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.item`"
           }
         }
         {

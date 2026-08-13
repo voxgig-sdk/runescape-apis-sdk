@@ -19,6 +19,15 @@
 # @!attribute [rw] daily
 #   @return [Hash, nil]
 #
+# @!attribute [rw] day180
+#   @return [Hash, nil]
+#
+# @!attribute [rw] day30
+#   @return [Hash, nil]
+#
+# @!attribute [rw] day90
+#   @return [Hash, nil]
+#
 # @!attribute [rw] description
 #   @return [String, nil]
 #
@@ -31,16 +40,16 @@
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] item
-#   @return [Hash, nil]
+# @!attribute [rw] items
+#   @return [Integer, nil]
 #
-# @!attribute [rw] last_config_update_runeday
+# @!attribute [rw] lastConfigUpdateRuneday
 #   @return [Integer, nil]
 #
 # @!attribute [rw] letter
 #   @return [String, nil]
 #
-# @!attribute [rw] member
+# @!attribute [rw] members
 #   @return [String, nil]
 #
 # @!attribute [rw] name
@@ -52,24 +61,27 @@
 # @!attribute [rw] type
 #   @return [String, nil]
 #
-# @!attribute [rw] type_icon
+# @!attribute [rw] typeIcon
 #   @return [String, nil]
 GrandExchangeDatabase = Struct.new(
   :average,
   :current,
   :daily,
+  :day180,
+  :day30,
+  :day90,
   :description,
   :icon,
   :icon_large,
   :id,
-  :item,
-  :last_config_update_runeday,
+  :items,
+  :lastConfigUpdateRuneday,
   :letter,
-  :member,
+  :members,
   :name,
   :today,
   :type,
-  :type_icon,
+  :typeIcon,
   keyword_init: true
 )
 
@@ -93,6 +105,15 @@ GrandExchangeDatabaseLoadMatch = Struct.new(
 # @!attribute [rw] daily
 #   @return [Hash, nil]
 #
+# @!attribute [rw] day180
+#   @return [Hash, nil]
+#
+# @!attribute [rw] day30
+#   @return [Hash, nil]
+#
+# @!attribute [rw] day90
+#   @return [Hash, nil]
+#
 # @!attribute [rw] description
 #   @return [String, nil]
 #
@@ -105,16 +126,16 @@ GrandExchangeDatabaseLoadMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] item
-#   @return [Hash, nil]
+# @!attribute [rw] items
+#   @return [Integer, nil]
 #
-# @!attribute [rw] last_config_update_runeday
+# @!attribute [rw] lastConfigUpdateRuneday
 #   @return [Integer, nil]
 #
 # @!attribute [rw] letter
 #   @return [String, nil]
 #
-# @!attribute [rw] member
+# @!attribute [rw] members
 #   @return [String, nil]
 #
 # @!attribute [rw] name
@@ -126,24 +147,27 @@ GrandExchangeDatabaseLoadMatch = Struct.new(
 # @!attribute [rw] type
 #   @return [String, nil]
 #
-# @!attribute [rw] type_icon
+# @!attribute [rw] typeIcon
 #   @return [String, nil]
 GrandExchangeDatabaseListMatch = Struct.new(
   :average,
   :current,
   :daily,
+  :day180,
+  :day30,
+  :day90,
   :description,
   :icon,
   :icon_large,
   :id,
-  :item,
-  :last_config_update_runeday,
+  :items,
+  :lastConfigUpdateRuneday,
   :letter,
-  :member,
+  :members,
   :name,
   :today,
   :type,
-  :type_icon,
+  :typeIcon,
   keyword_init: true
 )
 
@@ -164,7 +188,7 @@ GrandExchangeDatabaseListMatch = Struct.new(
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] member
+# @!attribute [rw] members
 #   @return [String, nil]
 #
 # @!attribute [rw] name
@@ -176,7 +200,7 @@ GrandExchangeDatabaseListMatch = Struct.new(
 # @!attribute [rw] type
 #   @return [String, nil]
 #
-# @!attribute [rw] type_icon
+# @!attribute [rw] typeIcon
 #   @return [String, nil]
 OldSchoolGrandExchange = Struct.new(
   :current,
@@ -184,11 +208,11 @@ OldSchoolGrandExchange = Struct.new(
   :icon,
   :icon_large,
   :id,
-  :member,
+  :members,
   :name,
   :today,
   :type,
-  :type_icon,
+  :typeIcon,
   keyword_init: true
 )
 
@@ -209,7 +233,7 @@ OldSchoolGrandExchange = Struct.new(
 # @!attribute [rw] id
 #   @return [Integer, nil]
 #
-# @!attribute [rw] member
+# @!attribute [rw] members
 #   @return [String, nil]
 #
 # @!attribute [rw] name
@@ -221,7 +245,7 @@ OldSchoolGrandExchange = Struct.new(
 # @!attribute [rw] type
 #   @return [String, nil]
 #
-# @!attribute [rw] type_icon
+# @!attribute [rw] typeIcon
 #   @return [String, nil]
 OldSchoolGrandExchangeListMatch = Struct.new(
   :current,
@@ -229,11 +253,11 @@ OldSchoolGrandExchangeListMatch = Struct.new(
   :icon,
   :icon_large,
   :id,
-  :member,
+  :members,
   :name,
   :today,
   :type,
-  :type_icon,
+  :typeIcon,
   keyword_init: true
 )
 

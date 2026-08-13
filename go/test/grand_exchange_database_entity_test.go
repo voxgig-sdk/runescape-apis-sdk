@@ -92,7 +92,7 @@ func TestGrandExchangeDatabaseEntity(t *testing.T) {
 		// The basic flow consumes synthetic IDs from the fixture. In live mode
 		// without an *_ENTID env override, those IDs hit the live API and 4xx.
 		if setup.syntheticOnly {
-			t.Skip("live entity test uses synthetic IDs from fixture — set RUNESCAPEAPIS_TEST_GRAND_EXCHANGE_DATABASE_ENTID JSON to run live")
+			t.Skip("live entity test uses synthetic IDs from fixture — set RUNESCAPE_APIS_TEST_GRAND_EXCHANGE_DATABASE_ENTID JSON to run live")
 			return
 		}
 		client := setup.client
@@ -128,7 +128,7 @@ func TestGrandExchangeDatabaseEntity(t *testing.T) {
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
 		}
-		grandExchangeDatabaseRef01DataDt0LoadResult := core.ToMapAny(grandExchangeDatabaseRef01DataDt0Loaded)
+		grandExchangeDatabaseRef01DataDt0LoadResult := core.ToMapAny(entityData(grandExchangeDatabaseRef01DataDt0Loaded))
 		if grandExchangeDatabaseRef01DataDt0LoadResult == nil {
 			t.Fatal("expected load result to be a map")
 		}
@@ -176,21 +176,21 @@ func grand_exchange_databaseBasicSetup(extra map[string]any) *entityTestSetup {
 	// Detect ENTID env override before envOverride consumes it. When live
 	// mode is on without a real override, the basic test runs against synthetic
 	// IDs from the fixture and 4xx's. Surface this so the test can skip.
-	entidEnvRaw := os.Getenv("RUNESCAPEAPIS_TEST_GRAND_EXCHANGE_DATABASE_ENTID")
+	entidEnvRaw := os.Getenv("RUNESCAPE_APIS_TEST_GRAND_EXCHANGE_DATABASE_ENTID")
 	idmapOverridden := entidEnvRaw != "" && strings.HasPrefix(strings.TrimSpace(entidEnvRaw), "{")
 
 	env := envOverride(map[string]any{
-		"RUNESCAPEAPIS_TEST_GRAND_EXCHANGE_DATABASE_ENTID": idmap,
-		"RUNESCAPEAPIS_TEST_LIVE":      "FALSE",
-		"RUNESCAPEAPIS_TEST_EXPLAIN":   "FALSE",
+		"RUNESCAPE_APIS_TEST_GRAND_EXCHANGE_DATABASE_ENTID": idmap,
+		"RUNESCAPE_APIS_TEST_LIVE":      "FALSE",
+		"RUNESCAPE_APIS_TEST_EXPLAIN":   "FALSE",
 	})
 
-	idmapResolved := core.ToMapAny(env["RUNESCAPEAPIS_TEST_GRAND_EXCHANGE_DATABASE_ENTID"])
+	idmapResolved := core.ToMapAny(env["RUNESCAPE_APIS_TEST_GRAND_EXCHANGE_DATABASE_ENTID"])
 	if idmapResolved == nil {
 		idmapResolved = core.ToMapAny(idmap)
 	}
 
-	if env["RUNESCAPEAPIS_TEST_LIVE"] == "TRUE" {
+	if env["RUNESCAPE_APIS_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
 			},
@@ -199,13 +199,13 @@ func grand_exchange_databaseBasicSetup(extra map[string]any) *entityTestSetup {
 		client = sdk.NewRunescapeApisSDK(core.ToMapAny(mergedOpts))
 	}
 
-	live := env["RUNESCAPEAPIS_TEST_LIVE"] == "TRUE"
+	live := env["RUNESCAPE_APIS_TEST_LIVE"] == "TRUE"
 	return &entityTestSetup{
 		client:        client,
 		data:          entityData,
 		idmap:         idmapResolved,
 		env:           env,
-		explain:       env["RUNESCAPEAPIS_TEST_EXPLAIN"] == "TRUE",
+		explain:       env["RUNESCAPE_APIS_TEST_EXPLAIN"] == "TRUE",
 		live:          live,
 		syntheticOnly: live && !idmapOverridden,
 		now:           time.Now().UnixMilli(),

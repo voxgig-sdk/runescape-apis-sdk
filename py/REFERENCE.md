@@ -98,18 +98,21 @@ grand_exchange_database = client.GrandExchangeDatabase()
 | `average` | `dict` | No |  |
 | `current` | `dict` | No |  |
 | `daily` | `dict` | No |  |
+| `day180` | `dict` | No |  |
+| `day30` | `dict` | No |  |
+| `day90` | `dict` | No |  |
 | `description` | `str` | No |  |
 | `icon` | `str` | No |  |
 | `icon_large` | `str` | No |  |
 | `id` | `int` | No |  |
-| `item` | `dict` | No |  |
-| `last_config_update_runeday` | `int` | No |  |
+| `items` | `int` | No |  |
+| `lastConfigUpdateRuneday` | `int` | No |  |
 | `letter` | `str` | No |  |
-| `member` | `str` | No |  |
+| `members` | `str` | No |  |
 | `name` | `str` | No |  |
 | `today` | `dict` | No |  |
 | `type` | `str` | No |  |
-| `type_icon` | `str` | No |  |
+| `typeIcon` | `str` | No |  |
 
 ### Operations
 
@@ -175,11 +178,11 @@ old_school_grand_exchange = client.OldSchoolGrandExchange()
 | `icon` | `str` | No |  |
 | `icon_large` | `str` | No |  |
 | `id` | `int` | No |  |
-| `member` | `str` | No |  |
+| `members` | `str` | No |  |
 | `name` | `str` | No |  |
 | `today` | `dict` | No |  |
 | `type` | `str` | No |  |
-| `type_icon` | `str` | No |  |
+| `typeIcon` | `str` | No |  |
 
 ### Operations
 

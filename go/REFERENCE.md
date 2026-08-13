@@ -109,18 +109,21 @@ fmt.Println(grandExchangeDatabase.GetName()) // "grand_exchange_database"
 | `average` | `map[string]any` | No |  |
 | `current` | `map[string]any` | No |  |
 | `daily` | `map[string]any` | No |  |
+| `day180` | `map[string]any` | No |  |
+| `day30` | `map[string]any` | No |  |
+| `day90` | `map[string]any` | No |  |
 | `description` | `string` | No |  |
 | `icon` | `string` | No |  |
 | `icon_large` | `string` | No |  |
 | `id` | `int` | No |  |
-| `item` | `map[string]any` | No |  |
-| `last_config_update_runeday` | `int` | No |  |
+| `items` | `int` | No |  |
+| `lastConfigUpdateRuneday` | `int` | No |  |
 | `letter` | `string` | No |  |
-| `member` | `string` | No |  |
+| `members` | `string` | No |  |
 | `name` | `string` | No |  |
 | `today` | `map[string]any` | No |  |
 | `type` | `string` | No |  |
-| `type_icon` | `string` | No |  |
+| `typeIcon` | `string` | No |  |
 
 ### Operations
 
@@ -188,11 +191,11 @@ fmt.Println(oldSchoolGrandExchange.GetName()) // "old_school_grand_exchange"
 | `icon` | `string` | No |  |
 | `icon_large` | `string` | No |  |
 | `id` | `int` | No |  |
-| `member` | `string` | No |  |
+| `members` | `string` | No |  |
 | `name` | `string` | No |  |
 | `today` | `map[string]any` | No |  |
 | `type` | `string` | No |  |
-| `type_icon` | `string` | No |  |
+| `typeIcon` | `string` | No |  |
 
 ### Operations
 

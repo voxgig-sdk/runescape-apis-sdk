@@ -35,7 +35,9 @@ const client = new RunescapeApisSDK()
 
 ### 2. List grandexchangedatabase records
 
-`list()` resolves to an array of GrandExchangeDatabase objects — iterate it directly:
+`list()` resolves to an array of GrandExchangeDatabase ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const grandexchangedatabases = await client.GrandExchangeDatabase().list()
@@ -65,8 +67,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const grandexchangedatabases = await client.GrandExchangeDatabase().list()
-  console.log(grandexchangedatabases)
+  const oldschoolgrandexchanges = await client.OldSchoolGrandExchange().list()
+  console.log(oldschoolgrandexchanges)
 } catch (err) {
   console.error('list failed:', err)
 }
@@ -132,9 +134,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = RunescapeApisSDK.test()
 
-const grandexchangedatabase = await client.GrandExchangeDatabase().list()
-// grandexchangedatabase is a bare entity populated with mock response data
-console.log(grandexchangedatabase)
+const oldschoolgrandexchange = await client.OldSchoolGrandExchange().list()
+// oldschoolgrandexchange is the entity, populated with mock response data
+// — call oldschoolgrandexchange.data() for the record itself
+console.log(oldschoolgrandexchange)
 ```
 
 You can also use the instance method:
@@ -149,7 +152,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.GrandExchangeDatabase()
+const entity = client.OldSchoolGrandExchange()
 
 // First call runs the operation and stores its result
 await entity.list()
@@ -304,18 +307,21 @@ The `prepare()` method returns:
 | `average` |  |
 | `current` |  |
 | `daily` |  |
+| `day180` |  |
+| `day30` |  |
+| `day90` |  |
 | `description` |  |
 | `icon` |  |
 | `icon_large` |  |
 | `id` |  |
-| `item` |  |
-| `last_config_update_runeday` |  |
+| `items` |  |
+| `lastConfigUpdateRuneday` |  |
 | `letter` |  |
-| `member` |  |
+| `members` |  |
 | `name` |  |
 | `today` |  |
 | `type` |  |
-| `type_icon` |  |
+| `typeIcon` |  |
 
 Operations: list, load.
 
@@ -330,11 +336,11 @@ API path: `/m=itemdb_rs/api/catalogue/items.json`
 | `icon` |  |
 | `icon_large` |  |
 | `id` |  |
-| `member` |  |
+| `members` |  |
 | `name` |  |
 | `today` |  |
 | `type` |  |
-| `type_icon` |  |
+| `typeIcon` |  |
 
 Operations: list.
 
@@ -375,18 +381,21 @@ Create an instance: `const grand_exchange_database = client.GrandExchangeDatabas
 | `average` | `Record<string, any>` |  |
 | `current` | `Record<string, any>` |  |
 | `daily` | `Record<string, any>` |  |
+| `day180` | `Record<string, any>` |  |
+| `day30` | `Record<string, any>` |  |
+| `day90` | `Record<string, any>` |  |
 | `description` | `string` |  |
 | `icon` | `string` |  |
 | `icon_large` | `string` |  |
 | `id` | `number` |  |
-| `item` | `Record<string, any>` |  |
-| `last_config_update_runeday` | `number` |  |
+| `items` | `number` |  |
+| `lastConfigUpdateRuneday` | `number` |  |
 | `letter` | `string` |  |
-| `member` | `string` |  |
+| `members` | `string` |  |
 | `name` | `string` |  |
 | `today` | `Record<string, any>` |  |
 | `type` | `string` |  |
-| `type_icon` | `string` |  |
+| `typeIcon` | `string` |  |
 
 #### Example: Load
 
@@ -420,11 +429,11 @@ Create an instance: `const old_school_grand_exchange = client.OldSchoolGrandExch
 | `icon` | `string` |  |
 | `icon_large` | `string` |  |
 | `id` | `number` |  |
-| `member` | `string` |  |
+| `members` | `string` |  |
 | `name` | `string` |  |
 | `today` | `Record<string, any>` |  |
 | `type` | `string` |  |
-| `type_icon` | `string` |  |
+| `typeIcon` | `string` |  |
 
 #### Example: List
 
@@ -527,11 +536,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const grandexchangedatabase = client.GrandExchangeDatabase()
-await grandexchangedatabase.list()
+const oldschoolgrandexchange = client.OldSchoolGrandExchange()
+await oldschoolgrandexchange.list()
 
-// grandexchangedatabase.data() now returns the grandexchangedatabase data from the last `list`
-// grandexchangedatabase.match() returns the last match criteria
+// oldschoolgrandexchange.data() now returns the oldschoolgrandexchange data from the last `list`
+// oldschoolgrandexchange.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

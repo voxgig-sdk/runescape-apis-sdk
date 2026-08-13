@@ -18,18 +18,21 @@ class GrandExchangeDatabase
     public ?array $average = null;
     public ?array $current = null;
     public ?array $daily = null;
+    public ?array $day180 = null;
+    public ?array $day30 = null;
+    public ?array $day90 = null;
     public ?string $description = null;
     public ?string $icon = null;
     public ?string $icon_large = null;
     public ?int $id = null;
-    public ?array $item = null;
-    public ?int $last_config_update_runeday = null;
+    public ?int $items = null;
+    public ?int $lastConfigUpdateRuneday = null;
     public ?string $letter = null;
-    public ?string $member = null;
+    public ?string $members = null;
     public ?string $name = null;
     public ?array $today = null;
     public ?string $type = null;
-    public ?string $type_icon = null;
+    public ?string $typeIcon = null;
 }
 
 /** Request payload for GrandExchangeDatabase#load. */
@@ -44,18 +47,21 @@ class GrandExchangeDatabaseListMatch
     public ?array $average = null;
     public ?array $current = null;
     public ?array $daily = null;
+    public ?array $day180 = null;
+    public ?array $day30 = null;
+    public ?array $day90 = null;
     public ?string $description = null;
     public ?string $icon = null;
     public ?string $icon_large = null;
     public ?int $id = null;
-    public ?array $item = null;
-    public ?int $last_config_update_runeday = null;
+    public ?int $items = null;
+    public ?int $lastConfigUpdateRuneday = null;
     public ?string $letter = null;
-    public ?string $member = null;
+    public ?string $members = null;
     public ?string $name = null;
     public ?array $today = null;
     public ?string $type = null;
-    public ?string $type_icon = null;
+    public ?string $typeIcon = null;
 }
 
 /** OldSchoolGrandExchange entity data model. */
@@ -66,11 +72,11 @@ class OldSchoolGrandExchange
     public ?string $icon = null;
     public ?string $icon_large = null;
     public ?int $id = null;
-    public ?string $member = null;
+    public ?string $members = null;
     public ?string $name = null;
     public ?array $today = null;
     public ?string $type = null;
-    public ?string $type_icon = null;
+    public ?string $typeIcon = null;
 }
 
 /** Request payload for OldSchoolGrandExchange#list. */
@@ -81,11 +87,11 @@ class OldSchoolGrandExchangeListMatch
     public ?string $icon = null;
     public ?string $icon_large = null;
     public ?int $id = null;
-    public ?string $member = null;
+    public ?string $members = null;
     public ?string $name = null;
     public ?array $today = null;
     public ?string $type = null;
-    public ?string $type_icon = null;
+    public ?string $typeIcon = null;
 }
 
 /** PlayerRanking entity data model. */

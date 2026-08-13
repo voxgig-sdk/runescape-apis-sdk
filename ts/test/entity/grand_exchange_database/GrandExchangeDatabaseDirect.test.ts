@@ -19,11 +19,15 @@ import {
 describe('GrandExchangeDatabaseDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when RUNESCAPEAPIS_TEST_LIVE=TRUE.
-  afterEach(liveDelay('RUNESCAPEAPIS_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when RUNESCAPE_APIS_TEST_LIVE=TRUE.
+  afterEach(liveDelay('RUNESCAPE_APIS_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new RunescapeApisSDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -133,17 +137,17 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'RUNESCAPEAPIS_TEST_GRAND_EXCHANGE_DATABASE_ENTID': {},
-    'RUNESCAPEAPIS_TEST_LIVE': 'FALSE',
+    'RUNESCAPE_APIS_TEST_GRAND_EXCHANGE_DATABASE_ENTID': {},
+    'RUNESCAPE_APIS_TEST_LIVE': 'FALSE',
   })
 
-  const live = 'TRUE' === env.RUNESCAPEAPIS_TEST_LIVE
+  const live = 'TRUE' === env.RUNESCAPE_APIS_TEST_LIVE
 
   if (live) {
     const client = new RunescapeApisSDK({
     })
 
-    let idmap: any = env['RUNESCAPEAPIS_TEST_GRAND_EXCHANGE_DATABASE_ENTID']
+    let idmap: any = env['RUNESCAPE_APIS_TEST_GRAND_EXCHANGE_DATABASE_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

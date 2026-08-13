@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from runescapeapis_sdk.utility.voxgig_struct import voxgig_struct as vs
 from runescapeapis_sdk import RunescapeApisSDK
-from core import helpers
+from runescapeapis_sdk.core import helpers
 from test import runner
 
 
@@ -58,11 +58,11 @@ def _old_school_grand_exchange_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "RUNESCAPEAPIS_TEST_OLD_SCHOOL_GRAND_EXCHANGE_ENTID": {},
-        "RUNESCAPEAPIS_TEST_LIVE": "FALSE",
+        "RUNESCAPE_APIS_TEST_OLD_SCHOOL_GRAND_EXCHANGE_ENTID": {},
+        "RUNESCAPE_APIS_TEST_LIVE": "FALSE",
     })
 
-    live = env.get("RUNESCAPEAPIS_TEST_LIVE") == "TRUE"
+    live = env.get("RUNESCAPE_APIS_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {

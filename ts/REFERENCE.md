@@ -143,18 +143,21 @@ const grand_exchange_database = client.GrandExchangeDatabase()
 | `average` | `Record<string, any>` | No |  |
 | `current` | `Record<string, any>` | No |  |
 | `daily` | `Record<string, any>` | No |  |
+| `day180` | `Record<string, any>` | No |  |
+| `day30` | `Record<string, any>` | No |  |
+| `day90` | `Record<string, any>` | No |  |
 | `description` | `string` | No |  |
 | `icon` | `string` | No |  |
 | `icon_large` | `string` | No |  |
 | `id` | `number` | No |  |
-| `item` | `Record<string, any>` | No |  |
-| `last_config_update_runeday` | `number` | No |  |
+| `items` | `number` | No |  |
+| `lastConfigUpdateRuneday` | `number` | No |  |
 | `letter` | `string` | No |  |
-| `member` | `string` | No |  |
+| `members` | `string` | No |  |
 | `name` | `string` | No |  |
 | `today` | `Record<string, any>` | No |  |
 | `type` | `string` | No |  |
-| `type_icon` | `string` | No |  |
+| `typeIcon` | `string` | No |  |
 
 ### Operations
 
@@ -217,11 +220,11 @@ const old_school_grand_exchange = client.OldSchoolGrandExchange()
 | `icon` | `string` | No |  |
 | `icon_large` | `string` | No |  |
 | `id` | `number` | No |  |
-| `member` | `string` | No |  |
+| `members` | `string` | No |  |
 | `name` | `string` | No |  |
 | `today` | `Record<string, any>` | No |  |
 | `type` | `string` | No |  |
-| `type_icon` | `string` | No |  |
+| `typeIcon` | `string` | No |  |
 
 ### Operations
 

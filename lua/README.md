@@ -62,7 +62,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local grandexchangedatabases, err = client:GrandExchangeDatabase():list()
+local oldschoolgrandexchanges, err = client:OldSchoolGrandExchange():list()
 if err then error(err) end
 ```
 
@@ -120,7 +120,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:GrandExchangeDatabase():list()
+local result, err = client:OldSchoolGrandExchange():list()
 -- result is the returned data; err is set on failure
 ```
 
@@ -246,18 +246,21 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | `average` |  |
 | `current` |  |
 | `daily` |  |
+| `day180` |  |
+| `day30` |  |
+| `day90` |  |
 | `description` |  |
 | `icon` |  |
 | `icon_large` |  |
 | `id` |  |
-| `item` |  |
-| `last_config_update_runeday` |  |
+| `items` |  |
+| `lastConfigUpdateRuneday` |  |
 | `letter` |  |
-| `member` |  |
+| `members` |  |
 | `name` |  |
 | `today` |  |
 | `type` |  |
-| `type_icon` |  |
+| `typeIcon` |  |
 
 Operations: List, Load.
 
@@ -272,11 +275,11 @@ API path: `/m=itemdb_rs/api/catalogue/items.json`
 | `icon` |  |
 | `icon_large` |  |
 | `id` |  |
-| `member` |  |
+| `members` |  |
 | `name` |  |
 | `today` |  |
 | `type` |  |
-| `type_icon` |  |
+| `typeIcon` |  |
 
 Operations: List.
 
@@ -317,18 +320,21 @@ Create an instance: `local grand_exchange_database = client:GrandExchangeDatabas
 | `average` | `table` |  |
 | `current` | `table` |  |
 | `daily` | `table` |  |
+| `day180` | `table` |  |
+| `day30` | `table` |  |
+| `day90` | `table` |  |
 | `description` | `string` |  |
 | `icon` | `string` |  |
 | `icon_large` | `string` |  |
 | `id` | `number` |  |
-| `item` | `table` |  |
-| `last_config_update_runeday` | `number` |  |
+| `items` | `number` |  |
+| `lastConfigUpdateRuneday` | `number` |  |
 | `letter` | `string` |  |
-| `member` | `string` |  |
+| `members` | `string` |  |
 | `name` | `string` |  |
 | `today` | `table` |  |
 | `type` | `string` |  |
-| `type_icon` | `string` |  |
+| `typeIcon` | `string` |  |
 
 #### Example: Load
 
@@ -362,11 +368,11 @@ Create an instance: `local old_school_grand_exchange = client:OldSchoolGrandExch
 | `icon` | `string` |  |
 | `icon_large` | `string` |  |
 | `id` | `number` |  |
-| `member` | `string` |  |
+| `members` | `string` |  |
 | `name` | `string` |  |
 | `today` | `table` |  |
 | `type` | `string` |  |
-| `type_icon` | `string` |  |
+| `typeIcon` | `string` |  |
 
 #### Example: List
 
@@ -476,11 +482,11 @@ Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local grandexchangedatabase = client:GrandExchangeDatabase()
-grandexchangedatabase:list()
+local oldschoolgrandexchange = client:OldSchoolGrandExchange()
+oldschoolgrandexchange:list()
 
--- grandexchangedatabase:data_get() now returns the grandexchangedatabase data from the last list
--- grandexchangedatabase:match_get() returns the last match criteria
+-- oldschoolgrandexchange:data_get() now returns the oldschoolgrandexchange data from the last list
+-- oldschoolgrandexchange:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

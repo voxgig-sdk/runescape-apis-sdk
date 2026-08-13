@@ -37,7 +37,7 @@ class PlayerRankingEntity extends RunescapeApisEntityBase<PlayerRanking> {
 
 
 
-  async list(this: any, reqmatch?: PlayerRankingListMatch, ctrl?: Control): Promise<PlayerRanking[]> {
+  async list(this: any, reqmatch?: PlayerRankingListMatch, ctrl?: Control): Promise<PlayerRankingEntity[]> {
 
     const utility = this._utility
 

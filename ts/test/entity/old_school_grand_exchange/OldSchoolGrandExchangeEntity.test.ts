@@ -26,8 +26,8 @@ import {
 describe('OldSchoolGrandExchangeEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when RUNESCAPEAPIS_TEST_LIVE=TRUE.
-  afterEach(liveDelay('RUNESCAPEAPIS_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when RUNESCAPE_APIS_TEST_LIVE=TRUE.
+  afterEach(liveDelay('RUNESCAPE_APIS_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = RunescapeApisSDK.test()
@@ -63,7 +63,7 @@ describe('OldSchoolGrandExchangeEntity', async () => {
     const old_school_grand_exchange_ref01_ent = client.OldSchoolGrandExchange()
     const old_school_grand_exchange_ref01_match: any = {}
 
-    const old_school_grand_exchange_ref01_list = await old_school_grand_exchange_ref01_ent.list(old_school_grand_exchange_ref01_match)
+    const old_school_grand_exchange_ref01_list = (await old_school_grand_exchange_ref01_ent.list(old_school_grand_exchange_ref01_match)).map((e: any) => e.data())
 
 
   })

@@ -31,7 +31,7 @@ main: kit: entity: old_school_grand_exchange: {
       type: "`$INTEGER`"
     }
     {
-      name: "member"
+      name: "members"
       req: false
       type: "`$STRING`"
     }
@@ -51,7 +51,7 @@ main: kit: entity: old_school_grand_exchange: {
       type: "`$STRING`"
     }
     {
-      name: "type_icon"
+      name: "typeIcon"
       req: false
       type: "`$STRING`"
     }
@@ -110,7 +110,7 @@ main: kit: entity: old_school_grand_exchange: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.items`"
           }
         }
       ]

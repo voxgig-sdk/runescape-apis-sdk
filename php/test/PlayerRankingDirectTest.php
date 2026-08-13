@@ -66,11 +66,11 @@ function player_ranking_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "RUNESCAPEAPIS_TEST_PLAYER_RANKING_ENTID" => [],
-        "RUNESCAPEAPIS_TEST_LIVE" => "FALSE",
+        "RUNESCAPE_APIS_TEST_PLAYER_RANKING_ENTID" => [],
+        "RUNESCAPE_APIS_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["RUNESCAPEAPIS_TEST_LIVE"] === "TRUE";
+    $live = $env["RUNESCAPE_APIS_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

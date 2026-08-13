@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import RunescapeApisControl
-from core.error import RunescapeApisError
-from core.result import RunescapeApisResult
-from core.spec import RunescapeApisSpec
+from runescapeapis_sdk.config import make_config
+from runescapeapis_sdk.features import _make_feature
+from runescapeapis_sdk.core.control import RunescapeApisControl
+from runescapeapis_sdk.core.error import RunescapeApisError
+from runescapeapis_sdk.core.result import RunescapeApisResult
+from runescapeapis_sdk.core.spec import RunescapeApisSpec
 
 
 # True when this SDK was generated with the named feature.

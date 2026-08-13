@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# RunescapeApis SDK exists test
 
 import pytest
 from runescapeapis_sdk import RunescapeApisSDK
