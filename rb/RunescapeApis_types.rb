@@ -88,7 +88,7 @@ GrandExchangeDatabase = Struct.new(
 # Request payload for GrandExchangeDatabase#load.
 #
 # @!attribute [rw] item_id
-#   @return [Integer, nil]
+#   @return [Integer]
 GrandExchangeDatabaseLoadMatch = Struct.new(
   :item_id,
   keyword_init: true

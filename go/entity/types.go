@@ -36,7 +36,7 @@ type GrandExchangeDatabase struct {
 
 // GrandExchangeDatabaseLoadMatch is the typed request payload for GrandExchangeDatabase.LoadTyped.
 type GrandExchangeDatabaseLoadMatch struct {
-	ItemId *int `json:"item_id,omitempty"`
+	ItemId int `json:"item_id"`
 }
 
 // GrandExchangeDatabaseListMatch is the typed request payload for GrandExchangeDatabase.ListTyped.

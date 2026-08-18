@@ -1,7 +1,30 @@
 # RunescapeApis SDK configuration
 
 
+_shared_config = None
+
+
+def shared_config():
+    """Return the process-wide config, built once on first use.
+
+    The SDK reads the config on every request and never writes to it, so one
+    instance is shared by every client rather than rebuilt per client.
+
+    The returned dict is shared: treat it as read-only. Callers that need to
+    mutate should use make_config, which always returns a fresh copy.
+    """
+    global _shared_config
+    if _shared_config is None:
+        _shared_config = make_config()
+    return _shared_config
+
+
 def make_config():
+    """Build a fresh, fully materialised config dict.
+
+    Every call rebuilds the whole structure, so prefer shared_config unless
+    you need a private copy you intend to mutate.
+    """
     return {
         "main": {
             "name": "RunescapeApis",
@@ -28,130 +51,86 @@ def make_config():
       "grand_exchange_database": {
         "fields": [
           {
-            "active": True,
             "name": "average",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "current",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 1,
+            "union": {
+              "branches": 2,
+              "count": 1,
+              "depth": 2,
+            },
           },
           {
-            "active": True,
             "name": "daily",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "day180",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "day30",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "day90",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "description",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "icon",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "icon_large",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "id",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 9,
           },
           {
-            "active": True,
             "name": "items",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 10,
           },
           {
-            "active": True,
             "name": "lastConfigUpdateRuneday",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 11,
           },
           {
-            "active": True,
             "name": "letter",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 12,
           },
           {
-            "active": True,
             "name": "members",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 13,
           },
           {
-            "active": True,
             "name": "name",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 14,
           },
           {
-            "active": True,
             "name": "today",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 15,
+            "union": {
+              "branches": 2,
+              "count": 1,
+              "depth": 2,
+            },
           },
           {
-            "active": True,
             "name": "type",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 16,
           },
           {
-            "active": True,
             "name": "typeIcon",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 17,
           },
         ],
         "name": "grand_exchange_database",
@@ -161,11 +140,9 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "alpha",
                       "orig": "alpha",
@@ -173,7 +150,6 @@ def make_config():
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "category",
                       "orig": "category",
@@ -181,7 +157,6 @@ def make_config():
                       "type": "`$INTEGER`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "page",
                       "orig": "page",
@@ -210,14 +185,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.items`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "category",
                       "orig": "category",
@@ -244,21 +216,17 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
             ],
-            "key$": "list",
           },
           "load": {
             "input": "data",
             "name": "load",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "id",
                       "orig": "id",
@@ -283,14 +251,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "id",
                       "orig": "id",
@@ -315,14 +280,11 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 1,
               },
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "item",
                       "orig": "item",
@@ -349,20 +311,16 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.item`",
                 },
-                "index$": 2,
               },
               {
-                "active": True,
                 "args": {
                   "params": [
                     {
-                      "active": True,
                       "kind": "param",
                       "name": "item_id",
                       "orig": "item_id",
                       "reqd": True,
                       "type": "`$INTEGER`",
-                      "index$": 0,
                     },
                   ],
                 },
@@ -384,10 +342,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 3,
               },
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -402,10 +358,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 4,
               },
             ],
-            "key$": "load",
           },
         },
         "relations": {
@@ -419,74 +373,54 @@ def make_config():
       "old_school_grand_exchange": {
         "fields": [
           {
-            "active": True,
             "name": "current",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 0,
+            "union": {
+              "branches": 2,
+              "count": 1,
+              "depth": 2,
+            },
           },
           {
-            "active": True,
             "name": "description",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "icon",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "icon_large",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "id",
-            "req": False,
             "type": "`$INTEGER`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "members",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "name",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "today",
-            "req": False,
             "type": "`$OBJECT`",
-            "index$": 7,
+            "union": {
+              "branches": 2,
+              "count": 1,
+              "depth": 2,
+            },
           },
           {
-            "active": True,
             "name": "type",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "typeIcon",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 9,
           },
         ],
         "name": "old_school_grand_exchange",
@@ -496,11 +430,9 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "alpha",
                       "orig": "alpha",
@@ -508,7 +440,6 @@ def make_config():
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "category",
                       "orig": "category",
@@ -516,7 +447,6 @@ def make_config():
                       "type": "`$INTEGER`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "page",
                       "orig": "page",
@@ -545,10 +475,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.items`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
         },
         "relations": {
@@ -558,25 +486,16 @@ def make_config():
       "player_ranking": {
         "fields": [
           {
-            "active": True,
             "name": "name",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "rank",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "score",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 2,
           },
         ],
         "name": "player_ranking",
@@ -586,11 +505,9 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "category",
                       "orig": "category",
@@ -598,7 +515,6 @@ def make_config():
                       "type": "`$INTEGER`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "size",
                       "orig": "size",
@@ -606,7 +522,6 @@ def make_config():
                       "type": "`$INTEGER`",
                     },
                     {
-                      "active": True,
                       "kind": "query",
                       "name": "table",
                       "orig": "table",
@@ -633,10 +548,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
         },
         "relations": {

@@ -37,7 +37,7 @@ class GrandExchangeDatabase(TypedDict, total=False):
     typeIcon: str
 
 
-class GrandExchangeDatabaseLoadMatch(TypedDict, total=False):
+class GrandExchangeDatabaseLoadMatch(TypedDict):
     item_id: int
 
 

@@ -60,7 +60,7 @@ func main() {
     }
 
     // Load a single grandExchangeDatabase — the value is the loaded record.
-    grandExchangeDatabase, err := client.GrandExchangeDatabase(nil).Load(nil, nil)
+    grandExchangeDatabase, err := client.GrandExchangeDatabase(nil).Load(map[string]any{"item_id": 1}, nil)
     if err != nil {
         panic(err)
     }
@@ -367,7 +367,7 @@ Create an instance: `grandExchangeDatabase := client.GrandExchangeDatabase(nil)`
 #### Example: Load
 
 ```go
-grandExchangeDatabase, err := client.GrandExchangeDatabase(nil).Load(nil, nil)
+grandExchangeDatabase, err := client.GrandExchangeDatabase(nil).Load(map[string]any{"item_id": 1}, nil)
 if err != nil {
     panic(err)
 }

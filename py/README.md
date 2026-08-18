@@ -52,11 +52,12 @@ except Exception as err:
 
 ### 3. Load a grandexchangedatabase
 
+GrandExchangeDatabase is nested under item, so provide the `item_id`.
 `load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
-    grandexchangedatabase = client.GrandExchangeDatabase().load()
+    grandexchangedatabase = client.GrandExchangeDatabase().load({"item_id": 1})
     print(grandexchangedatabase)
 except Exception as err:
     print(f"load failed: {err}")
@@ -354,7 +355,7 @@ Create an instance: `grand_exchange_database = client.GrandExchangeDatabase()`
 #### Example: Load
 
 ```python
-grand_exchange_database = client.GrandExchangeDatabase().load()
+grand_exchange_database = client.GrandExchangeDatabase().load({"item_id": 1})
 ```
 
 #### Example: List

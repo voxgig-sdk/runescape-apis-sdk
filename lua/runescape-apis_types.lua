@@ -27,7 +27,7 @@
 ---@field typeIcon? string
 
 ---@class GrandExchangeDatabaseLoadMatch
----@field item_id? number
+---@field item_id number
 
 ---@class GrandExchangeDatabaseListMatch
 ---@field average? table

@@ -40,7 +40,7 @@ class RunescapeApisSDK
         $utility = new RunescapeApisUtility();
         $this->_utility = $utility;
 
-        $config = RunescapeApisConfig::make_config();
+        $config = RunescapeApisConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

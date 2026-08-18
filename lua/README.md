@@ -49,8 +49,10 @@ end
 
 ### 3. Load a grandexchangedatabase
 
+GrandExchangeDatabase is nested under item, so provide the `item_id`.
+
 ```lua
-local grandexchangedatabase, err = client:GrandExchangeDatabase():load()
+local grandexchangedatabase, err = client:GrandExchangeDatabase():load({ item_id = 1 })
 if err then error(err) end
 print(grandexchangedatabase)
 ```
@@ -339,7 +341,7 @@ Create an instance: `local grand_exchange_database = client:GrandExchangeDatabas
 #### Example: Load
 
 ```lua
-local grand_exchange_database, err = client:GrandExchangeDatabase():load()
+local grand_exchange_database, err = client:GrandExchangeDatabase():load({ item_id = 1 })
 ```
 
 #### Example: List

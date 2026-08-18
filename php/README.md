@@ -47,10 +47,12 @@ try {
 
 ### 3. Load a grandexchangedatabase
 
+GrandExchangeDatabase is nested under item, so provide the `item_id`.
+
 ```php
 try {
     // load() returns the ENTITY — call data_get() for the GrandExchangeDatabase record (throws on error).
-    $grandexchangedatabase = $client->GrandExchangeDatabase()->load();
+    $grandexchangedatabase = $client->GrandExchangeDatabase()->load(["item_id" => 1]);
     print_r($grandexchangedatabase);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -359,7 +361,7 @@ Create an instance: `$grand_exchange_database = $client->GrandExchangeDatabase()
 
 ```php
 // load() returns the ENTITY — call data_get() for the GrandExchangeDatabase record (throws on error).
-$grand_exchange_database = $client->GrandExchangeDatabase()->load();
+$grand_exchange_database = $client->GrandExchangeDatabase()->load(["item_id" => 1]);
 ```
 
 #### Example: List

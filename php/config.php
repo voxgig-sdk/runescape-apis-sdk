@@ -5,6 +5,29 @@ declare(strict_types=1);
 
 class RunescapeApisConfig
 {
+    /** @var array<string,mixed>|null */
+    private static ?array $shared_config = null;
+
+    /**
+     * Return the process-wide config, built once on first use. The SDK reads
+     * the config on every request and never writes to it, so one instance is
+     * shared by every client rather than rebuilt per client.
+     *
+     * PHP arrays are copy-on-write, so callers that do mutate the result get
+     * their own copy and cannot disturb the shared one.
+     */
+    public static function shared_config(): array
+    {
+        if (self::$shared_config === null) {
+            self::$shared_config = self::make_config();
+        }
+        return self::$shared_config;
+    }
+
+    /**
+     * Build a fresh, fully materialised config array. Every call rebuilds the
+     * whole structure, so prefer shared_config unless you need a private copy.
+     */
     public static function make_config(): array
     {
         return [
@@ -33,130 +56,86 @@ class RunescapeApisConfig
         'grand_exchange_database' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'average',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'current',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 1,
+              'union' => [
+                'branches' => 2,
+                'count' => 1,
+                'depth' => 2,
+              ],
             ],
             [
-              'active' => true,
               'name' => 'daily',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 2,
             ],
             [
-              'active' => true,
               'name' => 'day180',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 3,
             ],
             [
-              'active' => true,
               'name' => 'day30',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 4,
             ],
             [
-              'active' => true,
               'name' => 'day90',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 5,
             ],
             [
-              'active' => true,
               'name' => 'description',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 6,
             ],
             [
-              'active' => true,
               'name' => 'icon',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 7,
             ],
             [
-              'active' => true,
               'name' => 'icon_large',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 8,
             ],
             [
-              'active' => true,
               'name' => 'id',
-              'req' => false,
               'type' => '`$INTEGER`',
-              'index$' => 9,
             ],
             [
-              'active' => true,
               'name' => 'items',
-              'req' => false,
               'type' => '`$INTEGER`',
-              'index$' => 10,
             ],
             [
-              'active' => true,
               'name' => 'lastConfigUpdateRuneday',
-              'req' => false,
               'type' => '`$INTEGER`',
-              'index$' => 11,
             ],
             [
-              'active' => true,
               'name' => 'letter',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 12,
             ],
             [
-              'active' => true,
               'name' => 'members',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 13,
             ],
             [
-              'active' => true,
               'name' => 'name',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 14,
             ],
             [
-              'active' => true,
               'name' => 'today',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 15,
+              'union' => [
+                'branches' => 2,
+                'count' => 1,
+                'depth' => 2,
+              ],
             ],
             [
-              'active' => true,
               'name' => 'type',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 16,
             ],
             [
-              'active' => true,
               'name' => 'typeIcon',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 17,
             ],
           ],
           'name' => 'grand_exchange_database',
@@ -166,11 +145,9 @@ class RunescapeApisConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'alpha',
                         'orig' => 'alpha',
@@ -178,7 +155,6 @@ class RunescapeApisConfig
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'category',
                         'orig' => 'category',
@@ -186,7 +162,6 @@ class RunescapeApisConfig
                         'type' => '`$INTEGER`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'page',
                         'orig' => 'page',
@@ -215,14 +190,11 @@ class RunescapeApisConfig
                     'req' => '`reqdata`',
                     'res' => '`body.items`',
                   ],
-                  'index$' => 0,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'category',
                         'orig' => 'category',
@@ -249,21 +221,17 @@ class RunescapeApisConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 1,
                 ],
               ],
-              'key$' => 'list',
             ],
             'load' => [
               'input' => 'data',
               'name' => 'load',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'id',
                         'orig' => 'id',
@@ -288,14 +256,11 @@ class RunescapeApisConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'id',
                         'orig' => 'id',
@@ -320,14 +285,11 @@ class RunescapeApisConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 1,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'item',
                         'orig' => 'item',
@@ -354,20 +316,16 @@ class RunescapeApisConfig
                     'req' => '`reqdata`',
                     'res' => '`body.item`',
                   ],
-                  'index$' => 2,
                 ],
                 [
-                  'active' => true,
                   'args' => [
                     'params' => [
                       [
-                        'active' => true,
                         'kind' => 'param',
                         'name' => 'item_id',
                         'orig' => 'item_id',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
-                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -389,10 +347,8 @@ class RunescapeApisConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 3,
                 ],
                 [
-                  'active' => true,
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
@@ -407,10 +363,8 @@ class RunescapeApisConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 4,
                 ],
               ],
-              'key$' => 'load',
             ],
           ],
           'relations' => [
@@ -424,74 +378,54 @@ class RunescapeApisConfig
         'old_school_grand_exchange' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'current',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 0,
+              'union' => [
+                'branches' => 2,
+                'count' => 1,
+                'depth' => 2,
+              ],
             ],
             [
-              'active' => true,
               'name' => 'description',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 1,
             ],
             [
-              'active' => true,
               'name' => 'icon',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 2,
             ],
             [
-              'active' => true,
               'name' => 'icon_large',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 3,
             ],
             [
-              'active' => true,
               'name' => 'id',
-              'req' => false,
               'type' => '`$INTEGER`',
-              'index$' => 4,
             ],
             [
-              'active' => true,
               'name' => 'members',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 5,
             ],
             [
-              'active' => true,
               'name' => 'name',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 6,
             ],
             [
-              'active' => true,
               'name' => 'today',
-              'req' => false,
               'type' => '`$OBJECT`',
-              'index$' => 7,
+              'union' => [
+                'branches' => 2,
+                'count' => 1,
+                'depth' => 2,
+              ],
             ],
             [
-              'active' => true,
               'name' => 'type',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 8,
             ],
             [
-              'active' => true,
               'name' => 'typeIcon',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 9,
             ],
           ],
           'name' => 'old_school_grand_exchange',
@@ -501,11 +435,9 @@ class RunescapeApisConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'alpha',
                         'orig' => 'alpha',
@@ -513,7 +445,6 @@ class RunescapeApisConfig
                         'type' => '`$STRING`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'category',
                         'orig' => 'category',
@@ -521,7 +452,6 @@ class RunescapeApisConfig
                         'type' => '`$INTEGER`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'page',
                         'orig' => 'page',
@@ -550,10 +480,8 @@ class RunescapeApisConfig
                     'req' => '`reqdata`',
                     'res' => '`body.items`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
           ],
           'relations' => [
@@ -563,25 +491,16 @@ class RunescapeApisConfig
         'player_ranking' => [
           'fields' => [
             [
-              'active' => true,
               'name' => 'name',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 0,
             ],
             [
-              'active' => true,
               'name' => 'rank',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 1,
             ],
             [
-              'active' => true,
               'name' => 'score',
-              'req' => false,
               'type' => '`$STRING`',
-              'index$' => 2,
             ],
           ],
           'name' => 'player_ranking',
@@ -591,11 +510,9 @@ class RunescapeApisConfig
               'name' => 'list',
               'points' => [
                 [
-                  'active' => true,
                   'args' => [
                     'query' => [
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'category',
                         'orig' => 'category',
@@ -603,7 +520,6 @@ class RunescapeApisConfig
                         'type' => '`$INTEGER`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'size',
                         'orig' => 'size',
@@ -611,7 +527,6 @@ class RunescapeApisConfig
                         'type' => '`$INTEGER`',
                       ],
                       [
-                        'active' => true,
                         'kind' => 'query',
                         'name' => 'table',
                         'orig' => 'table',
@@ -638,10 +553,8 @@ class RunescapeApisConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'index$' => 0,
                 ],
               ],
-              'key$' => 'list',
             ],
           ],
           'relations' => [

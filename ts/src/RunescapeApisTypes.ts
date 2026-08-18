@@ -27,7 +27,7 @@ export interface GrandExchangeDatabase {
 }
 
 export interface GrandExchangeDatabaseLoadMatch {
-  item_id?: number
+  item_id: number
 }
 
 export interface GrandExchangeDatabaseListMatch {

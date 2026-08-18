@@ -1,5 +1,8 @@
 -- RunescapeApis SDK configuration
 
+-- Build a fresh, fully materialised config table. Every call rebuilds the
+-- whole structure, so prefer require("config_shared") unless you need a
+-- private copy you intend to mutate.
 local function make_config()
   return {
     main = {
@@ -27,130 +30,86 @@ local function make_config()
       ["grand_exchange_database"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "average",
-            ["req"] = false,
             ["type"] = "`$OBJECT`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "current",
-            ["req"] = false,
             ["type"] = "`$OBJECT`",
-            ["index$"] = 1,
+            ["union"] = {
+              ["branches"] = 2,
+              ["count"] = 1,
+              ["depth"] = 2,
+            },
           },
           {
-            ["active"] = true,
             ["name"] = "daily",
-            ["req"] = false,
             ["type"] = "`$OBJECT`",
-            ["index$"] = 2,
           },
           {
-            ["active"] = true,
             ["name"] = "day180",
-            ["req"] = false,
             ["type"] = "`$OBJECT`",
-            ["index$"] = 3,
           },
           {
-            ["active"] = true,
             ["name"] = "day30",
-            ["req"] = false,
             ["type"] = "`$OBJECT`",
-            ["index$"] = 4,
           },
           {
-            ["active"] = true,
             ["name"] = "day90",
-            ["req"] = false,
             ["type"] = "`$OBJECT`",
-            ["index$"] = 5,
           },
           {
-            ["active"] = true,
             ["name"] = "description",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 6,
           },
           {
-            ["active"] = true,
             ["name"] = "icon",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 7,
           },
           {
-            ["active"] = true,
             ["name"] = "icon_large",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 8,
           },
           {
-            ["active"] = true,
             ["name"] = "id",
-            ["req"] = false,
             ["type"] = "`$INTEGER`",
-            ["index$"] = 9,
           },
           {
-            ["active"] = true,
             ["name"] = "items",
-            ["req"] = false,
             ["type"] = "`$INTEGER`",
-            ["index$"] = 10,
           },
           {
-            ["active"] = true,
             ["name"] = "lastConfigUpdateRuneday",
-            ["req"] = false,
             ["type"] = "`$INTEGER`",
-            ["index$"] = 11,
           },
           {
-            ["active"] = true,
             ["name"] = "letter",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 12,
           },
           {
-            ["active"] = true,
             ["name"] = "members",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 13,
           },
           {
-            ["active"] = true,
             ["name"] = "name",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 14,
           },
           {
-            ["active"] = true,
             ["name"] = "today",
-            ["req"] = false,
             ["type"] = "`$OBJECT`",
-            ["index$"] = 15,
+            ["union"] = {
+              ["branches"] = 2,
+              ["count"] = 1,
+              ["depth"] = 2,
+            },
           },
           {
-            ["active"] = true,
             ["name"] = "type",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 16,
           },
           {
-            ["active"] = true,
             ["name"] = "typeIcon",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 17,
           },
         },
         ["name"] = "grand_exchange_database",
@@ -160,11 +119,9 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "alpha",
                       ["orig"] = "alpha",
@@ -172,7 +129,6 @@ local function make_config()
                       ["type"] = "`$STRING`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "category",
                       ["orig"] = "category",
@@ -180,7 +136,6 @@ local function make_config()
                       ["type"] = "`$INTEGER`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "page",
                       ["orig"] = "page",
@@ -209,14 +164,11 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.items`",
                 },
-                ["index$"] = 0,
               },
               {
-                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "category",
                       ["orig"] = "category",
@@ -243,21 +195,17 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 1,
               },
             },
-            ["key$"] = "list",
           },
           ["load"] = {
             ["input"] = "data",
             ["name"] = "load",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "id",
                       ["orig"] = "id",
@@ -282,14 +230,11 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
               {
-                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "id",
                       ["orig"] = "id",
@@ -314,14 +259,11 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 1,
               },
               {
-                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "item",
                       ["orig"] = "item",
@@ -348,20 +290,16 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.item`",
                 },
-                ["index$"] = 2,
               },
               {
-                ["active"] = true,
                 ["args"] = {
                   ["params"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "param",
                       ["name"] = "item_id",
                       ["orig"] = "item_id",
                       ["reqd"] = true,
                       ["type"] = "`$INTEGER`",
-                      ["index$"] = 0,
                     },
                   },
                 },
@@ -383,10 +321,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 3,
               },
               {
-                ["active"] = true,
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
@@ -401,10 +337,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 4,
               },
             },
-            ["key$"] = "load",
           },
         },
         ["relations"] = {
@@ -418,74 +352,54 @@ local function make_config()
       ["old_school_grand_exchange"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "current",
-            ["req"] = false,
             ["type"] = "`$OBJECT`",
-            ["index$"] = 0,
+            ["union"] = {
+              ["branches"] = 2,
+              ["count"] = 1,
+              ["depth"] = 2,
+            },
           },
           {
-            ["active"] = true,
             ["name"] = "description",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 1,
           },
           {
-            ["active"] = true,
             ["name"] = "icon",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 2,
           },
           {
-            ["active"] = true,
             ["name"] = "icon_large",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 3,
           },
           {
-            ["active"] = true,
             ["name"] = "id",
-            ["req"] = false,
             ["type"] = "`$INTEGER`",
-            ["index$"] = 4,
           },
           {
-            ["active"] = true,
             ["name"] = "members",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 5,
           },
           {
-            ["active"] = true,
             ["name"] = "name",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 6,
           },
           {
-            ["active"] = true,
             ["name"] = "today",
-            ["req"] = false,
             ["type"] = "`$OBJECT`",
-            ["index$"] = 7,
+            ["union"] = {
+              ["branches"] = 2,
+              ["count"] = 1,
+              ["depth"] = 2,
+            },
           },
           {
-            ["active"] = true,
             ["name"] = "type",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 8,
           },
           {
-            ["active"] = true,
             ["name"] = "typeIcon",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 9,
           },
         },
         ["name"] = "old_school_grand_exchange",
@@ -495,11 +409,9 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "alpha",
                       ["orig"] = "alpha",
@@ -507,7 +419,6 @@ local function make_config()
                       ["type"] = "`$STRING`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "category",
                       ["orig"] = "category",
@@ -515,7 +426,6 @@ local function make_config()
                       ["type"] = "`$INTEGER`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "page",
                       ["orig"] = "page",
@@ -544,10 +454,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.items`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "list",
           },
         },
         ["relations"] = {
@@ -557,25 +465,16 @@ local function make_config()
       ["player_ranking"] = {
         ["fields"] = {
           {
-            ["active"] = true,
             ["name"] = "name",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 0,
           },
           {
-            ["active"] = true,
             ["name"] = "rank",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 1,
           },
           {
-            ["active"] = true,
             ["name"] = "score",
-            ["req"] = false,
             ["type"] = "`$STRING`",
-            ["index$"] = 2,
           },
         },
         ["name"] = "player_ranking",
@@ -585,11 +484,9 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["active"] = true,
                 ["args"] = {
                   ["query"] = {
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "category",
                       ["orig"] = "category",
@@ -597,7 +494,6 @@ local function make_config()
                       ["type"] = "`$INTEGER`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "size",
                       ["orig"] = "size",
@@ -605,7 +501,6 @@ local function make_config()
                       ["type"] = "`$INTEGER`",
                     },
                     {
-                      ["active"] = true,
                       ["kind"] = "query",
                       ["name"] = "table",
                       ["orig"] = "table",
@@ -632,10 +527,8 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["index$"] = 0,
               },
             },
-            ["key$"] = "list",
           },
         },
         ["relations"] = {

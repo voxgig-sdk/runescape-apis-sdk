@@ -23,6 +23,7 @@ build = {
   modules = {
     ["runescape-apis_sdk"] = "runescape-apis_sdk.lua",
     ["config"] = "config.lua",
+    ["config_shared"] = "config_shared.lua",
     ["features"] = "features.lua",
   }
 }

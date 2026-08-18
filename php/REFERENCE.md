@@ -134,7 +134,7 @@ $results = $client->GrandExchangeDatabase()->list();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->GrandExchangeDatabase()->load();
+$result = $client->GrandExchangeDatabase()->load(["item_id" => 1]);
 ```
 
 ### Common Methods

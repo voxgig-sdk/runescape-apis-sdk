@@ -28,7 +28,7 @@ class RunescapeApisSDK
     utility = RunescapeApisUtility.new
     @_utility = utility
 
-    config = RunescapeApisConfig.make_config
+    config = RunescapeApisConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

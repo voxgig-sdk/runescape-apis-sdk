@@ -9,6 +9,11 @@ main: kit: entity: old_school_grand_exchange: {
       name: "current"
       req: false
       type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
     }
     {
       name: "description"
@@ -44,6 +49,11 @@ main: kit: entity: old_school_grand_exchange: {
       name: "today"
       req: false
       type: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
     }
     {
       name: "type"

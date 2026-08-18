@@ -124,6 +124,12 @@ const grandexchangedatabases = await client.GrandExchangeDatabase().list()
 for (const grandexchangedatabase of grandexchangedatabases) {
   console.log(grandexchangedatabase)
 }
+
+// Load a specific grandexchangedatabase (returns a GrandExchangeDatabase)
+const grandexchangedatabase = await client.GrandExchangeDatabase().load({
+  item_id: 1,
+})
+console.log(grandexchangedatabase)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -186,7 +192,7 @@ for grandexchangedatabase in grandexchangedatabases:
     print(grandexchangedatabase)
 
 # Load a specific grandexchangedatabase (returns the record, raises on error)
-grandexchangedatabase = client.GrandExchangeDatabase().load()
+grandexchangedatabase = client.GrandExchangeDatabase().load({"item_id": 1})
 print(grandexchangedatabase)
 ```
 
@@ -203,7 +209,7 @@ $grandexchangedatabases = $client->GrandExchangeDatabase()->list();
 print_r($grandexchangedatabases);
 
 // Load a specific grandexchangedatabase (returns the ENTITY; call data_get() for the record; throws on error)
-$grandexchangedatabase = $client->GrandExchangeDatabase()->load();
+$grandexchangedatabase = $client->GrandExchangeDatabase()->load(["item_id" => 1]);
 print_r($grandexchangedatabase);
 ```
 
@@ -220,6 +226,15 @@ if err != nil {
     panic(err)
 }
 fmt.Println(grandExchangeDatabases)
+
+// Load a specific grandexchangedatabase
+grandExchangeDatabase, err := client.GrandExchangeDatabase(nil).Load(
+    map[string]any{"item_id": 1}, nil,
+)
+if err != nil {
+    panic(err)
+}
+fmt.Println(grandExchangeDatabase)
 ```
 
 ### Ruby
@@ -234,7 +249,7 @@ grandexchangedatabases = client.GrandExchangeDatabase.list
 puts grandexchangedatabases
 
 # Load a specific grandexchangedatabase (returns the ENTITY; call data_get for the record)
-grandexchangedatabase = client.GrandExchangeDatabase.load()
+grandexchangedatabase = client.GrandExchangeDatabase.load({ "item_id" => 1 })
 puts grandexchangedatabase
 ```
 
@@ -250,7 +265,7 @@ local grandexchangedatabases, err = client:GrandExchangeDatabase():list()
 print(grandexchangedatabases)
 
 -- Load a specific grandexchangedatabase
-local grandexchangedatabase, err = client:GrandExchangeDatabase():load()
+local grandexchangedatabase, err = client:GrandExchangeDatabase():load({ item_id = 1 })
 print(grandexchangedatabase)
 ```
 

@@ -174,7 +174,7 @@ const results = await client.GrandExchangeDatabase().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.GrandExchangeDatabase().load()
+const result = await client.GrandExchangeDatabase().load({ item_id: 1 })
 ```
 
 ### Common Methods

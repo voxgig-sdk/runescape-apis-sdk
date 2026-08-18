@@ -144,7 +144,7 @@ fmt.Println(results)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.GrandExchangeDatabase(nil).Load(nil, nil)
+result, err := client.GrandExchangeDatabase(nil).Load(map[string]any{"item_id": 1}, nil)
 if err != nil {
     panic(err)
 }

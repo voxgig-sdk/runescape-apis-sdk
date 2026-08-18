@@ -132,7 +132,7 @@ local results, err = client:GrandExchangeDatabase():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:GrandExchangeDatabase():load()
+local result, err = client:GrandExchangeDatabase():load({ item_id = 1 })
 ```
 
 ### Common Methods
