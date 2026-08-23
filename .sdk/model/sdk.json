@@ -36,6 +36,7 @@
               "active": true,
               "name": "average",
               "req": false,
+              "short": "30-day moving average with timestamp as key",
               "type": "`$OBJECT`"
             },
             {
@@ -53,6 +54,7 @@
               "active": true,
               "name": "daily",
               "req": false,
+              "short": "Daily prices with timestamp as key",
               "type": "`$OBJECT`"
             },
             {
@@ -77,54 +79,63 @@
               "active": true,
               "name": "description",
               "req": false,
+              "short": "The item examine text",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "icon",
               "req": false,
+              "short": "The item sprite image URL",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "icon_large",
               "req": false,
+              "short": "The item detail image URL",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "The ItemID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "items",
               "req": false,
+              "short": "The number of items starting with this letter",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "lastConfigUpdateRuneday",
               "req": false,
+              "short": "The runedate when the database was last updated",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "letter",
               "req": false,
+              "short": "The first letter of an item",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "members",
               "req": false,
+              "short": "Whether the item is members-only",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "The item name",
               "type": "`$STRING`"
             },
             {
@@ -142,12 +153,14 @@
               "active": true,
               "name": "type",
               "req": false,
+              "short": "The item category",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "typeIcon",
               "req": false,
+              "short": "The item category icon URL",
               "type": "`$STRING`"
             }
           ],
@@ -428,36 +441,42 @@
               "active": true,
               "name": "description",
               "req": false,
+              "short": "The item examine text",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "icon",
               "req": false,
+              "short": "The item sprite image URL",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "icon_large",
               "req": false,
+              "short": "The item detail image URL",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "The ItemID",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "members",
               "req": false,
+              "short": "Whether the item is members-only",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "name",
               "req": false,
+              "short": "The item name",
               "type": "`$STRING`"
             },
             {
@@ -475,12 +494,14 @@
               "active": true,
               "name": "type",
               "req": false,
+              "short": "The item category",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "typeIcon",
               "req": false,
+              "short": "The item category icon URL",
               "type": "`$STRING`"
             }
           ],
@@ -562,18 +583,21 @@
               "active": true,
               "name": "name",
               "req": false,
+              "short": "The player's username",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "rank",
               "req": false,
+              "short": "The player's rank",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "score",
               "req": false,
+              "short": "The player's score or experience",
               "type": "`$STRING`"
             }
           ],

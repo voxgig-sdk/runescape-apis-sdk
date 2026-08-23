@@ -18,31 +18,37 @@ main: kit: entity: old_school_grand_exchange: {
     {
       name: "description"
       req: false
+      short: "The item examine text"
       type: "`$STRING`"
     }
     {
       name: "icon"
       req: false
+      short: "The item sprite image URL"
       type: "`$STRING`"
     }
     {
       name: "icon_large"
       req: false
+      short: "The item detail image URL"
       type: "`$STRING`"
     }
     {
       name: "id"
       req: false
+      short: "The ItemID"
       type: "`$INTEGER`"
     }
     {
       name: "members"
       req: false
+      short: "Whether the item is members-only"
       type: "`$STRING`"
     }
     {
       name: "name"
       req: false
+      short: "The item name"
       type: "`$STRING`"
     }
     {
@@ -58,11 +64,13 @@ main: kit: entity: old_school_grand_exchange: {
     {
       name: "type"
       req: false
+      short: "The item category"
       type: "`$STRING`"
     }
     {
       name: "typeIcon"
       req: false
+      short: "The item category icon URL"
       type: "`$STRING`"
     }
   ]

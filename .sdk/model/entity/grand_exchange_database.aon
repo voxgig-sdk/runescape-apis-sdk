@@ -8,6 +8,7 @@ main: kit: entity: grand_exchange_database: {
     {
       name: "average"
       req: false
+      short: "30-day moving average with timestamp as key"
       type: "`$OBJECT`"
     }
     {
@@ -23,6 +24,7 @@ main: kit: entity: grand_exchange_database: {
     {
       name: "daily"
       req: false
+      short: "Daily prices with timestamp as key"
       type: "`$OBJECT`"
     }
     {
@@ -43,46 +45,55 @@ main: kit: entity: grand_exchange_database: {
     {
       name: "description"
       req: false
+      short: "The item examine text"
       type: "`$STRING`"
     }
     {
       name: "icon"
       req: false
+      short: "The item sprite image URL"
       type: "`$STRING`"
     }
     {
       name: "icon_large"
       req: false
+      short: "The item detail image URL"
       type: "`$STRING`"
     }
     {
       name: "id"
       req: false
+      short: "The ItemID"
       type: "`$INTEGER`"
     }
     {
       name: "items"
       req: false
+      short: "The number of items starting with this letter"
       type: "`$INTEGER`"
     }
     {
       name: "lastConfigUpdateRuneday"
       req: false
+      short: "The runedate when the database was last updated"
       type: "`$INTEGER`"
     }
     {
       name: "letter"
       req: false
+      short: "The first letter of an item"
       type: "`$STRING`"
     }
     {
       name: "members"
       req: false
+      short: "Whether the item is members-only"
       type: "`$STRING`"
     }
     {
       name: "name"
       req: false
+      short: "The item name"
       type: "`$STRING`"
     }
     {
@@ -98,11 +109,13 @@ main: kit: entity: grand_exchange_database: {
     {
       name: "type"
       req: false
+      short: "The item category"
       type: "`$STRING`"
     }
     {
       name: "typeIcon"
       req: false
+      short: "The item category icon URL"
       type: "`$STRING`"
     }
   ]

@@ -264,24 +264,24 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `average` |  |
+| `average` | 30-day moving average with timestamp as key |
 | `current` |  |
-| `daily` |  |
+| `daily` | Daily prices with timestamp as key |
 | `day180` |  |
 | `day30` |  |
 | `day90` |  |
-| `description` |  |
-| `icon` |  |
-| `icon_large` |  |
-| `id` |  |
-| `items` |  |
-| `lastConfigUpdateRuneday` |  |
-| `letter` |  |
-| `members` |  |
-| `name` |  |
+| `description` | The item examine text |
+| `icon` | The item sprite image URL |
+| `icon_large` | The item detail image URL |
+| `id` | The ItemID |
+| `items` | The number of items starting with this letter |
+| `lastConfigUpdateRuneday` | The runedate when the database was last updated |
+| `letter` | The first letter of an item |
+| `members` | Whether the item is members-only |
+| `name` | The item name |
 | `today` |  |
-| `type` |  |
-| `typeIcon` |  |
+| `type` | The item category |
+| `typeIcon` | The item category icon URL |
 
 Operations: List, Load.
 
@@ -292,15 +292,15 @@ API path: `/m=itemdb_rs/api/catalogue/items.json`
 | Field | Description |
 | --- | --- |
 | `current` |  |
-| `description` |  |
-| `icon` |  |
-| `icon_large` |  |
-| `id` |  |
-| `members` |  |
-| `name` |  |
+| `description` | The item examine text |
+| `icon` | The item sprite image URL |
+| `icon_large` | The item detail image URL |
+| `id` | The ItemID |
+| `members` | Whether the item is members-only |
+| `name` | The item name |
 | `today` |  |
-| `type` |  |
-| `typeIcon` |  |
+| `type` | The item category |
+| `typeIcon` | The item category icon URL |
 
 Operations: List.
 
@@ -310,9 +310,9 @@ API path: `/m=itemdb_oldschool/api/catalogue/items.json`
 
 | Field | Description |
 | --- | --- |
-| `name` |  |
-| `rank` |  |
-| `score` |  |
+| `name` | The player's username |
+| `rank` | The player's rank |
+| `score` | The player's score or experience |
 
 Operations: List.
 
@@ -338,24 +338,24 @@ Create an instance: `$grand_exchange_database = $client->GrandExchangeDatabase()
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `average` | `array` |  |
+| `average` | `array` | 30-day moving average with timestamp as key |
 | `current` | `array` |  |
-| `daily` | `array` |  |
+| `daily` | `array` | Daily prices with timestamp as key |
 | `day180` | `array` |  |
 | `day30` | `array` |  |
 | `day90` | `array` |  |
-| `description` | `string` |  |
-| `icon` | `string` |  |
-| `icon_large` | `string` |  |
-| `id` | `int` |  |
-| `items` | `int` |  |
-| `lastConfigUpdateRuneday` | `int` |  |
-| `letter` | `string` |  |
-| `members` | `string` |  |
-| `name` | `string` |  |
+| `description` | `string` | The item examine text |
+| `icon` | `string` | The item sprite image URL |
+| `icon_large` | `string` | The item detail image URL |
+| `id` | `int` | The ItemID |
+| `items` | `int` | The number of items starting with this letter |
+| `lastConfigUpdateRuneday` | `int` | The runedate when the database was last updated |
+| `letter` | `string` | The first letter of an item |
+| `members` | `string` | Whether the item is members-only |
+| `name` | `string` | The item name |
 | `today` | `array` |  |
-| `type` | `string` |  |
-| `typeIcon` | `string` |  |
+| `type` | `string` | The item category |
+| `typeIcon` | `string` | The item category icon URL |
 
 #### Example: Load
 
@@ -387,15 +387,15 @@ Create an instance: `$old_school_grand_exchange = $client->OldSchoolGrandExchang
 | Field | Type | Description |
 | --- | --- | --- |
 | `current` | `array` |  |
-| `description` | `string` |  |
-| `icon` | `string` |  |
-| `icon_large` | `string` |  |
-| `id` | `int` |  |
-| `members` | `string` |  |
-| `name` | `string` |  |
+| `description` | `string` | The item examine text |
+| `icon` | `string` | The item sprite image URL |
+| `icon_large` | `string` | The item detail image URL |
+| `id` | `int` | The ItemID |
+| `members` | `string` | Whether the item is members-only |
+| `name` | `string` | The item name |
 | `today` | `array` |  |
-| `type` | `string` |  |
-| `typeIcon` | `string` |  |
+| `type` | `string` | The item category |
+| `typeIcon` | `string` | The item category icon URL |
 
 #### Example: List
 
@@ -419,9 +419,9 @@ Create an instance: `$player_ranking = $client->PlayerRanking();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `name` | `string` |  |
-| `rank` | `string` |  |
-| `score` | `string` |  |
+| `name` | `string` | The player's username |
+| `rank` | `string` | The player's rank |
+| `score` | `string` | The player's score or experience |
 
 #### Example: List
 

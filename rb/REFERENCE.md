@@ -101,24 +101,24 @@ grand_exchange_database = client.GrandExchangeDatabase
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `average` | `Hash` | No |  |
+| `average` | `Hash` | No | 30-day moving average with timestamp as key |
 | `current` | `Hash` | No |  |
-| `daily` | `Hash` | No |  |
+| `daily` | `Hash` | No | Daily prices with timestamp as key |
 | `day180` | `Hash` | No |  |
 | `day30` | `Hash` | No |  |
 | `day90` | `Hash` | No |  |
-| `description` | `String` | No |  |
-| `icon` | `String` | No |  |
-| `icon_large` | `String` | No |  |
-| `id` | `Integer` | No |  |
-| `items` | `Integer` | No |  |
-| `lastConfigUpdateRuneday` | `Integer` | No |  |
-| `letter` | `String` | No |  |
-| `members` | `String` | No |  |
-| `name` | `String` | No |  |
+| `description` | `String` | No | The item examine text |
+| `icon` | `String` | No | The item sprite image URL |
+| `icon_large` | `String` | No | The item detail image URL |
+| `id` | `Integer` | No | The ItemID |
+| `items` | `Integer` | No | The number of items starting with this letter |
+| `lastConfigUpdateRuneday` | `Integer` | No | The runedate when the database was last updated |
+| `letter` | `String` | No | The first letter of an item |
+| `members` | `String` | No | Whether the item is members-only |
+| `name` | `String` | No | The item name |
 | `today` | `Hash` | No |  |
-| `type` | `String` | No |  |
-| `typeIcon` | `String` | No |  |
+| `type` | `String` | No | The item category |
+| `typeIcon` | `String` | No | The item category icon URL |
 
 ### Operations
 
@@ -179,15 +179,15 @@ old_school_grand_exchange = client.OldSchoolGrandExchange
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `current` | `Hash` | No |  |
-| `description` | `String` | No |  |
-| `icon` | `String` | No |  |
-| `icon_large` | `String` | No |  |
-| `id` | `Integer` | No |  |
-| `members` | `String` | No |  |
-| `name` | `String` | No |  |
+| `description` | `String` | No | The item examine text |
+| `icon` | `String` | No | The item sprite image URL |
+| `icon_large` | `String` | No | The item detail image URL |
+| `id` | `Integer` | No | The ItemID |
+| `members` | `String` | No | Whether the item is members-only |
+| `name` | `String` | No | The item name |
 | `today` | `Hash` | No |  |
-| `type` | `String` | No |  |
-| `typeIcon` | `String` | No |  |
+| `type` | `String` | No | The item category |
+| `typeIcon` | `String` | No | The item category icon URL |
 
 ### Operations
 
@@ -239,9 +239,9 @@ player_ranking = client.PlayerRanking
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `name` | `String` | No |  |
-| `rank` | `String` | No |  |
-| `score` | `String` | No |  |
+| `name` | `String` | No | The player's username |
+| `rank` | `String` | No | The player's rank |
+| `score` | `String` | No | The player's score or experience |
 
 ### Operations
 

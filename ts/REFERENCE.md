@@ -140,24 +140,24 @@ const grand_exchange_database = client.GrandExchangeDatabase()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `average` | `Record<string, any>` | No |  |
+| `average` | `Record<string, any>` | No | 30-day moving average with timestamp as key |
 | `current` | `Record<string, any>` | No |  |
-| `daily` | `Record<string, any>` | No |  |
+| `daily` | `Record<string, any>` | No | Daily prices with timestamp as key |
 | `day180` | `Record<string, any>` | No |  |
 | `day30` | `Record<string, any>` | No |  |
 | `day90` | `Record<string, any>` | No |  |
-| `description` | `string` | No |  |
-| `icon` | `string` | No |  |
-| `icon_large` | `string` | No |  |
-| `id` | `number` | No |  |
-| `items` | `number` | No |  |
-| `lastConfigUpdateRuneday` | `number` | No |  |
-| `letter` | `string` | No |  |
-| `members` | `string` | No |  |
-| `name` | `string` | No |  |
+| `description` | `string` | No | The item examine text |
+| `icon` | `string` | No | The item sprite image URL |
+| `icon_large` | `string` | No | The item detail image URL |
+| `id` | `number` | No | The ItemID |
+| `items` | `number` | No | The number of items starting with this letter |
+| `lastConfigUpdateRuneday` | `number` | No | The runedate when the database was last updated |
+| `letter` | `string` | No | The first letter of an item |
+| `members` | `string` | No | Whether the item is members-only |
+| `name` | `string` | No | The item name |
 | `today` | `Record<string, any>` | No |  |
-| `type` | `string` | No |  |
-| `typeIcon` | `string` | No |  |
+| `type` | `string` | No | The item category |
+| `typeIcon` | `string` | No | The item category icon URL |
 
 ### Operations
 
@@ -216,15 +216,15 @@ const old_school_grand_exchange = client.OldSchoolGrandExchange()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `current` | `Record<string, any>` | No |  |
-| `description` | `string` | No |  |
-| `icon` | `string` | No |  |
-| `icon_large` | `string` | No |  |
-| `id` | `number` | No |  |
-| `members` | `string` | No |  |
-| `name` | `string` | No |  |
+| `description` | `string` | No | The item examine text |
+| `icon` | `string` | No | The item sprite image URL |
+| `icon_large` | `string` | No | The item detail image URL |
+| `id` | `number` | No | The ItemID |
+| `members` | `string` | No | Whether the item is members-only |
+| `name` | `string` | No | The item name |
 | `today` | `Record<string, any>` | No |  |
-| `type` | `string` | No |  |
-| `typeIcon` | `string` | No |  |
+| `type` | `string` | No | The item category |
+| `typeIcon` | `string` | No | The item category icon URL |
 
 ### Operations
 
@@ -274,9 +274,9 @@ const player_ranking = client.PlayerRanking()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `name` | `string` | No |  |
-| `rank` | `string` | No |  |
-| `score` | `string` | No |  |
+| `name` | `string` | No | The player's username |
+| `rank` | `string` | No | The player's rank |
+| `score` | `string` | No | The player's score or experience |
 
 ### Operations
 

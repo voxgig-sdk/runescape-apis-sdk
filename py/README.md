@@ -259,24 +259,24 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `average` |  |
+| `average` | 30-day moving average with timestamp as key |
 | `current` |  |
-| `daily` |  |
+| `daily` | Daily prices with timestamp as key |
 | `day180` |  |
 | `day30` |  |
 | `day90` |  |
-| `description` |  |
-| `icon` |  |
-| `icon_large` |  |
-| `id` |  |
-| `items` |  |
-| `lastConfigUpdateRuneday` |  |
-| `letter` |  |
-| `members` |  |
-| `name` |  |
+| `description` | The item examine text |
+| `icon` | The item sprite image URL |
+| `icon_large` | The item detail image URL |
+| `id` | The ItemID |
+| `items` | The number of items starting with this letter |
+| `lastConfigUpdateRuneday` | The runedate when the database was last updated |
+| `letter` | The first letter of an item |
+| `members` | Whether the item is members-only |
+| `name` | The item name |
 | `today` |  |
-| `type` |  |
-| `typeIcon` |  |
+| `type` | The item category |
+| `typeIcon` | The item category icon URL |
 
 Operations: List, Load.
 
@@ -287,15 +287,15 @@ API path: `/m=itemdb_rs/api/catalogue/items.json`
 | Field | Description |
 | --- | --- |
 | `current` |  |
-| `description` |  |
-| `icon` |  |
-| `icon_large` |  |
-| `id` |  |
-| `members` |  |
-| `name` |  |
+| `description` | The item examine text |
+| `icon` | The item sprite image URL |
+| `icon_large` | The item detail image URL |
+| `id` | The ItemID |
+| `members` | Whether the item is members-only |
+| `name` | The item name |
 | `today` |  |
-| `type` |  |
-| `typeIcon` |  |
+| `type` | The item category |
+| `typeIcon` | The item category icon URL |
 
 Operations: List.
 
@@ -305,9 +305,9 @@ API path: `/m=itemdb_oldschool/api/catalogue/items.json`
 
 | Field | Description |
 | --- | --- |
-| `name` |  |
-| `rank` |  |
-| `score` |  |
+| `name` | The player's username |
+| `rank` | The player's rank |
+| `score` | The player's score or experience |
 
 Operations: List.
 
@@ -333,24 +333,24 @@ Create an instance: `grand_exchange_database = client.GrandExchangeDatabase()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `average` | `dict` |  |
+| `average` | `dict` | 30-day moving average with timestamp as key |
 | `current` | `dict` |  |
-| `daily` | `dict` |  |
+| `daily` | `dict` | Daily prices with timestamp as key |
 | `day180` | `dict` |  |
 | `day30` | `dict` |  |
 | `day90` | `dict` |  |
-| `description` | `str` |  |
-| `icon` | `str` |  |
-| `icon_large` | `str` |  |
-| `id` | `int` |  |
-| `items` | `int` |  |
-| `lastConfigUpdateRuneday` | `int` |  |
-| `letter` | `str` |  |
-| `members` | `str` |  |
-| `name` | `str` |  |
+| `description` | `str` | The item examine text |
+| `icon` | `str` | The item sprite image URL |
+| `icon_large` | `str` | The item detail image URL |
+| `id` | `int` | The ItemID |
+| `items` | `int` | The number of items starting with this letter |
+| `lastConfigUpdateRuneday` | `int` | The runedate when the database was last updated |
+| `letter` | `str` | The first letter of an item |
+| `members` | `str` | Whether the item is members-only |
+| `name` | `str` | The item name |
 | `today` | `dict` |  |
-| `type` | `str` |  |
-| `typeIcon` | `str` |  |
+| `type` | `str` | The item category |
+| `typeIcon` | `str` | The item category icon URL |
 
 #### Example: Load
 
@@ -380,15 +380,15 @@ Create an instance: `old_school_grand_exchange = client.OldSchoolGrandExchange()
 | Field | Type | Description |
 | --- | --- | --- |
 | `current` | `dict` |  |
-| `description` | `str` |  |
-| `icon` | `str` |  |
-| `icon_large` | `str` |  |
-| `id` | `int` |  |
-| `members` | `str` |  |
-| `name` | `str` |  |
+| `description` | `str` | The item examine text |
+| `icon` | `str` | The item sprite image URL |
+| `icon_large` | `str` | The item detail image URL |
+| `id` | `int` | The ItemID |
+| `members` | `str` | Whether the item is members-only |
+| `name` | `str` | The item name |
 | `today` | `dict` |  |
-| `type` | `str` |  |
-| `typeIcon` | `str` |  |
+| `type` | `str` | The item category |
+| `typeIcon` | `str` | The item category icon URL |
 
 #### Example: List
 
@@ -411,9 +411,9 @@ Create an instance: `player_ranking = client.PlayerRanking()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `name` | `str` |  |
-| `rank` | `str` |  |
-| `score` | `str` |  |
+| `name` | `str` | The player's username |
+| `rank` | `str` | The player's rank |
+| `score` | `str` | The player's score or experience |
 
 #### Example: List
 

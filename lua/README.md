@@ -245,24 +245,24 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `average` |  |
+| `average` | 30-day moving average with timestamp as key |
 | `current` |  |
-| `daily` |  |
+| `daily` | Daily prices with timestamp as key |
 | `day180` |  |
 | `day30` |  |
 | `day90` |  |
-| `description` |  |
-| `icon` |  |
-| `icon_large` |  |
-| `id` |  |
-| `items` |  |
-| `lastConfigUpdateRuneday` |  |
-| `letter` |  |
-| `members` |  |
-| `name` |  |
+| `description` | The item examine text |
+| `icon` | The item sprite image URL |
+| `icon_large` | The item detail image URL |
+| `id` | The ItemID |
+| `items` | The number of items starting with this letter |
+| `lastConfigUpdateRuneday` | The runedate when the database was last updated |
+| `letter` | The first letter of an item |
+| `members` | Whether the item is members-only |
+| `name` | The item name |
 | `today` |  |
-| `type` |  |
-| `typeIcon` |  |
+| `type` | The item category |
+| `typeIcon` | The item category icon URL |
 
 Operations: List, Load.
 
@@ -273,15 +273,15 @@ API path: `/m=itemdb_rs/api/catalogue/items.json`
 | Field | Description |
 | --- | --- |
 | `current` |  |
-| `description` |  |
-| `icon` |  |
-| `icon_large` |  |
-| `id` |  |
-| `members` |  |
-| `name` |  |
+| `description` | The item examine text |
+| `icon` | The item sprite image URL |
+| `icon_large` | The item detail image URL |
+| `id` | The ItemID |
+| `members` | Whether the item is members-only |
+| `name` | The item name |
 | `today` |  |
-| `type` |  |
-| `typeIcon` |  |
+| `type` | The item category |
+| `typeIcon` | The item category icon URL |
 
 Operations: List.
 
@@ -291,9 +291,9 @@ API path: `/m=itemdb_oldschool/api/catalogue/items.json`
 
 | Field | Description |
 | --- | --- |
-| `name` |  |
-| `rank` |  |
-| `score` |  |
+| `name` | The player's username |
+| `rank` | The player's rank |
+| `score` | The player's score or experience |
 
 Operations: List.
 
@@ -319,24 +319,24 @@ Create an instance: `local grand_exchange_database = client:GrandExchangeDatabas
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `average` | `table` |  |
+| `average` | `table` | 30-day moving average with timestamp as key |
 | `current` | `table` |  |
-| `daily` | `table` |  |
+| `daily` | `table` | Daily prices with timestamp as key |
 | `day180` | `table` |  |
 | `day30` | `table` |  |
 | `day90` | `table` |  |
-| `description` | `string` |  |
-| `icon` | `string` |  |
-| `icon_large` | `string` |  |
-| `id` | `number` |  |
-| `items` | `number` |  |
-| `lastConfigUpdateRuneday` | `number` |  |
-| `letter` | `string` |  |
-| `members` | `string` |  |
-| `name` | `string` |  |
+| `description` | `string` | The item examine text |
+| `icon` | `string` | The item sprite image URL |
+| `icon_large` | `string` | The item detail image URL |
+| `id` | `number` | The ItemID |
+| `items` | `number` | The number of items starting with this letter |
+| `lastConfigUpdateRuneday` | `number` | The runedate when the database was last updated |
+| `letter` | `string` | The first letter of an item |
+| `members` | `string` | Whether the item is members-only |
+| `name` | `string` | The item name |
 | `today` | `table` |  |
-| `type` | `string` |  |
-| `typeIcon` | `string` |  |
+| `type` | `string` | The item category |
+| `typeIcon` | `string` | The item category icon URL |
 
 #### Example: Load
 
@@ -366,15 +366,15 @@ Create an instance: `local old_school_grand_exchange = client:OldSchoolGrandExch
 | Field | Type | Description |
 | --- | --- | --- |
 | `current` | `table` |  |
-| `description` | `string` |  |
-| `icon` | `string` |  |
-| `icon_large` | `string` |  |
-| `id` | `number` |  |
-| `members` | `string` |  |
-| `name` | `string` |  |
+| `description` | `string` | The item examine text |
+| `icon` | `string` | The item sprite image URL |
+| `icon_large` | `string` | The item detail image URL |
+| `id` | `number` | The ItemID |
+| `members` | `string` | Whether the item is members-only |
+| `name` | `string` | The item name |
 | `today` | `table` |  |
-| `type` | `string` |  |
-| `typeIcon` | `string` |  |
+| `type` | `string` | The item category |
+| `typeIcon` | `string` | The item category icon URL |
 
 #### Example: List
 
@@ -397,9 +397,9 @@ Create an instance: `local player_ranking = client:PlayerRanking(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `name` | `string` |  |
-| `rank` | `string` |  |
-| `score` | `string` |  |
+| `name` | `string` | The player's username |
+| `rank` | `string` | The player's rank |
+| `score` | `string` | The player's score or experience |
 
 #### Example: List
 

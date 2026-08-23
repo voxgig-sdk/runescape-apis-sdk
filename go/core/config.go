@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "RunescapeApis",
+			"slug": "runescape-apis",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -35,6 +38,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "average",
+						"short": "30-day moving average with timestamp as key",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
@@ -48,6 +52,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "daily",
+						"short": "Daily prices with timestamp as key",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
@@ -64,38 +69,47 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "description",
+						"short": "The item examine text",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "icon",
+						"short": "The item sprite image URL",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "icon_large",
+						"short": "The item detail image URL",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "The ItemID",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "items",
+						"short": "The number of items starting with this letter",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "lastConfigUpdateRuneday",
+						"short": "The runedate when the database was last updated",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "letter",
+						"short": "The first letter of an item",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "members",
+						"short": "Whether the item is members-only",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "The item name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -109,10 +123,12 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "type",
+						"short": "The item category",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "typeIcon",
+						"short": "The item category icon URL",
 						"type": "`$STRING`",
 					},
 				},
@@ -366,26 +382,32 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "description",
+						"short": "The item examine text",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "icon",
+						"short": "The item sprite image URL",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "icon_large",
+						"short": "The item detail image URL",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "The ItemID",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "members",
+						"short": "Whether the item is members-only",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "name",
+						"short": "The item name",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -399,10 +421,12 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "type",
+						"short": "The item category",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "typeIcon",
+						"short": "The item category icon URL",
 						"type": "`$STRING`",
 					},
 				},
@@ -470,14 +494,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "name",
+						"short": "The player's username",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "rank",
+						"short": "The player's rank",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "score",
+						"short": "The player's score or experience",
 						"type": "`$STRING`",
 					},
 				},

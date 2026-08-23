@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "RunescapeApis",
+            "slug": "runescape-apis",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -52,6 +55,7 @@ def make_config():
         "fields": [
           {
             "name": "average",
+            "short": "30-day moving average with timestamp as key",
             "type": "`$OBJECT`",
           },
           {
@@ -65,6 +69,7 @@ def make_config():
           },
           {
             "name": "daily",
+            "short": "Daily prices with timestamp as key",
             "type": "`$OBJECT`",
           },
           {
@@ -81,38 +86,47 @@ def make_config():
           },
           {
             "name": "description",
+            "short": "The item examine text",
             "type": "`$STRING`",
           },
           {
             "name": "icon",
+            "short": "The item sprite image URL",
             "type": "`$STRING`",
           },
           {
             "name": "icon_large",
+            "short": "The item detail image URL",
             "type": "`$STRING`",
           },
           {
             "name": "id",
+            "short": "The ItemID",
             "type": "`$INTEGER`",
           },
           {
             "name": "items",
+            "short": "The number of items starting with this letter",
             "type": "`$INTEGER`",
           },
           {
             "name": "lastConfigUpdateRuneday",
+            "short": "The runedate when the database was last updated",
             "type": "`$INTEGER`",
           },
           {
             "name": "letter",
+            "short": "The first letter of an item",
             "type": "`$STRING`",
           },
           {
             "name": "members",
+            "short": "Whether the item is members-only",
             "type": "`$STRING`",
           },
           {
             "name": "name",
+            "short": "The item name",
             "type": "`$STRING`",
           },
           {
@@ -126,10 +140,12 @@ def make_config():
           },
           {
             "name": "type",
+            "short": "The item category",
             "type": "`$STRING`",
           },
           {
             "name": "typeIcon",
+            "short": "The item category icon URL",
             "type": "`$STRING`",
           },
         ],
@@ -383,26 +399,32 @@ def make_config():
           },
           {
             "name": "description",
+            "short": "The item examine text",
             "type": "`$STRING`",
           },
           {
             "name": "icon",
+            "short": "The item sprite image URL",
             "type": "`$STRING`",
           },
           {
             "name": "icon_large",
+            "short": "The item detail image URL",
             "type": "`$STRING`",
           },
           {
             "name": "id",
+            "short": "The ItemID",
             "type": "`$INTEGER`",
           },
           {
             "name": "members",
+            "short": "Whether the item is members-only",
             "type": "`$STRING`",
           },
           {
             "name": "name",
+            "short": "The item name",
             "type": "`$STRING`",
           },
           {
@@ -416,10 +438,12 @@ def make_config():
           },
           {
             "name": "type",
+            "short": "The item category",
             "type": "`$STRING`",
           },
           {
             "name": "typeIcon",
+            "short": "The item category icon URL",
             "type": "`$STRING`",
           },
         ],
@@ -487,14 +511,17 @@ def make_config():
         "fields": [
           {
             "name": "name",
+            "short": "The player's username",
             "type": "`$STRING`",
           },
           {
             "name": "rank",
+            "short": "The player's rank",
             "type": "`$STRING`",
           },
           {
             "name": "score",
+            "short": "The player's score or experience",
             "type": "`$STRING`",
           },
         ],

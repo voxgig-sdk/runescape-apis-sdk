@@ -8,16 +8,19 @@ main: kit: entity: player_ranking: {
     {
       name: "name"
       req: false
+      short: "The player's username"
       type: "`$STRING`"
     }
     {
       name: "rank"
       req: false
+      short: "The player's rank"
       type: "`$STRING`"
     }
     {
       name: "score"
       req: false
+      short: "The player's score or experience"
       type: "`$STRING`"
     }
   ]

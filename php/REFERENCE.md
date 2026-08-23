@@ -100,24 +100,24 @@ $grand_exchange_database = $client->GrandExchangeDatabase();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `average` | `array` | No |  |
+| `average` | `array` | No | 30-day moving average with timestamp as key |
 | `current` | `array` | No |  |
-| `daily` | `array` | No |  |
+| `daily` | `array` | No | Daily prices with timestamp as key |
 | `day180` | `array` | No |  |
 | `day30` | `array` | No |  |
 | `day90` | `array` | No |  |
-| `description` | `string` | No |  |
-| `icon` | `string` | No |  |
-| `icon_large` | `string` | No |  |
-| `id` | `int` | No |  |
-| `items` | `int` | No |  |
-| `lastConfigUpdateRuneday` | `int` | No |  |
-| `letter` | `string` | No |  |
-| `members` | `string` | No |  |
-| `name` | `string` | No |  |
+| `description` | `string` | No | The item examine text |
+| `icon` | `string` | No | The item sprite image URL |
+| `icon_large` | `string` | No | The item detail image URL |
+| `id` | `int` | No | The ItemID |
+| `items` | `int` | No | The number of items starting with this letter |
+| `lastConfigUpdateRuneday` | `int` | No | The runedate when the database was last updated |
+| `letter` | `string` | No | The first letter of an item |
+| `members` | `string` | No | Whether the item is members-only |
+| `name` | `string` | No | The item name |
 | `today` | `array` | No |  |
-| `type` | `string` | No |  |
-| `typeIcon` | `string` | No |  |
+| `type` | `string` | No | The item category |
+| `typeIcon` | `string` | No | The item category icon URL |
 
 ### Operations
 
@@ -178,15 +178,15 @@ $old_school_grand_exchange = $client->OldSchoolGrandExchange();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `current` | `array` | No |  |
-| `description` | `string` | No |  |
-| `icon` | `string` | No |  |
-| `icon_large` | `string` | No |  |
-| `id` | `int` | No |  |
-| `members` | `string` | No |  |
-| `name` | `string` | No |  |
+| `description` | `string` | No | The item examine text |
+| `icon` | `string` | No | The item sprite image URL |
+| `icon_large` | `string` | No | The item detail image URL |
+| `id` | `int` | No | The ItemID |
+| `members` | `string` | No | Whether the item is members-only |
+| `name` | `string` | No | The item name |
 | `today` | `array` | No |  |
-| `type` | `string` | No |  |
-| `typeIcon` | `string` | No |  |
+| `type` | `string` | No | The item category |
+| `typeIcon` | `string` | No | The item category icon URL |
 
 ### Operations
 
@@ -238,9 +238,9 @@ $player_ranking = $client->PlayerRanking();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `name` | `string` | No |  |
-| `rank` | `string` | No |  |
-| `score` | `string` | No |  |
+| `name` | `string` | No | The player's username |
+| `rank` | `string` | No | The player's rank |
+| `score` | `string` | No | The player's score or experience |
 
 ### Operations
 

@@ -95,24 +95,24 @@ grand_exchange_database = client.GrandExchangeDatabase()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `average` | `dict` | No |  |
+| `average` | `dict` | No | 30-day moving average with timestamp as key |
 | `current` | `dict` | No |  |
-| `daily` | `dict` | No |  |
+| `daily` | `dict` | No | Daily prices with timestamp as key |
 | `day180` | `dict` | No |  |
 | `day30` | `dict` | No |  |
 | `day90` | `dict` | No |  |
-| `description` | `str` | No |  |
-| `icon` | `str` | No |  |
-| `icon_large` | `str` | No |  |
-| `id` | `int` | No |  |
-| `items` | `int` | No |  |
-| `lastConfigUpdateRuneday` | `int` | No |  |
-| `letter` | `str` | No |  |
-| `members` | `str` | No |  |
-| `name` | `str` | No |  |
+| `description` | `str` | No | The item examine text |
+| `icon` | `str` | No | The item sprite image URL |
+| `icon_large` | `str` | No | The item detail image URL |
+| `id` | `int` | No | The ItemID |
+| `items` | `int` | No | The number of items starting with this letter |
+| `lastConfigUpdateRuneday` | `int` | No | The runedate when the database was last updated |
+| `letter` | `str` | No | The first letter of an item |
+| `members` | `str` | No | Whether the item is members-only |
+| `name` | `str` | No | The item name |
 | `today` | `dict` | No |  |
-| `type` | `str` | No |  |
-| `typeIcon` | `str` | No |  |
+| `type` | `str` | No | The item category |
+| `typeIcon` | `str` | No | The item category icon URL |
 
 ### Operations
 
@@ -174,15 +174,15 @@ old_school_grand_exchange = client.OldSchoolGrandExchange()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `current` | `dict` | No |  |
-| `description` | `str` | No |  |
-| `icon` | `str` | No |  |
-| `icon_large` | `str` | No |  |
-| `id` | `int` | No |  |
-| `members` | `str` | No |  |
-| `name` | `str` | No |  |
+| `description` | `str` | No | The item examine text |
+| `icon` | `str` | No | The item sprite image URL |
+| `icon_large` | `str` | No | The item detail image URL |
+| `id` | `int` | No | The ItemID |
+| `members` | `str` | No | Whether the item is members-only |
+| `name` | `str` | No | The item name |
 | `today` | `dict` | No |  |
-| `type` | `str` | No |  |
-| `typeIcon` | `str` | No |  |
+| `type` | `str` | No | The item category |
+| `typeIcon` | `str` | No | The item category icon URL |
 
 ### Operations
 
@@ -235,9 +235,9 @@ player_ranking = client.PlayerRanking()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `name` | `str` | No |  |
-| `rank` | `str` | No |  |
-| `score` | `str` | No |  |
+| `name` | `str` | No | The player's username |
+| `rank` | `str` | No | The player's rank |
+| `score` | `str` | No | The player's score or experience |
 
 ### Operations
 

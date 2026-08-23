@@ -6,7 +6,7 @@ The Golang SDK for the RunescapeApis API — an entity-oriented client using sta
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.GrandExchangeDatabase(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -271,24 +271,24 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"average"` |  |
+| `"average"` | 30-day moving average with timestamp as key |
 | `"current"` |  |
-| `"daily"` |  |
+| `"daily"` | Daily prices with timestamp as key |
 | `"day180"` |  |
 | `"day30"` |  |
 | `"day90"` |  |
-| `"description"` |  |
-| `"icon"` |  |
-| `"icon_large"` |  |
-| `"id"` |  |
-| `"items"` |  |
-| `"lastConfigUpdateRuneday"` |  |
-| `"letter"` |  |
-| `"members"` |  |
-| `"name"` |  |
+| `"description"` | The item examine text |
+| `"icon"` | The item sprite image URL |
+| `"icon_large"` | The item detail image URL |
+| `"id"` | The ItemID |
+| `"items"` | The number of items starting with this letter |
+| `"lastConfigUpdateRuneday"` | The runedate when the database was last updated |
+| `"letter"` | The first letter of an item |
+| `"members"` | Whether the item is members-only |
+| `"name"` | The item name |
 | `"today"` |  |
-| `"type"` |  |
-| `"typeIcon"` |  |
+| `"type"` | The item category |
+| `"typeIcon"` | The item category icon URL |
 
 Operations: List, Load.
 
@@ -299,15 +299,15 @@ API path: `/m=itemdb_rs/api/catalogue/items.json`
 | Field | Description |
 | --- | --- |
 | `"current"` |  |
-| `"description"` |  |
-| `"icon"` |  |
-| `"icon_large"` |  |
-| `"id"` |  |
-| `"members"` |  |
-| `"name"` |  |
+| `"description"` | The item examine text |
+| `"icon"` | The item sprite image URL |
+| `"icon_large"` | The item detail image URL |
+| `"id"` | The ItemID |
+| `"members"` | Whether the item is members-only |
+| `"name"` | The item name |
 | `"today"` |  |
-| `"type"` |  |
-| `"typeIcon"` |  |
+| `"type"` | The item category |
+| `"typeIcon"` | The item category icon URL |
 
 Operations: List.
 
@@ -317,9 +317,9 @@ API path: `/m=itemdb_oldschool/api/catalogue/items.json`
 
 | Field | Description |
 | --- | --- |
-| `"name"` |  |
-| `"rank"` |  |
-| `"score"` |  |
+| `"name"` | The player's username |
+| `"rank"` | The player's rank |
+| `"score"` | The player's score or experience |
 
 Operations: List.
 
@@ -345,24 +345,24 @@ Create an instance: `grandExchangeDatabase := client.GrandExchangeDatabase(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `average` | `map[string]any` |  |
+| `average` | `map[string]any` | 30-day moving average with timestamp as key |
 | `current` | `map[string]any` |  |
-| `daily` | `map[string]any` |  |
+| `daily` | `map[string]any` | Daily prices with timestamp as key |
 | `day180` | `map[string]any` |  |
 | `day30` | `map[string]any` |  |
 | `day90` | `map[string]any` |  |
-| `description` | `string` |  |
-| `icon` | `string` |  |
-| `icon_large` | `string` |  |
-| `id` | `int` |  |
-| `items` | `int` |  |
-| `lastConfigUpdateRuneday` | `int` |  |
-| `letter` | `string` |  |
-| `members` | `string` |  |
-| `name` | `string` |  |
+| `description` | `string` | The item examine text |
+| `icon` | `string` | The item sprite image URL |
+| `icon_large` | `string` | The item detail image URL |
+| `id` | `int` | The ItemID |
+| `items` | `int` | The number of items starting with this letter |
+| `lastConfigUpdateRuneday` | `int` | The runedate when the database was last updated |
+| `letter` | `string` | The first letter of an item |
+| `members` | `string` | Whether the item is members-only |
+| `name` | `string` | The item name |
 | `today` | `map[string]any` |  |
-| `type` | `string` |  |
-| `typeIcon` | `string` |  |
+| `type` | `string` | The item category |
+| `typeIcon` | `string` | The item category icon URL |
 
 #### Example: Load
 
@@ -400,15 +400,15 @@ Create an instance: `oldSchoolGrandExchange := client.OldSchoolGrandExchange(nil
 | Field | Type | Description |
 | --- | --- | --- |
 | `current` | `map[string]any` |  |
-| `description` | `string` |  |
-| `icon` | `string` |  |
-| `icon_large` | `string` |  |
-| `id` | `int` |  |
-| `members` | `string` |  |
-| `name` | `string` |  |
+| `description` | `string` | The item examine text |
+| `icon` | `string` | The item sprite image URL |
+| `icon_large` | `string` | The item detail image URL |
+| `id` | `int` | The ItemID |
+| `members` | `string` | Whether the item is members-only |
+| `name` | `string` | The item name |
 | `today` | `map[string]any` |  |
-| `type` | `string` |  |
-| `typeIcon` | `string` |  |
+| `type` | `string` | The item category |
+| `typeIcon` | `string` | The item category icon URL |
 
 #### Example: List
 
@@ -435,9 +435,9 @@ Create an instance: `playerRanking := client.PlayerRanking(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `name` | `string` |  |
-| `rank` | `string` |  |
-| `score` | `string` |  |
+| `name` | `string` | The player's username |
+| `rank` | `string` | The player's rank |
+| `score` | `string` | The player's score or experience |
 
 #### Example: List
 
