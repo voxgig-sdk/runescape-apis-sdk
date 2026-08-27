@@ -28,6 +28,7 @@ module RunescapeApisConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
