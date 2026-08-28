@@ -41,25 +41,13 @@ class GrandExchangeDatabaseLoadMatch(TypedDict):
     item_id: int
 
 
-class GrandExchangeDatabaseListMatch(TypedDict, total=False):
-    average: dict
-    current: dict
-    daily: dict
-    day180: dict
-    day30: dict
-    day90: dict
-    description: str
-    icon: str
-    icon_large: str
-    id: int
-    items: int
-    lastConfigUpdateRuneday: int
-    letter: str
-    members: str
-    name: str
-    today: dict
-    type: str
-    typeIcon: str
+class GrandExchangeDatabaseListMatchRequired(TypedDict):
+    category: int
+
+
+class GrandExchangeDatabaseListMatch(GrandExchangeDatabaseListMatchRequired, total=False):
+    alpha: str
+    page: int
 
 
 class OldSchoolGrandExchange(TypedDict, total=False):
@@ -75,17 +63,10 @@ class OldSchoolGrandExchange(TypedDict, total=False):
     typeIcon: str
 
 
-class OldSchoolGrandExchangeListMatch(TypedDict, total=False):
-    current: dict
-    description: str
-    icon: str
-    icon_large: str
-    id: int
-    members: str
-    name: str
-    today: dict
-    type: str
-    typeIcon: str
+class OldSchoolGrandExchangeListMatch(TypedDict):
+    alpha: str
+    category: int
+    page: int
 
 
 class PlayerRanking(TypedDict, total=False):
@@ -94,7 +75,7 @@ class PlayerRanking(TypedDict, total=False):
     score: str
 
 
-class PlayerRankingListMatch(TypedDict, total=False):
-    name: str
-    rank: str
-    score: str
+class PlayerRankingListMatch(TypedDict):
+    category: int
+    size: int
+    table: int

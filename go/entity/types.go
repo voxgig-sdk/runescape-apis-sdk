@@ -41,24 +41,9 @@ type GrandExchangeDatabaseLoadMatch struct {
 
 // GrandExchangeDatabaseListMatch is the typed request payload for GrandExchangeDatabase.ListTyped.
 type GrandExchangeDatabaseListMatch struct {
-	Average *map[string]any `json:"average,omitempty"`
-	Current *map[string]any `json:"current,omitempty"`
-	Daily *map[string]any `json:"daily,omitempty"`
-	Day180 *map[string]any `json:"day180,omitempty"`
-	Day30 *map[string]any `json:"day30,omitempty"`
-	Day90 *map[string]any `json:"day90,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Icon *string `json:"icon,omitempty"`
-	IconLarge *string `json:"icon_large,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Items *int `json:"items,omitempty"`
-	LastConfigUpdateRuneday *int `json:"lastConfigUpdateRuneday,omitempty"`
-	Letter *string `json:"letter,omitempty"`
-	Members *string `json:"members,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Today *map[string]any `json:"today,omitempty"`
-	Type *string `json:"type,omitempty"`
-	TypeIcon *string `json:"typeIcon,omitempty"`
+	Alpha *string `json:"alpha,omitempty"`
+	Category int `json:"category"`
+	Page *int `json:"page,omitempty"`
 }
 
 // OldSchoolGrandExchange is the typed data model for the old_school_grand_exchange entity.
@@ -77,16 +62,9 @@ type OldSchoolGrandExchange struct {
 
 // OldSchoolGrandExchangeListMatch is the typed request payload for OldSchoolGrandExchange.ListTyped.
 type OldSchoolGrandExchangeListMatch struct {
-	Current *map[string]any `json:"current,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Icon *string `json:"icon,omitempty"`
-	IconLarge *string `json:"icon_large,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Members *string `json:"members,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Today *map[string]any `json:"today,omitempty"`
-	Type *string `json:"type,omitempty"`
-	TypeIcon *string `json:"typeIcon,omitempty"`
+	Alpha string `json:"alpha"`
+	Category int `json:"category"`
+	Page int `json:"page"`
 }
 
 // PlayerRanking is the typed data model for the player_ranking entity.
@@ -98,9 +76,9 @@ type PlayerRanking struct {
 
 // PlayerRankingListMatch is the typed request payload for PlayerRanking.ListTyped.
 type PlayerRankingListMatch struct {
-	Name *string `json:"name,omitempty"`
-	Rank *string `json:"rank,omitempty"`
-	Score *string `json:"score,omitempty"`
+	Category int `json:"category"`
+	Size int `json:"size"`
+	Table int `json:"table"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

@@ -40,7 +40,7 @@ resolves to entities, not raw records. Iterate them directly, and call
 `.data()` on one for the record it holds:
 
 ```ts
-const grandexchangedatabases = await client.GrandExchangeDatabase().list()
+const grandexchangedatabases = await client.GrandExchangeDatabase().list({ category: 1 })
 
 for (const grandexchangedatabase of grandexchangedatabases) {
   console.log(grandexchangedatabase)
@@ -409,7 +409,7 @@ const grand_exchange_database = await client.GrandExchangeDatabase().load({ item
 #### Example: List
 
 ```ts
-const grand_exchange_databases = await client.GrandExchangeDatabase().list()
+const grand_exchange_databases = await client.GrandExchangeDatabase().list({ category: 1 })
 ```
 
 
@@ -441,7 +441,7 @@ Create an instance: `const old_school_grand_exchange = client.OldSchoolGrandExch
 #### Example: List
 
 ```ts
-const old_school_grand_exchanges = await client.OldSchoolGrandExchange().list()
+const old_school_grand_exchanges = await client.OldSchoolGrandExchange().list({ alpha: "example", category: 1, page: 1 })
 ```
 
 
@@ -466,8 +466,31 @@ Create an instance: `const player_ranking = client.PlayerRanking()`
 #### Example: List
 
 ```ts
-const player_rankings = await client.PlayerRanking().list()
+const player_rankings = await client.PlayerRanking().list({ category: 1, size: 1, table: 1 })
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced

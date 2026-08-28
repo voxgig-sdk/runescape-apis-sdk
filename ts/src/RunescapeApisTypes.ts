@@ -31,24 +31,9 @@ export interface GrandExchangeDatabaseLoadMatch {
 }
 
 export interface GrandExchangeDatabaseListMatch {
-  average?: Record<string, any>
-  current?: Record<string, any>
-  daily?: Record<string, any>
-  day180?: Record<string, any>
-  day30?: Record<string, any>
-  day90?: Record<string, any>
-  description?: string
-  icon?: string
-  icon_large?: string
-  id?: number
-  items?: number
-  lastConfigUpdateRuneday?: number
-  letter?: string
-  members?: string
-  name?: string
-  today?: Record<string, any>
-  type?: string
-  typeIcon?: string
+  alpha?: string
+  category: number
+  page?: number
 }
 
 export interface OldSchoolGrandExchange {
@@ -65,16 +50,9 @@ export interface OldSchoolGrandExchange {
 }
 
 export interface OldSchoolGrandExchangeListMatch {
-  current?: Record<string, any>
-  description?: string
-  icon?: string
-  icon_large?: string
-  id?: number
-  members?: string
-  name?: string
-  today?: Record<string, any>
-  type?: string
-  typeIcon?: string
+  alpha: string
+  category: number
+  page: number
 }
 
 export interface PlayerRanking {
@@ -84,8 +62,8 @@ export interface PlayerRanking {
 }
 
 export interface PlayerRankingListMatch {
-  name?: string
-  rank?: string
-  score?: string
+  category: number
+  size: number
+  table: number
 }
 

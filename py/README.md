@@ -43,7 +43,7 @@ error — iterate it directly.
 
 ```python
 try:
-    grandexchangedatabases = client.GrandExchangeDatabase().list()
+    grandexchangedatabases = client.GrandExchangeDatabase().list({"category": 1})
     for grandexchangedatabase in grandexchangedatabases:
         print(grandexchangedatabase)
 except Exception as err:
@@ -361,7 +361,7 @@ grand_exchange_database = client.GrandExchangeDatabase().load({"item_id": 1})
 #### Example: List
 
 ```python
-grand_exchange_databases = client.GrandExchangeDatabase().list()
+grand_exchange_databases = client.GrandExchangeDatabase().list({"category": 1})
 ```
 
 
@@ -393,7 +393,7 @@ Create an instance: `old_school_grand_exchange = client.OldSchoolGrandExchange()
 #### Example: List
 
 ```python
-old_school_grand_exchanges = client.OldSchoolGrandExchange().list()
+old_school_grand_exchanges = client.OldSchoolGrandExchange().list({"alpha": "example", "category": 1, "page": 1})
 ```
 
 
@@ -418,8 +418,31 @@ Create an instance: `player_ranking = client.PlayerRanking()`
 #### Example: List
 
 ```python
-player_rankings = client.PlayerRanking().list()
+player_rankings = client.PlayerRanking().list({"category": 1, "size": 1, "table": 1})
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced

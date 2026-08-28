@@ -96,78 +96,18 @@ GrandExchangeDatabaseLoadMatch = Struct.new(
 
 # Request payload for GrandExchangeDatabase#list.
 #
-# @!attribute [rw] average
-#   @return [Hash, nil]
-#
-# @!attribute [rw] current
-#   @return [Hash, nil]
-#
-# @!attribute [rw] daily
-#   @return [Hash, nil]
-#
-# @!attribute [rw] day180
-#   @return [Hash, nil]
-#
-# @!attribute [rw] day30
-#   @return [Hash, nil]
-#
-# @!attribute [rw] day90
-#   @return [Hash, nil]
-#
-# @!attribute [rw] description
+# @!attribute [rw] alpha
 #   @return [String, nil]
 #
-# @!attribute [rw] icon
-#   @return [String, nil]
+# @!attribute [rw] category
+#   @return [Integer]
 #
-# @!attribute [rw] icon_large
-#   @return [String, nil]
-#
-# @!attribute [rw] id
+# @!attribute [rw] page
 #   @return [Integer, nil]
-#
-# @!attribute [rw] items
-#   @return [Integer, nil]
-#
-# @!attribute [rw] lastConfigUpdateRuneday
-#   @return [Integer, nil]
-#
-# @!attribute [rw] letter
-#   @return [String, nil]
-#
-# @!attribute [rw] members
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] today
-#   @return [Hash, nil]
-#
-# @!attribute [rw] type
-#   @return [String, nil]
-#
-# @!attribute [rw] typeIcon
-#   @return [String, nil]
 GrandExchangeDatabaseListMatch = Struct.new(
-  :average,
-  :current,
-  :daily,
-  :day180,
-  :day30,
-  :day90,
-  :description,
-  :icon,
-  :icon_large,
-  :id,
-  :items,
-  :lastConfigUpdateRuneday,
-  :letter,
-  :members,
-  :name,
-  :today,
-  :type,
-  :typeIcon,
+  :alpha,
+  :category,
+  :page,
   keyword_init: true
 )
 
@@ -218,46 +158,18 @@ OldSchoolGrandExchange = Struct.new(
 
 # Request payload for OldSchoolGrandExchange#list.
 #
-# @!attribute [rw] current
-#   @return [Hash, nil]
+# @!attribute [rw] alpha
+#   @return [String]
 #
-# @!attribute [rw] description
-#   @return [String, nil]
+# @!attribute [rw] category
+#   @return [Integer]
 #
-# @!attribute [rw] icon
-#   @return [String, nil]
-#
-# @!attribute [rw] icon_large
-#   @return [String, nil]
-#
-# @!attribute [rw] id
-#   @return [Integer, nil]
-#
-# @!attribute [rw] members
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] today
-#   @return [Hash, nil]
-#
-# @!attribute [rw] type
-#   @return [String, nil]
-#
-# @!attribute [rw] typeIcon
-#   @return [String, nil]
+# @!attribute [rw] page
+#   @return [Integer]
 OldSchoolGrandExchangeListMatch = Struct.new(
-  :current,
-  :description,
-  :icon,
-  :icon_large,
-  :id,
-  :members,
-  :name,
-  :today,
-  :type,
-  :typeIcon,
+  :alpha,
+  :category,
+  :page,
   keyword_init: true
 )
 
@@ -280,18 +192,18 @@ PlayerRanking = Struct.new(
 
 # Request payload for PlayerRanking#list.
 #
-# @!attribute [rw] name
-#   @return [String, nil]
+# @!attribute [rw] category
+#   @return [Integer]
 #
-# @!attribute [rw] rank
-#   @return [String, nil]
+# @!attribute [rw] size
+#   @return [Integer]
 #
-# @!attribute [rw] score
-#   @return [String, nil]
+# @!attribute [rw] table
+#   @return [Integer]
 PlayerRankingListMatch = Struct.new(
-  :name,
-  :rank,
-  :score,
+  :category,
+  :size,
+  :table,
   keyword_init: true
 )
 

@@ -30,24 +30,9 @@
 ---@field item_id number
 
 ---@class GrandExchangeDatabaseListMatch
----@field average? table
----@field current? table
----@field daily? table
----@field day180? table
----@field day30? table
----@field day90? table
----@field description? string
----@field icon? string
----@field icon_large? string
----@field id? number
----@field items? number
----@field lastConfigUpdateRuneday? number
----@field letter? string
----@field members? string
----@field name? string
----@field today? table
----@field type? string
----@field typeIcon? string
+---@field alpha? string
+---@field category number
+---@field page? number
 
 ---@class OldSchoolGrandExchange
 ---@field current? table
@@ -62,16 +47,9 @@
 ---@field typeIcon? string
 
 ---@class OldSchoolGrandExchangeListMatch
----@field current? table
----@field description? string
----@field icon? string
----@field icon_large? string
----@field id? number
----@field members? string
----@field name? string
----@field today? table
----@field type? string
----@field typeIcon? string
+---@field alpha string
+---@field category number
+---@field page number
 
 ---@class PlayerRanking
 ---@field name? string
@@ -79,9 +57,9 @@
 ---@field score? string
 
 ---@class PlayerRankingListMatch
----@field name? string
----@field rank? string
----@field score? string
+---@field category number
+---@field size number
+---@field table number
 
 local M = {}
 
