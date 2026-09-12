@@ -128,12 +128,6 @@ const grandexchangedatabases = await client.GrandExchangeDatabase().list({ categ
 for (const grandexchangedatabase of grandexchangedatabases) {
   console.log(grandexchangedatabase)
 }
-
-// Load a specific grandexchangedatabase (returns a GrandExchangeDatabase)
-const grandexchangedatabase = await client.GrandExchangeDatabase().load({
-  item_id: 1,
-})
-console.log(grandexchangedatabase)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -230,15 +224,6 @@ if err != nil {
     panic(err)
 }
 fmt.Println(grandExchangeDatabases)
-
-// Load a specific grandexchangedatabase
-grandExchangeDatabase, err := client.GrandExchangeDatabase(nil).Load(
-    map[string]any{"item_id": 1}, nil,
-)
-if err != nil {
-    panic(err)
-}
-fmt.Println(grandExchangeDatabase)
 ```
 
 ### Ruby
@@ -383,7 +368,7 @@ customizable without forking any upstream tool:
 
 - **The model** (`.sdk/model/`) declares everything this project owns:
   package names, versions, active features, per-target settings. It is
-  written in [aontu](https://github.com/aontu-lang/aontu), a JSON-based
+  written in [aontu](https://aontu.dev), a JSON-based
   specification language designed for building ontologies: easy to edit
   by hand, and files unify rather than override, so small declarations
   compose into one model. Regeneration re-reads it every time.

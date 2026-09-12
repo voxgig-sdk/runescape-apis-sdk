@@ -49,14 +49,11 @@ for (const grandexchangedatabase of grandexchangedatabases) {
 
 ### 3. Load a grandexchangedatabase
 
-GrandExchangeDatabase is nested under item, so provide the `item_id`.
 `load()` returns the entity directly and throws on failure:
 
 ```ts
 try {
-  const grandexchangedatabase = await client.GrandExchangeDatabase().load({
-    item_id: 1,
-  })
+  const grandexchangedatabase = await client.GrandExchangeDatabase().load({ item_id: 1 })
   console.log(grandexchangedatabase)
 } catch (err) {
   console.error('load failed:', err)

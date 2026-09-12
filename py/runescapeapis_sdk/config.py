@@ -1,6 +1,14 @@
 # RunescapeApis SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -150,6 +158,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "grand_exchange_database",
         "op": {
           "list": {
@@ -185,11 +197,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/m=itemdb_rs/api/catalogue/items.json",
-                "parts": [
-                  "m=itemdb_rs",
-                  "api",
-                  "catalogue",
-                  "items.json",
+                "segments": [
+                  {
+                    "lit": "m=itemdb_rs",
+                  },
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "catalogue",
+                  },
+                  {
+                    "lit": "items.json",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -202,6 +222,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.items`",
                 },
+                "parts": [
+                  "m=itemdb_rs",
+                  "api",
+                  "catalogue",
+                  "items.json",
+                ],
               },
               {
                 "args": {
@@ -218,11 +244,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/m=itemdb_rs/api/catalogue/category.json",
-                "parts": [
-                  "m=itemdb_rs",
-                  "api",
-                  "catalogue",
-                  "category.json",
+                "segments": [
+                  {
+                    "lit": "m=itemdb_rs",
+                  },
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "catalogue",
+                  },
+                  {
+                    "lit": "category.json",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -233,6 +267,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "m=itemdb_rs",
+                  "api",
+                  "catalogue",
+                  "category.json",
+                ],
               },
             ],
           },
@@ -255,9 +295,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/m=itemdb_rs/obj_big.gif",
-                "parts": [
-                  "m=itemdb_rs",
-                  "obj_big.gif",
+                "segments": [
+                  {
+                    "lit": "m=itemdb_rs",
+                  },
+                  {
+                    "lit": "obj_big.gif",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -268,6 +312,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "m=itemdb_rs",
+                  "obj_big.gif",
+                ],
               },
               {
                 "args": {
@@ -284,9 +332,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/m=itemdb_rs/obj_sprite.gif",
-                "parts": [
-                  "m=itemdb_rs",
-                  "obj_sprite.gif",
+                "segments": [
+                  {
+                    "lit": "m=itemdb_rs",
+                  },
+                  {
+                    "lit": "obj_sprite.gif",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -297,6 +349,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "m=itemdb_rs",
+                  "obj_sprite.gif",
+                ],
               },
               {
                 "args": {
@@ -313,11 +369,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/m=itemdb_rs/api/catalogue/detail.json",
-                "parts": [
-                  "m=itemdb_rs",
-                  "api",
-                  "catalogue",
-                  "detail.json",
+                "segments": [
+                  {
+                    "lit": "m=itemdb_rs",
+                  },
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "catalogue",
+                  },
+                  {
+                    "lit": "detail.json",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -328,6 +392,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.item`",
                 },
+                "parts": [
+                  "m=itemdb_rs",
+                  "api",
+                  "catalogue",
+                  "detail.json",
+                ],
               },
               {
                 "args": {
@@ -344,11 +414,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/m=itemdb_rs/api/graph/{itemId}.json",
-                "parts": [
-                  "m=itemdb_rs",
-                  "api",
-                  "graph",
-                  "{itemId}.json",
+                "segments": [
+                  {
+                    "lit": "m=itemdb_rs",
+                  },
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "graph",
+                  },
+                  {
+                    "lit": "{itemId}.json",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -359,32 +437,45 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "m=itemdb_rs",
+                  "api",
+                  "graph",
+                  "{itemId}.json",
+                ],
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/m=itemdb_rs/api/info.json",
-                "parts": [
-                  "m=itemdb_rs",
-                  "api",
-                  "info.json",
+                "segments": [
+                  {
+                    "lit": "m=itemdb_rs",
+                  },
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "info.json",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "m=itemdb_rs",
+                  "api",
+                  "info.json",
+                ],
               },
             ],
           },
         },
         "relations": {
-          "ancestors": [
-            [
-              "graph",
-            ],
-          ],
+          "ancestors": [],
         },
       },
       "old_school_grand_exchange": {
@@ -448,6 +539,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "old_school_grand_exchange",
         "op": {
           "list": {
@@ -483,11 +578,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/m=itemdb_oldschool/api/catalogue/items.json",
-                "parts": [
-                  "m=itemdb_oldschool",
-                  "api",
-                  "catalogue",
-                  "items.json",
+                "segments": [
+                  {
+                    "lit": "m=itemdb_oldschool",
+                  },
+                  {
+                    "lit": "api",
+                  },
+                  {
+                    "lit": "catalogue",
+                  },
+                  {
+                    "lit": "items.json",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -500,6 +603,12 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.items`",
                 },
+                "parts": [
+                  "m=itemdb_oldschool",
+                  "api",
+                  "catalogue",
+                  "items.json",
+                ],
               },
             ],
           },
@@ -561,9 +670,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/m=hiscore/ranking.json",
-                "parts": [
-                  "m=hiscore",
-                  "ranking.json",
+                "segments": [
+                  {
+                    "lit": "m=hiscore",
+                  },
+                  {
+                    "lit": "ranking.json",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -576,6 +689,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "m=hiscore",
+                  "ranking.json",
+                ],
               },
             ],
           },

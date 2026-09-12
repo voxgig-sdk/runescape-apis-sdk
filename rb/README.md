@@ -46,8 +46,6 @@ end
 
 ### 3. Load a grandexchangedatabase
 
-GrandExchangeDatabase is nested under item, so provide the `item_id`.
-
 ```ruby
 begin
   # load returns the ENTITY — call data_get for the GrandExchangeDatabase record (raises on error).

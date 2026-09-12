@@ -52,7 +52,6 @@ except Exception as err:
 
 ### 3. Load a grandexchangedatabase
 
-GrandExchangeDatabase is nested under item, so provide the `item_id`.
 `load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python

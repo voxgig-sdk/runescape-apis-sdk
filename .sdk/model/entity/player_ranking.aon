@@ -58,9 +58,13 @@ main: kit: entity: player_ranking: {
           }
           method: "GET"
           orig: "/m=hiscore/ranking.json"
-          parts: [
-            "m=hiscore"
-            "ranking.json"
+          segments: [
+            {
+              lit: "m=hiscore"
+            }
+            {
+              lit: "ranking.json"
+            }
           ]
           select: {
             exist: [

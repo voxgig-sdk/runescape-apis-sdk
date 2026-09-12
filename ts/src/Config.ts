@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -168,6 +179,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "grand_exchange_database",
       "op": {
         "list": {
@@ -203,11 +218,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/m=itemdb_rs/api/catalogue/items.json",
-              "parts": [
-                "m=itemdb_rs",
-                "api",
-                "catalogue",
-                "items.json"
+              "segments": [
+                {
+                  "lit": "m=itemdb_rs"
+                },
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "catalogue"
+                },
+                {
+                  "lit": "items.json"
+                }
               ],
               "select": {
                 "exist": [
@@ -219,7 +242,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.items`"
-              }
+              },
+              "parts": [
+                "m=itemdb_rs",
+                "api",
+                "catalogue",
+                "items.json"
+              ]
             },
             {
               "args": {
@@ -236,11 +265,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/m=itemdb_rs/api/catalogue/category.json",
-              "parts": [
-                "m=itemdb_rs",
-                "api",
-                "catalogue",
-                "category.json"
+              "segments": [
+                {
+                  "lit": "m=itemdb_rs"
+                },
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "catalogue"
+                },
+                {
+                  "lit": "category.json"
+                }
               ],
               "select": {
                 "exist": [
@@ -250,7 +287,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "m=itemdb_rs",
+                "api",
+                "catalogue",
+                "category.json"
+              ]
             }
           ]
         },
@@ -273,9 +316,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/m=itemdb_rs/obj_big.gif",
-              "parts": [
-                "m=itemdb_rs",
-                "obj_big.gif"
+              "segments": [
+                {
+                  "lit": "m=itemdb_rs"
+                },
+                {
+                  "lit": "obj_big.gif"
+                }
               ],
               "select": {
                 "exist": [
@@ -285,7 +332,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "m=itemdb_rs",
+                "obj_big.gif"
+              ]
             },
             {
               "args": {
@@ -302,9 +353,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/m=itemdb_rs/obj_sprite.gif",
-              "parts": [
-                "m=itemdb_rs",
-                "obj_sprite.gif"
+              "segments": [
+                {
+                  "lit": "m=itemdb_rs"
+                },
+                {
+                  "lit": "obj_sprite.gif"
+                }
               ],
               "select": {
                 "exist": [
@@ -314,7 +369,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "m=itemdb_rs",
+                "obj_sprite.gif"
+              ]
             },
             {
               "args": {
@@ -331,11 +390,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/m=itemdb_rs/api/catalogue/detail.json",
-              "parts": [
-                "m=itemdb_rs",
-                "api",
-                "catalogue",
-                "detail.json"
+              "segments": [
+                {
+                  "lit": "m=itemdb_rs"
+                },
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "catalogue"
+                },
+                {
+                  "lit": "detail.json"
+                }
               ],
               "select": {
                 "exist": [
@@ -345,7 +412,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.item`"
-              }
+              },
+              "parts": [
+                "m=itemdb_rs",
+                "api",
+                "catalogue",
+                "detail.json"
+              ]
             },
             {
               "args": {
@@ -362,11 +435,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/m=itemdb_rs/api/graph/{itemId}.json",
-              "parts": [
-                "m=itemdb_rs",
-                "api",
-                "graph",
-                "{itemId}.json"
+              "segments": [
+                {
+                  "lit": "m=itemdb_rs"
+                },
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "graph"
+                },
+                {
+                  "lit": "{itemId}.json"
+                }
               ],
               "select": {
                 "exist": [
@@ -376,33 +457,46 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "m=itemdb_rs",
+                "api",
+                "graph",
+                "{itemId}.json"
+              ]
             },
             {
               "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/m=itemdb_rs/api/info.json",
-              "parts": [
-                "m=itemdb_rs",
-                "api",
-                "info.json"
+              "segments": [
+                {
+                  "lit": "m=itemdb_rs"
+                },
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "info.json"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "m=itemdb_rs",
+                "api",
+                "info.json"
+              ]
             }
           ]
         }
       },
       "relations": {
-        "ancestors": [
-          [
-            "graph"
-          ]
-        ]
+        "ancestors": []
       }
     },
     "old_school_grand_exchange": {
@@ -466,6 +560,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "old_school_grand_exchange",
       "op": {
         "list": {
@@ -501,11 +599,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/m=itemdb_oldschool/api/catalogue/items.json",
-              "parts": [
-                "m=itemdb_oldschool",
-                "api",
-                "catalogue",
-                "items.json"
+              "segments": [
+                {
+                  "lit": "m=itemdb_oldschool"
+                },
+                {
+                  "lit": "api"
+                },
+                {
+                  "lit": "catalogue"
+                },
+                {
+                  "lit": "items.json"
+                }
               ],
               "select": {
                 "exist": [
@@ -517,7 +623,13 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.items`"
-              }
+              },
+              "parts": [
+                "m=itemdb_oldschool",
+                "api",
+                "catalogue",
+                "items.json"
+              ]
             }
           ]
         }
@@ -579,9 +691,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/m=hiscore/ranking.json",
-              "parts": [
-                "m=hiscore",
-                "ranking.json"
+              "segments": [
+                {
+                  "lit": "m=hiscore"
+                },
+                {
+                  "lit": "ranking.json"
+                }
               ],
               "select": {
                 "exist": [
@@ -593,7 +709,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "m=hiscore",
+                "ranking.json"
+              ]
             }
           ]
         }
@@ -609,6 +729,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

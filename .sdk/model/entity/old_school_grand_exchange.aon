@@ -113,11 +113,19 @@ main: kit: entity: old_school_grand_exchange: {
           }
           method: "GET"
           orig: "/m=itemdb_oldschool/api/catalogue/items.json"
-          parts: [
-            "m=itemdb_oldschool"
-            "api"
-            "catalogue"
-            "items.json"
+          segments: [
+            {
+              lit: "m=itemdb_oldschool"
+            }
+            {
+              lit: "api"
+            }
+            {
+              lit: "catalogue"
+            }
+            {
+              lit: "items.json"
+            }
           ]
           select: {
             exist: [

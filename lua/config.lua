@@ -129,6 +129,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "grand_exchange_database",
         ["op"] = {
           ["list"] = {
@@ -164,11 +168,19 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/m=itemdb_rs/api/catalogue/items.json",
-                ["parts"] = {
-                  "m=itemdb_rs",
-                  "api",
-                  "catalogue",
-                  "items.json",
+                ["segments"] = {
+                  {
+                    ["lit"] = "m=itemdb_rs",
+                  },
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "catalogue",
+                  },
+                  {
+                    ["lit"] = "items.json",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -180,6 +192,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.items`",
+                },
+                ["parts"] = {
+                  "m=itemdb_rs",
+                  "api",
+                  "catalogue",
+                  "items.json",
                 },
               },
               {
@@ -197,11 +215,19 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/m=itemdb_rs/api/catalogue/category.json",
-                ["parts"] = {
-                  "m=itemdb_rs",
-                  "api",
-                  "catalogue",
-                  "category.json",
+                ["segments"] = {
+                  {
+                    ["lit"] = "m=itemdb_rs",
+                  },
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "catalogue",
+                  },
+                  {
+                    ["lit"] = "category.json",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -211,6 +237,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "m=itemdb_rs",
+                  "api",
+                  "catalogue",
+                  "category.json",
                 },
               },
             },
@@ -234,9 +266,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/m=itemdb_rs/obj_big.gif",
-                ["parts"] = {
-                  "m=itemdb_rs",
-                  "obj_big.gif",
+                ["segments"] = {
+                  {
+                    ["lit"] = "m=itemdb_rs",
+                  },
+                  {
+                    ["lit"] = "obj_big.gif",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -246,6 +282,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "m=itemdb_rs",
+                  "obj_big.gif",
                 },
               },
               {
@@ -263,9 +303,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/m=itemdb_rs/obj_sprite.gif",
-                ["parts"] = {
-                  "m=itemdb_rs",
-                  "obj_sprite.gif",
+                ["segments"] = {
+                  {
+                    ["lit"] = "m=itemdb_rs",
+                  },
+                  {
+                    ["lit"] = "obj_sprite.gif",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -275,6 +319,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "m=itemdb_rs",
+                  "obj_sprite.gif",
                 },
               },
               {
@@ -292,11 +340,19 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/m=itemdb_rs/api/catalogue/detail.json",
-                ["parts"] = {
-                  "m=itemdb_rs",
-                  "api",
-                  "catalogue",
-                  "detail.json",
+                ["segments"] = {
+                  {
+                    ["lit"] = "m=itemdb_rs",
+                  },
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "catalogue",
+                  },
+                  {
+                    ["lit"] = "detail.json",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -306,6 +362,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.item`",
+                },
+                ["parts"] = {
+                  "m=itemdb_rs",
+                  "api",
+                  "catalogue",
+                  "detail.json",
                 },
               },
               {
@@ -323,11 +385,19 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/m=itemdb_rs/api/graph/{itemId}.json",
-                ["parts"] = {
-                  "m=itemdb_rs",
-                  "api",
-                  "graph",
-                  "{itemId}.json",
+                ["segments"] = {
+                  {
+                    ["lit"] = "m=itemdb_rs",
+                  },
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "graph",
+                  },
+                  {
+                    ["lit"] = "{itemId}.json",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -338,32 +408,45 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "m=itemdb_rs",
+                  "api",
+                  "graph",
+                  "{itemId}.json",
+                },
               },
               {
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/m=itemdb_rs/api/info.json",
-                ["parts"] = {
-                  "m=itemdb_rs",
-                  "api",
-                  "info.json",
+                ["segments"] = {
+                  {
+                    ["lit"] = "m=itemdb_rs",
+                  },
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "info.json",
+                  },
                 },
                 ["select"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "m=itemdb_rs",
+                  "api",
+                  "info.json",
+                },
               },
             },
           },
         },
         ["relations"] = {
-          ["ancestors"] = {
-            {
-              "graph",
-            },
-          },
+          ["ancestors"] = {},
         },
       },
       ["old_school_grand_exchange"] = {
@@ -427,6 +510,10 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
         },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
+        },
         ["name"] = "old_school_grand_exchange",
         ["op"] = {
           ["list"] = {
@@ -462,11 +549,19 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/m=itemdb_oldschool/api/catalogue/items.json",
-                ["parts"] = {
-                  "m=itemdb_oldschool",
-                  "api",
-                  "catalogue",
-                  "items.json",
+                ["segments"] = {
+                  {
+                    ["lit"] = "m=itemdb_oldschool",
+                  },
+                  {
+                    ["lit"] = "api",
+                  },
+                  {
+                    ["lit"] = "catalogue",
+                  },
+                  {
+                    ["lit"] = "items.json",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -478,6 +573,12 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.items`",
+                },
+                ["parts"] = {
+                  "m=itemdb_oldschool",
+                  "api",
+                  "catalogue",
+                  "items.json",
                 },
               },
             },
@@ -540,9 +641,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/m=hiscore/ranking.json",
-                ["parts"] = {
-                  "m=hiscore",
-                  "ranking.json",
+                ["segments"] = {
+                  {
+                    ["lit"] = "m=hiscore",
+                  },
+                  {
+                    ["lit"] = "ranking.json",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -554,6 +659,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "m=hiscore",
+                  "ranking.json",
                 },
               },
             },

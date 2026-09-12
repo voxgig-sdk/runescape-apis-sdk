@@ -133,6 +133,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
 				"name": "grand_exchange_database",
 				"op": map[string]any{
 					"list": map[string]any{
@@ -168,11 +172,19 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/m=itemdb_rs/api/catalogue/items.json",
-								"parts": []any{
-									"m=itemdb_rs",
-									"api",
-									"catalogue",
-									"items.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "m=itemdb_rs",
+									},
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "catalogue",
+									},
+									map[string]any{
+										"lit": "items.json",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -184,6 +196,12 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.items`",
+								},
+								"parts": []any{
+									"m=itemdb_rs",
+									"api",
+									"catalogue",
+									"items.json",
 								},
 							},
 							map[string]any{
@@ -201,11 +219,19 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/m=itemdb_rs/api/catalogue/category.json",
-								"parts": []any{
-									"m=itemdb_rs",
-									"api",
-									"catalogue",
-									"category.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "m=itemdb_rs",
+									},
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "catalogue",
+									},
+									map[string]any{
+										"lit": "category.json",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -215,6 +241,12 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"m=itemdb_rs",
+									"api",
+									"catalogue",
+									"category.json",
 								},
 							},
 						},
@@ -238,9 +270,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/m=itemdb_rs/obj_big.gif",
-								"parts": []any{
-									"m=itemdb_rs",
-									"obj_big.gif",
+								"segments": []any{
+									map[string]any{
+										"lit": "m=itemdb_rs",
+									},
+									map[string]any{
+										"lit": "obj_big.gif",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -250,6 +286,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"m=itemdb_rs",
+									"obj_big.gif",
 								},
 							},
 							map[string]any{
@@ -267,9 +307,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/m=itemdb_rs/obj_sprite.gif",
-								"parts": []any{
-									"m=itemdb_rs",
-									"obj_sprite.gif",
+								"segments": []any{
+									map[string]any{
+										"lit": "m=itemdb_rs",
+									},
+									map[string]any{
+										"lit": "obj_sprite.gif",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -279,6 +323,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"m=itemdb_rs",
+									"obj_sprite.gif",
 								},
 							},
 							map[string]any{
@@ -296,11 +344,19 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/m=itemdb_rs/api/catalogue/detail.json",
-								"parts": []any{
-									"m=itemdb_rs",
-									"api",
-									"catalogue",
-									"detail.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "m=itemdb_rs",
+									},
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "catalogue",
+									},
+									map[string]any{
+										"lit": "detail.json",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -310,6 +366,12 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.item`",
+								},
+								"parts": []any{
+									"m=itemdb_rs",
+									"api",
+									"catalogue",
+									"detail.json",
 								},
 							},
 							map[string]any{
@@ -327,11 +389,19 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/m=itemdb_rs/api/graph/{itemId}.json",
-								"parts": []any{
-									"m=itemdb_rs",
-									"api",
-									"graph",
-									"{itemId}.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "m=itemdb_rs",
+									},
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "graph",
+									},
+									map[string]any{
+										"lit": "{itemId}.json",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -342,32 +412,45 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
+								"parts": []any{
+									"m=itemdb_rs",
+									"api",
+									"graph",
+									"{itemId}.json",
+								},
 							},
 							map[string]any{
 								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/m=itemdb_rs/api/info.json",
-								"parts": []any{
-									"m=itemdb_rs",
-									"api",
-									"info.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "m=itemdb_rs",
+									},
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "info.json",
+									},
 								},
 								"select": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
+								"parts": []any{
+									"m=itemdb_rs",
+									"api",
+									"info.json",
+								},
 							},
 						},
 					},
 				},
 				"relations": map[string]any{
-					"ancestors": []any{
-						[]any{
-							"graph",
-						},
-					},
+					"ancestors": []any{},
 				},
 			},
 			"old_school_grand_exchange": map[string]any{
@@ -431,6 +514,10 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
+				},
 				"name": "old_school_grand_exchange",
 				"op": map[string]any{
 					"list": map[string]any{
@@ -466,11 +553,19 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/m=itemdb_oldschool/api/catalogue/items.json",
-								"parts": []any{
-									"m=itemdb_oldschool",
-									"api",
-									"catalogue",
-									"items.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "m=itemdb_oldschool",
+									},
+									map[string]any{
+										"lit": "api",
+									},
+									map[string]any{
+										"lit": "catalogue",
+									},
+									map[string]any{
+										"lit": "items.json",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -482,6 +577,12 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.items`",
+								},
+								"parts": []any{
+									"m=itemdb_oldschool",
+									"api",
+									"catalogue",
+									"items.json",
 								},
 							},
 						},
@@ -544,9 +645,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/m=hiscore/ranking.json",
-								"parts": []any{
-									"m=hiscore",
-									"ranking.json",
+								"segments": []any{
+									map[string]any{
+										"lit": "m=hiscore",
+									},
+									map[string]any{
+										"lit": "ranking.json",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -559,6 +664,10 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
+								"parts": []any{
+									"m=hiscore",
+									"ranking.json",
+								},
 							},
 						},
 					},
@@ -569,6 +678,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

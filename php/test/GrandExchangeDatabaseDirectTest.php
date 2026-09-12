@@ -118,8 +118,10 @@ function grand_exchange_database_direct_setup($mockres)
     $live = $env["RUNESCAPE_APIS_TEST_LIVE"] === "TRUE";
 
     if ($live) {
-        $merged_opts = [
-        ];
+        // Merged so the generated fields win: sdk-test-control.json's
+        // test.client.options adds to the live client, it does not redirect it.
+        $merged_opts = array_merge(Runner::live_client_options(), [
+        ]);
         $client = new RunescapeApisSDK($merged_opts);
         return [
             "client" => $client,

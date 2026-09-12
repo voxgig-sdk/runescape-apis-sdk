@@ -114,7 +114,7 @@ def _grand_exchange_database_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["grand_exchange_database01", "grand_exchange_database02", "grand_exchange_database03", "graph01", "graph02", "graph03"],
+        ["grand_exchange_database01", "grand_exchange_database02", "grand_exchange_database03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",
@@ -143,6 +143,10 @@ def _grand_exchange_database_basic_setup(extra):
 
     if env.get("RUNESCAPE_APIS_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
+            # FIRST, so the generated fields below win: sdk-test-control.json's
+            # test.client.options adds to the live client, it does not
+            # redirect it.
+            runner.live_client_options(),
             {
             },
             extra or {},

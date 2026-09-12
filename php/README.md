@@ -47,8 +47,6 @@ try {
 
 ### 3. Load a grandexchangedatabase
 
-GrandExchangeDatabase is nested under item, so provide the `item_id`.
-
 ```php
 try {
     // load() returns the ENTITY — call data_get() for the GrandExchangeDatabase record (throws on error).

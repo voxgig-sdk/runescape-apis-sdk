@@ -158,11 +158,19 @@ main: kit: entity: grand_exchange_database: {
           }
           method: "GET"
           orig: "/m=itemdb_rs/api/catalogue/items.json"
-          parts: [
-            "m=itemdb_rs"
-            "api"
-            "catalogue"
-            "items.json"
+          segments: [
+            {
+              lit: "m=itemdb_rs"
+            }
+            {
+              lit: "api"
+            }
+            {
+              lit: "catalogue"
+            }
+            {
+              lit: "items.json"
+            }
           ]
           select: {
             exist: [
@@ -190,11 +198,19 @@ main: kit: entity: grand_exchange_database: {
           }
           method: "GET"
           orig: "/m=itemdb_rs/api/catalogue/category.json"
-          parts: [
-            "m=itemdb_rs"
-            "api"
-            "catalogue"
-            "category.json"
+          segments: [
+            {
+              lit: "m=itemdb_rs"
+            }
+            {
+              lit: "api"
+            }
+            {
+              lit: "catalogue"
+            }
+            {
+              lit: "category.json"
+            }
           ]
           select: {
             exist: [
@@ -225,9 +241,13 @@ main: kit: entity: grand_exchange_database: {
           }
           method: "GET"
           orig: "/m=itemdb_rs/obj_big.gif"
-          parts: [
-            "m=itemdb_rs"
-            "obj_big.gif"
+          segments: [
+            {
+              lit: "m=itemdb_rs"
+            }
+            {
+              lit: "obj_big.gif"
+            }
           ]
           select: {
             exist: [
@@ -253,9 +273,13 @@ main: kit: entity: grand_exchange_database: {
           }
           method: "GET"
           orig: "/m=itemdb_rs/obj_sprite.gif"
-          parts: [
-            "m=itemdb_rs"
-            "obj_sprite.gif"
+          segments: [
+            {
+              lit: "m=itemdb_rs"
+            }
+            {
+              lit: "obj_sprite.gif"
+            }
           ]
           select: {
             exist: [
@@ -281,11 +305,19 @@ main: kit: entity: grand_exchange_database: {
           }
           method: "GET"
           orig: "/m=itemdb_rs/api/catalogue/detail.json"
-          parts: [
-            "m=itemdb_rs"
-            "api"
-            "catalogue"
-            "detail.json"
+          segments: [
+            {
+              lit: "m=itemdb_rs"
+            }
+            {
+              lit: "api"
+            }
+            {
+              lit: "catalogue"
+            }
+            {
+              lit: "detail.json"
+            }
           ]
           select: {
             exist: [
@@ -311,11 +343,19 @@ main: kit: entity: grand_exchange_database: {
           }
           method: "GET"
           orig: "/m=itemdb_rs/api/graph/{itemId}.json"
-          parts: [
-            "m=itemdb_rs"
-            "api"
-            "graph"
-            "{itemId}.json"
+          segments: [
+            {
+              lit: "m=itemdb_rs"
+            }
+            {
+              lit: "api"
+            }
+            {
+              lit: "graph"
+            }
+            {
+              lit: "{itemId}.json"
+            }
           ]
           select: {
             exist: [
@@ -330,10 +370,16 @@ main: kit: entity: grand_exchange_database: {
         {
           method: "GET"
           orig: "/m=itemdb_rs/api/info.json"
-          parts: [
-            "m=itemdb_rs"
-            "api"
-            "info.json"
+          segments: [
+            {
+              lit: "m=itemdb_rs"
+            }
+            {
+              lit: "api"
+            }
+            {
+              lit: "info.json"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -342,14 +388,6 @@ main: kit: entity: grand_exchange_database: {
         }
       ]
     }
-  }
-
-  relations: {
-    ancestors: [
-      [
-        "graph"
-      ]
-    ]
   }
 
 
