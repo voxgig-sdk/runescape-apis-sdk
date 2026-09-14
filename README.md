@@ -105,7 +105,7 @@ local results, err = client:OldSchoolGrandExchange():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/runescape-apis` | publish pending — [install from git tag](https://github.com/voxgig-sdk/runescape-apis-sdk/releases) |
+| TypeScript | `@voxgig-sdk/runescape-apis-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/runescape-apis-sdk/releases) |
 | Python | `voxgig-sdk-runescape-apis` | publish pending — [install from git tag](https://github.com/voxgig-sdk/runescape-apis-sdk/releases) |
 | PHP | `voxgig-sdk/runescape-apis` | publish pending — [install from git tag](https://github.com/voxgig-sdk/runescape-apis-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/runescape-apis-sdk/go` | `go get github.com/voxgig-sdk/runescape-apis-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:OldSchoolGrandExchange():list()
 ### TypeScript
 
 ```ts
-import { RunescapeApisSDK } from '@voxgig-sdk/runescape-apis'
+import { RunescapeApisSDK } from '@voxgig-sdk/runescape-apis-sdk'
 
 const client = new RunescapeApisSDK()
 

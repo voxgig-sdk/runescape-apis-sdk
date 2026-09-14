@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { RunescapeApisSDK } from '@voxgig-sdk/runescape-apis'
+import { RunescapeApisSDK } from '@voxgig-sdk/runescape-apis-sdk'
 
 const client = new RunescapeApisSDK()
 ```
@@ -549,7 +549,7 @@ runescape-apis/
 Import the SDK from the package root:
 
 ```ts
-import { RunescapeApisSDK } from '@voxgig-sdk/runescape-apis'
+import { RunescapeApisSDK } from '@voxgig-sdk/runescape-apis-sdk'
 ```
 
 ### Entity state
