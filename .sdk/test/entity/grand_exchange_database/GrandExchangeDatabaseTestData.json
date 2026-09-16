@@ -12,8 +12,8 @@
         "icon": "sbb",
         "icon_large": "sbc",
         "id": "GRAND_EXCHANGE_DATABASE00",
-        "items": "sbe",
-        "lastConfigUpdateRuneday": "sbf",
+        "items": 190,
+        "lastConfigUpdateRuneday": 191,
         "letter": "sc0",
         "members": "sc1",
         "name": "sc2",
@@ -33,8 +33,8 @@
         "icon": "s16f",
         "icon_large": "s170",
         "id": "GRAND_EXCHANGE_DATABASE01",
-        "items": "s172",
-        "lastConfigUpdateRuneday": "s173",
+        "items": 370,
+        "lastConfigUpdateRuneday": 371,
         "letter": "s174",
         "members": "s175",
         "name": "s176",
@@ -54,8 +54,8 @@
         "icon": "s223",
         "icon_large": "s224",
         "id": "GRAND_EXCHANGE_DATABASE02",
-        "items": "s226",
-        "lastConfigUpdateRuneday": "s227",
+        "items": 550,
+        "lastConfigUpdateRuneday": 551,
         "letter": "s228",
         "members": "s229",
         "name": "s22a",
@@ -78,14 +78,542 @@
         "description": "s2d6",
         "icon": "s2d7",
         "icon_large": "s2d8",
-        "items": "s2da",
-        "lastConfigUpdateRuneday": "s2db",
+        "items": 730,
+        "lastConfigUpdateRuneday": 731,
         "letter": "s2dc",
         "members": "s2dd",
         "name": "s2de",
         "today": {},
         "type": "s2e0",
         "typeIcon": "s2e1"
+      }
+    }
+  },
+  "requests": {
+    "GET /m=itemdb_rs/api/catalogue/items.json": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getItemsByCategory",
+        "parameters": [
+          {
+            "description": "The category identification number (0-43)",
+            "in": "query",
+            "name": "category",
+            "required": true,
+            "schema": {
+              "maximum": 43,
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "The starting letter for the items (lowercase). Use %23 for numbers.",
+            "in": "query",
+            "name": "alpha",
+            "required": true,
+            "schema": {
+              "pattern": "^[a-z]$|^%23$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The page number beginning at 1",
+            "in": "query",
+            "name": "page",
+            "required": true,
+            "schema": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "items": {
+                      "items": {
+                        "properties": {
+                          "current": {
+                            "properties": {
+                              "price": {
+                                "description": "The item trade price (can be integer or string)",
+                                "oneOf": [
+                                  {
+                                    "type": "integer"
+                                  },
+                                  {
+                                    "type": "string"
+                                  }
+                                ]
+                              },
+                              "trend": {
+                                "description": "The price trend direction",
+                                "enum": [
+                                  "positive",
+                                  "negative",
+                                  "neutral"
+                                ],
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "description": {
+                            "description": "The item examine text",
+                            "type": "string"
+                          },
+                          "icon": {
+                            "description": "The item sprite image URL",
+                            "type": "string"
+                          },
+                          "icon_large": {
+                            "description": "The item detail image URL",
+                            "type": "string"
+                          },
+                          "id": {
+                            "description": "The ItemID",
+                            "type": "integer"
+                          },
+                          "members": {
+                            "description": "Whether the item is members-only",
+                            "enum": [
+                              "true",
+                              "false"
+                            ],
+                            "type": "string"
+                          },
+                          "name": {
+                            "description": "The item name",
+                            "type": "string"
+                          },
+                          "today": {
+                            "properties": {
+                              "price": {
+                                "description": "The item trade price (can be integer or string)",
+                                "oneOf": [
+                                  {
+                                    "type": "integer"
+                                  },
+                                  {
+                                    "type": "string"
+                                  }
+                                ]
+                              },
+                              "trend": {
+                                "description": "The price trend direction",
+                                "enum": [
+                                  "positive",
+                                  "negative",
+                                  "neutral"
+                                ],
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": {
+                            "description": "The item category",
+                            "type": "string"
+                          },
+                          "typeIcon": {
+                            "description": "The item category icon URL",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "total": {
+                      "description": "The total number of items in the category",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with items list"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /m=itemdb_rs/api/catalogue/category.json": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getCategoryInfo",
+        "parameters": [
+          {
+            "description": "The category identification number (0-43)",
+            "in": "query",
+            "name": "category",
+            "required": true,
+            "schema": {
+              "maximum": 43,
+              "minimum": 0,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "alpha": {
+                      "items": {
+                        "properties": {
+                          "items": {
+                            "description": "The number of items starting with this letter",
+                            "type": "integer"
+                          },
+                          "letter": {
+                            "description": "The first letter of an item",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "types": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with category information"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /m=itemdb_rs/obj_big.gif": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getItemLargeImage",
+        "parameters": [
+          {
+            "description": "The ItemID",
+            "in": "query",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "image/gif": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Successful response with item image"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /m=itemdb_rs/obj_sprite.gif": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getItemSpriteImage",
+        "parameters": [
+          {
+            "description": "The ItemID",
+            "in": "query",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "image/gif": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Successful response with item sprite"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /m=itemdb_rs/api/catalogue/detail.json": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getItemDetail",
+        "parameters": [
+          {
+            "description": "The ItemID",
+            "in": "query",
+            "name": "item",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "item": {
+                      "properties": {
+                        "current": {
+                          "properties": {
+                            "price": {
+                              "description": "The item trade price (can be integer or string)",
+                              "oneOf": [
+                                {
+                                  "type": "integer"
+                                },
+                                {
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "trend": {
+                              "description": "The price trend direction",
+                              "enum": [
+                                "positive",
+                                "negative",
+                                "neutral"
+                              ],
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "day180": {
+                          "properties": {
+                            "change": {
+                              "description": "The percentage change in price",
+                              "type": "string"
+                            },
+                            "trend": {
+                              "description": "The price trend direction",
+                              "enum": [
+                                "positive",
+                                "negative",
+                                "neutral"
+                              ],
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "day30": {
+                          "properties": {
+                            "change": {
+                              "description": "The percentage change in price",
+                              "type": "string"
+                            },
+                            "trend": {
+                              "description": "The price trend direction",
+                              "enum": [
+                                "positive",
+                                "negative",
+                                "neutral"
+                              ],
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "day90": {
+                          "properties": {
+                            "change": {
+                              "description": "The percentage change in price",
+                              "type": "string"
+                            },
+                            "trend": {
+                              "description": "The price trend direction",
+                              "enum": [
+                                "positive",
+                                "negative",
+                                "neutral"
+                              ],
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "description": {
+                          "description": "The item examine text",
+                          "type": "string"
+                        },
+                        "icon": {
+                          "description": "The item sprite image URL",
+                          "type": "string"
+                        },
+                        "icon_large": {
+                          "description": "The item detail image URL",
+                          "type": "string"
+                        },
+                        "id": {
+                          "description": "The ItemID",
+                          "type": "integer"
+                        },
+                        "members": {
+                          "description": "Whether the item is members-only",
+                          "enum": [
+                            "true",
+                            "false"
+                          ],
+                          "type": "string"
+                        },
+                        "name": {
+                          "description": "The item name",
+                          "type": "string"
+                        },
+                        "today": {
+                          "properties": {
+                            "price": {
+                              "description": "The item trade price (can be integer or string)",
+                              "oneOf": [
+                                {
+                                  "type": "integer"
+                                },
+                                {
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "trend": {
+                              "description": "The price trend direction",
+                              "enum": [
+                                "positive",
+                                "negative",
+                                "neutral"
+                              ],
+                              "type": "string"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "type": {
+                          "description": "The item category",
+                          "type": "string"
+                        },
+                        "typeIcon": {
+                          "description": "The item category icon URL",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with item details"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /m=itemdb_rs/api/graph/{itemId}.json": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getItemGraph",
+        "parameters": [
+          {
+            "description": "The ItemID",
+            "in": "path",
+            "name": "itemId",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "average": {
+                      "additionalProperties": {
+                        "type": "integer"
+                      },
+                      "description": "30-day moving average with timestamp as key",
+                      "type": "object"
+                    },
+                    "daily": {
+                      "additionalProperties": {
+                        "type": "integer"
+                      },
+                      "description": "Daily prices with timestamp as key",
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with price history"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /m=itemdb_rs/api/info.json": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getGEInfo",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "lastConfigUpdateRuneday": {
+                      "description": "The runedate when the database was last updated",
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with database update information"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

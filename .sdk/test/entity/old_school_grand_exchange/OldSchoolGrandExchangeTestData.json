@@ -53,5 +53,160 @@
         "typeIcon": "s199"
       }
     }
+  },
+  "requests": {
+    "GET /m=itemdb_oldschool/api/catalogue/items.json": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getOSRSItemsByCategory",
+        "parameters": [
+          {
+            "description": "The category identification number (only 1 category available for OSRS)",
+            "in": "query",
+            "name": "category",
+            "required": true,
+            "schema": {
+              "enum": [
+                1
+              ],
+              "type": "integer"
+            }
+          },
+          {
+            "description": "The starting letter for the items (lowercase)",
+            "in": "query",
+            "name": "alpha",
+            "required": true,
+            "schema": {
+              "pattern": "^[a-z]$",
+              "type": "string"
+            }
+          },
+          {
+            "description": "The page number beginning at 1",
+            "in": "query",
+            "name": "page",
+            "required": true,
+            "schema": {
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "items": {
+                      "items": {
+                        "properties": {
+                          "current": {
+                            "properties": {
+                              "price": {
+                                "description": "The item trade price (can be integer or string)",
+                                "oneOf": [
+                                  {
+                                    "type": "integer"
+                                  },
+                                  {
+                                    "type": "string"
+                                  }
+                                ]
+                              },
+                              "trend": {
+                                "description": "The price trend direction",
+                                "enum": [
+                                  "positive",
+                                  "negative",
+                                  "neutral"
+                                ],
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "description": {
+                            "description": "The item examine text",
+                            "type": "string"
+                          },
+                          "icon": {
+                            "description": "The item sprite image URL",
+                            "type": "string"
+                          },
+                          "icon_large": {
+                            "description": "The item detail image URL",
+                            "type": "string"
+                          },
+                          "id": {
+                            "description": "The ItemID",
+                            "type": "integer"
+                          },
+                          "members": {
+                            "description": "Whether the item is members-only",
+                            "enum": [
+                              "true",
+                              "false"
+                            ],
+                            "type": "string"
+                          },
+                          "name": {
+                            "description": "The item name",
+                            "type": "string"
+                          },
+                          "today": {
+                            "properties": {
+                              "price": {
+                                "description": "The item trade price (can be integer or string)",
+                                "oneOf": [
+                                  {
+                                    "type": "integer"
+                                  },
+                                  {
+                                    "type": "string"
+                                  }
+                                ]
+                              },
+                              "trend": {
+                                "description": "The price trend direction",
+                                "enum": [
+                                  "positive",
+                                  "negative",
+                                  "neutral"
+                                ],
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": {
+                            "description": "The item category",
+                            "type": "string"
+                          },
+                          "typeIcon": {
+                            "description": "The item category icon URL",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "total": {
+                      "type": "integer"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with OSRS items list"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

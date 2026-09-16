@@ -1,12 +1,18 @@
 # RunescapeApis SDK feature factory
 
 from runescapeapis_sdk.feature.base_feature import RunescapeApisBaseFeature
+from runescapeapis_sdk.feature.ratelimit_feature import RunescapeApisRatelimitFeature
+from runescapeapis_sdk.feature.retry_feature import RunescapeApisRetryFeature
 from runescapeapis_sdk.feature.test_feature import RunescapeApisTestFeature
+from runescapeapis_sdk.feature.timeout_feature import RunescapeApisTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: RunescapeApisBaseFeature(),
+    "ratelimit": lambda: RunescapeApisRatelimitFeature(),
+    "retry": lambda: RunescapeApisRetryFeature(),
     "test": lambda: RunescapeApisTestFeature(),
+    "timeout": lambda: RunescapeApisTimeoutFeature(),
 }
 
 

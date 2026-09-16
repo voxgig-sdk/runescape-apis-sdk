@@ -24,7 +24,71 @@
         "repr": "auto"
       },
       "contributor": {},
-      "docs": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "grand_exchange_database": {
           "active": true,
@@ -204,6 +268,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /m=itemdb_rs/api/catalogue/items.json",
+                    "json": "{\"operationId\":\"getItemsByCategory\",\"parameters\":[{\"description\":\"The category identification number (0-43)\",\"in\":\"query\",\"name\":\"category\",\"required\":true,\"schema\":{\"maximum\":43,\"minimum\":0,\"type\":\"integer\"}},{\"description\":\"The starting letter for the items (lowercase). Use %23 for numbers.\",\"in\":\"query\",\"name\":\"alpha\",\"required\":true,\"schema\":{\"pattern\":\"^[a-z]$|^%23$\",\"type\":\"string\"}},{\"description\":\"The page number beginning at 1\",\"in\":\"query\",\"name\":\"page\",\"required\":true,\"schema\":{\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"items\":{\"items\":{\"properties\":{\"current\":{\"properties\":{\"price\":{\"description\":\"The item trade price (can be integer or string)\",\"oneOf\":[{\"type\":\"integer\"},{\"type\":\"string\"}]},\"trend\":{\"description\":\"The price trend direction\",\"enum\":[\"positive\",\"negative\",\"neutral\"],\"type\":\"string\"}},\"type\":\"object\"},\"description\":{\"description\":\"The item examine text\",\"type\":\"string\"},\"icon\":{\"description\":\"The item sprite image URL\",\"type\":\"string\"},\"icon_large\":{\"description\":\"The item detail image URL\",\"type\":\"string\"},\"id\":{\"description\":\"The ItemID\",\"type\":\"integer\"},\"members\":{\"description\":\"Whether the item is members-only\",\"enum\":[\"true\",\"false\"],\"type\":\"string\"},\"name\":{\"description\":\"The item name\",\"type\":\"string\"},\"today\":{\"properties\":{\"price\":{\"description\":\"The item trade price (can be integer or string)\",\"oneOf\":[{\"type\":\"integer\"},{\"type\":\"string\"}]},\"trend\":{\"description\":\"The price trend direction\",\"enum\":[\"positive\",\"negative\",\"neutral\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":{\"description\":\"The item category\",\"type\":\"string\"},\"typeIcon\":{\"description\":\"The item category icon URL\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"total\":{\"description\":\"The total number of items in the category\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response with items list\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/m=itemdb_rs/api/catalogue/items.json",
@@ -246,6 +316,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /m=itemdb_rs/api/catalogue/category.json",
+                    "json": "{\"operationId\":\"getCategoryInfo\",\"parameters\":[{\"description\":\"The category identification number (0-43)\",\"in\":\"query\",\"name\":\"category\",\"required\":true,\"schema\":{\"maximum\":43,\"minimum\":0,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"alpha\":{\"items\":{\"properties\":{\"items\":{\"description\":\"The number of items starting with this letter\",\"type\":\"integer\"},\"letter\":{\"description\":\"The first letter of an item\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"types\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with category information\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -294,6 +370,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /m=itemdb_rs/obj_big.gif",
+                    "json": "{\"operationId\":\"getItemLargeImage\",\"parameters\":[{\"description\":\"The ItemID\",\"in\":\"query\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/gif\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successful response with item image\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/m=itemdb_rs/obj_big.gif",
@@ -329,6 +411,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /m=itemdb_rs/obj_sprite.gif",
+                    "json": "{\"operationId\":\"getItemSpriteImage\",\"parameters\":[{\"description\":\"The ItemID\",\"in\":\"query\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/gif\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successful response with item sprite\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/m=itemdb_rs/obj_sprite.gif",
@@ -363,6 +451,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /m=itemdb_rs/api/catalogue/detail.json",
+                    "json": "{\"operationId\":\"getItemDetail\",\"parameters\":[{\"description\":\"The ItemID\",\"in\":\"query\",\"name\":\"item\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"item\":{\"properties\":{\"current\":{\"properties\":{\"price\":{\"description\":\"The item trade price (can be integer or string)\",\"oneOf\":[{\"type\":\"integer\"},{\"type\":\"string\"}]},\"trend\":{\"description\":\"The price trend direction\",\"enum\":[\"positive\",\"negative\",\"neutral\"],\"type\":\"string\"}},\"type\":\"object\"},\"day180\":{\"properties\":{\"change\":{\"description\":\"The percentage change in price\",\"type\":\"string\"},\"trend\":{\"description\":\"The price trend direction\",\"enum\":[\"positive\",\"negative\",\"neutral\"],\"type\":\"string\"}},\"type\":\"object\"},\"day30\":{\"properties\":{\"change\":{\"description\":\"The percentage change in price\",\"type\":\"string\"},\"trend\":{\"description\":\"The price trend direction\",\"enum\":[\"positive\",\"negative\",\"neutral\"],\"type\":\"string\"}},\"type\":\"object\"},\"day90\":{\"properties\":{\"change\":{\"description\":\"The percentage change in price\",\"type\":\"string\"},\"trend\":{\"description\":\"The price trend direction\",\"enum\":[\"positive\",\"negative\",\"neutral\"],\"type\":\"string\"}},\"type\":\"object\"},\"description\":{\"description\":\"The item examine text\",\"type\":\"string\"},\"icon\":{\"description\":\"The item sprite image URL\",\"type\":\"string\"},\"icon_large\":{\"description\":\"The item detail image URL\",\"type\":\"string\"},\"id\":{\"description\":\"The ItemID\",\"type\":\"integer\"},\"members\":{\"description\":\"Whether the item is members-only\",\"enum\":[\"true\",\"false\"],\"type\":\"string\"},\"name\":{\"description\":\"The item name\",\"type\":\"string\"},\"today\":{\"properties\":{\"price\":{\"description\":\"The item trade price (can be integer or string)\",\"oneOf\":[{\"type\":\"integer\"},{\"type\":\"string\"}]},\"trend\":{\"description\":\"The price trend direction\",\"enum\":[\"positive\",\"negative\",\"neutral\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":{\"description\":\"The item category\",\"type\":\"string\"},\"typeIcon\":{\"description\":\"The item category icon URL\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Successful response with item details\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -405,6 +499,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /m=itemdb_rs/api/graph/{itemId}.json",
+                    "json": "{\"operationId\":\"getItemGraph\",\"parameters\":[{\"description\":\"The ItemID\",\"in\":\"path\",\"name\":\"itemId\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"average\":{\"additionalProperties\":{\"type\":\"integer\"},\"description\":\"30-day moving average with timestamp as key\",\"type\":\"object\"},\"daily\":{\"additionalProperties\":{\"type\":\"integer\"},\"description\":\"Daily prices with timestamp as key\",\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Successful response with price history\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/m=itemdb_rs/api/graph/{itemId}.json",
@@ -435,6 +535,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /m=itemdb_rs/api/info.json",
+                    "json": "{\"operationId\":\"getGEInfo\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"lastConfigUpdateRuneday\":{\"description\":\"The runedate when the database was last updated\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response with database update information\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/m=itemdb_rs/api/info.json",
@@ -587,6 +693,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /m=itemdb_oldschool/api/catalogue/items.json",
+                    "json": "{\"operationId\":\"getOSRSItemsByCategory\",\"parameters\":[{\"description\":\"The category identification number (only 1 category available for OSRS)\",\"in\":\"query\",\"name\":\"category\",\"required\":true,\"schema\":{\"enum\":[1],\"type\":\"integer\"}},{\"description\":\"The starting letter for the items (lowercase)\",\"in\":\"query\",\"name\":\"alpha\",\"required\":true,\"schema\":{\"pattern\":\"^[a-z]$\",\"type\":\"string\"}},{\"description\":\"The page number beginning at 1\",\"in\":\"query\",\"name\":\"page\",\"required\":true,\"schema\":{\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"items\":{\"items\":{\"properties\":{\"current\":{\"properties\":{\"price\":{\"description\":\"The item trade price (can be integer or string)\",\"oneOf\":[{\"type\":\"integer\"},{\"type\":\"string\"}]},\"trend\":{\"description\":\"The price trend direction\",\"enum\":[\"positive\",\"negative\",\"neutral\"],\"type\":\"string\"}},\"type\":\"object\"},\"description\":{\"description\":\"The item examine text\",\"type\":\"string\"},\"icon\":{\"description\":\"The item sprite image URL\",\"type\":\"string\"},\"icon_large\":{\"description\":\"The item detail image URL\",\"type\":\"string\"},\"id\":{\"description\":\"The ItemID\",\"type\":\"integer\"},\"members\":{\"description\":\"Whether the item is members-only\",\"enum\":[\"true\",\"false\"],\"type\":\"string\"},\"name\":{\"description\":\"The item name\",\"type\":\"string\"},\"today\":{\"properties\":{\"price\":{\"description\":\"The item trade price (can be integer or string)\",\"oneOf\":[{\"type\":\"integer\"},{\"type\":\"string\"}]},\"trend\":{\"description\":\"The price trend direction\",\"enum\":[\"positive\",\"negative\",\"neutral\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":{\"description\":\"The item category\",\"type\":\"string\"},\"typeIcon\":{\"description\":\"The item category icon URL\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"total\":{\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response with OSRS items list\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/m=itemdb_oldschool/api/catalogue/items.json",
@@ -687,6 +799,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /m=hiscore/ranking.json",
+                    "json": "{\"operationId\":\"getPlayerRankings\",\"parameters\":[{\"description\":\"The skill, overall level, or activity table number\",\"in\":\"query\",\"name\":\"table\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Category type (0 for skills, 1 for activities)\",\"in\":\"query\",\"name\":\"category\",\"required\":true,\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"Number of players to return (max 50)\",\"in\":\"query\",\"name\":\"size\",\"required\":true,\"schema\":{\"maximum\":50,\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"name\":{\"description\":\"The player's username\",\"type\":\"string\"},\"rank\":{\"description\":\"The player's rank\",\"type\":\"string\"},\"score\":{\"description\":\"The player's score or experience\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with player rankings\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/m=hiscore/ranking.json",
@@ -719,13 +837,223 @@
         }
       },
       "feature": {
+        "ratelimit": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "burst": 5,
+              "rate": 5
+            },
+            "optspec": {
+              "now": "`$FUNCTION`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "ratelimit",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Client-side rate limiting via a token bucket",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
+        "retry": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "factor": 2,
+              "maxDelay": 2000,
+              "minDelay": 50,
+              "retries": 2,
+              "statuses": [
+                408,
+                425,
+                429,
+                500,
+                502,
+                503,
+                504
+              ]
+            },
+            "optspec": {
+              "jitter": "`$BOOLEAN`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "retry",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Automatic retry of transient failures with exponential backoff",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
         "test": {
           "active": true,
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "config": {
             "options": {
               "active": false
-            }
+            },
+            "optspec": {
+              "entity": "`$MAP`",
+              "net": "`$MAP`"
+            },
+            "strict": false
           },
           "hook": {
             "GetData": {
@@ -815,6 +1143,102 @@
           },
           "title": "In-memory mock transport for testing without a live server",
           "transport": "base",
+          "version": "0.0.1"
+        },
+        "timeout": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "ms": 30000
+            },
+            "optspec": {
+              "clearTimer": "`$FUNCTION`",
+              "setTimer": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "timeout",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Per-request timeout with transport abort",
+          "transport": "wrap",
           "version": "0.0.1"
         }
       },
@@ -938,6 +1362,48 @@
         "website": "https://secure.runescape.com"
       },
       "option": {},
+      "optspec": {
+        "allow": {
+          "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+          "op": "create,update,load,list,remove,command,direct,graphql"
+        },
+        "apikey": "",
+        "auth": {
+          "basic": false,
+          "prefix": ""
+        },
+        "base": "http://localhost:8000",
+        "clean": {
+          "keys": "key,token,id"
+        },
+        "entity": {
+          "`$CHILD`": {
+            "`$OPEN`": true,
+            "active": false,
+            "alias": {}
+          }
+        },
+        "extend": "`$ANY`",
+        "headers": {
+          "`$CHILD`": "`$STRING`"
+        },
+        "prefix": "",
+        "secret": "",
+        "server": {
+          "`$CHILD`": ""
+        },
+        "suffix": "",
+        "system": {
+          "fetch": "`$ANY`"
+        },
+        "test": {
+          "active": false,
+          "entity": {
+            "`$OPEN`": true
+          }
+        },
+        "utility": {}
+      },
       "repo": {
         "host": "github.com",
         "path": ""
@@ -1492,6 +1958,7 @@
           },
           "package": "@voxgig/sdkgen",
           "provides": {
+            "schema": true,
             "sekreto": true
           },
           "publish": {
@@ -1533,7 +2000,7 @@
         "live": {
           "app": false,
           "base": "",
-          "strict": false
+          "strict": true
         }
       }
     }

@@ -56,6 +56,12 @@ main: kit: entity: player_ranking: {
               }
             ]
           }
+          contract: {
+            id: "GET /m=hiscore/ranking.json"
+            json: "{\"operationId\":\"getPlayerRankings\",\"parameters\":[{\"description\":\"The skill, overall level, or activity table number\",\"in\":\"query\",\"name\":\"table\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Category type (0 for skills, 1 for activities)\",\"in\":\"query\",\"name\":\"category\",\"required\":true,\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"Number of players to return (max 50)\",\"in\":\"query\",\"name\":\"size\",\"required\":true,\"schema\":{\"maximum\":50,\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"name\":{\"description\":\"The player's username\",\"type\":\"string\"},\"rank\":{\"description\":\"The player's rank\",\"type\":\"string\"},\"score\":{\"description\":\"The player's score or experience\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with player rankings\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/m=hiscore/ranking.json"
           segments: [
