@@ -127,15 +127,15 @@ class Config {
 
     entity: {
       
-      grand_exchange_database: {
-      },
-
-      old_school_grand_exchange: {
-      },
-
-      player_ranking: {
-      },
-
+        grand_exchange_database: {
+        },
+  
+        old_school_grand_exchange: {
+        },
+  
+        player_ranking: {
+        },
+  
     }
   }
 

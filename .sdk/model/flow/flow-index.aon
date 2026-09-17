@@ -1,5 +1,5 @@
 # Flows
 
-@"BasicGrandExchangeDatabaseFlow.aon"
-@"BasicOldSchoolGrandExchangeFlow.aon"
-@"BasicPlayerRankingFlow.aon"
+@"./BasicGrandExchangeDatabaseFlow.aon"
+@"./BasicOldSchoolGrandExchangeFlow.aon"
+@"./BasicPlayerRankingFlow.aon"
