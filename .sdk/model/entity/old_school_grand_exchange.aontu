@@ -1,0 +1,163 @@
+# Entity: old_school_grand_exchange
+
+main: kit: entity: old_school_grand_exchange: {
+
+  alias: field: {}
+
+  fields: {
+    current: {
+      h: "Current"
+      n: "current"
+      r: false
+      t: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "The item examine text"
+      t: "`$STRING`"
+    }
+    icon: {
+      h: "Icon"
+      n: "icon"
+      r: false
+      sh: "The item sprite image URL"
+      t: "`$STRING`"
+    }
+    icon_large: {
+      h: "Icon Large"
+      n: "icon_large"
+      r: false
+      sh: "The item detail image URL"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "The ItemID"
+      t: "`$INTEGER`"
+    }
+    members: {
+      h: "Members"
+      n: "members"
+      r: false
+      sh: "Whether the item is members-only"
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The item name"
+      t: "`$STRING`"
+    }
+    today: {
+      h: "Today"
+      n: "today"
+      r: false
+      t: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "The item category"
+      t: "`$STRING`"
+    }
+    typeIcon: {
+      h: "Type Icon"
+      n: "typeIcon"
+      r: false
+      sh: "The item category icon URL"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "old_school_grand_exchange"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /m=itemdb_oldschool/api/catalogue/items.json"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "alpha"
+                or: "alpha"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "category"
+                or: "category"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "page"
+                or: "page"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/m=itemdb_oldschool/api/catalogue/items.json"
+          q: {
+            exist: [
+              "alpha"
+              "category"
+              "page"
+            ]
+          }
+          s: [
+            {
+              lit: "m=itemdb_oldschool"
+            }
+            {
+              lit: "api"
+            }
+            {
+              lit: "catalogue"
+            }
+            {
+              lit: "items.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.items`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

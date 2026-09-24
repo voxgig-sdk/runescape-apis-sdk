@@ -19,7 +19,6 @@ import type {
   OldSchoolGrandExchangeListMatch,
 } from '../RunescapeApisTypes'
 
-// TODO: needs Entity superclass
 class OldSchoolGrandExchangeEntity extends RunescapeApisEntityBase<OldSchoolGrandExchange> {
 
   constructor(client: RunescapeApisSDK, entopts: any) {

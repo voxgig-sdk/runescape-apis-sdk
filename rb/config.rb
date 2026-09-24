@@ -101,98 +101,106 @@ module RunescapeApisConfig
           "fields" => [
             {
               "name" => "average",
-              "short" => "30-day moving average with timestamp as key",
+              "title" => "Average",
               "type" => "`$OBJECT`",
+              "short" => "30-day moving average with timestamp as key",
             },
             {
               "name" => "current",
+              "title" => "Current",
               "type" => "`$OBJECT`",
-              "union" => {
-                "branches" => 2,
-                "count" => 1,
-                "depth" => 2,
-              },
             },
             {
               "name" => "daily",
-              "short" => "Daily prices with timestamp as key",
+              "title" => "Daily",
               "type" => "`$OBJECT`",
+              "short" => "Daily prices with timestamp as key",
             },
             {
               "name" => "day180",
+              "title" => "Day180",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "day30",
+              "title" => "Day30",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "day90",
+              "title" => "Day90",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "description",
-              "short" => "The item examine text",
+              "title" => "Description",
               "type" => "`$STRING`",
+              "short" => "The item examine text",
             },
             {
               "name" => "icon",
-              "short" => "The item sprite image URL",
+              "title" => "Icon",
               "type" => "`$STRING`",
+              "short" => "The item sprite image URL",
             },
             {
               "name" => "icon_large",
-              "short" => "The item detail image URL",
+              "title" => "Icon Large",
               "type" => "`$STRING`",
+              "short" => "The item detail image URL",
             },
             {
               "name" => "id",
-              "short" => "The ItemID",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "short" => "The ItemID",
             },
             {
               "name" => "items",
-              "short" => "The number of items starting with this letter",
+              "title" => "Items",
               "type" => "`$INTEGER`",
+              "short" => "The number of items starting with this letter",
             },
             {
               "name" => "lastConfigUpdateRuneday",
-              "short" => "The runedate when the database was last updated",
+              "title" => "Last Config Update Runeday",
               "type" => "`$INTEGER`",
+              "short" => "The runedate when the database was last updated",
             },
             {
               "name" => "letter",
-              "short" => "The first letter of an item",
+              "title" => "Letter",
               "type" => "`$STRING`",
+              "short" => "The first letter of an item",
             },
             {
               "name" => "members",
-              "short" => "Whether the item is members-only",
+              "title" => "Members",
               "type" => "`$STRING`",
+              "short" => "Whether the item is members-only",
             },
             {
               "name" => "name",
-              "short" => "The item name",
+              "title" => "Name",
               "type" => "`$STRING`",
+              "short" => "The item name",
             },
             {
               "name" => "today",
+              "title" => "Today",
               "type" => "`$OBJECT`",
-              "union" => {
-                "branches" => 2,
-                "count" => 1,
-                "depth" => 2,
-              },
             },
             {
               "name" => "type",
-              "short" => "The item category",
+              "title" => "Type",
               "type" => "`$STRING`",
+              "short" => "The item category",
             },
             {
               "name" => "typeIcon",
-              "short" => "The item category icon URL",
+              "title" => "Type Icon",
               "type" => "`$STRING`",
+              "short" => "The item category icon URL",
             },
           ],
           "id" => {
@@ -206,31 +214,6 @@ module RunescapeApisConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "alpha",
-                        "orig" => "alpha",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "category",
-                        "orig" => "category",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "page",
-                        "orig" => "page",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/m=itemdb_rs/api/catalogue/items.json",
@@ -248,6 +231,42 @@ module RunescapeApisConfig
                       "lit" => "items.json",
                     },
                   ],
+                  "parts" => [
+                    "m=itemdb_rs",
+                    "api",
+                    "catalogue",
+                    "items.json",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body.items`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "alpha",
+                        "orig" => "alpha",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true,
+                      },
+                      {
+                        "name" => "category",
+                        "orig" => "category",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "reqd" => true,
+                      },
+                      {
+                        "name" => "page",
+                        "orig" => "page",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "alpha",
@@ -255,29 +274,8 @@ module RunescapeApisConfig
                       "page",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body.items`",
-                  },
-                  "parts" => [
-                    "m=itemdb_rs",
-                    "api",
-                    "catalogue",
-                    "items.json",
-                  ],
                 },
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "category",
-                        "orig" => "category",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/m=itemdb_rs/api/catalogue/category.json",
@@ -295,21 +293,33 @@ module RunescapeApisConfig
                       "lit" => "category.json",
                     },
                   ],
-                  "select" => {
-                    "exist" => [
-                      "category",
-                    ],
-                  },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "m=itemdb_rs",
                     "api",
                     "catalogue",
                     "category.json",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "category",
+                        "orig" => "category",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
+                  "select" => {
+                    "exist" => [
+                      "category",
+                    ],
+                  },
                 },
               ],
             },
@@ -318,17 +328,6 @@ module RunescapeApisConfig
               "name" => "load",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/m=itemdb_rs/obj_big.gif",
@@ -340,32 +339,33 @@ module RunescapeApisConfig
                       "lit" => "obj_big.gif",
                     },
                   ],
+                  "parts" => [
+                    "m=itemdb_rs",
+                    "obj_big.gif",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "id",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "m=itemdb_rs",
-                    "obj_big.gif",
-                  ],
                 },
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "id",
-                        "orig" => "id",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/m=itemdb_rs/obj_sprite.gif",
@@ -377,32 +377,33 @@ module RunescapeApisConfig
                       "lit" => "obj_sprite.gif",
                     },
                   ],
+                  "parts" => [
+                    "m=itemdb_rs",
+                    "obj_sprite.gif",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "id",
+                        "orig" => "id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "id",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "m=itemdb_rs",
-                    "obj_sprite.gif",
-                  ],
                 },
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "item",
-                        "orig" => "item",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/m=itemdb_rs/api/catalogue/detail.json",
@@ -420,34 +421,35 @@ module RunescapeApisConfig
                       "lit" => "detail.json",
                     },
                   ],
-                  "select" => {
-                    "exist" => [
-                      "item",
-                    ],
-                  },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body.item`",
-                  },
                   "parts" => [
                     "m=itemdb_rs",
                     "api",
                     "catalogue",
                     "detail.json",
                   ],
-                },
-                {
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body.item`",
+                  },
                   "args" => {
-                    "params" => [
+                    "query" => [
                       {
-                        "kind" => "param",
-                        "name" => "item_id",
-                        "orig" => "item_id",
-                        "reqd" => true,
+                        "name" => "item",
+                        "orig" => "item",
                         "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "reqd" => true,
                       },
                     ],
                   },
+                  "select" => {
+                    "exist" => [
+                      "item",
+                    ],
+                  },
+                },
+                {
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/m=itemdb_rs/api/graph/{itemId}.json",
@@ -465,24 +467,35 @@ module RunescapeApisConfig
                       "lit" => "{itemId}.json",
                     },
                   ],
-                  "select" => {
-                    "exist" => [
-                      "item_id",
-                    ],
-                  },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "m=itemdb_rs",
                     "api",
                     "graph",
                     "{itemId}.json",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "params" => [
+                      {
+                        "name" => "item_id",
+                        "orig" => "item_id",
+                        "type" => "`$INTEGER`",
+                        "kind" => "param",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
+                  "select" => {
+                    "exist" => [
+                      "item_id",
+                    ],
+                  },
                 },
                 {
-                  "args" => {},
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/m=itemdb_rs/api/info.json",
@@ -497,16 +510,18 @@ module RunescapeApisConfig
                       "lit" => "info.json",
                     },
                   ],
-                  "select" => {},
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
                   "parts" => [
                     "m=itemdb_rs",
                     "api",
                     "info.json",
                   ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {},
+                  "select" => {},
                 },
               ],
             },
@@ -519,61 +534,61 @@ module RunescapeApisConfig
           "fields" => [
             {
               "name" => "current",
+              "title" => "Current",
               "type" => "`$OBJECT`",
-              "union" => {
-                "branches" => 2,
-                "count" => 1,
-                "depth" => 2,
-              },
             },
             {
               "name" => "description",
-              "short" => "The item examine text",
+              "title" => "Description",
               "type" => "`$STRING`",
+              "short" => "The item examine text",
             },
             {
               "name" => "icon",
-              "short" => "The item sprite image URL",
+              "title" => "Icon",
               "type" => "`$STRING`",
+              "short" => "The item sprite image URL",
             },
             {
               "name" => "icon_large",
-              "short" => "The item detail image URL",
+              "title" => "Icon Large",
               "type" => "`$STRING`",
+              "short" => "The item detail image URL",
             },
             {
               "name" => "id",
-              "short" => "The ItemID",
+              "title" => "Id",
               "type" => "`$INTEGER`",
+              "short" => "The ItemID",
             },
             {
               "name" => "members",
-              "short" => "Whether the item is members-only",
+              "title" => "Members",
               "type" => "`$STRING`",
+              "short" => "Whether the item is members-only",
             },
             {
               "name" => "name",
-              "short" => "The item name",
+              "title" => "Name",
               "type" => "`$STRING`",
+              "short" => "The item name",
             },
             {
               "name" => "today",
+              "title" => "Today",
               "type" => "`$OBJECT`",
-              "union" => {
-                "branches" => 2,
-                "count" => 1,
-                "depth" => 2,
-              },
             },
             {
               "name" => "type",
-              "short" => "The item category",
+              "title" => "Type",
               "type" => "`$STRING`",
+              "short" => "The item category",
             },
             {
               "name" => "typeIcon",
-              "short" => "The item category icon URL",
+              "title" => "Type Icon",
               "type" => "`$STRING`",
+              "short" => "The item category icon URL",
             },
           ],
           "id" => {
@@ -587,31 +602,6 @@ module RunescapeApisConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "alpha",
-                        "orig" => "alpha",
-                        "reqd" => true,
-                        "type" => "`$STRING`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "category",
-                        "orig" => "category",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "page",
-                        "orig" => "page",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/m=itemdb_oldschool/api/catalogue/items.json",
@@ -629,6 +619,42 @@ module RunescapeApisConfig
                       "lit" => "items.json",
                     },
                   ],
+                  "parts" => [
+                    "m=itemdb_oldschool",
+                    "api",
+                    "catalogue",
+                    "items.json",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body.items`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "alpha",
+                        "orig" => "alpha",
+                        "type" => "`$STRING`",
+                        "kind" => "query",
+                        "reqd" => true,
+                      },
+                      {
+                        "name" => "category",
+                        "orig" => "category",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "reqd" => true,
+                      },
+                      {
+                        "name" => "page",
+                        "orig" => "page",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "alpha",
@@ -636,16 +662,6 @@ module RunescapeApisConfig
                       "page",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body.items`",
-                  },
-                  "parts" => [
-                    "m=itemdb_oldschool",
-                    "api",
-                    "catalogue",
-                    "items.json",
-                  ],
                 },
               ],
             },
@@ -658,18 +674,21 @@ module RunescapeApisConfig
           "fields" => [
             {
               "name" => "name",
-              "short" => "The player's username",
+              "title" => "Name",
               "type" => "`$STRING`",
+              "short" => "The player's username",
             },
             {
               "name" => "rank",
-              "short" => "The player's rank",
+              "title" => "Rank",
               "type" => "`$STRING`",
+              "short" => "The player's rank",
             },
             {
               "name" => "score",
-              "short" => "The player's score or experience",
+              "title" => "Score",
               "type" => "`$STRING`",
+              "short" => "The player's score or experience",
             },
           ],
           "name" => "player_ranking",
@@ -679,31 +698,6 @@ module RunescapeApisConfig
               "name" => "list",
               "points" => [
                 {
-                  "args" => {
-                    "query" => [
-                      {
-                        "kind" => "query",
-                        "name" => "category",
-                        "orig" => "category",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "size",
-                        "orig" => "size",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                      {
-                        "kind" => "query",
-                        "name" => "table",
-                        "orig" => "table",
-                        "reqd" => true,
-                        "type" => "`$INTEGER`",
-                      },
-                    ],
-                  },
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/m=hiscore/ranking.json",
@@ -715,6 +709,40 @@ module RunescapeApisConfig
                       "lit" => "ranking.json",
                     },
                   ],
+                  "parts" => [
+                    "m=hiscore",
+                    "ranking.json",
+                  ],
+                  "rename" => {},
+                  "transform" => {
+                    "req" => "`reqdata`",
+                    "res" => "`body`",
+                  },
+                  "args" => {
+                    "query" => [
+                      {
+                        "name" => "category",
+                        "orig" => "category",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "reqd" => true,
+                      },
+                      {
+                        "name" => "size",
+                        "orig" => "size",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "reqd" => true,
+                      },
+                      {
+                        "name" => "table",
+                        "orig" => "table",
+                        "type" => "`$INTEGER`",
+                        "kind" => "query",
+                        "reqd" => true,
+                      },
+                    ],
+                  },
                   "select" => {
                     "exist" => [
                       "category",
@@ -722,14 +750,6 @@ module RunescapeApisConfig
                       "table",
                     ],
                   },
-                  "transform" => {
-                    "req" => "`reqdata`",
-                    "res" => "`body`",
-                  },
-                  "parts" => [
-                    "m=hiscore",
-                    "ranking.json",
-                  ],
                 },
               ],
             },

@@ -1,0 +1,448 @@
+# Entity: grand_exchange_database
+
+main: kit: entity: grand_exchange_database: {
+
+  alias: field: {}
+
+  fields: {
+    average: {
+      h: "Average"
+      n: "average"
+      r: false
+      sh: "30-day moving average with timestamp as key"
+      t: "`$OBJECT`"
+    }
+    current: {
+      h: "Current"
+      n: "current"
+      r: false
+      t: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    daily: {
+      h: "Daily"
+      n: "daily"
+      r: false
+      sh: "Daily prices with timestamp as key"
+      t: "`$OBJECT`"
+    }
+    day180: {
+      h: "Day180"
+      n: "day180"
+      r: false
+      t: "`$OBJECT`"
+    }
+    day30: {
+      h: "Day30"
+      n: "day30"
+      r: false
+      t: "`$OBJECT`"
+    }
+    day90: {
+      h: "Day90"
+      n: "day90"
+      r: false
+      t: "`$OBJECT`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "The item examine text"
+      t: "`$STRING`"
+    }
+    icon: {
+      h: "Icon"
+      n: "icon"
+      r: false
+      sh: "The item sprite image URL"
+      t: "`$STRING`"
+    }
+    icon_large: {
+      h: "Icon Large"
+      n: "icon_large"
+      r: false
+      sh: "The item detail image URL"
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "The ItemID"
+      t: "`$INTEGER`"
+    }
+    items: {
+      h: "Items"
+      n: "items"
+      r: false
+      sh: "The number of items starting with this letter"
+      t: "`$INTEGER`"
+    }
+    lastConfigUpdateRuneday: {
+      h: "Last Config Update Runeday"
+      n: "lastConfigUpdateRuneday"
+      r: false
+      sh: "The runedate when the database was last updated"
+      t: "`$INTEGER`"
+    }
+    letter: {
+      h: "Letter"
+      n: "letter"
+      r: false
+      sh: "The first letter of an item"
+      t: "`$STRING`"
+    }
+    members: {
+      h: "Members"
+      n: "members"
+      r: false
+      sh: "Whether the item is members-only"
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The item name"
+      t: "`$STRING`"
+    }
+    today: {
+      h: "Today"
+      n: "today"
+      r: false
+      t: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 2
+      }
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "The item category"
+      t: "`$STRING`"
+    }
+    typeIcon: {
+      h: "Type Icon"
+      n: "typeIcon"
+      r: false
+      sh: "The item category icon URL"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "grand_exchange_database"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /m=itemdb_rs/api/catalogue/items.json"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "alpha"
+                or: "alpha"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "query"
+                n: "category"
+                or: "category"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "page"
+                or: "page"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/m=itemdb_rs/api/catalogue/items.json"
+          q: {
+            exist: [
+              "alpha"
+              "category"
+              "page"
+            ]
+          }
+          s: [
+            {
+              lit: "m=itemdb_rs"
+            }
+            {
+              lit: "api"
+            }
+            {
+              lit: "catalogue"
+            }
+            {
+              lit: "items.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.items`"
+          }
+        }
+        {
+          co: {
+            id: "GET /m=itemdb_rs/api/catalogue/category.json"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "category"
+                or: "category"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/m=itemdb_rs/api/catalogue/category.json"
+          q: {
+            exist: [
+              "category"
+            ]
+          }
+          s: [
+            {
+              lit: "m=itemdb_rs"
+            }
+            {
+              lit: "api"
+            }
+            {
+              lit: "catalogue"
+            }
+            {
+              lit: "category.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /m=itemdb_rs/obj_big.gif"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/m=itemdb_rs/obj_big.gif"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "m=itemdb_rs"
+            }
+            {
+              lit: "obj_big.gif"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /m=itemdb_rs/obj_sprite.gif"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/m=itemdb_rs/obj_sprite.gif"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          s: [
+            {
+              lit: "m=itemdb_rs"
+            }
+            {
+              lit: "obj_sprite.gif"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /m=itemdb_rs/api/catalogue/detail.json"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "item"
+                or: "item"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/m=itemdb_rs/api/catalogue/detail.json"
+          q: {
+            exist: [
+              "item"
+            ]
+          }
+          s: [
+            {
+              lit: "m=itemdb_rs"
+            }
+            {
+              lit: "api"
+            }
+            {
+              lit: "catalogue"
+            }
+            {
+              lit: "detail.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.item`"
+          }
+        }
+        {
+          co: {
+            id: "GET /m=itemdb_rs/api/graph/{itemId}.json"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "item_id"
+                or: "item_id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/m=itemdb_rs/api/graph/{itemId}.json"
+          q: {
+            exist: [
+              "item_id"
+            ]
+          }
+          s: [
+            {
+              lit: "m=itemdb_rs"
+            }
+            {
+              lit: "api"
+            }
+            {
+              lit: "graph"
+            }
+            {
+              lit: "{itemId}.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /m=itemdb_rs/api/info.json"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/m=itemdb_rs/api/info.json"
+          s: [
+            {
+              lit: "m=itemdb_rs"
+            }
+            {
+              lit: "api"
+            }
+            {
+              lit: "info.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

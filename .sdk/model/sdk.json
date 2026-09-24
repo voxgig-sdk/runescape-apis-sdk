@@ -24,145 +24,229 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "grand_exchange_database": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "average",
-              "req": false,
-              "short": "30-day moving average with timestamp as key",
-              "type": "`$OBJECT`"
+          "fields": {
+            "average": {
+              "a": true,
+              "h": "Average",
+              "n": "average",
+              "r": false,
+              "sh": "30-day moving average with timestamp as key",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "current",
-              "req": false,
-              "type": "`$OBJECT`",
+            "current": {
+              "a": true,
+              "h": "Current",
+              "n": "current",
+              "r": false,
+              "t": "`$OBJECT`",
               "union": {
                 "branches": 2,
                 "count": 1,
                 "depth": 2
               }
             },
-            {
-              "active": true,
-              "name": "daily",
-              "req": false,
-              "short": "Daily prices with timestamp as key",
-              "type": "`$OBJECT`"
+            "daily": {
+              "a": true,
+              "h": "Daily",
+              "n": "daily",
+              "r": false,
+              "sh": "Daily prices with timestamp as key",
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "day180",
-              "req": false,
-              "type": "`$OBJECT`"
+            "day180": {
+              "a": true,
+              "h": "Day180",
+              "n": "day180",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "day30",
-              "req": false,
-              "type": "`$OBJECT`"
+            "day30": {
+              "a": true,
+              "h": "Day30",
+              "n": "day30",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "day90",
-              "req": false,
-              "type": "`$OBJECT`"
+            "day90": {
+              "a": true,
+              "h": "Day90",
+              "n": "day90",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "The item examine text",
-              "type": "`$STRING`"
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "The item examine text",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "icon",
-              "req": false,
-              "short": "The item sprite image URL",
-              "type": "`$STRING`"
+            "icon": {
+              "a": true,
+              "h": "Icon",
+              "n": "icon",
+              "r": false,
+              "sh": "The item sprite image URL",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "icon_large",
-              "req": false,
-              "short": "The item detail image URL",
-              "type": "`$STRING`"
+            "icon_large": {
+              "a": true,
+              "h": "Icon Large",
+              "n": "icon_large",
+              "r": false,
+              "sh": "The item detail image URL",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "The ItemID",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "The ItemID",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "items",
-              "req": false,
-              "short": "The number of items starting with this letter",
-              "type": "`$INTEGER`"
+            "items": {
+              "a": true,
+              "h": "Items",
+              "n": "items",
+              "r": false,
+              "sh": "The number of items starting with this letter",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "lastConfigUpdateRuneday",
-              "req": false,
-              "short": "The runedate when the database was last updated",
-              "type": "`$INTEGER`"
+            "lastConfigUpdateRuneday": {
+              "a": true,
+              "h": "Last Config Update Runeday",
+              "n": "lastConfigUpdateRuneday",
+              "r": false,
+              "sh": "The runedate when the database was last updated",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "letter",
-              "req": false,
-              "short": "The first letter of an item",
-              "type": "`$STRING`"
+            "letter": {
+              "a": true,
+              "h": "Letter",
+              "n": "letter",
+              "r": false,
+              "sh": "The first letter of an item",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "members",
-              "req": false,
-              "short": "Whether the item is members-only",
-              "type": "`$STRING`"
+            "members": {
+              "a": true,
+              "h": "Members",
+              "n": "members",
+              "r": false,
+              "sh": "Whether the item is members-only",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "The item name",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "The item name",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "today",
-              "req": false,
-              "type": "`$OBJECT`",
+            "today": {
+              "a": true,
+              "h": "Today",
+              "n": "today",
+              "r": false,
+              "t": "`$OBJECT`",
               "union": {
                 "branches": 2,
                 "count": 1,
                 "depth": 2
               }
             },
-            {
-              "active": true,
-              "name": "type",
-              "req": false,
-              "short": "The item category",
-              "type": "`$STRING`"
+            "type": {
+              "a": true,
+              "h": "Type",
+              "n": "type",
+              "r": false,
+              "sh": "The item category",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "typeIcon",
-              "req": false,
-              "short": "The item category icon URL",
-              "type": "`$STRING`"
+            "typeIcon": {
+              "a": true,
+              "h": "Type Icon",
+              "n": "typeIcon",
+              "r": false,
+              "sh": "The item category icon URL",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -174,45 +258,52 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /m=itemdb_rs/api/catalogue/items.json",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "alpha",
-                        "orig": "alpha",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "alpha",
+                        "or": "alpha",
+                        "r": true,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "category",
-                        "orig": "category",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "category",
+                        "or": "category",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "page",
-                        "orig": "page",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "page",
+                        "or": "page",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /m=itemdb_rs/api/catalogue/items.json",
-                    "json": "{\"operationId\":\"getItemsByCategory\",\"parameters\":[{\"description\":\"The category identification number (0-43)\",\"in\":\"query\",\"name\":\"category\",\"required\":true,\"schema\":{\"maximum\":43,\"minimum\":0,\"type\":\"integer\"}},{\"description\":\"The starting letter for the items (lowercase). Use %23 for numbers.\",\"in\":\"query\",\"name\":\"alpha\",\"required\":true,\"schema\":{\"pattern\":\"^[a-z]$|^%23$\",\"type\":\"string\"}},{\"description\":\"The page number beginning at 1\",\"in\":\"query\",\"name\":\"page\",\"required\":true,\"schema\":{\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"items\":{\"items\":{\"properties\":{\"current\":{\"properties\":{\"price\":{\"description\":\"The item trade price (can be integer or string)\",\"oneOf\":[{\"type\":\"integer\"},{\"type\":\"string\"}]},\"trend\":{\"description\":\"The price trend direction\",\"enum\":[\"positive\",\"negative\",\"neutral\"],\"type\":\"string\"}},\"type\":\"object\"},\"description\":{\"description\":\"The item examine text\",\"type\":\"string\"},\"icon\":{\"description\":\"The item sprite image URL\",\"type\":\"string\"},\"icon_large\":{\"description\":\"The item detail image URL\",\"type\":\"string\"},\"id\":{\"description\":\"The ItemID\",\"type\":\"integer\"},\"members\":{\"description\":\"Whether the item is members-only\",\"enum\":[\"true\",\"false\"],\"type\":\"string\"},\"name\":{\"description\":\"The item name\",\"type\":\"string\"},\"today\":{\"properties\":{\"price\":{\"description\":\"The item trade price (can be integer or string)\",\"oneOf\":[{\"type\":\"integer\"},{\"type\":\"string\"}]},\"trend\":{\"description\":\"The price trend direction\",\"enum\":[\"positive\",\"negative\",\"neutral\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":{\"description\":\"The item category\",\"type\":\"string\"},\"typeIcon\":{\"description\":\"The item category icon URL\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"total\":{\"description\":\"The total number of items in the category\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response with items list\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/m=itemdb_rs/api/catalogue/items.json",
+                  "q": {
+                    "exist": [
+                      "alpha",
+                      "category",
+                      "page"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/m=itemdb_rs/api/catalogue/items.json",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "m=itemdb_rs"
                     },
@@ -226,42 +317,40 @@
                       "lit": "items.json"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "alpha",
-                      "category",
-                      "page"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.items`"
                   }
                 },
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /m=itemdb_rs/api/catalogue/category.json",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "category",
-                        "orig": "category",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "category",
+                        "or": "category",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /m=itemdb_rs/api/catalogue/category.json",
-                    "json": "{\"operationId\":\"getCategoryInfo\",\"parameters\":[{\"description\":\"The category identification number (0-43)\",\"in\":\"query\",\"name\":\"category\",\"required\":true,\"schema\":{\"maximum\":43,\"minimum\":0,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"alpha\":{\"items\":{\"properties\":{\"items\":{\"description\":\"The number of items starting with this letter\",\"type\":\"integer\"},\"letter\":{\"description\":\"The first letter of an item\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"types\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with category information\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/m=itemdb_rs/api/catalogue/category.json",
+                  "q": {
+                    "exist": [
+                      "category"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/m=itemdb_rs/api/catalogue/category.json",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "m=itemdb_rs"
                     },
@@ -275,12 +364,7 @@
                       "lit": "category.json"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "category"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -292,29 +376,34 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /m=itemdb_rs/obj_big.gif",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /m=itemdb_rs/obj_big.gif",
-                    "json": "{\"operationId\":\"getItemLargeImage\",\"parameters\":[{\"description\":\"The ItemID\",\"in\":\"query\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/gif\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successful response with item image\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/m=itemdb_rs/obj_big.gif",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/m=itemdb_rs/obj_big.gif",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "m=itemdb_rs"
                     },
@@ -322,40 +411,40 @@
                       "lit": "obj_big.gif"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
                 },
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /m=itemdb_rs/obj_sprite.gif",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "id",
-                        "orig": "id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "id",
+                        "or": "id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /m=itemdb_rs/obj_sprite.gif",
-                    "json": "{\"operationId\":\"getItemSpriteImage\",\"parameters\":[{\"description\":\"The ItemID\",\"in\":\"query\",\"name\":\"id\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/gif\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successful response with item sprite\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/m=itemdb_rs/obj_sprite.gif",
+                  "q": {
+                    "exist": [
+                      "id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/m=itemdb_rs/obj_sprite.gif",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "m=itemdb_rs"
                     },
@@ -363,40 +452,40 @@
                       "lit": "obj_sprite.gif"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
                 },
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /m=itemdb_rs/api/catalogue/detail.json",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "item",
-                        "orig": "item",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "item",
+                        "or": "item",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /m=itemdb_rs/api/catalogue/detail.json",
-                    "json": "{\"operationId\":\"getItemDetail\",\"parameters\":[{\"description\":\"The ItemID\",\"in\":\"query\",\"name\":\"item\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"item\":{\"properties\":{\"current\":{\"properties\":{\"price\":{\"description\":\"The item trade price (can be integer or string)\",\"oneOf\":[{\"type\":\"integer\"},{\"type\":\"string\"}]},\"trend\":{\"description\":\"The price trend direction\",\"enum\":[\"positive\",\"negative\",\"neutral\"],\"type\":\"string\"}},\"type\":\"object\"},\"day180\":{\"properties\":{\"change\":{\"description\":\"The percentage change in price\",\"type\":\"string\"},\"trend\":{\"description\":\"The price trend direction\",\"enum\":[\"positive\",\"negative\",\"neutral\"],\"type\":\"string\"}},\"type\":\"object\"},\"day30\":{\"properties\":{\"change\":{\"description\":\"The percentage change in price\",\"type\":\"string\"},\"trend\":{\"description\":\"The price trend direction\",\"enum\":[\"positive\",\"negative\",\"neutral\"],\"type\":\"string\"}},\"type\":\"object\"},\"day90\":{\"properties\":{\"change\":{\"description\":\"The percentage change in price\",\"type\":\"string\"},\"trend\":{\"description\":\"The price trend direction\",\"enum\":[\"positive\",\"negative\",\"neutral\"],\"type\":\"string\"}},\"type\":\"object\"},\"description\":{\"description\":\"The item examine text\",\"type\":\"string\"},\"icon\":{\"description\":\"The item sprite image URL\",\"type\":\"string\"},\"icon_large\":{\"description\":\"The item detail image URL\",\"type\":\"string\"},\"id\":{\"description\":\"The ItemID\",\"type\":\"integer\"},\"members\":{\"description\":\"Whether the item is members-only\",\"enum\":[\"true\",\"false\"],\"type\":\"string\"},\"name\":{\"description\":\"The item name\",\"type\":\"string\"},\"today\":{\"properties\":{\"price\":{\"description\":\"The item trade price (can be integer or string)\",\"oneOf\":[{\"type\":\"integer\"},{\"type\":\"string\"}]},\"trend\":{\"description\":\"The price trend direction\",\"enum\":[\"positive\",\"negative\",\"neutral\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":{\"description\":\"The item category\",\"type\":\"string\"},\"typeIcon\":{\"description\":\"The item category icon URL\",\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Successful response with item details\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/m=itemdb_rs/api/catalogue/detail.json",
+                  "q": {
+                    "exist": [
+                      "item"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/m=itemdb_rs/api/catalogue/detail.json",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "m=itemdb_rs"
                     },
@@ -410,40 +499,40 @@
                       "lit": "detail.json"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "item"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.item`"
                   }
                 },
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /m=itemdb_rs/api/graph/{itemId}.json",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "params": [
                       {
-                        "active": true,
-                        "kind": "param",
-                        "name": "item_id",
-                        "orig": "item_id",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "param",
+                        "n": "item_id",
+                        "or": "item_id",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /m=itemdb_rs/api/graph/{itemId}.json",
-                    "json": "{\"operationId\":\"getItemGraph\",\"parameters\":[{\"description\":\"The ItemID\",\"in\":\"path\",\"name\":\"itemId\",\"required\":true,\"schema\":{\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"average\":{\"additionalProperties\":{\"type\":\"integer\"},\"description\":\"30-day moving average with timestamp as key\",\"type\":\"object\"},\"daily\":{\"additionalProperties\":{\"type\":\"integer\"},\"description\":\"Daily prices with timestamp as key\",\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Successful response with price history\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/m=itemdb_rs/api/graph/{itemId}.json",
+                  "q": {
+                    "exist": [
+                      "item_id"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/m=itemdb_rs/api/graph/{itemId}.json",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "m=itemdb_rs"
                     },
@@ -457,29 +546,25 @@
                       "lit": "{itemId}.json"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "item_id"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
                 },
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /m=itemdb_rs/api/info.json",
-                    "json": "{\"operationId\":\"getGEInfo\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"lastConfigUpdateRuneday\":{\"description\":\"The runedate when the database was last updated\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response with database update information\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/m=itemdb_rs/api/info.json",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/m=itemdb_rs/api/info.json",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "m=itemdb_rs"
                     },
@@ -490,8 +575,7 @@
                       "lit": "info.json"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -508,86 +592,96 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "current",
-              "req": false,
-              "type": "`$OBJECT`",
+          "fields": {
+            "current": {
+              "a": true,
+              "h": "Current",
+              "n": "current",
+              "r": false,
+              "t": "`$OBJECT`",
               "union": {
                 "branches": 2,
                 "count": 1,
                 "depth": 2
               }
             },
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "short": "The item examine text",
-              "type": "`$STRING`"
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "sh": "The item examine text",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "icon",
-              "req": false,
-              "short": "The item sprite image URL",
-              "type": "`$STRING`"
+            "icon": {
+              "a": true,
+              "h": "Icon",
+              "n": "icon",
+              "r": false,
+              "sh": "The item sprite image URL",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "icon_large",
-              "req": false,
-              "short": "The item detail image URL",
-              "type": "`$STRING`"
+            "icon_large": {
+              "a": true,
+              "h": "Icon Large",
+              "n": "icon_large",
+              "r": false,
+              "sh": "The item detail image URL",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "id",
-              "req": false,
-              "short": "The ItemID",
-              "type": "`$INTEGER`"
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": false,
+              "sh": "The ItemID",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "members",
-              "req": false,
-              "short": "Whether the item is members-only",
-              "type": "`$STRING`"
+            "members": {
+              "a": true,
+              "h": "Members",
+              "n": "members",
+              "r": false,
+              "sh": "Whether the item is members-only",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "The item name",
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "The item name",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "today",
-              "req": false,
-              "type": "`$OBJECT`",
+            "today": {
+              "a": true,
+              "h": "Today",
+              "n": "today",
+              "r": false,
+              "t": "`$OBJECT`",
               "union": {
                 "branches": 2,
                 "count": 1,
                 "depth": 2
               }
             },
-            {
-              "active": true,
-              "name": "type",
-              "req": false,
-              "short": "The item category",
-              "type": "`$STRING`"
+            "type": {
+              "a": true,
+              "h": "Type",
+              "n": "type",
+              "r": false,
+              "sh": "The item category",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "typeIcon",
-              "req": false,
-              "short": "The item category icon URL",
-              "type": "`$STRING`"
+            "typeIcon": {
+              "a": true,
+              "h": "Type Icon",
+              "n": "typeIcon",
+              "r": false,
+              "sh": "The item category icon URL",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "id": {
             "field": "id",
             "name": "id"
@@ -599,45 +693,52 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /m=itemdb_oldschool/api/catalogue/items.json",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "alpha",
-                        "orig": "alpha",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "k": "query",
+                        "n": "alpha",
+                        "or": "alpha",
+                        "r": true,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "category",
-                        "orig": "category",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "category",
+                        "or": "category",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "page",
-                        "orig": "page",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "page",
+                        "or": "page",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /m=itemdb_oldschool/api/catalogue/items.json",
-                    "json": "{\"operationId\":\"getOSRSItemsByCategory\",\"parameters\":[{\"description\":\"The category identification number (only 1 category available for OSRS)\",\"in\":\"query\",\"name\":\"category\",\"required\":true,\"schema\":{\"enum\":[1],\"type\":\"integer\"}},{\"description\":\"The starting letter for the items (lowercase)\",\"in\":\"query\",\"name\":\"alpha\",\"required\":true,\"schema\":{\"pattern\":\"^[a-z]$\",\"type\":\"string\"}},{\"description\":\"The page number beginning at 1\",\"in\":\"query\",\"name\":\"page\",\"required\":true,\"schema\":{\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"items\":{\"items\":{\"properties\":{\"current\":{\"properties\":{\"price\":{\"description\":\"The item trade price (can be integer or string)\",\"oneOf\":[{\"type\":\"integer\"},{\"type\":\"string\"}]},\"trend\":{\"description\":\"The price trend direction\",\"enum\":[\"positive\",\"negative\",\"neutral\"],\"type\":\"string\"}},\"type\":\"object\"},\"description\":{\"description\":\"The item examine text\",\"type\":\"string\"},\"icon\":{\"description\":\"The item sprite image URL\",\"type\":\"string\"},\"icon_large\":{\"description\":\"The item detail image URL\",\"type\":\"string\"},\"id\":{\"description\":\"The ItemID\",\"type\":\"integer\"},\"members\":{\"description\":\"Whether the item is members-only\",\"enum\":[\"true\",\"false\"],\"type\":\"string\"},\"name\":{\"description\":\"The item name\",\"type\":\"string\"},\"today\":{\"properties\":{\"price\":{\"description\":\"The item trade price (can be integer or string)\",\"oneOf\":[{\"type\":\"integer\"},{\"type\":\"string\"}]},\"trend\":{\"description\":\"The price trend direction\",\"enum\":[\"positive\",\"negative\",\"neutral\"],\"type\":\"string\"}},\"type\":\"object\"},\"type\":{\"description\":\"The item category\",\"type\":\"string\"},\"typeIcon\":{\"description\":\"The item category icon URL\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"total\":{\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Successful response with OSRS items list\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/m=itemdb_oldschool/api/catalogue/items.json",
+                  "q": {
+                    "exist": [
+                      "alpha",
+                      "category",
+                      "page"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/m=itemdb_oldschool/api/catalogue/items.json",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "m=itemdb_oldschool"
                     },
@@ -651,14 +752,7 @@
                       "lit": "items.json"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "alpha",
-                      "category",
-                      "page"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.items`"
                   }
@@ -675,29 +769,32 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "short": "The player's username",
-              "type": "`$STRING`"
+          "fields": {
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "sh": "The player's username",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "rank",
-              "req": false,
-              "short": "The player's rank",
-              "type": "`$STRING`"
+            "rank": {
+              "a": true,
+              "h": "Rank",
+              "n": "rank",
+              "r": false,
+              "sh": "The player's rank",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "score",
-              "req": false,
-              "short": "The player's score or experience",
-              "type": "`$STRING`"
+            "score": {
+              "a": true,
+              "h": "Score",
+              "n": "score",
+              "r": false,
+              "sh": "The player's score or experience",
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "player_ranking",
           "op": {
             "list": {
@@ -705,45 +802,52 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /m=hiscore/ranking.json",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "category",
-                        "orig": "category",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "category",
+                        "or": "category",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "size",
-                        "orig": "size",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "size",
+                        "or": "size",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       },
                       {
-                        "active": true,
-                        "kind": "query",
-                        "name": "table",
-                        "orig": "table",
-                        "reqd": true,
-                        "type": "`$INTEGER`"
+                        "a": true,
+                        "k": "query",
+                        "n": "table",
+                        "or": "table",
+                        "r": true,
+                        "t": "`$INTEGER`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /m=hiscore/ranking.json",
-                    "json": "{\"operationId\":\"getPlayerRankings\",\"parameters\":[{\"description\":\"The skill, overall level, or activity table number\",\"in\":\"query\",\"name\":\"table\",\"required\":true,\"schema\":{\"type\":\"integer\"}},{\"description\":\"Category type (0 for skills, 1 for activities)\",\"in\":\"query\",\"name\":\"category\",\"required\":true,\"schema\":{\"enum\":[0,1],\"type\":\"integer\"}},{\"description\":\"Number of players to return (max 50)\",\"in\":\"query\",\"name\":\"size\",\"required\":true,\"schema\":{\"maximum\":50,\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"name\":{\"description\":\"The player's username\",\"type\":\"string\"},\"rank\":{\"description\":\"The player's rank\",\"type\":\"string\"},\"score\":{\"description\":\"The player's score or experience\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response with player rankings\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/m=hiscore/ranking.json",
+                  "q": {
+                    "exist": [
+                      "category",
+                      "size",
+                      "table"
+                    ]
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/m=hiscore/ranking.json",
-                  "segments": [
+                  "r": {},
+                  "s": [
                     {
                       "lit": "m=hiscore"
                     },
@@ -751,14 +855,7 @@
                       "lit": "ranking.json"
                     }
                   ],
-                  "select": {
-                    "exist": [
-                      "category",
-                      "size",
-                      "table"
-                    ]
-                  },
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1187,13 +1284,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1203,17 +1300,17 @@
               ]
             },
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "grand_exchange_database_ref01",
                 "srcdatavar": "grand_exchange_database_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1233,13 +1330,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1259,13 +1356,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {

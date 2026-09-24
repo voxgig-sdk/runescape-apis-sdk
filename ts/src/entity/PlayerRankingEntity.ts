@@ -19,7 +19,6 @@ import type {
   PlayerRankingListMatch,
 } from '../RunescapeApisTypes'
 
-// TODO: needs Entity superclass
 class PlayerRankingEntity extends RunescapeApisEntityBase<PlayerRanking> {
 
   constructor(client: RunescapeApisSDK, entopts: any) {

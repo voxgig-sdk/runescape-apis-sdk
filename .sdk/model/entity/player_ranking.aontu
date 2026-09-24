@@ -1,0 +1,95 @@
+# Entity: player_ranking
+
+main: kit: entity: player_ranking: {
+
+  alias: field: {}
+
+  fields: {
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "The player's username"
+      t: "`$STRING`"
+    }
+    rank: {
+      h: "Rank"
+      n: "rank"
+      r: false
+      sh: "The player's rank"
+      t: "`$STRING`"
+    }
+    score: {
+      h: "Score"
+      n: "score"
+      r: false
+      sh: "The player's score or experience"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "player_ranking"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /m=hiscore/ranking.json"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                k: "query"
+                n: "category"
+                or: "category"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "size"
+                or: "size"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                k: "query"
+                n: "table"
+                or: "table"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/m=hiscore/ranking.json"
+          q: {
+            exist: [
+              "category"
+              "size"
+              "table"
+            ]
+          }
+          s: [
+            {
+              lit: "m=hiscore"
+            }
+            {
+              lit: "ranking.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

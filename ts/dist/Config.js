@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -116,98 +109,106 @@ class Config {
             "fields": [
                 {
                     "name": "average",
-                    "short": "30-day moving average with timestamp as key",
-                    "type": "`$OBJECT`"
+                    "title": "Average",
+                    "type": "`$OBJECT`",
+                    "short": "30-day moving average with timestamp as key"
                 },
                 {
                     "name": "current",
-                    "type": "`$OBJECT`",
-                    "union": {
-                        "branches": 2,
-                        "count": 1,
-                        "depth": 2
-                    }
-                },
-                {
-                    "name": "daily",
-                    "short": "Daily prices with timestamp as key",
+                    "title": "Current",
                     "type": "`$OBJECT`"
                 },
                 {
+                    "name": "daily",
+                    "title": "Daily",
+                    "type": "`$OBJECT`",
+                    "short": "Daily prices with timestamp as key"
+                },
+                {
                     "name": "day180",
+                    "title": "Day180",
                     "type": "`$OBJECT`"
                 },
                 {
                     "name": "day30",
+                    "title": "Day30",
                     "type": "`$OBJECT`"
                 },
                 {
                     "name": "day90",
+                    "title": "Day90",
                     "type": "`$OBJECT`"
                 },
                 {
                     "name": "description",
-                    "short": "The item examine text",
-                    "type": "`$STRING`"
+                    "title": "Description",
+                    "type": "`$STRING`",
+                    "short": "The item examine text"
                 },
                 {
                     "name": "icon",
-                    "short": "The item sprite image URL",
-                    "type": "`$STRING`"
+                    "title": "Icon",
+                    "type": "`$STRING`",
+                    "short": "The item sprite image URL"
                 },
                 {
                     "name": "icon_large",
-                    "short": "The item detail image URL",
-                    "type": "`$STRING`"
+                    "title": "Icon Large",
+                    "type": "`$STRING`",
+                    "short": "The item detail image URL"
                 },
                 {
                     "name": "id",
-                    "short": "The ItemID",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "The ItemID"
                 },
                 {
                     "name": "items",
-                    "short": "The number of items starting with this letter",
-                    "type": "`$INTEGER`"
+                    "title": "Items",
+                    "type": "`$INTEGER`",
+                    "short": "The number of items starting with this letter"
                 },
                 {
                     "name": "lastConfigUpdateRuneday",
-                    "short": "The runedate when the database was last updated",
-                    "type": "`$INTEGER`"
+                    "title": "Last Config Update Runeday",
+                    "type": "`$INTEGER`",
+                    "short": "The runedate when the database was last updated"
                 },
                 {
                     "name": "letter",
-                    "short": "The first letter of an item",
-                    "type": "`$STRING`"
+                    "title": "Letter",
+                    "type": "`$STRING`",
+                    "short": "The first letter of an item"
                 },
                 {
                     "name": "members",
-                    "short": "Whether the item is members-only",
-                    "type": "`$STRING`"
+                    "title": "Members",
+                    "type": "`$STRING`",
+                    "short": "Whether the item is members-only"
                 },
                 {
                     "name": "name",
-                    "short": "The item name",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "The item name"
                 },
                 {
                     "name": "today",
-                    "type": "`$OBJECT`",
-                    "union": {
-                        "branches": 2,
-                        "count": 1,
-                        "depth": 2
-                    }
+                    "title": "Today",
+                    "type": "`$OBJECT`"
                 },
                 {
                     "name": "type",
-                    "short": "The item category",
-                    "type": "`$STRING`"
+                    "title": "Type",
+                    "type": "`$STRING`",
+                    "short": "The item category"
                 },
                 {
                     "name": "typeIcon",
-                    "short": "The item category icon URL",
-                    "type": "`$STRING`"
+                    "title": "Type Icon",
+                    "type": "`$STRING`",
+                    "short": "The item category icon URL"
                 }
             ],
             "id": {
@@ -221,31 +222,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "alpha",
-                                        "orig": "alpha",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "category",
-                                        "orig": "category",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "page",
-                                        "orig": "page",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/m=itemdb_rs/api/catalogue/items.json",
@@ -263,36 +239,51 @@ class Config {
                                     "lit": "items.json"
                                 }
                             ],
+                            "parts": [
+                                "m=itemdb_rs",
+                                "api",
+                                "catalogue",
+                                "items.json"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body.items`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "alpha",
+                                        "orig": "alpha",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "reqd": true
+                                    },
+                                    {
+                                        "name": "category",
+                                        "orig": "category",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "reqd": true
+                                    },
+                                    {
+                                        "name": "page",
+                                        "orig": "page",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "alpha",
                                     "category",
                                     "page"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body.items`"
-                            },
-                            "parts": [
-                                "m=itemdb_rs",
-                                "api",
-                                "catalogue",
-                                "items.json"
-                            ]
+                            }
                         },
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "category",
-                                        "orig": "category",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/m=itemdb_rs/api/catalogue/category.json",
@@ -310,21 +301,33 @@ class Config {
                                     "lit": "category.json"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "category"
-                                ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
                             "parts": [
                                 "m=itemdb_rs",
                                 "api",
                                 "catalogue",
                                 "category.json"
-                            ]
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "category",
+                                        "orig": "category",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "category"
+                                ]
+                            }
                         }
                     ]
                 },
@@ -333,17 +336,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "id",
-                                        "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/m=itemdb_rs/obj_big.gif",
@@ -355,32 +347,33 @@ class Config {
                                     "lit": "obj_big.gif"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
+                            "parts": [
+                                "m=itemdb_rs",
+                                "obj_big.gif"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "m=itemdb_rs",
-                                "obj_big.gif"
-                            ]
-                        },
-                        {
                             "args": {
                                 "query": [
                                     {
-                                        "kind": "query",
                                         "name": "id",
                                         "orig": "id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "reqd": true
                                     }
                                 ]
                             },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
+                        },
+                        {
                             "kind": "http",
                             "method": "GET",
                             "orig": "/m=itemdb_rs/obj_sprite.gif",
@@ -392,32 +385,33 @@ class Config {
                                     "lit": "obj_sprite.gif"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "id"
-                                ]
-                            },
+                            "parts": [
+                                "m=itemdb_rs",
+                                "obj_sprite.gif"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "m=itemdb_rs",
-                                "obj_sprite.gif"
-                            ]
-                        },
-                        {
                             "args": {
                                 "query": [
                                     {
+                                        "name": "id",
+                                        "orig": "id",
+                                        "type": "`$INTEGER`",
                                         "kind": "query",
-                                        "name": "item",
-                                        "orig": "item",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
+                                        "reqd": true
                                     }
                                 ]
                             },
+                            "select": {
+                                "exist": [
+                                    "id"
+                                ]
+                            }
+                        },
+                        {
                             "kind": "http",
                             "method": "GET",
                             "orig": "/m=itemdb_rs/api/catalogue/detail.json",
@@ -435,34 +429,35 @@ class Config {
                                     "lit": "detail.json"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "item"
-                                ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body.item`"
-                            },
                             "parts": [
                                 "m=itemdb_rs",
                                 "api",
                                 "catalogue",
                                 "detail.json"
-                            ]
-                        },
-                        {
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body.item`"
+                            },
                             "args": {
-                                "params": [
+                                "query": [
                                     {
-                                        "kind": "param",
-                                        "name": "item_id",
-                                        "orig": "item_id",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
+                                        "name": "item",
+                                        "orig": "item",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "reqd": true
                                     }
                                 ]
                             },
+                            "select": {
+                                "exist": [
+                                    "item"
+                                ]
+                            }
+                        },
+                        {
                             "kind": "http",
                             "method": "GET",
                             "orig": "/m=itemdb_rs/api/graph/{itemId}.json",
@@ -480,24 +475,35 @@ class Config {
                                     "lit": "{itemId}.json"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "item_id"
-                                ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
                             "parts": [
                                 "m=itemdb_rs",
                                 "api",
                                 "graph",
                                 "{itemId}.json"
-                            ]
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "params": [
+                                    {
+                                        "name": "item_id",
+                                        "orig": "item_id",
+                                        "type": "`$INTEGER`",
+                                        "kind": "param",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "item_id"
+                                ]
+                            }
                         },
                         {
-                            "args": {},
                             "kind": "http",
                             "method": "GET",
                             "orig": "/m=itemdb_rs/api/info.json",
@@ -512,16 +518,18 @@ class Config {
                                     "lit": "info.json"
                                 }
                             ],
-                            "select": {},
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
                             "parts": [
                                 "m=itemdb_rs",
                                 "api",
                                 "info.json"
-                            ]
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {},
+                            "select": {}
                         }
                     ]
                 }
@@ -534,61 +542,61 @@ class Config {
             "fields": [
                 {
                     "name": "current",
-                    "type": "`$OBJECT`",
-                    "union": {
-                        "branches": 2,
-                        "count": 1,
-                        "depth": 2
-                    }
+                    "title": "Current",
+                    "type": "`$OBJECT`"
                 },
                 {
                     "name": "description",
-                    "short": "The item examine text",
-                    "type": "`$STRING`"
+                    "title": "Description",
+                    "type": "`$STRING`",
+                    "short": "The item examine text"
                 },
                 {
                     "name": "icon",
-                    "short": "The item sprite image URL",
-                    "type": "`$STRING`"
+                    "title": "Icon",
+                    "type": "`$STRING`",
+                    "short": "The item sprite image URL"
                 },
                 {
                     "name": "icon_large",
-                    "short": "The item detail image URL",
-                    "type": "`$STRING`"
+                    "title": "Icon Large",
+                    "type": "`$STRING`",
+                    "short": "The item detail image URL"
                 },
                 {
                     "name": "id",
-                    "short": "The ItemID",
-                    "type": "`$INTEGER`"
+                    "title": "Id",
+                    "type": "`$INTEGER`",
+                    "short": "The ItemID"
                 },
                 {
                     "name": "members",
-                    "short": "Whether the item is members-only",
-                    "type": "`$STRING`"
+                    "title": "Members",
+                    "type": "`$STRING`",
+                    "short": "Whether the item is members-only"
                 },
                 {
                     "name": "name",
-                    "short": "The item name",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "The item name"
                 },
                 {
                     "name": "today",
-                    "type": "`$OBJECT`",
-                    "union": {
-                        "branches": 2,
-                        "count": 1,
-                        "depth": 2
-                    }
+                    "title": "Today",
+                    "type": "`$OBJECT`"
                 },
                 {
                     "name": "type",
-                    "short": "The item category",
-                    "type": "`$STRING`"
+                    "title": "Type",
+                    "type": "`$STRING`",
+                    "short": "The item category"
                 },
                 {
                     "name": "typeIcon",
-                    "short": "The item category icon URL",
-                    "type": "`$STRING`"
+                    "title": "Type Icon",
+                    "type": "`$STRING`",
+                    "short": "The item category icon URL"
                 }
             ],
             "id": {
@@ -602,31 +610,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "alpha",
-                                        "orig": "alpha",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "category",
-                                        "orig": "category",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "page",
-                                        "orig": "page",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/m=itemdb_oldschool/api/catalogue/items.json",
@@ -644,23 +627,49 @@ class Config {
                                     "lit": "items.json"
                                 }
                             ],
+                            "parts": [
+                                "m=itemdb_oldschool",
+                                "api",
+                                "catalogue",
+                                "items.json"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body.items`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "alpha",
+                                        "orig": "alpha",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "reqd": true
+                                    },
+                                    {
+                                        "name": "category",
+                                        "orig": "category",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "reqd": true
+                                    },
+                                    {
+                                        "name": "page",
+                                        "orig": "page",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "alpha",
                                     "category",
                                     "page"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body.items`"
-                            },
-                            "parts": [
-                                "m=itemdb_oldschool",
-                                "api",
-                                "catalogue",
-                                "items.json"
-                            ]
+                            }
                         }
                     ]
                 }
@@ -673,18 +682,21 @@ class Config {
             "fields": [
                 {
                     "name": "name",
-                    "short": "The player's username",
-                    "type": "`$STRING`"
+                    "title": "Name",
+                    "type": "`$STRING`",
+                    "short": "The player's username"
                 },
                 {
                     "name": "rank",
-                    "short": "The player's rank",
-                    "type": "`$STRING`"
+                    "title": "Rank",
+                    "type": "`$STRING`",
+                    "short": "The player's rank"
                 },
                 {
                     "name": "score",
-                    "short": "The player's score or experience",
-                    "type": "`$STRING`"
+                    "title": "Score",
+                    "type": "`$STRING`",
+                    "short": "The player's score or experience"
                 }
             ],
             "name": "player_ranking",
@@ -694,31 +706,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "kind": "query",
-                                        "name": "category",
-                                        "orig": "category",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "size",
-                                        "orig": "size",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    },
-                                    {
-                                        "kind": "query",
-                                        "name": "table",
-                                        "orig": "table",
-                                        "reqd": true,
-                                        "type": "`$INTEGER`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/m=hiscore/ranking.json",
@@ -730,21 +717,47 @@ class Config {
                                     "lit": "ranking.json"
                                 }
                             ],
+                            "parts": [
+                                "m=hiscore",
+                                "ranking.json"
+                            ],
+                            "rename": {},
+                            "transform": {
+                                "req": "`reqdata`",
+                                "res": "`body`"
+                            },
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "category",
+                                        "orig": "category",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "reqd": true
+                                    },
+                                    {
+                                        "name": "size",
+                                        "orig": "size",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "reqd": true
+                                    },
+                                    {
+                                        "name": "table",
+                                        "orig": "table",
+                                        "type": "`$INTEGER`",
+                                        "kind": "query",
+                                        "reqd": true
+                                    }
+                                ]
+                            },
                             "select": {
                                 "exist": [
                                     "category",
                                     "size",
                                     "table"
                                 ]
-                            },
-                            "transform": {
-                                "req": "`reqdata`",
-                                "res": "`body`"
-                            },
-                            "parts": [
-                                "m=hiscore",
-                                "ranking.json"
-                            ]
+                            }
                         }
                     ]
                 }

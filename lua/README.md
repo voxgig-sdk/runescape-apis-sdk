@@ -43,7 +43,7 @@ local grandexchangedatabases, err = client:GrandExchangeDatabase():list()
 if err then error(err) end
 
 for _, item in ipairs(grandexchangedatabases) do
-  print(item["id"], item["description"])
+  print(item["id"])
 end
 ```
 

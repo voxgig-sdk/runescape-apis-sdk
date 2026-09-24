@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OldSchoolGrandExchangeEntity = void 0;
 const RunescapeApisEntityBase_1 = require("../RunescapeApisEntityBase");
-// TODO: needs Entity superclass
 class OldSchoolGrandExchangeEntity extends RunescapeApisEntityBase_1.RunescapeApisEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

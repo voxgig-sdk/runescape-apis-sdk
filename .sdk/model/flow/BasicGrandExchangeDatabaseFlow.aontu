@@ -1,0 +1,40 @@
+# BasicGrandExchangeDatabaseFlow
+
+main: kit: flow: BasicGrandExchangeDatabaseFlow:
+{
+  entity: "grand_exchange_database",
+  kind: "basic",
+  name: "BasicGrandExchangeDatabaseFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "grand_exchange_database_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "grand_exchange_database_ref01",
+        srcdatavar: "grand_exchange_database_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-grand_exchange_database_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGrandExchangeDatabaseFlow"
+}
